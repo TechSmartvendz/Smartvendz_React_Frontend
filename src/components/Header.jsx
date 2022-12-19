@@ -19,7 +19,7 @@ function Header() {
       {/* <div className="headercontent">2</div> */}
       <div className="headercontent">
       
-get       </div>
+      </div>
 
       
       </div>
