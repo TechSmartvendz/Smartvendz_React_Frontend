@@ -1,0 +1,115 @@
+
+.span_div{
+    margin:25px;
+    margin-top:30px;
+  
+  }
+  .container{
+    background-color: rgb(178, 199, 202);
+    height:fit-content;
+    min-height: 100%;
+    width:100%;
+    padding:20px;
+    
+    
+   
+   
+  }
+  .container>.empty{
+    background-color: white;
+    min-height:50px;
+  
+  }
+  .formcontain{
+    background-color: white;
+  
+  }
+  .container>div{
+    
+  margin:5px;
+  padding:5px;
+   }
+   
+  .container>div>form{
+    margin:10px;
+    
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  
+  }
+  .container>div>form>div{
+  display: flex;
+  flex-flow: column;
+  width:235px;
+  
+  /* margin:18px; */
+  }
+  /* .container>div>form>button{
+    height: 40px;
+    min-width:108px;
+    background-color:black;
+    color: white;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-left: 115px;
+    cursor: pointer; 
+    
+  }*/
+  .container>div>form>div>input,.container>div>form>div>select{
+    margin: 10px;
+    margin-top:2px;
+    height: 30px;
+    min-width: 80px;
+    padding-left:10px;
+    border-radius: 4px;
+    background-color: rgb(202, 202, 202);
+    
+  }
+  .container>div>form>div>label{
+    margin-left: 10px;
+    font-size: 0.8em;
+  }
+  
+  /* Table styles start from here */
+  .table_container{
+  
+    background-color:white;
+   
+   display: flex;
+   flex-direction: column;
+  
+  }
+  table{
+    
+    flex-direction: column;
+    padding: 10px;
+    border-collapse: collapse;
+  }
+  th,td{
+    
+   
+   text-align: left;
+    padding:10px;
+    
+  }
+  tr:nth-child(even){
+    background-color: #dddddd;
+  }
+  .button{
+  padding: 10px;
+  border-radius: 4px;
+  background-color: black;
+  color: white;
+  width:100px;
+  margin-left:100px;
+  height: 40px;
+    
+  }
+  
+  #addorder-btn{ 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
