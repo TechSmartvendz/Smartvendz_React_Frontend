@@ -14,7 +14,7 @@ function Header() {
       <div className="headercontent">
         {/* <img class="logo-main scale-with-grid" src="http://snaxsmart.com/wp-content/uploads/2018/05/logo-1.png" data-retina="http://snaxsmart.com/wp-content/uploads/2018/05/logo-1.png" data-height="88" alt="snacks vending machine" /> */}
          {/* <img src="/snaxsmart.png"/>  */}
-        {/* <img src={snaxsmart} alt = "snaxsmart" />*/}
+         <img src={snaxsmart} alt = "snaxsmart" />
         </div> 
       {/* <div className="headercontent">2</div> */}
       <div className="headercontent">
