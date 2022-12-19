@@ -19,7 +19,7 @@ function Header() {
       {/* <div className="headercontent">2</div> */}
       <div className="headercontent">
       
-      <button className='logout-btn'>Log out</button> 
+      {/* <button className='logout-btn'>Log out</button>  */}
       </div>
 
       
