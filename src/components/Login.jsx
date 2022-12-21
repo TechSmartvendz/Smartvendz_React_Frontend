@@ -1,20 +1,17 @@
 import React,{useState} from 'react'
 import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
-import {useNavigate,redirect} from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 function Login(props) {
 
-  
   function handleChange(val) {
     // Here, we invoke the callback with the new value
-    props.onChange(val);
+    props.ValueChange(val);
 }
    const [email,setEmail]=useState("");
    const [password,setPassword]=useState("");
-   const [cookies, setCookie] = useCookies(['user']);
+  const [cookies, setCookie] = useCookies(['user']);
 
-  const navigate=useNavigate();
 
   const updateEmail=(e)=>
   {
@@ -33,7 +30,7 @@ function Login(props) {
      }).then((response)=>{
       
      console.log(response.data);
-     localStorage.setItem("session_token",response.data.session_token);
+    //  localStorage.setItem("session_token",response.data.session_token);
      setCookie('JWTcookie', response.data.session_token, { path: '/' });
      alert("successfully login");
      handleChange(true);
