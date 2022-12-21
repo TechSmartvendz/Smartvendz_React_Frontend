@@ -18,6 +18,7 @@ function App() {
    const [cookies, setCookie, removeCookie] = useCookies(['user']);
     const[isLoggedIn, setIsLoggedIn] = useState(cookies.JWTcookie!=undefined)
 
+    console.log(cookies);
      
    function handleChange(newValue) {
     setIsLoggedIn(newValue);

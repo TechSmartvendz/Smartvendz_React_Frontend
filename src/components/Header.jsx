@@ -10,7 +10,7 @@ import { useCookies } from 'react-cookie';
 
 function Header(props) {
   //const [cookies, setCookie] = useCookies(['user']);
-  const[removeCookie] = useCookies(['user'])
+ // const[removeCookie] = useCookies(['user'])
 
 //   function logout() {
 //     console.log(cookies.JWTcookie)
@@ -26,7 +26,7 @@ function Header(props) {
 //   props.ValueChange(val);
 //   cookies.remove('JWTcookie');
 // }
-const [cookies, setCookie] = useCookies(['user']);
+const [cookies, setCookie, removeCookie] = useCookies(['user']);
 const{isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
 
 function logout() {
