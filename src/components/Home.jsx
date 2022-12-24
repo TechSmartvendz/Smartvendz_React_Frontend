@@ -1,9 +1,11 @@
 import React from 'react'
-
+import Homeimage from '../assets/vending machine image.jpg'
 function Home() {
+   
   return (
     <div>
-      <p>Home</p>
+    Home
+  
     </div>
   )
 }

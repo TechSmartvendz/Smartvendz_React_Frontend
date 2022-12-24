@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import Products_csv from './Products_csv';
 function Login(props) {
 
   function handleChange(val) {
@@ -30,7 +31,7 @@ function Login(props) {
      }).then((response)=>{
       
      console.log(response.data);
-    //  localStorage.setItem("session_token",response.data.session_token);
+ 
      setCookie('JWTcookie', response.data.session_token, { path: '/' });
      alert("successfully login");
      handleChange(true);
@@ -61,6 +62,7 @@ function Login(props) {
 
     
     </form>
+    <Products_csv/>
     </div>
     </>
   )

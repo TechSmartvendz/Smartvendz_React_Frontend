@@ -11,7 +11,7 @@ import Dashboard from "./components/Dashboard";
 import { createContext } from 'react';
 import AuthContext  from './Context/AuthContext';
 
-
+// import Products_csv from './components/Products_csv';
 // const UserContext = createContext()
 
 function App() {
@@ -35,20 +35,14 @@ function App() {
 } else {
     // If user is logged out
    return <Login ValueChange={handleChange}/>
-  //  return <Login />
+  
 }
    
-   {/* //console.log(cookies.JWTcookie!=undefined);
-  //  const [isLoggedIn, setIsLoggedIn] = useState(cookies.JWTcookie!=undefined);
-
-  //const[isLoggedIn, setIsLoggedIn] = useState(cookies.JWTcookie!=undefined)
-  const[isLoggedIn, setIsLoggedIn] = useState(cookies.JWTcookie!=undefined) */}
-
-
 
   return (
     <>
       <p>hello</p>
+
     </>
 )}
 
