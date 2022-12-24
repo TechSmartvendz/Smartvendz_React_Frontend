@@ -1,16 +1,24 @@
 import React,{useState} from 'react'
 import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-function Login(props) {
+import AuthContext from '../Context/AuthContext';
+import {useContext} from 'react';
 
-  function handleChange(val) {
-    // Here, we invoke the callback with the new value
-    props.ValueChange(val);
-}
+function Login() {
+
+//   function handleChange() {
+//     // Here, we invoke the callback with the new value
+//     setisLoggedIn(true)
+// }
    const [email,setEmail]=useState("");
    const [password,setPassword]=useState("");
   const [cookies, setCookie] = useCookies(['user']);
+  const{isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
+
+  // function handleChange() {
+  //   setIsLoggedIn(true)
+  // }
+
 
 
   const updateEmail=(e)=>
@@ -33,7 +41,8 @@ function Login(props) {
     //  localStorage.setItem("session_token",response.data.session_token);
      setCookie('JWTcookie', response.data.session_token, { path: '/' });
      alert("successfully login");
-     handleChange(true);
+        setIsLoggedIn(true)
+
      
      }).catch((error)=>{
       console.log(error);
@@ -44,7 +53,8 @@ function Login(props) {
   }
  
    return (
-    <>
+     <>
+
     <div>
     <h2>Login here</h2>
     <form onSubmit={submitData}>

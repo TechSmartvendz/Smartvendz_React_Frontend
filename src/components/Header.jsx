@@ -55,7 +55,7 @@ function logout() {
 
 
 
-      <button className='logout-btn' onClick={logout}>signout branch3</button>
+      <button className='logout-btn' onClick={logout}>Logout</button>
       </div>  
 
       </div>
