@@ -1,16 +1,19 @@
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
 import axios from 'axios';
+import AuthContext from '../Context/AuthContext';
 import { useCookies } from 'react-cookie';
-// import Products_csv from './Products_csv';
-import Clogo from '../assets/snaxsmart.png';
-function Login(props) {
 
+import Clogo from '../assets/snaxsmart.png';
+function Login() {
+
+//   function handleChange(val) {
+//     // Here, we invoke the callback with the new value
+//     props.ValueChange(val);
+// }
    const [email,setEmail]=useState("");
    const [password,setPassword]=useState("");
   const [cookies, setCookie] = useCookies(['user']);
-  const{isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
-
-
+  const {isLoggedIn, setIsLoggedIn}=useContext(AuthContext)
 
 
   const updateEmail=(e)=>
@@ -32,9 +35,8 @@ function Login(props) {
      console.log(response.data);
  
      setCookie('JWTcookie', response.data.session_token, { path: '/' });
-     alert("successfully login");
-        setIsLoggedIn(true)
-
+    //  alert("successfully login");
+    setIsLoggedIn(true)
      
      }).catch((error)=>{
       console.log(error);
