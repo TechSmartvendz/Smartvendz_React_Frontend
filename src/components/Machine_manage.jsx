@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import Machine_details from './Machine_details'
+import React, { useState ,useContext} from 'react'
+import MachineContext from '../Context/MachineContext'
+//import Machine_details from './Machine_details'
 
 function Machine_manage() {
     const machinedata=[{name:"Enphase 2nd phase",EmployeeName:"Ayyappa",officename:"enphase 2ndphase"},
@@ -8,14 +9,14 @@ function Machine_manage() {
     {name:"CAI info india",EmployeeName:"Venkatesh",officename:"CAI info india"},
     {name:"Enphase 2nd phase",EmployeeName:"Ayyappa",officename:"enphase 2ndphase"},
     {name:"Enphase 2nd phase",EmployeeName:"Ayyappa",officename:"enphase 2ndphase"}]
-    const [addnew,setAddnew]=useState(false);
-function addnewpage(e)
-{
-  e.preventDefault();
-  setAddnew(prevstate=>!prevstate);
-  
-  
-}
+   const {add1,setAdd1} = useContext(MachineContext)
+
+   function addnew()
+   {
+     setAdd1(false) 
+    }
+
+   
   return (
     
     <React.Fragment>
@@ -25,12 +26,12 @@ function addnewpage(e)
     <div ><span className='main_head'>Manage Machines</span></div>
     
     <div className='btn_conatiner'>
-    <button className='mmAddnew_btn' onClick={addnewpage}>Add New</button>
+    <button className='mmAddnew_btn' onClick={addnew}> { {add1}?'AddNew': 'Close'}</button>
     
-      {addnew && <Machine_details/>}
+      
     
     <button className='mmDelete_btn'>Delete</button>
-    <button className='mmClose_btn'>Close</button>
+    <button className='mmClose_btn' >Close</button>
     </div>
 
     <div><span className='heading'>Machine List</span></div>

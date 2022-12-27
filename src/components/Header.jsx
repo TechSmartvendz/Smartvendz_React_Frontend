@@ -14,6 +14,7 @@ const [cookies, setCookie,removeCookie] = useCookies(['user']);
 const{isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
 
 function logout() {
+  alert("Are you want to Log out?");
   setIsLoggedIn(false)
   
   removeCookie('JWTcookie',{path:"/"});
@@ -39,7 +40,7 @@ function logout() {
 
 
 
-      <button className='logout-btn' onClick={logout}>signout branch3</button>
+      <button className='logout-btn' onClick={logout}>Log Out </button>
       </div>  
 
       </div>
