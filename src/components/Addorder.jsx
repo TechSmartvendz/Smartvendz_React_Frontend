@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 
 function Addorder() {
-  // const [formInputData, setformInputData] = useState({
-
-  //     rficardno: " ",
-  //     lockermachineid: " ",
-  //     lockerslotno: " ",
-  //     password: " ",
-  //     item: " ",
-  //     date: " "
-  // })
+  
 
   return (
     <React.Fragment>

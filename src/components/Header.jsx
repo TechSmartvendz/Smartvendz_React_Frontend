@@ -8,31 +8,16 @@ import { useCookies } from 'react-cookie';
 
 
 
-function Header(props) {
-  //const [cookies, setCookie] = useCookies(['user']);
-  const[removeCookie] = useCookies(['user'])
-
-//   function logout() {
-//     console.log(cookies.JWTcookie)
-//     cookies.remove('JWTcookie');
-//  console.log("cookie removed");
-//     console.log(cookies.JWTcookie)
-//     setIsLoggedIn(false);
-
-//   }
-
-// function handleChange(val) {
-//   // Here, we invoke the callback with the new value
-//   props.ValueChange(val);
-//   cookies.remove('JWTcookie');
-// }
-const [cookies, setCookie] = useCookies(['user']);
+function Header() {
+  
+const [cookies, setCookie,removeCookie] = useCookies(['user']);
 const{isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
 
 function logout() {
+  alert("Are you want to Log out?");
   setIsLoggedIn(false)
   
-  removeCookie('JWTcookie',{path:'/'});
+  removeCookie('JWTcookie',{path:"/"});
   
 
 }
@@ -55,7 +40,7 @@ function logout() {
 
 
 
-      <button className='logout-btn' onClick={logout}>signout branch3</button>
+      <button className='logout-btn' onClick={logout}>Log Out </button>
       </div>  
 
       </div>
