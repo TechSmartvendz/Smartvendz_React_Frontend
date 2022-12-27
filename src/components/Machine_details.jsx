@@ -1,6 +1,33 @@
-import React from 'react'
+
+import React, { useState ,useContext} from 'react'
+import MachineContext from '../Context/MachineContext'
 
 function Machine_details() {
+ 
+  const {add1,setAdd1} = useContext(MachineContext)
+  
+  const tempdata={slno:"",slotname:"",materialname:"",currentstock:"",initialstock:"",notinuse:"",del:""};
+  const[slotdata,setSlotdata]=useState([])
+
+  const[slotno,setSlotno]=useState([tempdata.slno]);
+  const[stockname,setStockname]=useState({});
+  const[currentStock,setCurrentStock]=useState({});
+  const[initialstock,setInitialStock]=useState({});
+
+  function handleSlot()
+  {  
+    console.log(slotdata);
+
+    setSlotdata((previousState) =>{ return [ ...previousState,tempdata ]
+      
+  });
+   
+  }
+  console.log(tempdata.slno.stockname);
+  function closeAddnew()
+   {
+    setAdd1(!false);
+   }
   return (
     <React.Fragment>
     <div className="mm_container">
@@ -9,8 +36,8 @@ function Machine_details() {
     
     <div className='btn_container'>
     <button  className='mmAddnew_btn'>Save</button>
-    <button  className='mmAddnew_btn'>Add New</button>
-    <button className='mmClose_btn'>Close</button>
+    {/*<button  className='mmAddnew_btn'>Add New</button> */}
+    <button className='mmClose_btn' onClick={closeAddnew}>Close</button>
     </div>
     </div>
     
@@ -136,9 +163,9 @@ function Machine_details() {
    {/*AddMachine slots start from here */}
    <div className='ams_container'>
    <div>
-   <button className='mmAddnew_btn'>Add Machine Slots</button>
+   <button className='mmAddnew_btn' onClick={handleSlot}>Add Machine Slots</button>
    </div>
- 
+
    <div className='table_container'>
   <table>
   <tr>
@@ -148,101 +175,31 @@ function Machine_details() {
   <th>Current Stock</th>
   <th>Initial Stock</th>
   <th>Not In Use</th>
-  <th>Del</th>
+  <th>Delete</th>
   </tr>
+  {
+slotdata.map((mdata,key)=>{
+  return(
+<tr key={key}>
+<td>{mdata.slno}</td>
   
-  <tr>
-  <td>1</td>
-  <td><input type="text"/></td>
+  <td><input type="text" name='slotname'  value={stockname} onChange={(e)=>{setStockname(e.target.value)}} /></td>
   
   <td>
   <select>
-  <option>Lays Chips 20gm</option>
+  <option>{mdata.materialname}</option>
   </select>
   </td>
   
-  <td><input type="text"/></td>
-  <td><input type="text"/></td>
-  <td><input type="checkbox"/></td>
+  <td><input type="text" name='cstock' value={mdata.currentstock}/></td>
+  <td><input type="text" name='istock' value={mdata.initialstock}/></td>
+  <td><input type="checkbox" name='notinuse'  value={mdata.notinuse}/></td>
+  <td><button className='mmDelete_btn'>Delete</button></td>
+</tr>
+  )
+})
+  }
   
-   </tr>
-
-   <tr>
-   <td>2</td>
-   <td><input type="text"/></td>
-   
-   <td>
-   <select>
-   <option>Lays Chips 20gm</option>
-   </select>
-   </td>
-   
-   <td><input type="text"/></td>
-   <td><input type="text"/></td>
-   <td><input type="checkbox"/></td>
-   
-    </tr>
-
-    <tr>
-    <td>3</td>
-    <td><input type="text"/></td>
-    
-    <td>
-    <select>
-    <option>Lays Chips 20gm</option>
-    </select>
-    </td>
-    
-    <td><input type="text"/></td>
-    <td><input type="text"/></td>
-    <td><input type="checkbox"/></td>
-    </tr>
-
-     <tr>
-     <td>4</td>
-     <td><input type="text"/></td>
-     
-     <td>
-     <select>
-     <option>Lays Chips 20gm</option>
-     </select>
-     </td>
-     
-     <td><input type="text"/></td>
-     <td><input type="text"/></td>
-     <td><input type="checkbox"/></td>
-      </tr>
-
-      <tr>
-     <td>5</td>
-     <td><input type="text"/></td>
-     
-     <td>
-     <select>
-     <option>Lays Chips 20gm</option>
-     </select>
-     </td>
-     
-     <td><input type="text"/></td>
-     <td><input type="text"/></td>
-     <td><input type="checkbox"/></td>
-      </tr>
-
-      <tr>
-     <td>6</td>
-     <td><input type="text"/></td>
-     
-     <td>
-     <select>
-     <option>Lays Chips 20gm</option>
-     </select>
-     </td>
-     
-     <td><input type="text"/></td>
-     <td><input type="text"/></td>
-     <td><input type="checkbox"/></td>
-      </tr>
- 
    </table>
   </div>
 

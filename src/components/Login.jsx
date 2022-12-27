@@ -1,11 +1,9 @@
 import React,{useState} from 'react'
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
-import AuthContext from '../Context/AuthContext';
-import {useContext} from 'react';
-
-function Login() {
-
+// import Products_csv from './Products_csv';
+import Clogo from '../assets/snaxsmart.png';
+function Login(props) {
 
    const [email,setEmail]=useState("");
    const [password,setPassword]=useState("");
@@ -47,25 +45,27 @@ function Login() {
   }
  
    return (
-     <>
-
-    <div>
-    <h2>Login here</h2>
+    <>
+    <div className='loginbody'>
+    <div className='loginbox'>
+    <img src={Clogo} className="cicon" />
+    <h3>Sign In Here</h3>
     <form onSubmit={submitData}>
     
-    <div>
+    <div className='inputdiv'>
     <label>Email</label>
-    <input type="email" name="email" value={email} onChange={updateEmail}   placeholder="Enter email"  required/>
+    <input type="email" name="email" value={email} onChange={updateEmail}   placeholder=" User email"  required/>
     </div>
-    <div>
+    <div className='inputdiv'>
     <label>Password</label>
-    <input type="password" name="password" value={password} onChange={updatePassword} placeholder="Enter password"  required/>
+    <input type="password" name="password" value={password} onChange={updatePassword} placeholder="User password"  required/>
     </div>
-     <input type="submit" style={{backgroundColor:"green",color:"white",cursor:"pointer"}} value="Login" />
-
+     <input type="submit"  value="Login"  />
+    
     
     </form>
-    <Products_csv/>
+    <a href='#' className='forgot'>Forgot Password</a>
+    </div>
     </div>
     </>
   )

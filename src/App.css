@@ -1,4 +1,88 @@
 
+
+
+.loginbody{
+  
+  padding:0;
+  margin:0;
+  height: 100vh;
+  width: 100vw;
+ background-color: #3a3939;
+}
+.loginbox{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width:350px;
+  min-height:180px;
+  background:white;
+  border-radius: 15px;
+  padding:50px;
+  box-sizing: border-box;
+  
+}
+.cicon{
+  margin: 0 auto;
+  display: block;
+  margin-bottom:15px;
+ 
+ 
+}
+h3{
+  margin: 0;
+  padding: 0 0 20px;
+  color: #262626;
+  text-align: center;
+}
+
+.loginbox input{
+  width:100%;
+  padding:5px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  
+}
+.loginbox input[type="email"],
+.loginbox input[type="password"]
+{
+  border: none;
+  border-bottom: 2px solid #262626;
+  outline: none;
+  height: 40px;
+  color: #262626;
+ 
+  font-size: 16px;
+  padding-left: 0px;
+  box-sizing: border-box;
+  
+}
+.loginbox input[type="email"]:focus,
+.loginbox input[type="password"]:focus
+{
+  border-bottom: 2px solid black;
+}
+.inputdiv{
+  position: relative;
+}
+.loginbox input[type="submit"]{
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  height: 40px;
+  font-size: 16px;
+  background: rgb(10, 10, 10);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+
+}
+.forgot{
+  
+  color: black;
+  margin-left:41px;
+  
+}
+
 .span_div{
     margin:25px;
     margin-top:30px;
@@ -179,7 +263,7 @@ background-color:white;
     color: white;
     border-radius:6px;
     cursor: pointer;
-    padding:8px;
+    padding:5px;
   
   }
   .mmClose_btn{
