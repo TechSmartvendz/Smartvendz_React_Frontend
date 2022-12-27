@@ -3,9 +3,7 @@ import SupperAdmin from './SupperAdmin'
 function Transactions() {
   return (
     <>
-       <SupperAdmin/>
-
-      
+        <p>Transactions</p>
     </>
   )
 }

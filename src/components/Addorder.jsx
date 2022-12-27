@@ -163,15 +163,3 @@ export default Addorder;
 
 
 
-
-// import React from 'react'
-
-// function Addorder() {
-//   return (
-//     <>
-//       <p>Addorder</p>
-//     </>
-//   )
-// }
-
-// export default Addorder
