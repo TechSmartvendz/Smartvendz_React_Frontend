@@ -8,11 +8,13 @@ function Machine_details() {
   
   const tempdata={slno:"",slotname:"",materialname:"",currentstock:"",initialstock:"",notinuse:""};
   const[slotdata,setSlotdata]=useState([])
+  const [deletea,setDeletea]=useState(true);
   function handleSlot()
   {  
-    console.log(slotdata);
+   
 
     setSlotdata((previousState) =>{ return [ ...previousState,tempdata ]});
+    console.log(slotdata);
 
   }
   function oninputchange(e,key)
@@ -21,6 +23,15 @@ function Machine_details() {
     pvalue[key][e.target.name]=e.target.value;
     setSlotdata(pvalue);
     //console.log(slotdata);
+  }
+  
+  function deleteAddmachine(e)
+  {console.log(e.target.name);
+    console.log(slotdata.splice(0,1));
+    // console.log("dataupdating...");
+    setSlotdata(() =>{ return [slotdata.splice(0,1)]});
+    console.log("dataupdated..");
+    console.log(slotdata);
   }
   function closeAddnew()
    {
@@ -166,6 +177,7 @@ function Machine_details() {
 
    <div className='table_container'>
   <table>
+  <thead>
   <tr>
   <th>SL NO</th>
   <th>Slot Name</th>
@@ -175,9 +187,11 @@ function Machine_details() {
   <th>Not In Use</th>
   <th>Delete</th>
   </tr>
+  </thead>
   {
 slotdata.map((mdata,key)=>{
   return(
+    <tbody>
 <tr key={key}>
 <td>{key+1}</td>
   
@@ -191,9 +205,9 @@ slotdata.map((mdata,key)=>{
   <td><input type="text" name='currentstock' onChange={(e)=>{oninputchange(e,key)}}/></td>
   <td><input type="text" name='initialstock' onChange={(e)=>{oninputchange(e,key)}}/></td>
   <td><input type="checkbox" name='notinuse' onChange={(e)=>{oninputchange(e,key)}} /></td>
-  <td><button className='mmDelete_btn' name='del'>Delete</button></td>
+  <td><button className='mmDelete_btn' name={key} onClick={(e)=>deleteAddmachine(e)}>Delete</button></td>
 </tr>
-  )
+</tbody>)
 })
 }
   
