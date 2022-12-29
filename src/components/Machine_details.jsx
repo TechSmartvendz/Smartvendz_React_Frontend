@@ -8,7 +8,7 @@ function Machine_details() {
   
   const tempdata={slno:"",slotname:"",materialname:"",currentstock:"",initialstock:"",notinuse:""};
   const[slotdata,setSlotdata]=useState([])
-  const [deletea,setDeletea]=useState(true);
+  // const [deletea,setDeletea]=useState(true);
   function handleSlot()
   {  
    
@@ -25,14 +25,20 @@ function Machine_details() {
     //console.log(slotdata);
   }
   
-  function deleteAddmachine(e)
-  {console.log(e.target.name);
-    console.log(slotdata.splice(0,1));
+  function deleteAddmachine(key)
+  {
+    // console.log(e.target.name);
+    // console.log(slotdata.splice(0,1));
     // console.log("dataupdating...");
-    setSlotdata(() =>{ return [slotdata.splice(0,1)]});
-    console.log("dataupdated..");
-    console.log(slotdata);
+    // setSlotdata(() =>{ return [slotdata.splice(0,1)]});
+    // console.log("dataupdated..");
+    // console.log(slotdata);
+    var deleteval=[...slotdata]
+    deleteval.splice(key,1)
+    setSlotdata(deleteval)
+    
   }
+
   function closeAddnew()
    {
     setAdd1(!false);
@@ -195,17 +201,17 @@ slotdata.map((mdata,key)=>{
 <tr key={key}>
 <td>{key+1}</td>
   
-  <td><input type="text" name='slotname' onChange={(e)=>{oninputchange(e,key)}} /></td>
+  <td><input type="text" name='slotname'  onChange={(e)=>{oninputchange(e,key)}} /></td>
   
   <td> 
   <select name='materialname'onChange={(e)=>{oninputchange(e,key)}}>
   <option>{mdata.materialname}</option>
   </select>
   </td>
-  <td><input type="text" name='currentstock' onChange={(e)=>{oninputchange(e,key)}}/></td>
-  <td><input type="text" name='initialstock' onChange={(e)=>{oninputchange(e,key)}}/></td>
-  <td><input type="checkbox" name='notinuse' onChange={(e)=>{oninputchange(e,key)}} /></td>
-  <td><button className='mmDelete_btn' name={key} onClick={(e)=>deleteAddmachine(e)}>Delete</button></td>
+  <td><input type="text" name='currentstock'  onChange={(e)=>{oninputchange(e,key)}}/></td>
+  <td><input type="text" name='initialstock'  onChange={(e)=>{oninputchange(e,key)}}/></td>
+  <td><input type="checkbox" name='notinuse'  onChange={(e)=>{oninputchange(e,key)}} /></td>
+  <td><button className='mmDelete_btn'  onClick={()=>deleteAddmachine(key)}>Delete</button></td>
 </tr>
 </tbody>)
 })
