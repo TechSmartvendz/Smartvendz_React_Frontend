@@ -1,11 +1,11 @@
-import React from 'react'
-import SupperAdmin from './SupperAdmin'
+import React from "react";
+import SupperAdmin from "./SupperAdmin";
 function Transactions() {
   return (
     <>
-        <p>Transactions</p>
+      <p>Transactions</p>
     </>
-  )
+  );
 }
 
-export default Transactions
+export default Transactions;

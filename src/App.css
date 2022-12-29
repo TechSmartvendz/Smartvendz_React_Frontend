@@ -1,71 +1,60 @@
-
-
-
-.loginbody{
-  
-  padding:0;
-  margin:0;
+.loginbody {
+  padding: 0;
+  margin: 0;
   height: 100vh;
   width: 100vw;
- background-color: #3a3939;
+  background-color: #3a3939;
 }
-.loginbox{
+.loginbox {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  width:350px;
-  min-height:180px;
-  background:white;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  min-height: 180px;
+  background: white;
   border-radius: 15px;
-  padding:50px;
+  padding: 50px;
   box-sizing: border-box;
-  
 }
-.cicon{
+.cicon {
   margin: 0 auto;
   display: block;
-  margin-bottom:15px;
- 
- 
+  margin-bottom: 15px;
 }
-h3{
+h3 {
   margin: 0;
   padding: 0 0 20px;
   color: #262626;
   text-align: center;
 }
 
-.loginbox input{
-  width:100%;
-  padding:5px;
+.loginbox input {
+  width: 100%;
+  padding: 5px;
   margin-bottom: 20px;
   border-radius: 10px;
-  
 }
 .loginbox input[type="email"],
-.loginbox input[type="password"]
-{
+.loginbox input[type="password"] {
   border: none;
   border-bottom: 2px solid #262626;
   outline: none;
   height: 40px;
   color: #262626;
- 
+
   font-size: 16px;
   padding-left: 0px;
   box-sizing: border-box;
-  
 }
 .loginbox input[type="email"]:focus,
-.loginbox input[type="password"]:focus
-{
+.loginbox input[type="password"]:focus {
   border-bottom: 2px solid black;
 }
-.inputdiv{
+.inputdiv {
   position: relative;
 }
-.loginbox input[type="submit"]{
+.loginbox input[type="submit"] {
   border: none;
   border-radius: 20px;
   outline: none;
@@ -74,63 +63,52 @@ h3{
   background: rgb(10, 10, 10);
   color: rgb(255, 255, 255);
   cursor: pointer;
-
 }
-.forgot{
-  
+.forgot {
   color: black;
-  margin-left:41px;
-  
+  margin-left: 41px;
 }
 
-.span_div{
-    margin:25px;
-    margin-top:30px;
-  
-  }
-  .container{
-    background-color: rgb(178, 199, 202);
-    height:fit-content;
-    min-height: 100%;
-    width:100%;
-    padding:20px;
-    
-    
-   
-   
-  }
-  .container>.empty{
-    background-color: white;
-    min-height:50px;
-  
-  }
-  .formcontain{
-    background-color: white;
-  
-  }
-  .container>div{
-    
-  margin:5px;
-  padding:5px;
-   }
-   
-  .container>div>form{
-    margin:10px;
-    
-    display: flex;
-    flex-flow: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  
-  }
-  .container>div>form>div{
+.span_div {
+  margin: 25px;
+  margin-top: 30px;
+}
+.container {
+  background-color: rgb(178, 199, 202);
+  height: fit-content;
+  min-height: 100%;
+  width: 100%;
+  padding: 20px;
+  /* margin: auto; */
+}
+.container > .empty {
+  background-color: white;
+  min-height: 50px;
+}
+.formcontain {
+  background-color: white;
+}
+.container > div {
+  margin: 5px;
+  padding: 5px;
+}
+
+.container > div > form {
+  margin: 10px;
+
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.container > div > form > div {
   display: flex;
   flex-flow: column;
-  width:235px;
-  
+  width: 235px;
+
   /* margin:18px; */
-  }
-  /* .container>div>form>button{
+}
+/* .container>div>form>button{
     height: 40px;
     min-width:108px;
     background-color:black;
@@ -141,232 +119,213 @@ h3{
     cursor: pointer; 
     
   }*/
-  .container>div>form>div>input,.container>div>form>div>select{
-    margin: 10px;
-    margin-top:2px;
-    height: 30px;
-    min-width: 80px;
-    padding-left:10px;
-    border-radius: 4px;
-    background-color: rgb(202, 202, 202);
-    border-style: none;
-    
-  }
-  .container>div>form>div>label{
-    margin-left: 10px;
-    font-size: 0.8em;
-  }
-  
-  /* Table styles start from here */
-  .table_container{
-  
-    background-color:white;
-   
-   display: flex;
-   flex-direction: column;
-  
-  }
-  table{
-    
-    flex-direction: column;
-    
-    border-collapse: collapse;
-    border-right: solid 1px rgb(60, 60, 60);
-    /* border-bottom: solid 1px rgb(60, 60, 60); */
-    border-top: solid 1px rgb(60, 60, 60);
-  }
-  th{
-    border-bottom: solid 1px rgb(60, 60, 60);
-  }
-  th,td{
-    
-    
-   text-align: left;
-    padding:8px;
-    
-  }
-  tr:nth-child(even){
-    background-color: #dddddd;
-  }
-  .button{
+.container > div > form > div > input,
+.container > div > form > div > select {
+  margin: 10px;
+  margin-top: 2px;
+  height: 30px;
+  min-width: 80px;
+  padding-left: 10px;
+  border-radius: 4px;
+  background-color: rgb(202, 202, 202);
+  border-style: none;
+}
+.container > div > form > div > label {
+  margin-left: 10px;
+  font-size: 0.8em;
+}
+
+/* Table styles start from here */
+.table_container {
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+}
+table {
+  flex-direction: column;
+
+  border-collapse: collapse;
+  border-right: solid 1px rgb(60, 60, 60);
+  /* border-bottom: solid 1px rgb(60, 60, 60); */
+  border-top: solid 1px rgb(60, 60, 60);
+}
+th {
+  border-bottom: solid 1px rgb(60, 60, 60);
+}
+th,
+td {
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.button {
   padding: 10px;
   border-radius: 4px;
   background-color: black;
   color: rgb(255, 212, 212);
-  width:100px;
-  margin-left:100px;
+  width: 100px;
+  margin-left: 100px;
   height: 40px;
-    
-  }
-  
-  #addorder-btn{ 
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  
-  /* Super admin style start from here */
-  .button_btn{
-    padding:10px;
+}
+
+#addorder-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Super admin style start from here */
+.button_btn {
+  padding: 10px;
   border-radius: 4px;
   background-color: black;
   color: white;
-  width:100px;
-  margin-left:100px;
-  margin-top:13px;
+  width: 100px;
+  margin-left: 100px;
+  margin-top: 13px;
   height: 40px;
-  }
-  
-  /* Manage_machine style start from here  */
-.mm_container{
-background-color:white;
 }
-.main_head{
-  font-weight:bold;
+
+/* Manage_machine style start from here  */
+.mm_container {
+  background-color: white;
 }
-.heading{
+.main_head {
   font-weight: bold;
 }
-.mm_table>tr,th,td{
- 
+.heading {
+  font-weight: bold;
+}
+.mm_table > tr,
+th,
+td {
   /* border-collapse:collapse; */
   border-left: solid 1px rgb(60, 60, 60);
-  
 }
-.mm_table_container{
- 
-    background-color:white;
-   display: flex;
-   flex-direction: column;
-   margin-top: 20px;
- 
-  }
-  .mm_table_btn{
-    background-color: rgb(0, 255, 255);
-    color: black;
-    padding:5px;
-    margin: none;
-    border-radius:6px;
-    cursor: pointer;
-  }
-  .mmAddnew_btn{
-    background-color:blue;
-    color: white;
-    border-radius:6px;
-    cursor: pointer;
-    padding:8px;
-    margin:25px;
-    
-  }
-  .mmDelete_btn{
-    background-color:red;
-    color: white;
-    border-radius:6px;
-    cursor: pointer;
-    padding:5px;
-  
-  }
-  .mmClose_btn{
-    background-color:white;
-    color:rgb(40, 39, 39);
-    border-radius:6px;
-    cursor: pointer;
-    padding:8px;
-    float: right;
-    margin-top: 30px;
-    margin-right:20px;
-  }
-  .mm_option{
-    margin-top: 20px;
-  }
-  .search{
-    float: right;
-    margin-right:20px;
-    border-radius: 5px;
-  }
-  .table_headings{
-    font-weight:bold;
-  }
-  .mm_edit_btn{
-    background-color: aqua;
-    color: black;
-    border-radius: 4px;
-    cursor: pointer;
-    padding:5px;
-  }
+.mm_table_container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.mm_table_btn {
+  background-color: rgb(0, 255, 255);
+  color: black;
+  padding: 5px;
+  margin: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.mmAddnew_btn {
+  background-color: blue;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 8px;
+  margin: 25px;
+}
+.mmDelete_btn {
+  background-color: red;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 5px;
+}
+.mmClose_btn {
+  background-color: white;
+  color: rgb(40, 39, 39);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 8px;
+  float: right;
+  margin-top: 30px;
+  margin-right: 20px;
+}
+.mm_option {
+  margin-top: 20px;
+}
+.search {
+  float: right;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+.table_headings {
+  font-weight: bold;
+}
+.mm_edit_btn {
+  background-color: aqua;
+  color: black;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px;
+}
 
-  /* Machine Details starts from here */
+/* Machine Details starts from here */
 
-  .container_div{
+.container_div {
+  display: flex;
+  align-items: stretch;
+  align-content: space-between;
+  flex-direction: column;
+  background-color: white;
+}
+.form_datas {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around !important;
+}
+.form_datas > div > div > input {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
-    display: flex;
-    align-items: stretch;
-    align-content: space-between;
-   flex-direction:column;
-   background-color:white;
-   
-   
-  }
-  .form_datas{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around !important;
-  }
-  .form_datas>div>div>input{
-    display: flex;
-    flex-direction: row;
-   flex-wrap: wrap;
-  }
-
-.left_div{
+.left_div {
   display: flex;
   justify-content: space-around;
   width: 40% !important;
   min-width: fit-content;
 }
-.from_field
-{
+.from_field {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   justify-content: space-between;
 }
-.from_field>label
-{
-margin:5px;
-
+.from_field > label {
+  margin: 5px;
 }
-.from_field>input,textarea
-{
-margin:5px;
-width:220px;
-
+.from_field > input,
+textarea {
+  margin: 5px;
+  width: 220px;
 }
-.fdiv_containers{
+.fdiv_containers {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
 }
-.btnsubmit{
+.btnsubmit {
   display: flex;
-  padding:40px;
+  padding: 40px;
   /* margin-top: 150px; */
-  
 }
-.btnsubmit>button{
+.btnsubmit > button {
   background-color: green;
-  color:white;
+  color: white;
   padding: 15px;
   padding-right: 10px;
-  border-radius:7px;
-  float:inherit;
-  margin-top:250px;
- 
+  border-radius: 7px;
+  float: inherit;
+  margin-top: 250px;
 }
 
 /* Add machine slots styles start from here */
-.ams_container{
+.ams_container {
   background-color: white;
 }
-.table_container{
+.table_container {
   display: flex;
 }
