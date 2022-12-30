@@ -66,7 +66,7 @@ function Login() {
     
     
     </form>
-    <a href='#' className='forgot'>Forgot Password</a>
+    <a href='#' className='forgot'>Forgot Password ?</a>
     </div>
     </div>
     </>

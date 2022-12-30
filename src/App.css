@@ -74,6 +74,7 @@ h3{
   background: rgb(10, 10, 10);
   color: rgb(255, 255, 255);
   cursor: pointer;
+  
 
 }
 .forgot{
@@ -353,7 +354,7 @@ width:220px;
   
 }
 .btnsubmit>button{
-  background-color: green;
+  background-color: rgb(10, 10, 10);
   color:white;
   padding: 15px;
   padding-right: 10px;
@@ -369,4 +370,17 @@ width:220px;
 }
 .table_container{
   display: flex;
+}
+
+.btnlogininfo{
+  background-color:rgb(2, 128, 30);
+  color: rgb(253, 250, 250);
+  border-radius:6px;
+  text-align: center;
+  font-size:15px;
+  cursor: pointer;
+  padding:8px;
+  font-weight: bold;
+  margin:13px;
+  width:100px;
 }

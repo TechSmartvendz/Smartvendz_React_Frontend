@@ -1,0 +1,106 @@
+.mesgarea{
+    width:100%;
+    height:75px;
+    background-color: white;
+}
+.btn_container{
+   
+    width:100%;
+    background-color: white;
+   
+
+}
+.user_btn{
+   padding:0;
+   text-align:center !important;
+    margin:15px;
+    padding-right:15px  !important;
+    border-radius: 10px;
+    text-align:center;
+    background-color: rgb(31, 37, 121);
+    font-size: medium;
+   
+}
+.user_btn:hover{
+    background-color: rgb(89, 76, 207);
+   
+}
+
+/* ListUser css start from here */
+.spandiv{
+    font-weight:bold;
+}
+.form_fields{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    padding: 20px;
+  
+}
+
+
+  .btn_divc{
+    text-align: right;
+    padding:5px;
+    margin-right:35px;
+  } 
+
+
+.dltntn{
+    border-radius: 10px;
+    padding:10px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color:rgb(95, 48, 14) ;
+    color: rgb(247, 239, 239);
+}
+.dltntn:hover{
+    background-color:rgb(241, 8, 8) ;
+}
+
+.listuser_Container{
+    background-color: white;
+    width: 100%;
+}
+.span_div{
+    margin-right:10px;
+}
+.btn_edit{
+    border-radius: 8px;
+    background-color: rgba(0, 255, 255, 0.877);
+    padding:12px;
+    color: rgb(12, 12, 12);
+    cursor: pointer;
+}
+.btn_delete{
+    border-radius: 8px;
+    background-color: rgb(241, 8, 8);
+    padding:12px;
+    color: rgb(252, 247, 247);
+    cursor: pointer;
+}
+
+/* User Permission css start from here */
+.permission_container{
+    background-color: white;
+    width: 100%;
+    height: inherit;
+}
+.btn_newrole{
+    border-radius: 10px;
+    padding:10px;
+    margin-left: 15px;
+    background-color: rgb(3, 46, 46);
+    cursor: pointer;
+}
+.btn_newrole:hover{
+background-color: rgb(0, 255, 34);
+}
+.div_newrole{
+    margin:15px;
+}
+.table_div{
+    display: flex;
+    flex-direction: column;
+}
