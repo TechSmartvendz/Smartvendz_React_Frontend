@@ -10,7 +10,6 @@ import Navbar from "../navbar/Navbar";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
-import "./Navbar1.css";
 
 
 function Header() {
@@ -55,28 +54,29 @@ function Header() {
       <div className="header">
       {/* <NavContext.Provider value={{ sidebar, setSidebar }}>*/}
        
-     <div className="navbar1">
+     <div className="navbar-btn">
         {/* <Link to='#' className='menu-bars'> */}
-        {sidebar ? (
+         {!sidebar &&
+        //? (
          
-          <Link to='#' className='menu-bars'>
-          <AiIcons.AiOutlineClose onClick={() => setSidebar(!sidebar)}/>
+        //   <Link to='#' className='navbar-icon'>
+        //   <AiIcons.AiOutlineClose size={20}  onClick={() => setSidebar(false)}/>
+        //   </Link>
+        // ) : (
+          <Link to='#' className='navbar-icon'>
+          <FaIcons.FaBars size={30} onClick={() => setSidebar(true)}/>
           </Link>
-        ) : (
-          <Link to='#' className='menu-bars'>
-          <FaIcons.FaBars onClick={() => setSidebar(!sidebar)}/>
-          </Link>
-        )}
+       // )
+      }
         {/* </Link> */}
       </div>
      
-      {/*  </NavContext.Provider>*/}
-
-
+      {/*  </NavContext.Provider>
 
         <div className="headercontent" id="time">
           Fri Dec 09 2022 09:35:30 GMT +0530(India Standard Time)
         </div>
+      */}
 
         <div className="headercontent">
           <img src={snaxsmart} alt="snaxsmart" />

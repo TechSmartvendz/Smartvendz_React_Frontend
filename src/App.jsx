@@ -10,7 +10,7 @@ import NavContext from './Context/NavContext';
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [isLoggedIn, setIsLoggedIn] = useState(cookies.JWTcookie != undefined);
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState();
 
   return (
     <>

@@ -29,7 +29,7 @@ body::-webkit-scrollbar{
 .header {
   height: 10vh;
   width: inherit;
-  background-color: black;
+  background-color: rgb(22, 22, 22);
   display: flex;
   justify-content: space-between;
   padding-top:5px;
@@ -37,7 +37,7 @@ body::-webkit-scrollbar{
 }
 
 .headercontent {
-  background-color: black;
+  background-color: rgb(22, 22, 22);
   color: white;
   width: 150px;
   display: flex;
@@ -46,14 +46,45 @@ body::-webkit-scrollbar{
 }
 
 .section {
+  
   max-height:fit-content;
   min-height: 87vh;
   width: inherit;
   display:flex;
   
 }
+.navbar-btn{
+display: flex;
+justify-content: center;
+align-items: center ;
+width: 85px;
+height: 85px;
+margin-left: 10px;
+
+
+}
+.crossbutton{
+  display: flex;
+  justify-content:end;
+  align-items: center ;
+  width:inherit;
+}
+
+.navbar-icon{
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0);
+  padding:9px;
+  border-radius: 4px;
+}
+
+
+.navbar-icon:hover {
+  /* background-color:rgb(146, 146, 146); */
+  color: rgb(158, 158, 158);
+}
 
 .sidenavbar {
+   /* old nav bar */
   background-color: #282828;
   width: 13%;
  
@@ -62,6 +93,7 @@ body::-webkit-scrollbar{
 } 
 
 .sidenavbar > ul{
+   /* old nav bar */
   height: fit-content;
   width: 100%;
   max-height: 100%;
@@ -69,7 +101,7 @@ body::-webkit-scrollbar{
 }
 
 .sidenavbar > ul > li {
- 
+  /* old nav bar */
   font-size: 1.4em;
 
   
@@ -91,26 +123,6 @@ body::-webkit-scrollbar{
   align-items: center;
 }
 
-
-
-
-a {
-  text-decoration: none;
-  display: flex;
-  color: white;
-  height: 100%;
-  width: 100%;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  
-
-}
-
-a:hover {
-  color: blue;
-  
-}
 
 /* a:visited {
   color: blue;

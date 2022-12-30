@@ -12,16 +12,14 @@ function Navbar() {
 
   return (
     <>
-      {/* <IconContext.Provider value={{ color: '#fff' }}> 
-       <NavContext.Provider value={{ sidebar, setSidebar }}>*/}
-  
       <nav className={sidebar ? "nav-menu active" : "nav-menu"} >
-        <ul className="nav-menu-items" onClick={() => setSidebar(!sidebar)}>
-          {/* <li className="navbar-toggle">
-            <Link to="#" className="menu-bars">
-              <AiIcons.AiOutlineClose />
+        <ul className="nav-menu-items" >
+       
+       <li>
+            <Link to="#" className="navbar-icon crossbutton">
+              <AiIcons.AiOutlineClose size={25} onClick={() => setSidebar(!sidebar)}/>
             </Link>
-          </li> */}
+          </li> 
           {SidebarData.map((item, index) => {
             return (
               <li key={index} className={item.cName}>
@@ -41,3 +39,4 @@ function Navbar() {
 }
 
 export default Navbar;
+ 
