@@ -1,29 +1,41 @@
 
-import React, { useState ,useContext} from 'react'
+import React, { useState ,useContext,useEffect} from 'react'
 import MachineContext from '../Context/MachineContext'
 
 function Machine_details() {
  
   const {add1,setAdd1} = useContext(MachineContext)
   
-  const tempdata={slno:"",slotname:"",materialname:"",currentstock:"",initialstock:"",notinuse:"",del:""};
-  const[slotdata,setSlotdata]=useState([])
-
-  const[slotno,setSlotno]=useState([tempdata.slno]);
-  const[stockname,setStockname]=useState({});
-  const[currentStock,setCurrentStock]=useState({});
-  const[initialstock,setInitialStock]=useState({});
+  const tempdata={slotname:"",materialname:"",currentstock:"",initialstock:"",notinuse:""};
+  const [slotdata,setSlotdata]=useState([])
 
   function handleSlot()
-  {  
-    console.log(slotdata);
-
-    setSlotdata((previousState) =>{ return [ ...previousState,tempdata ]
-      
-  });
-   
+  {  setSlotdata((previousState) => {return [...previousState,tempdata]})
   }
-  console.log(tempdata.slno.stockname);
+  useEffect(() => {
+   console.log(slotdata);
+  },[slotdata]);
+
+  function oninputchange(e,key)
+  {  var pvalue=slotdata
+    //console.log(pvalue);
+    pvalue[key][e.target.name]=e.target.value;
+    setSlotdata(pvalue);
+    //console.log(slotdata);
+  }
+  
+  function deleteAddmachine(index)
+  { console.log(index);
+   
+    //setSlotdata(() =>{ return [slotdata.splice(e.target.name,1)]});
+    setSlotdata((p) => p.filter((_, index) => index !== 0));
+    console.log("dataupdated..");
+  }
+  const handleRemoveItem = (e) => {
+    const name = e.target.getAttribute("name")
+     updateList(list.filter(item => item.name !== name));
+   };
+
   function closeAddnew()
    {
     setAdd1(!false);
@@ -143,7 +155,7 @@ function Machine_details() {
    </div>
    
    <div className='from_field'> 
-   <label for="remark">Remark</label>
+   <label htmlFor="remark">Remark</label>
    <textarea/>
    </div>
   
@@ -168,6 +180,7 @@ function Machine_details() {
 
    <div className='table_container'>
   <table>
+  <thead>
   <tr>
   <th>SL NO</th>
   <th>Slot Name</th>
@@ -177,30 +190,32 @@ function Machine_details() {
   <th>Not In Use</th>
   <th>Delete</th>
   </tr>
+  </thead>
+  <tbody>
   {
 slotdata.map((mdata,key)=>{
   return(
+   
 <tr key={key}>
-<td>{mdata.slno}</td>
+<td>{key+1}</td>
   
-  <td><input type="text" name='slotname'  value={stockname} onChange={(e)=>{setStockname(e.target.value)}} /></td>
+  <td><input type="text" name='slotname' onChange={(e)=>{oninputchange(e,key)}} /></td>
   
-  <td>
-  <select>
+  <td> 
+  <select name='materialname'onChange={(e)=>{oninputchange(e,key)}}>
   <option>{mdata.materialname}</option>
   </select>
   </td>
-  
-  <td><input type="text" name='cstock' value={mdata.currentstock}/></td>
-  <td><input type="text" name='istock' value={mdata.initialstock}/></td>
-  <td><input type="checkbox" name='notinuse'  value={mdata.notinuse}/></td>
-  <td><button className='mmDelete_btn'>Delete</button></td>
+  <td><input type="text" name='currentstock' onChange={(e)=>{oninputchange(e,key)}}/></td>
+  <td><input type="text" name='initialstock' onChange={(e)=>{oninputchange(e,key)}}/></td>
+  <td><input type="checkbox" name='notinuse' onChange={(e)=>{oninputchange(e,key)}} /></td>
+  <td><button className='mmDelete_btn' name={key} onClick={()=>deleteAddmachine(key)}>Delete</button></td>
 </tr>
-  )
+)
 })
-  }
-  
-   </table>
+}
+</tbody> 
+</table>
   </div>
 
    </div>

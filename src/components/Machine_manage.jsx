@@ -55,15 +55,15 @@ function Machine_manage() {
     </div>
    <div className='mm_table_container'>
     <table className='mm_table'>
-    
-    
+    <tbody>
     <tr>
     <th><input type="checkbox"/></th>
     <th className='table_headings'>Name[Code]</th>
     <th className='table_headings'>Employee Name</th>
     <th className='table_headings'>Office Name</th>
     <th></th>
-     </tr>
+    </tr>
+   
      { 
         machinedata.map((data,key)=>{
   return(
@@ -77,6 +77,7 @@ function Machine_manage() {
   )
 
  })}
+ </tbody>
     </table>
     </div>
    </div>
