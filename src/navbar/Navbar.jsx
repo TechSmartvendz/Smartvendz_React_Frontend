@@ -12,8 +12,8 @@ function Navbar() {
 
   return (
     <>
-      {/* <IconContext.Provider value={{ color: '#fff' }}> */}
-      <NavContext.Provider value={{ sidebar, setSidebar }}>
+      {/* <IconContext.Provider value={{ color: '#fff' }}> 
+       <NavContext.Provider value={{ sidebar, setSidebar }}>*/}
   
       <nav className={sidebar ? "nav-menu active" : "nav-menu"} >
         <ul className="nav-menu-items" onClick={() => setSidebar(!sidebar)}>
@@ -34,8 +34,8 @@ function Navbar() {
           })}
         </ul>
       </nav>
-      </NavContext.Provider>
-      {/* </IconContext.Provider> */}
+        {/*  </NavContext.Provider>
+   </IconContext.Provider> */}
     </>
   );
 }

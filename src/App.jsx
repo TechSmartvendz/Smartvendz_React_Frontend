@@ -8,24 +8,23 @@ import NavContext from './Context/NavContext';
 
 
 function App() {
-   const [cookies, setCookie, removeCookie] = useCookies(['user']);
-    const[isLoggedIn, setIsLoggedIn] = useState(cookies.JWTcookie!=undefined)
-
-    const [sidebar, setSidebar] = useState(false);
-
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [isLoggedIn, setIsLoggedIn] = useState(cookies.JWTcookie != undefined);
+  const [sidebar, setSidebar] = useState(false);
 
   return (
     <>
-    <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
-    {isLoggedIn ? 
-     <NavContext.Provider value={{sidebar, setSidebar}}>
-     <Dashboard/> 
-     </NavContext.Provider>
-
-     : <Login />}
-
-    </AuthContext.Provider>
+      <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+        {isLoggedIn ? (
+          <NavContext.Provider value={{ sidebar, setSidebar }}>
+            <Dashboard />
+          </NavContext.Provider>
+        ) : (
+          <Login />
+        )}
+      </AuthContext.Provider>
     </>
-)}
+  );
+}
 
 export default App;

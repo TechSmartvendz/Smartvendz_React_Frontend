@@ -20,7 +20,7 @@
   background: none;
 }
 
-.nav-menu {
+.nav-menu.active {
   /* margin-top: 57px; */
   background-color: #060b26;
   display: block;
@@ -43,7 +43,7 @@
   display: none;
 }
 
-.nav-menu.active {
+.nav-menu {
   /* left: 0;
   transition: 350ms; */
   display:none;

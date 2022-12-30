@@ -53,22 +53,24 @@ function Header() {
   return (
     <>
       <div className="header">
-      <NavContext.Provider value={{ sidebar, setSidebar }}>
+      {/* <NavContext.Provider value={{ sidebar, setSidebar }}>*/}
        
      <div className="navbar1">
         {/* <Link to='#' className='menu-bars'> */}
         {sidebar ? (
+         
           <Link to='#' className='menu-bars'>
-          <FaIcons.FaBars onClick={() => setSidebar(!sidebar)}/>
+          <AiIcons.AiOutlineClose onClick={() => setSidebar(!sidebar)}/>
           </Link>
         ) : (
           <Link to='#' className='menu-bars'>
-          <AiIcons.AiOutlineClose onClick={() => setSidebar(!sidebar)}/>
+          <FaIcons.FaBars onClick={() => setSidebar(!sidebar)}/>
           </Link>
         )}
         {/* </Link> */}
       </div>
-      </NavContext.Provider>
+     
+      {/*  </NavContext.Provider>*/}
 
 
 
