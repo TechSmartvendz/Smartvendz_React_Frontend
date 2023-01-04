@@ -56,6 +56,7 @@ function Machine_manage() {
    <div className='mm_table_container'>
     <table className='mm_table'>
     <tbody>
+    
     <tr>
     <th><input type="checkbox"/></th>
     <th className='table_headings'>Name[Code]</th>
