@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import '../UserManage_components/UserManaging.css'
-import AddNewRole from './AddNewRole';
+
 import Add_role_table from './Add_role_table';
 
  function UserPermission() {
