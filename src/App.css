@@ -22,13 +22,12 @@
   display: block;
   margin-bottom: 15px;
 }
-h3 {
+h3{
   margin: 0;
   padding: 0 0 20px;
   color: #262626;
   text-align: center;
 }
-
 .loginbox input {
   width: 100%;
   padding: 5px;
@@ -92,10 +91,8 @@ h3 {
   margin: 5px;
   padding: 5px;
 }
-
 .container > div > form {
   margin: 10px;
-
   display: flex;
   flex-flow: row;
   justify-content: flex-start;
@@ -105,20 +102,7 @@ h3 {
   display: flex;
   flex-flow: column;
   width: 235px;
-
-  /* margin:18px; */
 }
-/* .container>div>form>button{
-    height: 40px;
-    min-width:108px;
-    background-color:black;
-    color: white;
-    border-radius: 4px;
-    margin-top: 10px;
-    margin-left: 115px;
-    cursor: pointer; 
-    
-  }*/
 .container > div > form > div > input,
 .container > div > form > div > select {
   margin: 10px;
@@ -134,20 +118,16 @@ h3 {
   margin-left: 10px;
   font-size: 0.8em;
 }
-
-/* Table styles start from here */
 .table_container {
   background-color: white;
 
   display: flex;
   flex-direction: column;
 }
-table {
+table{
   flex-direction: column;
-
   border-collapse: collapse;
   border-right: solid 1px rgb(60, 60, 60);
-  /* border-bottom: solid 1px rgb(60, 60, 60); */
   border-top: solid 1px rgb(60, 60, 60);
 }
 th {
@@ -188,7 +168,6 @@ tr:nth-child(even) {
   margin-top: 13px;
   height: 40px;
 }
-
 /* Manage_machine style start from here  */
 .mm_container {
   background-color: white;
@@ -200,8 +179,7 @@ tr:nth-child(even) {
   font-weight: bold;
 }
 .mm_table > tr,
-th,
-td {
+th,td {
   /* border-collapse:collapse; */
   border-left: solid 1px rgb(60, 60, 60);
 }

@@ -5,7 +5,6 @@ box-sizing: border-box;
 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 font-weight: 600;
 }
-
 /*for hidding scroll bar but keep functionality  for IE,Edge , firefox*/
 body{
 -ms-overflow-style: none;
@@ -15,8 +14,6 @@ scrollbar-width: none;
 body::-webkit-scrollbar{
   display: none; 
 }
-
-
 .root {
   width: 100vw;
   min-height: 100vh;
@@ -25,7 +22,6 @@ body::-webkit-scrollbar{
   flex-flow: column;
   
 }
-
 .header {
   height: 10vh;
   width: inherit;
@@ -35,7 +31,6 @@ body::-webkit-scrollbar{
   padding-top:5px;
   padding-bottom: 5px;
 }
-
 .headercontent {
   background-color: rgb(22, 22, 22);
   color: white;
@@ -44,14 +39,11 @@ body::-webkit-scrollbar{
   justify-content: center;
   align-items: center;
 }
-
 .section {
-  
   max-height:fit-content;
   min-height: 87vh;
   width: inherit;
-  display:flex;
-  
+  display:flex; 
 }
 .navbar-btn{
 display: flex;
@@ -60,8 +52,6 @@ align-items: center ;
 width: 85px;
 height: 85px;
 margin-left: 10px;
-
-
 }
 .crossbutton{
   display: flex;
@@ -69,20 +59,16 @@ margin-left: 10px;
   align-items: center ;
   width:inherit;
 }
-
 .navbar-icon{
   color: rgb(255, 255, 255);
   background-color: rgba(0, 0, 0, 0);
   padding:9px;
   border-radius: 4px;
 }
-
-
 .navbar-icon:hover {
   /* background-color:rgb(146, 146, 146); */
   color: rgb(158, 158, 158);
 }
-
 .sidenavbar {
    /* old nav bar */
   background-color: #282828;
@@ -91,7 +77,6 @@ margin-left: 10px;
   
   
 } 
-
 .sidenavbar > ul{
    /* old nav bar */
   height: fit-content;
@@ -99,20 +84,12 @@ margin-left: 10px;
   max-height: 100%;
  
 }
-
 .sidenavbar > ul > li {
   /* old nav bar */
   font-size: 1.4em;
 
   
 }
-
-/* .maincontainer{
-  width: inherit;
-  height: 100%;
-  background-color: white;
-} */
-
 .footer {
   height: 3vh;
   width: inherit;
@@ -122,35 +99,18 @@ margin-left: 10px;
   justify-content: center;
   align-items: center;
 }
-
-
-/* a:visited {
-  color: blue;
-} */
-
 button {
   padding: 20px;
   background-color: #282828;
   color: white;
 }
-
-/* .headercontentspan {
-  margin: auto;
-  border: 5px solid white;
-  
-} */
-
 #time {
   border: 3px solid white;
   width: 265px;
   margin-left: 20px;
-  
   padding: 17px;
-
 }
 .logout-btn {
   font-size: 20px;
   cursor: pointer;
-  
-
 }

@@ -1,13 +1,10 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-
 import { Routes, Route } from "react-router-dom";
-
 import Addorder from "./Addorder";
 import Products from "./Products";
 import Refiller from "./Refiller";
 import Transactions from "./Transactions";
 import Manage_machine from "./Manage_machine";
+
 //import Sidenavbar from "./Sidenavbar";
 import PageError from "./Error";
 import Header from "./Header";

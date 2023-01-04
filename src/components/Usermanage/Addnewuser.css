@@ -4,11 +4,8 @@
     background-color: white;
 }
 .btn_container{
-   
     width:100%;
     background-color: white;
-   
-
 }
 .user_btn{
    padding:0;
@@ -19,13 +16,10 @@
     text-align:center;
     background-color: rgb(31, 37, 121);
     font-size: medium;
-   
 }
 .user_btn:hover{
     background-color: rgb(89, 76, 207);
-   
 }
-
 /* ListUser css start from here */
 .spandiv{
     font-weight:bold;
@@ -33,20 +27,14 @@
 .form_fields{
     display: flex;
     flex-direction: column;
-    align-items: center;
-   
+    align-items: center;  
     padding: 20px;
-  
 }
-
-
-  .btn_divc{
+.btn_divc{
     text-align: right;
     padding:5px;
     margin-right:35px;
-  } 
-
-
+} 
 .dltntn{
     border-radius: 10px;
     padding:10px;
@@ -57,8 +45,7 @@
     
 }
 .dltntn:hover{
-    background-color:rgb(241, 8, 8) ;
-    
+    background-color:rgb(241, 8, 8) ;  
 }
 
 .listuser_Container{
@@ -82,7 +69,6 @@
     color: rgb(252, 247, 247);
     cursor: pointer;
 }
-
 /* User Permission css start from here */
 .permission_container{
     background-color: white;
@@ -133,10 +119,7 @@ background-color: rgb(0, 255, 34);
      font-size:15px;
 }
 .checkbox_container>div>input{
-   
-    margin-top:26px;
-  
-   
+    margin-top:26px;  
 }
 .userm_input{
     margin-left:50px;
@@ -162,8 +145,7 @@ background-color: rgb(0, 255, 34);
 .subhead>input{
     padding: 5px;
     margin:5px;
-    margin-left: 5px;
-    
+    margin-left: 5px;   
 }
 .addnew_input{
     margin-left: 25px;
@@ -185,12 +167,10 @@ background-color: rgb(0, 255, 34);
 .newc_input{
     margin-left:20px;
 }
-
 /* machine managew */
 .machine_manage{
     margin-left: 25px;
 }
-
 .mconfigu{
     margin-left: 5px;
     margin-top: 2px;
@@ -211,7 +191,6 @@ background-color: rgb(0, 255, 34);
 .credit_trans{
     margin-left:80px;
 }
-
 .btn_save{
     margin-top: 20px;
     margin-left: 65px;
