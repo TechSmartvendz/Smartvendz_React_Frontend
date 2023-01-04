@@ -12,6 +12,7 @@ const  Sidenavbar = () => {
     <div className="sidenavbar">
       <ul>
             <li><NavLink  to="/">Home</NavLink></li>
+            <li><NavLink to="/user_manage">User Manage</NavLink></li>
             <li><NavLink   to="/products">Products</NavLink></li>
             <li><NavLink   to="/refiller">Refiller</NavLink></li>
             <li><NavLink   to="/transactions">Transactions</NavLink></li>

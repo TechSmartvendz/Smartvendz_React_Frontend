@@ -10,9 +10,9 @@ import { useCookies } from 'react-cookie';
 
 function Header() {
 
-  const[removeCookie] = useCookies(['user'])
+  // const[removeCookie] = useCookies(['user'])
 
-const [cookies, setCookie] = useCookies(['user']);
+const [cookies, setCookie,removeCookie] = useCookies(['user']);
 const{isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
 
 function logout() {

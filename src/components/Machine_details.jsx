@@ -31,10 +31,10 @@ function Machine_details() {
     setSlotdata((p) => p.filter((_, index) => index !== 0));
     console.log("dataupdated..");
   }
-  const handleRemoveItem = (e) => {
-    const name = e.target.getAttribute("name")
-     updateList(list.filter(item => item.name !== name));
-   };
+  // const handleRemoveItem = (e) => {
+  //   const name = e.target.getAttribute("name")
+  //    updateList(list.filter(item => item.name !== name));
+  //  };
 
   function closeAddnew()
    {
@@ -199,7 +199,7 @@ slotdata.map((mdata,key)=>{
 <tr key={key}>
 <td>{key+1}</td>
   
-  <td><input type="text" name='slotname' onChange={(e)=>{oninputchange(e,key)}} /></td>
+  <td><input type="text" name='slotname'  onChange={(e)=>{oninputchange(e,key)}} /></td>
   
   <td> 
   <select name='materialname'onChange={(e)=>{oninputchange(e,key)}}>

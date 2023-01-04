@@ -3,13 +3,20 @@
 // import reactLogo from './assets/react.svg'
 
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 
 import Addorder from "./Addorder";
 import Products from "./Products";
 import Refiller from "./Refiller";
 import Transactions from "./Transactions";
+//
 import Manage_machine from "./Manage_machine";
+import AddNewUser from './UserManage_components/AddNewUser'
+import ListUser from './UserManage_components/ListUser'
+import UserPermission from './UserManage_components/UserPermission'
+
+
+import UserManage from "./UserManage";
 import Sidenavbar from "./Sidenavbar";
 import PageError from "./Error";
 import Header from "./Header";
@@ -30,13 +37,21 @@ function Dashboard() {
           <div className="container">
             <Routes>
               <Route exact path="/" element={<Home />} />
-              <Route exact path="/addorder" element={<Addorder />} />
+              
+              <Route  path="user_manage" element={<UserManage/>}>
+              <Route  path='add_new_user' element={<AddNewUser/>}/>
+              <Route  path='list_user' element={<ListUser/>} />
+              <Route  path='user_permission' element={<UserPermission/>}/>
+               </Route>
+              
+               <Route exact path="/addorder" element={<Addorder />} />
               <Route exact path="/products" element={<Products />} />
               <Route exact path="/manage_machine" element={<Manage_machine/>}/>
               <Route exact path="/refiller" element={<Refiller />} />
               <Route exact path="/transactions" element={<Transactions />} />
-              <Route path="/*" element={<PageError />} />
+              <Route path="/*" element={<PageError />}/>
             </Routes>
+           
           </div>
         </div>
         <Footer />
