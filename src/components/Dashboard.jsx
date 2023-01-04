@@ -15,13 +15,16 @@ import AddNewUser from './UserManage_components/AddNewUser'
 import ListUser from './UserManage_components/ListUser'
 import UserPermission from './UserManage_components/UserPermission'
 
-
+//TODO: sharan  usermanage components 
 import UserManage from "./UserManage";
+//TODO: shubham side components
+//FIXME:remove this side nav bar
 import Sidenavbar from "./Sidenavbar";
 import PageError from "./Error";
 import Header from "./Header";
 import Footer from "./Footer";
 import Home from "./Home";
+//TODO: sharan  usermanage components 
 import AddNewRole from "./UserManage_components/AddNewRole";
 
 
@@ -38,14 +41,13 @@ function Dashboard() {
           <div className="container">
             <Routes>
               <Route exact path="/" element={<Home />} />
-              
               <Route  path="user_manage" element={<UserManage/>}>
               <Route  path='add_new_user' element={<AddNewUser/>}/>
               <Route  path='list_user' element={<ListUser/>} />
               <Route  path='user_permission' element={<UserPermission/>}>
               <Route  path='add_new_role' element={<AddNewRole />}/>
               </Route>
-               </Route>
+              </Route>
               
               <Route exact path="/addorder" element={<Addorder />} />
               <Route exact path="/products" element={<Products />} />

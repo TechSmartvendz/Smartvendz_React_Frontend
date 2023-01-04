@@ -14,7 +14,6 @@ function App() {
     <>
     <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
     {isLoggedIn ?  <Dashboard/> :     <Login />}
-
     </AuthContext.Provider>
       
     </>
