@@ -1,22 +1,21 @@
 
-import React, { useState ,useContext} from 'react'
+import React, { useState ,useContext,useEffect} from 'react'
 import MachineContext from '../Context/MachineContext'
 
 function Machine_details() {
  
   const {add1,setAdd1} = useContext(MachineContext)
   
-  const tempdata={slno:"",slotname:"",materialname:"",currentstock:"",initialstock:"",notinuse:""};
-  const[slotdata,setSlotdata]=useState([])
-  // const [deletea,setDeletea]=useState(true);
+  const tempdata={slotname:"",materialname:"",currentstock:"",initialstock:"",notinuse:""};
+  const [slotdata,setSlotdata]=useState([])
+
   function handleSlot()
-  {  
-   
-
-    setSlotdata((previousState) =>{ return [ ...previousState,tempdata ]});
-    console.log(slotdata);
-
+  {  setSlotdata((previousState) => {return [...previousState,tempdata]})
   }
+  useEffect(() => {
+   console.log(slotdata);
+  },[slotdata]);
+
   function oninputchange(e,key)
   {  var pvalue=slotdata
     //console.log(pvalue);
@@ -25,19 +24,17 @@ function Machine_details() {
     //console.log(slotdata);
   }
   
-  function deleteAddmachine(key)
-  {
-    // console.log(e.target.name);
-    // console.log(slotdata.splice(0,1));
-    // console.log("dataupdating...");
-    // setSlotdata(() =>{ return [slotdata.splice(0,1)]});
-    // console.log("dataupdated..");
-    // console.log(slotdata);
-    var deleteval=[...slotdata]
-    deleteval.splice(key,1)
-    setSlotdata(deleteval)
-    
+  function deleteAddmachine(index)
+  { console.log(index);
+   
+    //setSlotdata(() =>{ return [slotdata.splice(e.target.name,1)]});
+    setSlotdata((p) => p.filter((_, index) => index !== 0));
+    console.log("dataupdated..");
   }
+  // const handleRemoveItem = (e) => {
+  //   const name = e.target.getAttribute("name")
+  //    updateList(list.filter(item => item.name !== name));
+  //  };
 
   function closeAddnew()
    {
@@ -158,7 +155,7 @@ function Machine_details() {
    </div>
    
    <div className='from_field'> 
-   <label for="remark">Remark</label>
+   <label htmlFor="remark">Remark</label>
    <textarea/>
    </div>
   

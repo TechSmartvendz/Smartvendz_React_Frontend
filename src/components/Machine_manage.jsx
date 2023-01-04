@@ -63,7 +63,8 @@ function Machine_manage() {
     <th className='table_headings'>Employee Name</th>
     <th className='table_headings'>Office Name</th>
     <th></th>
-     </tr>
+    </tr>
+   
      { 
         machinedata.map((data,key)=>{
   return(
