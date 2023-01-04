@@ -4,7 +4,7 @@ function ListUser() {
 
   const userdata=[{Slno:"",name:"Ashok",role:"refiller",officelocation:"hsr Layout"},
   {Slno:"",name:"Sharan",role:"support",officelocation:"Marthalli"},
-  {Slno:"",name:"Shubham,",role:"developer",officelocation:"Hebbal"},
+  {Slno:"",name:"Shubham",role:"developer",officelocation:"Hebbal"},
   {Slno:"",name:"Kuldeep",role:"devloper",officelocation:"Nagvar"},
   {Slno:"",name:"Dinesh",role:"Account",officelocation:"Itpl"}]
   return (
@@ -19,7 +19,7 @@ function ListUser() {
     
     <div className='table_container'>
     <table>
-  
+    <tbody>
     <tr>
     <th>Sl no</th>
     <th> Name</th>
@@ -51,7 +51,7 @@ function ListUser() {
     }
    
     
-    
+    </tbody>
     </table>
     
     </div>

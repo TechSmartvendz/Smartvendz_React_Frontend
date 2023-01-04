@@ -22,6 +22,7 @@ import PageError from "./Error";
 import Header from "./Header";
 import Footer from "./Footer";
 import Home from "./Home";
+import AddNewRole from "./UserManage_components/AddNewRole";
 
 
 function Dashboard() {
@@ -41,10 +42,12 @@ function Dashboard() {
               <Route  path="user_manage" element={<UserManage/>}>
               <Route  path='add_new_user' element={<AddNewUser/>}/>
               <Route  path='list_user' element={<ListUser/>} />
-              <Route  path='user_permission' element={<UserPermission/>}/>
+              <Route  path='user_permission' element={<UserPermission/>}>
+              <Route  path='add_new_role' element={<AddNewRole />}/>
+              </Route>
                </Route>
               
-               <Route exact path="/addorder" element={<Addorder />} />
+              <Route exact path="/addorder" element={<Addorder />} />
               <Route exact path="/products" element={<Products />} />
               <Route exact path="/manage_machine" element={<Manage_machine/>}/>
               <Route exact path="/refiller" element={<Refiller />} />

@@ -1,48 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { NavLink, Outlet } from 'react-router-dom'
 import '../UserManage_components/UserManaging.css'
-function UserPermission() {
-  const permission=[{slno:"",Rolename:"super_admin",permission:""},
-  {slno:"",Rolename:"Branch_admin",permission:""},
-  {slno:"",Rolename:"Client_admin",permission:""},
-  {slno:"",Rolename:"Refiller",permission:""},
-  {slno:"",Rolename:"Staff",permission:""}
-]
+import AddNewRole from './AddNewRole';
+import Add_role_table from './Add_role_table';
+
+ function UserPermission() {
+ const [addrole,setAddrole]=useState(true);
+ function handleRole()
+ {
+  setAddrole(false)
+  
+}                                           
   return (
    <React.Fragment>
    <div className='permission_container'>
-   <div className='div_newrole'><button className='btn_newrole'>Add New Role</button></div>
-    
-   <div className='table_div'>
-   <table>
-   <tr>
-   <th>Sl no</th>
-   <th>Role Name</th>
-   <th>Permission</th>
-   <th>Edit</th>
-   <th>Delete</th>
-   <th></th>
-   </tr>
    
-   {
-    permission.map((data,key)=>{
-      return(
-        <tr key={key}>
-        <td>{key+1}</td>
-        <td>{data.Rolename}</td>
-        <td>{data.permission}</td>
-        <td><button className='btn_edit'>Edit</button></td>
-        <td><button className='btn_delete'>Delete</button></td>
-        <td></td>
-        </tr>
-      )
-    })
-   }
-   
-   
-   </table>
-   
-   </div>
+   <div className='div_newrole'>
+   <NavLink to="/user_manage/user_permission/add_new_role">
+   <button className='btn_newrole' onClick={handleRole}>Add New Role</button></NavLink>
   
+   <Outlet/>
+   </div>
+   {
+//if addrole true in that case it will render if it become false on button click nothing will be render
+    (addrole) && <Add_role_table/> 
+   }
+
+   
    </div>
    
    

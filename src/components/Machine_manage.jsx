@@ -55,7 +55,7 @@ function Machine_manage() {
     </div>
    <div className='mm_table_container'>
     <table className='mm_table'>
-    
+    <tbody>
     
     <tr>
     <th><input type="checkbox"/></th>
@@ -77,6 +77,7 @@ function Machine_manage() {
   )
 
  })}
+ </tbody>
     </table>
     </div>
    </div>
