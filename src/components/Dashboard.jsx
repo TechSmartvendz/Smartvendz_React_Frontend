@@ -1,6 +1,4 @@
 import { Routes, Route, Link } from "react-router-dom";
-import { RouteJSON } from "./RouteJSON";
-import Routecomp from "./ParentComp";
 //FIXME:remove Add order
 import Addorder from "./Addorder";
 import Products from "./Products";
@@ -71,11 +69,11 @@ function Dashboard() {
           {/*FIXME: MAke this Routes a saprate components*/}
 
             <Routes>
-           {
-                RouteJSON.map( e => <ParentRoute data={e}/>)
-           }
-
-              {/* <Route exact path="/" element={<Routecomp title={e.title} sublinks={e.sublinks} />} /> */}
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/addorder" element={<Addorder />} >
+            </Route>
+              <Route exact path="/products" element={<Products />} >
+            </Route>
 
               <Route exact path="/manage_machine" element={<Addnewmachine />}>
                   <Route path="addnewmachine" element={<Manage_machine />} />
@@ -83,7 +81,7 @@ function Dashboard() {
                   <Route path="machineconfiguration" element={<Machineconfiguration />}/>
               </Route>
 
-              {/* <Route exact path="/companymanage" element={<Companymanage />}>
+            <Route exact path="/companymanage" element={<Companymanage />} >
                 <Route path="addnewcompany" element={<Addnewcompany />} />
                 <Route path="listcompany" element={<Listcompany />} />
               </Route>
@@ -129,8 +127,9 @@ function Dashboard() {
                   <Route path="1" element={<InventoryManager1 />} />
                   <Route path="2" element={<InventoryManager2 />} />
               </Route>
+               
 
-              <Route path="/*" element={<PageError />} /> */}
+              <Route path="/*" element={<PageError />} />
             </Routes>
           </div>
         </div>
