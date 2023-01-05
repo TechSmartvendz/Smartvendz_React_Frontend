@@ -1,11 +1,15 @@
-import React from 'react'
-import C from '../Route/GeneralManager/C'
+import React,{useState} from 'react'
+import SubLink from '../Route/SubLink';
+import {GeneralManagerData} from '../Route/SubLinkJSON';
+
+
 
 function Generalmanage() {
+const [subLinkJSON,setSubLinkJSON]=useState(GeneralManagerData);
   return (
     <div>
-      <p>General manage</p>
-      <C />
+      <p>Refiller</p>
+      <SubLink sublinks={subLinkJSON} />
     </div>
   )
 }

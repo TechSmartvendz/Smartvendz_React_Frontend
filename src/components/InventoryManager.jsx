@@ -1,11 +1,13 @@
-import React from 'react'
-import D from '../Route/InventoryManage/D'
+import React,{useState} from 'react'
+import SubLink from '../Route/SubLink';
+import {InventoryManagerData} from '../Route/SubLinkJSON';
 
 function InventoryManager() {
+const [subLinkJSON,setSubLinkJSON]=useState(InventoryManagerData);
   return (
     <div>
-        <p>InventoryManager</p>
-        <D />
+      <p>Refiller</p>
+      <SubLink sublinks={subLinkJSON} />
     </div>
   )
 }

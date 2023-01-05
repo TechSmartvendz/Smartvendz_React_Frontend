@@ -10,18 +10,13 @@ export const SidebarData = [
     icon: <AiIcons.AiFillHome />,
     cName: "nav-text",
   },
-  {
-    title: "Addorder",
-    path: "/addorder",
-    icon: <IoIcons.IoIosPaper />,
-    cName: "nav-text",
-  },
-  {
-    title: "Products",
-    path: "/products",
-    icon: <FaIcons.FaCartPlus />,
-    cName: "nav-text",
-  },
+  // {
+  //   title: "Addorder",
+  //   path: "/addorder",
+  //   icon: <IoIcons.IoIosPaper />,
+  //   cName: "nav-text",
+  // },
+ 
   {
     title: "User Manage",
     path: "/usermanage",
@@ -63,6 +58,12 @@ export const SidebarData = [
     title: "Refiller Manager",
     path: "/refillermanager",
     icon: <IoIcons.IoMdHelpCircle />,
+    cName: "nav-text",
+  },
+  {
+    title: "Products",
+    path: "/products",
+    icon: <FaIcons.FaCartPlus />,
     cName: "nav-text",
   },
   {

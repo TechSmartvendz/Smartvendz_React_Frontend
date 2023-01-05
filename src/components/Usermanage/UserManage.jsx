@@ -1,26 +1,20 @@
-import React from 'react'
-import I from '../../Route/UserManage/I'
-// import {Routes, Route} from "react-router-dom"
-import {Routes, Route} from "react-router-dom"
-import {Link, Outlet} from "react-router-dom"
-// import Addlist from '../Addlist'
-// import Listuser from './Listuser'
-// import Userpermission from './Userpermission'
-// import UserManagerData from '../../Route/UserManage/UserManageData'
-import "./Addnewuser.css"
+import React,{useState} from 'react'
+import SubLink from '../../Route/SubLink';
+import {UserManagerData} from '../../Route/SubLinkJSON';
 
-  
-  function UserManage() {
-    return (
-        <div>
-        <p>User manager</p>
-        <I />
-     
-      </div>
-    );
-  }
 
-   export default UserManage
+
+function UserManage() {
+const [subLinkJSON,setSubLinkJSON]=useState(UserManagerData);
+  return (
+    <div>
+      <p>Refiller</p>
+      <SubLink sublinks={subLinkJSON} />
+    </div>
+  )
+}
+
+export default UserManage
 
 
    

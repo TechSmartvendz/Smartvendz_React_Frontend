@@ -1,14 +1,15 @@
-import React from "react";
-// import SupperAdmin from "./SupperAdmin";
-import H from '../Route/TransactionManage/H'
+import React,{useState} from 'react'
+import SubLink from '../Route/SubLink';
+import {TransactionManageData} from '../Route/SubLinkJSON';
 
 function Transactions() {
+const [subLinkJSON,setSubLinkJSON]=useState(TransactionManageData);
   return (
     <div>
       <p>Transactions</p>
-      <H />
+      <SubLink sublinks={subLinkJSON} />
     </div>
-  );
+  )
 }
 
-export default Transactions;
+export default Transactions

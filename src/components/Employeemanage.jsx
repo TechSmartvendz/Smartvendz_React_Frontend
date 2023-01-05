@@ -1,12 +1,15 @@
-import React from 'react'
-import B from '../Route/EmployeeManage/B'
+import React,{useState} from 'react'
+import SubLink from '../Route/SubLink';
+import {EmployeeManageData} from '../Route/SubLinkJSON';
+
 
 
 function Employeemanage() {
+const [subLinkJSON,setSubLinkJSON]=useState(EmployeeManageData);
   return (
     <div>
-      <p>Employee manage</p>
-      <B />
+      <p>Refiller</p>
+      <SubLink sublinks={subLinkJSON} />
     </div>
   )
 }

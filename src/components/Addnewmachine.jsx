@@ -1,11 +1,15 @@
-import React from 'react'
-import E from '../Route/MachineManage/E'
+import React,{useState} from 'react'
+import SubLink from '../Route/SubLink';
+import {MachineManageData} from '../Route/SubLinkJSON';
+
+
 
 function Addnewmachine() {
+const [subLinkJSON,setSubLinkJSON]=useState(MachineManageData);
   return (
     <div>
-      <p>Add new machine</p>
-      <E />
+      <p>Refiller</p>
+      <SubLink sublinks={subLinkJSON} />
     </div>
   )
 }

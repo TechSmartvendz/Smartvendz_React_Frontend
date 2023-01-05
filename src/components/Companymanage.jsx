@@ -1,11 +1,15 @@
-import React from 'react'
-import A from '../Route/CompanyManager/A'
+import React,{useState} from 'react'
+import SubLink from '../Route/SubLink';
+import {CompanyManagerData} from '../Route/SubLinkJSON';
+
+
 
 function Companymanage() {
+const [subLinkJSON,setSubLinkJSON]=useState(CompanyManagerData);
   return (
     <div>
-      <p>Company manage</p>
-      <A />
+      <p>Refiller</p>
+      <SubLink sublinks={subLinkJSON} />
     </div>
   )
 }
