@@ -1,6 +1,6 @@
 
-import { array } from 'prop-types';
-import React, { useState ,useContext,useEffect} from 'react'
+// import { array } from 'prop-types';
+import React, { useState } from 'react'
 // import MachineContext from '../Context/MachineContext'
 import Machine_input from './Machine_input';
 
@@ -17,9 +17,15 @@ function Machine_details() {
   
   function addTableRow()
   {  
-    setArray([...array,{slotname,materialname,currentstock,initialstock,notinuse}])
-  console.log(inputdata)
-  setInputdata({slno:"",slotname:"",materialname:"",currentstock:"",initialstock:"",notinuse:""})
+    if(slotname==="" ||  currentstock==="" || initialstock===""){
+      alert("please enter data");
+
+    }else{
+      setArray([...array,{slotname,materialname,currentstock,initialstock,notinuse}])
+      console.log(inputdata)
+      setInputdata({slno:"",slotname:"",materialname:"",currentstock:"",initialstock:"",notinuse:""})
+    }
+   
   }
 function changeData(e)
   {  
@@ -39,7 +45,7 @@ console.log(i)
     <React.Fragment>
     
  <Machine_input/>
- 
+ <div className='ams_container'>
  <div>
  <label htmlFor='slotname'> Slot Name</label>
  <input type="text" name='slotname'  placeholder="Enter Slot Name" value={inputdata.slotname || ""} onChange={changeData}/>
@@ -68,7 +74,7 @@ console.log(i)
 </div>
  
    {/*AddMachine slots start from here */}
-   <div className='ams_container'>
+  
    <div>
    <button className='mmAddnew_btn' onClick={addTableRow}>Add Machine Slots</button>
    </div>
