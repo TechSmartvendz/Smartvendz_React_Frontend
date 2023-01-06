@@ -12,7 +12,7 @@ function Manage_machine() {
     
     
    <MachineContext.Provider value={{add1,setAdd1}}>
-   {add1 ?<Machine_manage />: <Machine_details/>}
+   {add1 ?<Machine_manage />: <Machine_details />}
   
    </MachineContext.Provider>
     
