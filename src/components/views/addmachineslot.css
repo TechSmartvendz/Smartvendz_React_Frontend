@@ -1,0 +1,42 @@
+.formcontain{
+    display: flex;
+   
+}
+.form_div{
+    display: flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+     
+}
+.input_field{
+    display: flex;
+    justify-content: space-between;
+   
+    padding:20px;
+  
+}
+.input_field>select{
+    width:235px;
+    border-radius: 5px;
+    margin-left: 40px;
+    background-color: rgb(225, 226, 228);
+    border: none;
+}
+.input_field>label{
+  margin:4px;
+  border-radius: 5px;
+  
+}
+.input_field>input{
+    width:235px;
+    border-radius: 5px;
+    background-color: rgb(225, 226, 228);
+    border: none;
+   
+}
+.mmAddnew_btn{
+    margin-left:45px;
+    margin-bottom:50px;
+}

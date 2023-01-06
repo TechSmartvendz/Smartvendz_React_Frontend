@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 // import MachineContext from '../Context/MachineContext'
 import Machine_input from './Machine_input';
-
+import './views/addmachineslot.css'
 function Machine_details() {
  
   // const {add1,setAdd1} = useContext(MachineContext)
@@ -46,38 +46,45 @@ console.log(i)
     
  <Machine_input/>
  <div className='ams_container'>
- <div>
+ <div className="formcontain">
+ <form className="form_div">
+ 
+ <div className="input_field">
  <label htmlFor='slotname'> Slot Name</label>
  <input type="text" name='slotname'  placeholder="Enter Slot Name" value={inputdata.slotname || ""} onChange={changeData}/>
  
  </div>
- <div>
+ <div className="input_field">
  <label htmlFor='materialname'>Material Name</label>
  <select name='materialname' placeholder='Enter Material Name' value={inputdata.materialname || ""}   onChange={changeData} >
  <option></option>
 </select>
 </div>
 
-<div>
+<div className="input_field">
 <label htmlFor='currentstock'>Current Stock</label>
 <input type="text" name='currentstock' placeholder='Enter Current Stock' value={inputdata.currentstock || ""}  onChange={changeData}/>
 </div>
 
-<div>
+<div className="input_field">
 <label htmlFor='intitialstock'>Initial Stock</label>
 <input type="text" name='initialstock' placeholder='Enter Initial stock' value={inputdata.initialstock || ""} onChange={changeData}/>
 </div>
 
-<div>
+<div className="input_field">
 <label htmlFor='notinuse'>Not in use</label>
 <input type="checkbox" name='notinuse' value={inputdata.notinuse || ""}  onChange={changeData} />
 </div>
- 
+
+</form>
+
+</div>
+<div>
+<button className='mmAddnew_btn' onClick={addTableRow}>Add Machine Slots</button>
+</div>
    {/*AddMachine slots start from here */}
   
-   <div>
-   <button className='mmAddnew_btn' onClick={addTableRow}>Add Machine Slots</button>
-   </div>
+  
    <div className='table_container'>
    <table >
   <tbody>
