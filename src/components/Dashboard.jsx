@@ -21,6 +21,7 @@ import Manage_machine from "./Subroutes/Manage_machine";
 import Employeemanage from "./Employeemanage";
 import Addnewemployee from "./Subroutes/Addnewemployee";
 import Updateemployee from "./Subroutes/Updateemployee";
+import SearchandUpdateemployee from "./Subroutes/SearchandUpdateemployee";
 
 import Transactions from "./Transactions";
 import Transactions1 from "./Subroutes/Transactions1";
@@ -90,6 +91,7 @@ function Dashboard() {
               <Route exact path="/employeemanage" element={<Employeemanage />}>
                 <Route path="addnewemployee" element={<Addnewemployee />} />
                 <Route path="updateemployee" element={<Updateemployee />} />
+                <Route path="searchandupdateemployee" element={<SearchandUpdateemployee />} />
               </Route>
 
               <Route exact path="/usermanage" element={<UserManage />}>

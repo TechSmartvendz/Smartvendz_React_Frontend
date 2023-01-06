@@ -17,6 +17,10 @@ export const EmployeeManageData = [
   {
     title: "Update employee",
     path: "/employeemanage/updateemployee"
+  },
+  {
+    title: "Search and update employee",
+    path: "/employeemanage/searchandupdateemployee"
   }
 ];
 export const GeneralManagerData = [
