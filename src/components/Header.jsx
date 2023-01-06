@@ -13,15 +13,17 @@ import { Link } from "react-router-dom";
 
 
 function Header() {
-  const [removeCookie] = useCookies(["user"]);
-  const [cookies, setCookie] = useCookies(["user"]);
+ 
+  const [cookies, setCookie,removeCookie] = useCookies(["user"]);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const { sidebar, setSidebar } = useContext(NavContext);
 
   function logout() {
     alert("Are you want to Log out?");
     setIsLoggedIn(false);
-    removeCookie("JWTcookie", { path: "/login" });
+   
+    removeCookie('JWTcookie',{path:"/"});
+  
   //   (function () {
   //     var cookies = document.cookie.split("; ");
   //     for (var c = 0; c < cookies.length; c++) {

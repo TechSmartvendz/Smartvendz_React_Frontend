@@ -28,7 +28,7 @@ function Login() {
       .then((response) => {
         console.log(response.data);
 
-        setCookie("JWTcookie", response.data.session_token, { path: "/login" });
+        setCookie("JWTcookie", response.data.session_token, { path: "/" });
         //  alert("successfully login");
         setIsLoggedIn(true);
         
