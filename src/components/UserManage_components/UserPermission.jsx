@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-import '../UserManage_components/UserManaging.css'
+import './UserManaging.css'
 
 import Add_role_table from './Add_role_table';
 

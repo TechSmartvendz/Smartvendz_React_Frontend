@@ -1,12 +1,12 @@
 import React from 'react'
-import '../UserManage_components/UserManaging.css'
+// import '../UserManage_components/UserManaging.css'
 function ListUser() {
 
   const userdata=[{Slno:"",name:"Ashok",role:"refiller",officelocation:"hsr Layout"},
   {Slno:"",name:"Sharan",role:"support",officelocation:"Marthalli"},
   {Slno:"",name:"Shubham",role:"developer",officelocation:"Hebbal"},
   {Slno:"",name:"Kuldeep",role:"devloper",officelocation:"Nagvar"},
-  {Slno:"",name:"Dinesh",role:"Account",officelocation:"Itpl"}]
+  {Slno:"",name:"Dinesh",role:"Ac count",officelocation:"Itpl"}]
   return (
    
     <React.Fragment>

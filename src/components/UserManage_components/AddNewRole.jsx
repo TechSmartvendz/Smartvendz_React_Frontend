@@ -1,5 +1,5 @@
 import React from 'react'
-import '../UserManage_components/UserManaging.css'
+// import '../UserManage_components/UserManaging.css'
 
 function AddNewRole() {
   return (
