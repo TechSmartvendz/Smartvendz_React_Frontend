@@ -51,7 +51,7 @@ console.log(i)
  
  <div className="input_field">
  <label htmlFor='slotname'> Slot Name</label>
- <input type="text" name='slotname'  placeholder="Enter Slot Name" value={inputdata.slotname || ""} onChange={changeData}/>
+ <input type="text" name='slotname' className='slotname'  placeholder="Enter Slot Name" value={inputdata.slotname || ""} onChange={changeData}/>
  
  </div>
  <div className="input_field">
@@ -63,25 +63,23 @@ console.log(i)
 
 <div className="input_field">
 <label htmlFor='currentstock'>Current Stock</label>
-<input type="text" name='currentstock' placeholder='Enter Current Stock' value={inputdata.currentstock || ""}  onChange={changeData}/>
+<input type="text" name='currentstock' className='currentstock' placeholder='Enter Current Stock' value={inputdata.currentstock || ""}  onChange={changeData}/>
 </div>
 
 <div className="input_field">
 <label htmlFor='intitialstock'>Initial Stock</label>
-<input type="text" name='initialstock' placeholder='Enter Initial stock' value={inputdata.initialstock || ""} onChange={changeData}/>
+<input type="text" className='initialstock' name='initialstock' placeholder='Enter Initial stock' value={inputdata.initialstock || ""} onChange={changeData}/>
 </div>
 
 <div className="input_field">
 <label htmlFor='notinuse'>Not in use</label>
-<input type="checkbox" name='notinuse' value={inputdata.notinuse || ""}  onChange={changeData} />
+<input type="checkbox" className='check' name='notinuse' value={inputdata.notinuse || ""}  onChange={changeData} />
 </div>
 
 </form>
 
 </div>
-<div>
 <button className='mmAddnew_btn' onClick={addTableRow}>Add Machine Slots</button>
-</div>
    {/*AddMachine slots start from here */}
   
   
