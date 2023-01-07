@@ -5,6 +5,7 @@
     background-color: lightgray;
     border-radius: 4px;
     padding: 2px;
+    font-size: 12px;
 }
 
  .div1 {
@@ -41,11 +42,13 @@
 }
 
 .uploadbtn1 {
-    padding: 6px;
+    padding: 4px;
 border-radius: 5px;
 background-color: black;
 cursor: pointer;
 margin-left: 20px;
+font-size: 12px;
+
 }
 
 .uploadbtn2 {
@@ -54,6 +57,7 @@ margin-left: 20px;
     background-color: black;
     cursor: pointer;
     margin-left: -60px;
+    font-size: 12px;
 }
 
 

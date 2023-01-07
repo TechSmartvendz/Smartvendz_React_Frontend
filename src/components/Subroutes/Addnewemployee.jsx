@@ -14,6 +14,10 @@ function Addnewemployee() {
     padding: '20px'
   };
 
+  const style3 = {
+    fontSize: '13px',
+    color: 'black'
+  }
   function Download() {
     axios({
       url: urlz, //your url
@@ -55,7 +59,7 @@ function Addnewemployee() {
 
       <div className="div1">
         <div className="div11">
-          <span>Select company:</span>
+          <span style={style3}>Select company:</span>
           <select id="dropdown">
             <option value="N/A">Select company</option>
             <option value="1">1</option>
@@ -66,7 +70,7 @@ function Addnewemployee() {
           </div>
           
           <div className="div12">
-          <span>Select machine:</span>
+          <span style={style3}>Select machine:</span>
           <select id="dropdown">
             <option value="N/A">Select machine</option>
             <option value="1">1</option>
