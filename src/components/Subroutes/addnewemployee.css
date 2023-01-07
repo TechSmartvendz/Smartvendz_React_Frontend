@@ -1,0 +1,59 @@
+
+
+
+.select{
+    /* display: flex; */
+    background-color: white;
+    width: 400px;
+    padding: 20px;
+    
+}
+
+#abcd {
+    background-color: white;
+    padding: 20px
+}
+
+
+.uploadbtn {
+padding: 6px;
+border-radius: 5px;
+background-color: black;
+cursor: pointer;
+
+}
+
+
+.uploadbtn:hover {
+    background-color: red;
+    color: white
+}
+
+#dropdown {
+    background-color: lightgray;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+/* .sub{
+ display: flex;
+ flex-direction: row;
+ background-color: blue;
+} */
+
+#sub{
+    display: flex;
+    flex-direction: row;
+    background-color: blue;
+   }
+
+/* #1, #2 {
+ display: flex;
+ flex-direction: row;
+} */
+
+
+.div2 {
+    display: flex;
+    flex-direction: row;
+}

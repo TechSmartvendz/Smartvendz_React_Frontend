@@ -1,0 +1,22 @@
+
+#dropdown {
+    background-color: lightgray;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.searchbtn {
+    padding: 6px;
+    border-radius: 5px;
+    background-color: black;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.maindiv {
+ padding: 20px;
+}
+
+.search {
+    margin-left: 30px;
+}

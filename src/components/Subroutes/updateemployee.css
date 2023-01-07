@@ -1,0 +1,60 @@
+*{
+    font-size: 15px;
+}
+#dropdown {
+    background-color: lightgray;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+ .div1 {
+    display: flex;
+
+
+} 
+
+.div11, .div12 {
+    display: flex;
+    padding: 20px;
+} 
+
+.div12 {
+    margin-left: 40px;
+}
+
+
+.divtop{
+    /* display: flex; */
+    background-color: white;
+    width: 600px;
+    padding: 20px;
+    margin-top: 20px;
+    
+}
+
+.sample, .upload {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 20px;
+    
+}
+
+.uploadbtn1 {
+    padding: 6px;
+border-radius: 5px;
+background-color: black;
+cursor: pointer;
+margin-left: 20px;
+}
+
+.uploadbtn2 {
+    padding: 6px;
+    border-radius: 5px;
+    background-color: black;
+    cursor: pointer;
+    margin-left: -60px;
+}
+
+
+

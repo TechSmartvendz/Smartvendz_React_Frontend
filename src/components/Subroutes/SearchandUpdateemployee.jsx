@@ -1,9 +1,9 @@
 import React from 'react'
+import './searchandemployee.css'
 
 function SearchandUpdateemployee() {
   return (
-    <div>
-      <p>Search and update employee</p>
+    <div className='maindiv'>
       Search by
       <select id = "dropdown">
     <option value="N/A">Select company</option>
@@ -12,8 +12,8 @@ function SearchandUpdateemployee() {
     <option value="3">3</option>
     <option value="4">4</option>
 </select>
-      <input type="search" placeholder="Search..." />
-      <button>Search</button>
+      <input type="search" placeholder="Search..." className='search'/>
+      <button className="searchbtn">Search</button>
     </div>
   )
 }
