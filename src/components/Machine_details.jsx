@@ -46,40 +46,48 @@ console.log(i)
     
  <Machine_input/>
  <div className='ams_container'>
- <div className="formcontain">
- <form className="form_div">
+ <div className="machine_slot_container">
+ <form className="machine_form">
  
- <div className="input_field">
+ <div className="input_container">
  <label htmlFor='slotname'> Slot Name</label>
- <input type="text" name='slotname' className='slotname'  placeholder="Enter Slot Name" value={inputdata.slotname || ""} onChange={changeData}/>
+ <input type="text" name='slotname' className='slot'  placeholder="Enter Slot Name" value={inputdata.slotname || ""} onChange={changeData}/>
  
  </div>
- <div className="input_field">
+ <div className="input_container">
  <label htmlFor='materialname'>Material Name</label>
- <select name='materialname' placeholder='Enter Material Name' value={inputdata.materialname || ""}   onChange={changeData} >
+ <select className='material' name='materialname' placeholder='Enter Material Name' value={inputdata.materialname || ""}   onChange={changeData} >
  <option></option>
+ <option>ABC</option>
+ <option>DEF</option>
+ <option>IJK</option>
+ <option>LMN</option>
 </select>
 </div>
 
-<div className="input_field">
+<div className="input_container">
 <label htmlFor='currentstock'>Current Stock</label>
-<input type="text" name='currentstock' className='currentstock' placeholder='Enter Current Stock' value={inputdata.currentstock || ""}  onChange={changeData}/>
+<input type="text" name='currentstock' className='current_s' placeholder='Enter Current Stock' value={inputdata.currentstock || ""}  onChange={changeData}/>
 </div>
 
-<div className="input_field">
+<div className="input_container">
 <label htmlFor='intitialstock'>Initial Stock</label>
-<input type="text" className='initialstock' name='initialstock' placeholder='Enter Initial stock' value={inputdata.initialstock || ""} onChange={changeData}/>
+<input type="text" className='istock' name='initialstock' placeholder='Enter Initial stock' value={inputdata.initialstock || ""} onChange={changeData}/>
 </div>
 
-<div className="input_field">
+<div className="input_container">
 <label htmlFor='notinuse'>Not in use</label>
-<input type="checkbox" className='check' name='notinuse' value={inputdata.notinuse || ""}  onChange={changeData} />
+<input type="checkbox" className='checkbox' name='notinuse' value={inputdata.notinuse || ""}  onChange={changeData} />
 </div>
+
 
 </form>
+<div className='input_container'>
+<button className='add_machine_btn' onClick={addTableRow}>Add Machine Slots</button>
+</div>
 
 </div>
-<button className='mmAddnew_btn' onClick={addTableRow}>Add Machine Slots</button>
+
    {/*AddMachine slots start from here */}
   
   

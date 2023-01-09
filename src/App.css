@@ -393,3 +393,66 @@ width:220px;
   margin:13px;
   width:100px;
 }
+/* add machine slot form css start from here */
+.machine_slot_container{
+  display: flex;
+  flex-direction: row;
+}
+.machine_form{
+  display: flex;
+  flex-direction: row;
+  margin-left:102px;
+  justify-content:space-between;
+  margin-top: 15px;
+}
+.add_machine_btn{
+  background-color:blue;
+    color: white;
+    border-radius:6px;
+    cursor: pointer;
+    padding:10px;
+    margin:25px;
+    margin-bottom:30px;
+    
+}
+.add_machine_btn:hover{
+  background-color:#236723;
+}
+.input_container{
+  display: flex;
+  flex-direction:column;
+  padding: 15px;
+}
+.slot{
+padding:6px;
+border-radius: 4px;
+width:210px;
+background-color: #dddddd;
+border: none;
+}
+.material{
+  padding:6px;
+border-radius: 4px;
+width:230px;
+border: none;
+background-color: #dddddd;
+
+}
+.current_s{
+  padding:6px;
+border-radius: 4px;
+border: none;
+width:225px;
+background-color: #dddddd;
+}
+.istock{
+  padding:6px;
+  border-radius: 4px;
+  width:225px;
+  background-color: #dddddd;
+  border: none;
+}
+.checkbox{
+ margin-top: 10px;
+ padding: 25px;
+}
