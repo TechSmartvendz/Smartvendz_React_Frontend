@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MachineContext from "../Context/MachineContext";
 import Machine_details from "./Machine_details";
 import Machine_manage from "./Machine_manage";
+// import Message_box from "./Result_msg/Message_box";
 // import "./App.css"
 // import AuthContext from '../Context/AuthContext';
 function Manage_machine() {
@@ -9,7 +10,7 @@ function Manage_machine() {
 
   return (
     <React.Fragment>
-   
+    
       <MachineContext.Provider value={{ add1, setAdd1 }}>
         {add1 ? <Machine_manage /> : <Machine_details />}
       </MachineContext.Provider>
