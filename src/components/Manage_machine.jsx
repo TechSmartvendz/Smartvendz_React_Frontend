@@ -9,6 +9,7 @@ function Manage_machine() {
 
   return (
     <React.Fragment>
+   
       <MachineContext.Provider value={{ add1, setAdd1 }}>
         {add1 ? <Machine_manage /> : <Machine_details />}
       </MachineContext.Provider>

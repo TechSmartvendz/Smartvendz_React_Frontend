@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import MachineContext from "../Context/MachineContext";
 //import Machine_details from './Machine_details'
-
+import './Usermanage/Usermanage.css'
 function Machine_manage() {
   const machinedata = [
     {
@@ -43,6 +43,7 @@ function Machine_manage() {
 
   return (
     <React.Fragment>
+   
       <div className="mm_container">
         <div>
           <span className="main_head">Manage Machines</span>
@@ -80,6 +81,7 @@ function Machine_manage() {
         </div>
         <div className="mm_table_container">
           <table className="mm_table">
+          <tbody>
             <tr>
               <th>
                 <input type="checkbox" />
@@ -104,6 +106,7 @@ function Machine_manage() {
                 </tr>
               );
             })}
+            </tbody>
           </table>
         </div>
       </div>

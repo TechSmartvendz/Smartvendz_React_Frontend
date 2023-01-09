@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import MachineContext from "../Context/MachineContext";
-
+// import  './Usermanage/Usermanage.css'
 function Machine_details() {
   const { add1, setAdd1 } = useContext(MachineContext);
 
@@ -48,111 +48,114 @@ function Machine_details() {
       </div>
 
       <div className="container_div">
+     
         <div>
           <span className="heading">Machine Information</span>
         </div>
 
         <form className="form_datas">
+
           <div className="left_div">
-            <div className="from_field">
-              <label>Name</label>
+           
+          <div className="from_field">
+              <label htmlFor="name">Name</label>
               <input name="name" />
             </div>
 
             <div className="from_field">
-              <label>Employee Name</label>
+              <label htmlFor="ename">Employee Name</label>
               <input name="Ename" />
             </div>
 
             <div className="from_field">
-              <label>Manufacture Name</label>
+              <label htmlFor="manuname">Manufacture Name</label>
               <input name="mname" />
             </div>
 
             <div className="from_field">
-              <label>Purchase Date</label>
+              <label htmlFor="pdate">Purchase Date</label>
               <input name="pdate" />
             </div>
 
             <div className="from_field">
-              <label>Purchase Amount</label>
+              <label htmlFor="pamount">Purchase Amount</label>
               <input name="pamount" />
             </div>
 
             <div className="from_field">
-              <label>Service Amount</label>
+              <label htmlFor="serviceamnt">Service Amount</label>
               <input name="samount" />
             </div>
 
             <div className="from_field">
-              <label>Service Duration To</label>
+              <label htmlFor="servciedur">Service Duration To</label>
               <input name="sduration" />
             </div>
 
             <div className="from_field">
-              <label className="from_field">Service Email</label>
+              <label htmlFor="serviceemail" className="from_field">Service Email</label>
               <input name="sduration" />
             </div>
 
             <div className="from_field">
-              <label>Service Details</label>
+              <label htmlFor="servicedetail">Service Details</label>
               <textarea />
             </div>
 
             <div className="from_field">
-              <label>Is Coin Machine</label>
+              <label htmlFor="iscoin">Is Coin Machine</label>
               <input type="checkbox" />
             </div>
           </div>
 
           <div className="left_div">
             <div className="from_field">
-              <label>Machine Code</label>
+              <label htmlFor="machine code ">Machine Code</label>
               <input name="mcode" />
             </div>
 
             <div className="from_field">
-              <label>Location Name</label>
+              <label htmlFor="locationname">Location Name</label>
               <input name="lname" />
             </div>
 
             <div className="from_field">
-              <label>Serial No</label>
+              <label htmlFor="serialno">Serial No</label>
               <input name="sno" />
             </div>
 
             <div className="from_field">
-              <label>Purchase From</label>
+              <label htmlFor="purchasefrom">Purchase From</label>
               <input name="pfrom" />
             </div>
 
             <div className="from_field">
-              <label>Service Type</label>
+              <label htmlFor="servicetype">Service Type</label>
               <input name="stype" />
             </div>
 
             <div className="from_field">
-              <label>Service Duration From</label>
+              <label htmlFor="servduration">Service Duration From</label>
               <input name="sdfrom" />
             </div>
 
             <div className="from_field">
-              <label>Serviced By</label>
+              <label htmlFor="serviceby">Serviced By</label>
               <input name="sby" />
             </div>
 
             <div className="from_field">
-              <label>Service Mobile No</label>
+              <label htmlFor="smobileno">Service Mobile No</label>
               <input name="sby" />
             </div>
 
             <div className="from_field">
-              <label for="remark">Remark</label>
+              <label htmlFor="remark">Remark</label>
               <textarea />
             </div>
 
             <div className="from_field">
-              <label>Warehouse Name</label>
+              <label htmlFor="werehouse">Warehouse Name</label>
               <input name="wname" />
             </div>
           </div>
@@ -162,6 +165,7 @@ function Machine_details() {
           </div>
         </form>
       </div>
+     
 
       {/*AddMachine slots start from here */}
       <div className="ams_container">
@@ -173,6 +177,7 @@ function Machine_details() {
 
         <div className="table_container">
           <table>
+          <tbody>
             <tr>
               <th>SL NO</th>
               <th>Slot Name</th>
@@ -231,6 +236,7 @@ function Machine_details() {
                 </tr>
               );
             })}
+            </tbody>
           </table>
         </div>
       </div>

@@ -1,0 +1,98 @@
+.mccontainer{
+    background-color: white;
+  padding:10px;
+ 
+  
+}
+.access{
+    font-weight: bold;
+   
+}
+
+.checkbox{
+margin-left:95px;
+padding:5px;
+
+
+}
+
+.checkbox>label{
+    margin-left: 10px;
+}
+.type_container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 60%;
+    }
+    .field_container{
+        display: flex;
+        
+         margin-left: 10px;
+        flex-direction:row;
+        justify-content: space-between;
+    }
+    .field_container>label{
+        margin-top: 20px;
+    }
+.type{
+width:200px;
+background-color:  rgb(209, 205, 205);
+padding:4px;
+border: none;
+margin-right:275px;
+margin-top: 20px;
+
+border-radius: 4px;
+}
+.access{
+  margin-top: 20px;
+    margin-left: 25px;
+}
+.conatiner_check{
+    margin-left: 23px;
+   
+  }
+  .conatiner_check>label{
+    margin-top: 10px;
+  }
+.rfidcard{
+    margin-left:258px;
+    width: 200px;
+    border-radius: 4px;
+    background-color: rgb(209, 205, 205) ;
+    border: none;
+    padding: 5px;
+}
+.api{
+    margin-left: 280px;
+    width:202px;
+    padding:4px;
+   background-color: rgb(217, 214, 214);
+    border-radius: 4px;
+    border: none;
+    margin-top:30px;
+}
+.labelapi{
+    margin-left:20px;
+}
+.conatiner_check{
+    margin-top: 20px;
+}
+.rfid_api{
+    width: 60%;
+}
+.btnsb{
+    margin-left: 410px;
+    margin-top: 30px;
+    background-color: rgb(20, 25, 20);
+    border-radius: 5px;
+    width: 95px;
+   padding:10px;
+    text-align: center;
+    cursor: pointer;
+    
+}
+.btnsb:hover{
+    background-color: green;
+}

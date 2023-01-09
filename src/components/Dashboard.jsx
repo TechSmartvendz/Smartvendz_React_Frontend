@@ -3,7 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Addorder from "./Addorder";
 import Products from "./Products";
 
-import UserManage from "./Usermanage/UserManage";
+import UserManage from "./UserManage";
 import Addnewuser from "./Usermanage/Addnewuser";
 import Listuser from "./Usermanage/Listuser";
 import Userpermission from "./Usermanage/Userpermission";
@@ -12,9 +12,9 @@ import Companymanage from "./Companymanage";
 import Addnewcompany from "./Subroutes/Addnewcompany";
 import Listcompany from "./Subroutes/Listcompany";
 
-import Addnewmachine from "./Addnewmachine";
-import Listmachine from "./Subroutes/Listmachine";
-import Machineconfiguration from "./Subroutes/Machineconfiguration";
+import Addnewmachine from "./MachineManage/Addnewmachine"
+import Listmachine from "../components/MachineManage/Listmachine";
+import Machineconfiguration from "../components/MachineManage/Machineconfiguration";
 //TODO:GET info about this "./Subroutes/Manage_machine"
 import Manage_machine from "./Subroutes/Manage_machine";
 
@@ -56,7 +56,7 @@ import Refund1 from "./Subroutes/Refund1"
 import Refund2 from "./Subroutes/Refund2"
 
 //TODO: GET info about this Usermanahe.css
-import './Usermanage.css'
+// import 'Usermanage.css'
 
 function Dashboard() {
   return (
