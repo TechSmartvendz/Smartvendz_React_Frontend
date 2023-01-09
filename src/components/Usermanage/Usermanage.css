@@ -8,17 +8,22 @@
     background-color: white;
 }
 .user_btn{
-   padding:0;
+  padding: 0;
    text-align:center !important;
     margin:15px;
-    padding-right:15px  !important;
-    border-radius: 10px;
+    
+    border-radius:10px;
     text-align:center;
-    background-color: rgb(242, 13, 230);
+    background-color: rgb(28, 13, 242);
     font-size: medium;
+   
+    height:45px;
+    text-align: center;
+  
+
 }
 .user_btn:hover{
-    background-color: rgb(89, 76, 207);
+    background-color: rgb(120, 121, 120);
 }
 /* ListUser css start from here */
 .spandiv{
