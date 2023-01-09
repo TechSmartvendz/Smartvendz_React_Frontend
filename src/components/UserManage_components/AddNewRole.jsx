@@ -80,7 +80,7 @@ function AddNewRole() {
     </div>
 
     <div className='field_container'>
-    <label htmlFor='userm'>Machine Configuration </label>
+    <label htmlFor='userm'>Machine Configuratio</label>
     <input type="checkbox" name="userm_input" className='mconfigu'/>
     </div>
 

@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 // import MachineContext from '../Context/MachineContext'
 import Machine_input from './Machine_input';
-import './views/addmachineslot.css'
+// import './views/addmachineslot.css'
 function Machine_details() {
  
   // const {add1,setAdd1} = useContext(MachineContext)
