@@ -1,3 +1,11 @@
+div.a {
+    display: flex;
+}
+
+label {
+    display: flex;
+}
+
 
 #dropdown {
     background-color: lightgray;
