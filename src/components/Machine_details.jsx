@@ -18,7 +18,7 @@ function Machine_details() {
   function addTableRow()
   {  
     if(slotname==="" ||  currentstock==="" || initialstock===""){
-      alert("please enter data");
+      alert("please enter data in the form");
 
     }else{
       setArray([...array,{slotname,materialname,currentstock,initialstock,notinuse}])

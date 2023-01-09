@@ -224,6 +224,10 @@ h3{
   }
   
   /* Manage_machine style start from here  */
+  .alert_msg{
+    background-color: white;
+    height:60px;
+  }
 .mm_container{
 background-color:white;
 }

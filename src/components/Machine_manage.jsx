@@ -20,7 +20,7 @@ function Machine_manage() {
   return (
     
     <React.Fragment>
-   
+   <div className='alert_msg'></div>
     <div className='mm_container'>
     
     <div ><span className='main_head'>Manage Machines</span></div>
