@@ -103,12 +103,16 @@ export const RefundandSupportData = [
 export const TransactionManageData = [
 
   {
-    title: "1",
-    path: "/transactionreports/credit_transaction_report",
+    title: "Transaction Report",
+    path: "/transactionreports/transaction_report",
   },
   {
-    title: "2",
+    title: "Credit Report",
     path: "/transactionreports/credit_report"
+  },
+  {
+    title: "Credit Transaction Report",
+    path: "/transactionreports/credit_transaction_report"
   }
 ];
 

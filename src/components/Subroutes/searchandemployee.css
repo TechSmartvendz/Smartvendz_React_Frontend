@@ -1,5 +1,19 @@
-div.a {
+.employeesearch {
     display: flex;
+}
+
+.employeesearch>div{
+    margin: 10px;
+    margin-left: 0px;
+}
+.employeesearch>div>select,.employeesearch>div>input{
+    height: 30px;
+    width: 160px;
+   
+}
+.employeesearch>div>select>option{
+
+    background-color: aliceblue;
 }
 
 label {
@@ -10,7 +24,8 @@ label {
 #dropdown {
     background-color: lightgray;
     border-radius: 4px;
-    padding: 2px;
+    font-size: 18px;
+    margin-left: -1px;
 }
 
 .searchbtn {
@@ -27,4 +42,13 @@ label {
 
 .search {
     margin-left: 30px;
+}
+
+
+.table_container {
+    margin-top: 20px;
+}
+
+.a{
+
 }

@@ -1,10 +1,14 @@
 import React from 'react'
-import './Transactions.css'
 
-function Transactions1() {
+function Transactions3() {
   return (
-    <React.Fragment>
-    <div>Transactions1</div>
+    
+      
+      
+      <React.Fragment>
+    
+    <p>Transactions3</p>
+
     <div className='start'>
 
       <div>
@@ -131,7 +135,8 @@ function Transactions1() {
           </table>
         </div>
         </React.Fragment>
+    
   )
 }
 
-export default Transactions1
+export default Transactions3

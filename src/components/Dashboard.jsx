@@ -26,6 +26,7 @@ import SearchandUpdateemployee from "./Subroutes/SearchandUpdateemployee";
 import Transactions from "./Transactions";
 import Transactions1 from "./Subroutes/Transactions1";
 import Transactions2 from "./Subroutes/Transactions2";
+import Transactions3 from "./Subroutes/Transactions3";
 
 import Generalmanage from "./Generalmanage";
 import Countrymanage from "./Subroutes/Countrymanage";
@@ -107,8 +108,9 @@ function Dashboard() {
               </Route>
              
               <Route exact path="/transactionreports" element={<Transactions />}>
-                   <Route path="credit_transaction_report" element={<Transactions1 />}/>
+                   <Route path="transaction_report" element={<Transactions1 />}/>
                    <Route path="credit_report" element={<Transactions2 />}/>
+                   <Route path="credit_transaction_report" element={<Transactions3 />} />
               </Route>
 
               <Route exact path="/generalmanager" element={<Generalmanage />}>
