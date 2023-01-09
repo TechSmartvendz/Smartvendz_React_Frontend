@@ -7,10 +7,10 @@ import {UserManagerData} from '../Route/SubLinkJSON';
 function UserManage() {
 const [subLinkJSON,setSubLinkJSON]=useState(UserManagerData);
   return (
-    <div>
-      <p>Refiller</p>
+   <React.Fragment>
+     <div className='mesgarea'></div>
       <SubLink sublinks={subLinkJSON} />
-    </div>
+      </React.Fragment>
   )
 }
 
