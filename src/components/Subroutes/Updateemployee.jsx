@@ -51,7 +51,7 @@ function Updateemployee() {
 
       <div className="upload">
       <p>Upload CSV: </p>
-      <input type="file" />
+      <input type="file" className="input-file"/>
       <button className="uploadbtn2">Upload</button>
       </div>
 
