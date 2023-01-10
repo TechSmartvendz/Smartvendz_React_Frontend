@@ -22,7 +22,7 @@
   display: block;
   margin-bottom: 15px;
 }
-h3{
+h3 {
   margin: 0;
   padding: 0 0 20px;
   color: #262626;
@@ -124,7 +124,7 @@ h3{
   display: flex;
   flex-direction: column;
 }
-table{
+table {
   flex-direction: column;
   border-collapse: collapse;
   border-right: solid 1px rgb(60, 60, 60);
@@ -179,7 +179,8 @@ tr:nth-child(even) {
   font-weight: bold;
 }
 .mm_table > tr,
-th,td {
+th,
+td {
   /* border-collapse:collapse; */
   border-left: solid 1px rgb(60, 60, 60);
 }

@@ -1,17 +1,72 @@
-input {
-    border-radius: 4px;
+#btn1 {
     margin-right: 20px;
+    
+}
+#btn2 {
+    margin-right: 20px;
+    
+}
 
+
+
+.btn {
+  margin-top: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: black;
+  cursor: pointer;
+  /* margin-left: 20px; */
+}
+
+.table_container {
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  flex-direction: column;
+  border-collapse: collapse;
+  border-right: solid 1px rgb(60, 60, 60);
+  border-top: solid 1px rgb(60, 60, 60);
+}
+
+th {
+  border-bottom: solid 1px rgb(60, 60, 60);
+}
+th,
+td {
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+input {
+  border-radius: 4px;
+  margin-right: 20px;
 }
 
 .item {
-    width: 195px;
-    border-radius: 4px;
-    background-color: rgb(250, 250, 250);
-    /* margin-top: 10px; */
-    margin-right: 20px;
-     }
-
-.start{
-    display: flex;
+  width: 195px;
+  border-radius: 4px;
+  background-color: rgb(250, 250, 250);
+  /* margin-top: 10px; */
+  margin-right: 20px;
 }
+
+.start {
+  display: flex;
+  align-items: center;
+
+}
+
+/* // Transaction2.css */
+
+.creditreport {
+  display: flex;
+}
+
+/* // Transaction1.css */

@@ -1,51 +1,37 @@
 import React from "react";
-import './transactions2.css';
+import "./Transactions.css";
 
 function Transactions2() {
   return (
-    <>
-      <div>Transactions2</div>
-      <div className="table_container">
-        <div className="span_div">
-          <form className="creditreport">
-            <div>
-              <label htmlFor="start">Start</label>
-              <input type="text" id="start" />
-            </div>
+    <div>
+      <p>Credit Report</p>
 
-            <div>
-              <label htmlFor="end">End</label>
-              <input type="text" id="end" />
-            </div>
-
-            <div>
-              <label htmlFor="mid">Machine id</label>
-              <input type="text" id="mid" />
-            </div>
-
-            <div>
-              <label htmlFor="cid">Company id</label>
-              <input type="text" id="cid" />
-            </div>
-          </form>
-          <div id="addorder-btn">
-            <button type="button" className="button">
-              Refresh
-            </button>
-          </div>
+      <form className="start">
+        <div>
+          <label htmlFor="start">Start</label>
+          <input type="text" id="start" />
         </div>
 
-        {
-          // card no
-          // mid
-          // locker no
-          // eid
-          // item description
-          // created on
-          // expired on
-          // locker pin
-        }
+        <div>
+          <label htmlFor="end">End</label>
+          <input type="text" id="end" />
+        </div>
 
+        <div>
+          <label htmlFor="mid">Machine id</label>
+          <input type="text" id="mid" />
+        </div>
+
+        <div>
+          <label htmlFor="cid">Company id</label>
+          <input type="text" id="cid" />
+        </div>
+        <div>
+          <button className="btn">Refresh</button>
+        </div>
+      </form>
+
+      <div className="table_container">
         <table>
           <tr>
             <th>Created date</th>
@@ -128,7 +114,7 @@ function Transactions2() {
           </tr>
         </table>
       </div>
-    </>
+    </div>
   );
 }
 
