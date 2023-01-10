@@ -1,5 +1,5 @@
 import React from 'react'
-import './Machine_manage.css';
+
 function Machineconfiguration() {
  
   return (

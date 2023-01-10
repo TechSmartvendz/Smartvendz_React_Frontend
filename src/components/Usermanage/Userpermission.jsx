@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 
 import { NavLink, Outlet } from 'react-router-dom'
 import Add_role_table from './Add_role_table';
-// import './UserManaging.css'
+
 function Userpermission() {
   const [addrole,setAddrole]=useState(true);
   function handleRole()
