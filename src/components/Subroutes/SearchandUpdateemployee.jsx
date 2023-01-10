@@ -34,6 +34,13 @@ function SearchandUpdateemployee() {
           <label htmlFor="name">Employee:</label>
           <input type="text" id="name" />
         </div>
+
+        <div>
+          <label htmlFor="abc"></label>
+        <input type="search" placeholder="Search..." id="abc"/>
+      <button className="btn">Search</button> 
+      </div>
+
       </form>
 
       <div className="table_container">
@@ -96,9 +103,8 @@ function SearchandUpdateemployee() {
         </table>
       </div>
 
-      {/* 
-      <input type="search" placeholder="Search..." className='search'/>
-      <button className="searchbtn">Search</button> */}
+      
+
     </div>
   );
 }
