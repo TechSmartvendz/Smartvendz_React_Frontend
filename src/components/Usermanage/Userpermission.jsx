@@ -11,23 +11,31 @@ function Userpermission() {
    
  }   
   return (
-  <React.Fragment>
-  <div className='permission_container'>
+ <>
+  <div className='add-user-container'>
    
-  <div className='div_newrole'>
-  <NavLink to="/user_manage/user_permission/add_new_role">
-  <button className='btn_newrole' onClick={handleRole}>Add New Role</button></NavLink>
- 
-  <Outlet/>
-  </div>
+        <div>
+          <span className="componet-title">Role List</span>
+        </div>
+       
+        <NavLink className="option-btn" to="/user_manage/user_permission/addnewrole"> <button onClick={handleRole} >Add New Role</button></NavLink>
+    {/*<div className="option-btn">
+        <button >Temp Button</button>
+        <button >Temp button</button>
+  </div>*/}  
+        <div className="componet-sub2-title">
+          <span>Total Roles:</span>
+        </div>
+        <Outlet/>
   {
 //if addrole true in that case it will render if it become false on button click nothing will be render
-   (addrole) && <Add_role_table/> 
+   (addrole) && 
+   <Add_role_table/> 
   }
 
   
   </div>
-  </React.Fragment>
+  </>
       
   )
 }

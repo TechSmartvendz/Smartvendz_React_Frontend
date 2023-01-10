@@ -1,3 +1,93 @@
+/* LOGIN CSS : LOGIN COMPONENT  */
+.loginbody{
+  
+  padding:0;
+  margin:0;
+  height: 100vh;
+  width: 100vw;
+ background-color: #3a3939;
+}
+.loginbox{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width:350px;
+  min-height:180px;
+  background:white;
+  border-radius: 15px;
+  padding:50px;
+  box-sizing: border-box;
+  
+}
+.cicon{
+  margin: 0 auto;
+  display: block;
+  margin-bottom:15px;
+ 
+ 
+}
+h3{
+  margin: 0;
+  padding: 0 0 20px;
+  color: #262626;
+  text-align: center;
+}
+
+.loginbox input{
+  width:100%;
+  padding:5px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  
+}
+.loginbox input[type="email"],
+.loginbox input[type="password"]
+{
+  border: none;
+  border-bottom: 2px solid #262626;
+  outline: none;
+  height: 40px;
+  color: #262626;
+ 
+  font-size: 16px;
+  padding-left: 0px;
+  box-sizing: border-box;
+  
+}
+.loginbox input[type="email"]:focus,
+.loginbox input[type="password"]:focus
+{
+  border-bottom: 2px solid black;
+}
+.inputdiv{
+  position: relative;
+}
+.loginbox input[type="submit"]{
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  height: 40px;
+  font-size: 16px;
+  background: rgb(10, 10, 10);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  
+
+}
+.loginbox input[type="submit"]:hover{
+  background-color: #236723;
+  
+}
+
+.forgot{
+  
+  color: black;
+  margin-left:41px;
+  
+}
+
+/* LOGIN CSS : LOGIN COMPONENT  */
 /* USER MANAGE CSS : ADD NEW USER COMPONENT  */
 /* COMPONENT CONTATINER CSS */
 .add-user-container{
@@ -13,6 +103,7 @@ color: black;
 font-size: 1.5em;
 font-weight: bold;
 }
+
 /* COMPONENT MAIN HEADING CSS */
 /* COMPONENT MAIN SUB-HEADING CSS */
 .componet-sub-title{
@@ -23,6 +114,14 @@ font-weight: bold;
   border-top: 1px solid black;
   padding:5px;
   }
+  .componet-sub2-title{
+    color: black;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    padding:5px;
+    }
 /* COMPONENT MAIN SUB-HEADING CSS */
 /* COMMMON FLEX CSS*/
 .flex-row{
@@ -159,3 +258,67 @@ padding:5px
   max-width: 99px;
   border-radius: 5px;
 }
+
+/* List user CSS : List USER COMPONENT  */
+.option-btn{
+/* background-color: #3a3939; */
+padding:10px;
+display: flex;
+flex-flow: row;
+justify-content: flex-end;
+
+}
+.option-btn>button,
+.option-btn>div{
+  margin: 5px;
+}
+.option-btn>button
+{
+  background-color: black;
+  color: white;
+  border: 0px;
+  align-self: center;
+  justify-self: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+
+.table_container-div{
+
+margin-top: 20px;
+
+}
+.table_container-div>table{
+  border: 1px solid black;
+  width: 100%;
+  
+}
+.table_container-div>table>tbody>tr:nth-child(even){
+  background-color: #dddddd;
+}
+.table_container-div>table>tbody>tr>th{
+  border-bottom: solid 1px rgb(60, 60, 60);
+  
+}
+.table_container-div>table>tbody>tr>th,
+.table_container-div>table>tbody>tr>td
+{ 
+
+  text-align:center;
+
+}
+.table_container-div>table>tbody>tr>td>button{
+  background-color: black;
+  color: white;
+  border: 0px;
+
+  padding: 10px;
+  min-width: 80px;
+  max-width: 99px;
+  border-radius: 5px;
+  margin: 3px 7px;
+}
+
+/* List user CSS : List USER COMPONENT  */

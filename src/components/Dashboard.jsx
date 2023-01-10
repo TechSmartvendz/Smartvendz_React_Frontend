@@ -3,10 +3,11 @@ import { Routes, Route, Link } from "react-router-dom";
 import Addorder from "./Addorder";
 import Products from "./Products";
 
-import UserManage from "./UserManage";
+import UserManage from "./UserManage/UserManage";
 import Addnewuser from "./Usermanage/Addnewuser";
 import Listuser from "./Usermanage/Listuser";
 import Userpermission from "./Usermanage/Userpermission";
+import AddNewRole from "./Usermanage/AddNewRole"
 
 import Companymanage from "./Companymanage";
 import Addnewcompany from "./Subroutes/Addnewcompany";
@@ -97,7 +98,9 @@ function Dashboard() {
               <Route exact path="/usermanage" element={<UserManage />}>
                 <Route path="addnewuser" element={<Addnewuser />} />
                 <Route path="listuser" element={<Listuser />} />
-                <Route path="userpermission" element={<Userpermission />} />
+                <Route path="userpermission" element={<Userpermission />} >
+                <Route path="addnewuser" element={<AddNewRole />} /> 
+                </Route>
               </Route>
                
               <Route exact path="/refillermanager" element={<Refiller />}>

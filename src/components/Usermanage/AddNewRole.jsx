@@ -2,7 +2,7 @@ import React from 'react'
 
 function AddNewRole() {
   return (
-   <React.Fragment>
+  <>
    <div className='addrole_container'>
    <form>
    <label htmlFor='role_name' className='rolename'>Role Name :</label>
@@ -137,7 +137,7 @@ function AddNewRole() {
  </form>
 </div>   
    
-   </React.Fragment>
+</>
   )
 }
 

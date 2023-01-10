@@ -8,7 +8,6 @@ function Addnewmachine() {
 const [subLinkJSON,setSubLinkJSON]=useState(MachineManageData);
   return (
     <div>
-      <p>Refiller</p>
       <SubLink sublinks={subLinkJSON} />
     </div>
   )
