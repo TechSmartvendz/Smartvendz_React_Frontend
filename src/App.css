@@ -191,19 +191,42 @@ font-size:0.9em;
 font-weight: bold;
 margin-left:5px;
   }
+  .input-lable-h-div>input,
+.input-lable-h-div>textarea,
+.input-lable-h-div>select,
   .input-lable-v-div>input,
   .input-lable-v-div>textarea,
   .input-lable-v-div>select
-  { color: black;
-    font-size:0.9em;
-    font-weight: bold;
-    border: 0px;
-    margin: 5px;
-    height: 25px;
-    border-radius: 2px;
-    padding: 5px;
+  { font-size: 14px;
+    border-radius: 4px;
+    line-height: 1.5;
+    padding: 5px 10px;
+    transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+    border: 2px solid #dee1e2;
+    color: rgb(14, 14, 16);
+    background: #dee1e2;
+    display: block;
+    height: 30px;
+    margin-left:5px;
 
    }
+    .input-lable-h-div>input:hover,
+.input-lable-h-div>textarea:hover,
+.input-lable-h-div>select:hover,
+  .input-lable-v-div>input:hover,
+  .input-lable-v-div>textarea:hover,
+  .input-lable-v-div>select:hover {
+    border-color: rgb(91, 91, 91);
+  }
+  .input-lable-h-div>input:focus,
+  .input-lable-h-div>textarea:focus,
+  .input-lable-h-div>select:focus,
+    .input-lable-v-div>input:focus,
+    .input-lable-v-div>textarea:focus,
+    .input-lable-v-div>select:focus{
+    border-color: #9147ff;
+    background: #fff;
+  }
 .input-lable-h-div>label
 {
 color: black;
@@ -211,22 +234,28 @@ font-size:0.9em;
 font-weight: bold;
 }
 
-.input-lable-h-div>input,
-.input-lable-h-div>textarea,
-.input-lable-h-div>select
-{ color: black;
-  
 
-  border: 1px solid black; 
-  margin: 5px;
-  height: 25px;
-  border-radius: 2px;
-  padding: 5px;
+{font-size: 14px;
+  border-radius: 6px;
+  line-height: 1.5;
+  padding: 5px 10px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+  border: 2px solid #dee1e2;
+  color: rgb(14, 14, 16);
+  background: #dee1e2;
+  display: block;
+  height: 36px;
   max-width: 100%;
   min-width: 200px;
+ } :hover {
+  border-color: #ccc;
+}:focus{
+  border-color: #9147ff;
+  background: #fff;
+}
 
 
- }
+
 
 .lable-input-hori{
 display: flex;
@@ -322,3 +351,7 @@ margin-top: 20px;
 }
 
 /* List user CSS : List USER COMPONENT  */
+
+
+
+
