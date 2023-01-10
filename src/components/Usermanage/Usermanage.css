@@ -23,7 +23,7 @@
 
 }
 .user_btn:hover{
-    background-color: rgb(120, 121, 120);
+    background-color: rgb(20, 140, 20);
 }
 /* ListUser css start from here */
 .spandiv{
@@ -210,3 +210,69 @@ background-color: rgb(0, 255, 34);
     background-color: chartreuse;
     color: black;
 }
+.container_div{
+
+    display: flex;
+    align-items: stretch;
+    align-content: space-between;
+   flex-direction:column;
+   background-color:white;
+   
+   
+  }
+  .form_datas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around !important;
+  }
+  .form_datas>div>div>input{
+    display: flex;
+    flex-direction: row;
+   flex-wrap: wrap;
+  }
+  
+  .left_div{
+  display: flex;
+  justify-content: space-around;
+  width: 40% !important;
+  min-width: fit-content;
+  }
+  .from_field
+  {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  }
+  .from_field>label
+  {
+  margin:5px;
+  
+  }
+  .from_field>input,textarea
+  {
+  margin:5px;
+  width:220px;
+  
+  }
+  .fdiv_containers{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  }
+  .btnsubmit{
+  display: flex;
+  padding:40px;
+  /* margin-top: 150px; */
+  
+  }
+  .btnsubmit>button{
+  background-color: rgb(10, 10, 10);
+  color:white;
+  padding: 15px;
+  padding-right: 10px;
+  border-radius:7px;
+  float:inherit;
+  margin-top:250px;
+  
+  }
+  
