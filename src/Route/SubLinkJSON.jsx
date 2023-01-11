@@ -143,3 +143,23 @@ export const WareHouseData = [
       path: "/warehouse/userpermission",    
   }
 ];
+
+export const ProductsData = [
+  {
+    title:"Product List",
+    path:"/products/productlist"
+
+  },
+  {
+    title:"Bulk Product Upload",
+    path:"/products/bulkproductupload"
+  },
+  {
+    title:"Single Product Add",
+    path:"/products/singleproductadd"
+  },
+  {
+    title:"Update Bulk Product",
+    path:"/products/updatebulkproduct"
+  }
+];

@@ -235,36 +235,12 @@ font-weight: bold;
 }
 
 
-{font-size: 14px;
-  border-radius: 6px;
-  line-height: 1.5;
-  padding: 5px 10px;
-  transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
-  border: 2px solid #dee1e2;
-  color: rgb(14, 14, 16);
-  background: #dee1e2;
-  display: block;
-  height: 36px;
-  max-width: 100%;
-  min-width: 200px;
- } :hover {
-  border-color: #ccc;
-}:focus{
-  border-color: #9147ff;
-  background: #fff;
-}
-
-
-
 
 .lable-input-hori{
 display: flex;
 flex-flow:column;
 justify-content: space-between;
 padding:5px
-}
-.lable-input-hori>label{
-
 }
 
 .subroute-btn{

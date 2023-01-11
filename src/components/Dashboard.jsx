@@ -1,7 +1,13 @@
 import { Routes, Route, Link } from "react-router-dom";
 //FIXME:remove Add order
 import Addorder from "./Addorder";
-import Products from "./Products";
+
+
+import Products from "./Products/Products";
+import ProductList from "./Products/ProductList";
+import BulkProductUpload from "./Products/BulkProductUpload";
+import SingleProductAdd from "./Products/SingleProductAdd";
+import UpdateBulkProduct from "./Products/UpdateBulkProduct";
 
 import UserManage from "./UserManage/UserManage";
 import Addnewuser from "./Usermanage/Addnewuser";
@@ -124,7 +130,13 @@ function Dashboard() {
                   <Route path="unitmanage" element={<Unitmanage />} />
               </Route>
 
-              <Route exact path="/products" element={<Products />}></Route>
+              <Route exact path="/products" element={<Products />}>
+              <Route path="productlist" element={<ProductList />} />
+                  <Route path="bulkproductupload" element={<BulkProductUpload />} />
+                  <Route path="singleproductadd" element={<SingleProductAdd />} />
+                  <Route path="updatebulkproduct" element={<UpdateBulkProduct />} />
+
+              </Route>
 
               <Route exact path="/refundandsupport" element={<Refund />}>
                   <Route path="1" element={<Refund1 />} />
