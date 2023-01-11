@@ -10,7 +10,7 @@ import Userpermission from "./Usermanage/Userpermission";
 import AddNewRole from "./Usermanage/AddNewRole"
 
 import Companymanage from "./Companymanage";
-import Addnewcompany from "./Subroutes/Addnewcompany";
+import Addnewcompany from "./Company_Manage/Addnewcompany";
 import Listcompany from "./Subroutes/Listcompany";
 
 import Addnewmachine from "./MachineManage/Addnewmachine"
