@@ -9,8 +9,8 @@ function Add_role_table() {
         {slno:"",Rolename:"Staff",permission:""}
        ] 
   return (
-   <React.Fragment>
-   <div className='table_div'>
+<>
+   <div className='table_container-div'>
    
    <table>
    <tbody>   
@@ -18,9 +18,8 @@ function Add_role_table() {
    <th>Sl no</th>
    <th>Role Name</th>
    <th>Permission</th>
-   <th>Edit</th>
-   <th>Delete</th>
-   <th></th>
+   <th>Action</th>
+   
    </tr>
    
    {
@@ -30,9 +29,9 @@ function Add_role_table() {
         <td>{key+1}</td>
         <td>{data.Rolename}</td>
         <td>{data.permission}</td>
-        <td><button className='btn_edit'>Edit</button></td>
-        <td><button className='btn_delete'>Delete</button></td>
-        <td></td>
+        <td><button>Edit</button>
+         <button >Delete</button></td>
+       
         </tr>
       )
     })
@@ -44,7 +43,7 @@ function Add_role_table() {
    </div> 
    
    
-   </React.Fragment>
+   </>
   )
 }
 

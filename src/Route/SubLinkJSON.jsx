@@ -1,3 +1,6 @@
+export const HomeData = [
+ 
+];
 export const CompanyManagerData = [
   {
     title: "Add new company",
@@ -8,7 +11,6 @@ export const CompanyManagerData = [
     path: "/companymanage/listcompany"    
   }
 ];
-
 export const EmployeeManageData = [  
   {
     title: "Add new employee",
@@ -42,7 +44,6 @@ export const GeneralManagerData = [
     path: "/generalmanager/unitmanage",    
   }
 ];
-
 export const InventoryManagerData = [
     
   {
@@ -55,7 +56,6 @@ export const InventoryManagerData = [
   }
  
 ];
-
 export const MachineManageData = [
  
   {
@@ -71,7 +71,6 @@ export const MachineManageData = [
     path: "/manage_machine/machineconfiguration",
   }
 ];
-
 export const RefillerManage = [
    
   {
@@ -87,7 +86,6 @@ export const RefillerManage = [
     path: "/refillermanager/3",
   }
 ];
-
 export const RefundandSupportData = [
    
   {
@@ -99,19 +97,21 @@ export const RefundandSupportData = [
     path: "/refundandsupport/2"
   }
 ];
-
 export const TransactionManageData = [
 
   {
-    title: "1",
-    path: "/transactionreports/credit_transaction_report",
+    title: "Transaction Report",
+    path: "/transactionreports/transaction_report",
   },
   {
-    title: "2",
+    title: "Credit Report",
     path: "/transactionreports/credit_report"
+  },
+  {
+    title: "Credit Transaction Report",
+    path: "/transactionreports/credit_transaction_report"
   }
 ];
-
 export const UserManagerData = [
   
   {
@@ -131,9 +131,7 @@ export const UserManagerData = [
     path: "/usermanage/userpermission",    
     cName:""
 }
-
 ];
-
 export const WareHouseData = [
    
   {
@@ -144,5 +142,4 @@ export const WareHouseData = [
       title: "User permission",
       path: "/warehouse/userpermission",    
   }
- 
 ];

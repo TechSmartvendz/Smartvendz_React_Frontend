@@ -1,26 +1,31 @@
-.loginbody {
-  padding: 0;
-  margin: 0;
+/* LOGIN CSS : LOGIN COMPONENT  */
+.loginbody{
+  
+  padding:0;
+  margin:0;
   height: 100vh;
   width: 100vw;
-  background-color: #3a3939;
+ background-color: #3a3939;
 }
-.loginbox {
+.loginbox{
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 350px;
-  min-height: 180px;
-  background: white;
+  transform: translate(-50%,-50%);
+  width:350px;
+  min-height:180px;
+  background:white;
   border-radius: 15px;
-  padding: 50px;
+  padding:50px;
   box-sizing: border-box;
+  
 }
-.cicon {
+.cicon{
   margin: 0 auto;
   display: block;
-  margin-bottom: 15px;
+  margin-bottom:15px;
+ 
+ 
 }
 h3{
   margin: 0;
@@ -28,32 +33,37 @@ h3{
   color: #262626;
   text-align: center;
 }
-.loginbox input {
-  width: 100%;
-  padding: 5px;
+
+.loginbox input{
+  width:100%;
+  padding:5px;
   margin-bottom: 20px;
   border-radius: 10px;
+  
 }
 .loginbox input[type="email"],
-.loginbox input[type="password"] {
+.loginbox input[type="password"]
+{
   border: none;
   border-bottom: 2px solid #262626;
   outline: none;
   height: 40px;
   color: #262626;
-
+ 
   font-size: 16px;
   padding-left: 0px;
   box-sizing: border-box;
+  
 }
 .loginbox input[type="email"]:focus,
-.loginbox input[type="password"]:focus {
+.loginbox input[type="password"]:focus
+{
   border-bottom: 2px solid black;
 }
-.inputdiv {
+.inputdiv{
   position: relative;
 }
-.loginbox input[type="submit"] {
+.loginbox input[type="submit"]{
   border: none;
   border-radius: 20px;
   outline: none;
@@ -62,278 +72,286 @@ h3{
   background: rgb(10, 10, 10);
   color: rgb(255, 255, 255);
   cursor: pointer;
+  
+
 }
-.forgot {
-  color: black;
-  margin-left: 41px;
+.loginbox input[type="submit"]:hover{
+  background-color: #236723;
+  
 }
 
-.span_div {
-  margin: 25px;
-  margin-top: 30px;
+.forgot{
+  
+  color: black;
+  margin-left:41px;
+  
 }
-.container {
-  background-color: rgb(178, 199, 202);
-  height: fit-content;
-  min-height: 100%;
-  width: 100%;
-  padding: 20px;
-  /* margin: auto; */
-}
-.container > .empty {
-  background-color: white;
-  min-height: 50px;
-}
-.formcontain {
-  background-color: white;
-}
-.container > div {
-  margin: 5px;
-  padding: 5px;
-}
-.container > div > form {
-  margin: 10px;
-  display: flex;
-  flex-flow: row;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-.container > div > form > div {
+
+/* LOGIN CSS : LOGIN COMPONENT  */
+/* USER MANAGE CSS : ADD NEW USER COMPONENT  */
+/* COMPONENT CONTATINER CSS */
+.add-user-container{
   display: flex;
   flex-flow: column;
-  width: 235px;
+  background-color: aquamarine;
+ 
 }
-.container > div > form > div > input,
-.container > div > form > div > select {
-  margin: 10px;
-  margin-top: 2px;
-  height: 30px;
-  min-width: 80px;
-  padding-left: 10px;
-  border-radius: 4px;
-  background-color: rgb(202, 202, 202);
-  border-style: none;
-}
-.container > div > form > div > label {
-  margin-left: 10px;
-  font-size: 0.8em;
-}
-.table_container {
-  background-color: white;
-
-  display: flex;
-  flex-direction: column;
-}
-table{
-  flex-direction: column;
-  border-collapse: collapse;
-  border-right: solid 1px rgb(60, 60, 60);
-  border-top: solid 1px rgb(60, 60, 60);
-}
-th {
-  border-bottom: solid 1px rgb(60, 60, 60);
-}
-th,
-td {
-  text-align: left;
-  padding: 8px;
-}
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-.button {
-  padding: 10px;
-  border-radius: 4px;
-  background-color: black;
-  color: rgb(255, 212, 212);
-  width: 100px;
-  margin-left: 100px;
-  height: 40px;
+/* COMPONENT CONTATINER CSS */
+/* COMPONENT MAIN HEADING CSS */
+.componet-title{
+color: black;
+font-size: 1.5em;
+font-weight: bold;
 }
 
-#addorder-btn {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-/* Super admin style start from here */
-.button_btn {
-  padding: 10px;
-  border-radius: 4px;
-  background-color: black;
-  color: white;
-  width: 100px;
-  margin-left: 100px;
-  margin-top: 13px;
-  height: 40px;
-}
-/* Manage_machine style start from here  */
-.mm_container {
-  background-color: white;
-}
-.main_head {
-  font-weight: bold;
-}
-.heading {
-  font-weight: bold;
-}
-.mm_table > tr,
-th,td {
-  /* border-collapse:collapse; */
-  border-left: solid 1px rgb(60, 60, 60);
-}
-.mm_table_container {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-}
-.mm_table_btn {
-  background-color: rgb(0, 255, 255);
+/* COMPONENT MAIN HEADING CSS */
+/* COMPONENT MAIN SUB-HEADING CSS */
+.componet-sub-title{
   color: black;
+  font-size: 1.3em;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding:5px;
+  }
+  .componet-sub2-title{
+    color: black;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    padding:5px;
+    }
+/* COMPONENT MAIN SUB-HEADING CSS */
+/* COMMMON FLEX CSS*/
+.flex-row{
+  display: flex;
+  flex-flow:column;
+}
+
+.flex-col{
+  display: flex;
+  flex-flow:row;
+
+}
+/* COMMMON FLEX CSS*/
+.form-2col-ver{
+/* background-color: aquamarine; */
+justify-content:space-around;
+margin-left: 20px;
+flex-wrap: wrap;
+padding-bottom: 20px;
+margin-bottom: 30px;
+
+
+}
+.form-2col-ver>div{
+  max-width:95%;
+  min-width:713px;
+/* background-color: aqua; */
+justify-content: space-around;
+margin-top:20px;
+margin-left:10px;
+flex-wrap: wrap;
+
+
+
+}
+ /* form left and right div */
+.form-2col-ver>div>div{  
+  /* background-color: blue; */
+  min-width: 40%;
+  flex-wrap: wrap;
+
+}
+ /* input and lable - horizontal div */
+.input-lable-h-div{
+/* background-color: red; */
+display:flex;
+flex-flow: row;
+justify-content:space-between;
+max-width:444px;
+margin:5px;
+flex-wrap: wrap;
+
+}
+.input-lable-v-div{
+  /* background-color: red; */
+  display:flex;
+  flex-flow: column;
+  justify-content:start;
+  align-items:flex-start;
+  margin:5px;
   padding: 5px;
-  margin: none;
-  border-radius: 6px;
-  cursor: pointer;
+  flex-wrap: wrap;
+  }
+.input-lable-v-div>label{
+color: black;
+font-size:0.9em;
+font-weight: bold;
+margin-left:5px;
+  }
+  .input-lable-h-div>input,
+.input-lable-h-div>textarea,
+.input-lable-h-div>select,
+  .input-lable-v-div>input,
+  .input-lable-v-div>textarea,
+  .input-lable-v-div>select
+  { font-size: 14px;
+    border-radius: 4px;
+    line-height: 1.5;
+    padding: 5px 10px;
+    transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+    border: 2px solid #dee1e2;
+    color: rgb(14, 14, 16);
+    background: #dee1e2;
+    display: block;
+    height: 30px;
+    margin-left:5px;
+
+   }
+    .input-lable-h-div>input:hover,
+.input-lable-h-div>textarea:hover,
+.input-lable-h-div>select:hover,
+  .input-lable-v-div>input:hover,
+  .input-lable-v-div>textarea:hover,
+  .input-lable-v-div>select:hover {
+    border-color: rgb(91, 91, 91);
+  }
+  .input-lable-h-div>input:focus,
+  .input-lable-h-div>textarea:focus,
+  .input-lable-h-div>select:focus,
+    .input-lable-v-div>input:focus,
+    .input-lable-v-div>textarea:focus,
+    .input-lable-v-div>select:focus{
+    border-color: #9147ff;
+    background: #fff;
+  }
+.input-lable-h-div>label
+{
+color: black;
+font-size:0.9em;
+font-weight: bold;
 }
-.mmAddnew_btn {
-  background-color: blue;
+
+
+{font-size: 14px;
+  border-radius: 6px;
+  line-height: 1.5;
+  padding: 5px 10px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+  border: 2px solid #dee1e2;
+  color: rgb(14, 14, 16);
+  background: #dee1e2;
+  display: block;
+  height: 36px;
+  max-width: 100%;
+  min-width: 200px;
+ } :hover {
+  border-color: #ccc;
+}:focus{
+  border-color: #9147ff;
+  background: #fff;
+}
+
+
+
+
+.lable-input-hori{
+display: flex;
+flex-flow:column;
+justify-content: space-between;
+padding:5px
+}
+.lable-input-hori>label{
+
+}
+
+.subroute-btn{
+  background-color: rgb(57, 57, 57);
+  color: bisque;
+  margin-left: 2px;
+  padding: 10px;
+  border:0px;
+  border-radius: 2px;
+}
+.submit-btn{
+  background-color: black;
   color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  padding: 8px;
-  margin: 25px;
-}
-.mmDelete_btn {
-  background-color: red;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  padding: 5px;
-}
-.mmClose_btn {
-  background-color: white;
-  color: rgb(40, 39, 39);
-  border-radius: 6px;
-  cursor: pointer;
-  padding: 8px;
-  float: right;
-  margin-top: 30px;
-  margin-right: 20px;
-}
-.mm_option {
-  margin-top: 20px;
-}
-.search {
-  float: right;
-  margin-right: 20px;
+  border: 0px;
+  margin-top: 15px;
+  align-self: center;
+  justify-self: center;
+  padding: 10px;
+  min-width: 80px;
+  max-width: 99px;
   border-radius: 5px;
 }
-.table_headings {
-  font-weight: bold;
-}
-.mm_edit_btn {
-  background-color: aqua;
-  color: black;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 5px;
-}
 
-/* Machine Details starts from here */
+/* List user CSS : List USER COMPONENT  */
+.option-btn{
+/* background-color: #3a3939; */
+padding:10px;
+display: flex;
+flex-flow: row;
+justify-content: flex-end;
 
-.container_div {
-  display: flex;
-  align-items: stretch;
-  align-content: space-between;
-  flex-direction: column;
-  background-color: white;
 }
-.form_datas {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around !important;
-}
-.form_datas > div > div > input {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.left_div {
-  display: flex;
-  justify-content: space-around;
-  width: 40% !important;
-  min-width: fit-content;
-}
-.from_field {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.from_field > label {
+.option-btn>button,
+.option-btn>div{
   margin: 5px;
 }
-.from_field > input,
-textarea {
-  margin: 5px;
-  width: 220px;
-}
-.fdiv_containers {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-}
-.btnsubmit {
-  display: flex;
-  padding: 40px;
-  /* margin-top: 150px; */
-}
-.btnsubmit > button {
-  background-color: green;
+.option-btn>button
+{
+  background-color: black;
   color: white;
-  padding: 15px;
-  padding-right: 10px;
-  border-radius: 7px;
-  float: inherit;
-  margin-top: 250px;
-}
-
-/* Add machine slots styles start from here */
-.ams_container {
-  background-color: white;
-}
-.table_container {
-  display: flex;
-}
-
-/* message _box css start from here */
-
-.success_msg{
-  background-color:rgb(60, 171, 60);
-  width:100%;
-  height:60px;
- text-align: center;
-  font-weight: bold;
-  padding: 15px;
-}
-.warning_msg{
-  background-color:rgb(212, 232, 36);
-  width:100%;
-  height :60px;
-  text-align: center;
-  font-weight: bold;
-  padding: 15px;
-}
-.reject_msg{
-  background-color:rgb(233, 80, 49);
-  width:100%;
-  height :60px;
-  text-align: center;
-  font-weight: bold;
-  padding: 15px;
+  border: 0px;
+  align-self: center;
+  justify-self: center;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 
-/* add new user css start from here which is same as machine detail css */
+
+.table_container-div{
+
+margin-top: 20px;
+
+}
+.table_container-div>table{
+  border: 1px solid black;
+  width: 100%;
+  
+}
+.table_container-div>table>tbody>tr:nth-child(even){
+  background-color: #dddddd;
+}
+.table_container-div>table>tbody>tr>th{
+  border-bottom: solid 1px rgb(60, 60, 60);
+  
+}
+.table_container-div>table>tbody>tr>th,
+.table_container-div>table>tbody>tr>td
+{ 
+
+  text-align:center;
+
+}
+.table_container-div>table>tbody>tr>td>button{
+  background-color: black;
+  color: white;
+  border: 0px;
+
+  padding: 10px;
+  min-width: 80px;
+  max-width: 99px;
+  border-radius: 5px;
+  margin: 3px 7px;
+}
+
+/* List user CSS : List USER COMPONENT  */
+
+
+
+

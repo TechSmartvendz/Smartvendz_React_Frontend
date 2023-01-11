@@ -1,7 +1,16 @@
-import React from "react";
-// import Homeimage from '../assets/vending machine image.jpg'
+import React,{useState} from 'react'
+import SubLink from '../Route/SubLink';
+import {HomeData} from '../Route/SubLinkJSON';
+
 function Home() {
-  return <div>Home</div>;
+const [subLinkJSON,setSubLinkJSON]=useState(HomeData);
+  return (
+   <>
+ 
+    <SubLink sublinks={subLinkJSON} />
+      
+   </>
+  )
 }
 
 export default Home;

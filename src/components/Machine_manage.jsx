@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react";
 import MachineContext from "../Context/MachineContext";
 import Message_box from "./Result_msg/Message_box";
-//import Machine_details from './Machine_details'
-import './Usermanage/Usermanage.css'
+
 function Machine_manage() {
   const machinedata = [
     {

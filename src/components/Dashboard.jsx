@@ -3,11 +3,11 @@ import { Routes, Route, Link } from "react-router-dom";
 import Addorder from "./Addorder";
 import Products from "./Products";
 
-import UserManage from "./UserManage";
+import UserManage from "./UserManage/UserManage";
 import Addnewuser from "./Usermanage/Addnewuser";
 import Listuser from "./Usermanage/Listuser";
 import Userpermission from "./Usermanage/Userpermission";
-import AddNewRole from "./Usermanage/AddNewRole";
+import AddNewRole from "./Usermanage/AddNewRole"
 
 import Companymanage from "./Companymanage";
 import Addnewcompany from "./Subroutes/Addnewcompany";
@@ -24,9 +24,11 @@ import Addnewemployee from "./Subroutes/Addnewemployee";
 import Updateemployee from "./Subroutes/Updateemployee";
 import SearchandUpdateemployee from "./Subroutes/SearchandUpdateemployee";
 
-import Transactions from "./Transactions";
-import Transactions1 from "./Subroutes/Transactions1";
-import Transactions2 from "./Subroutes/Transactions2";
+import Transactions from "./Transactions/Transactions";
+import TransactionReport from "./Transactions/TransactionReport";
+import CreditReport from "./Transactions/CreditReport";
+import CreditTransactionReport from "./Transactions/CreditTransactionReport";
+
 
 import Generalmanage from "./Generalmanage";
 import Countrymanage from "./Subroutes/Countrymanage";
@@ -78,7 +80,7 @@ function Dashboard() {
             </Route>
 
               <Route exact path="/manage_machine" element={<Addnewmachine />}>
-                  <Route path="addnewmachine" element={<Manage_machine />} />
+                  <Route default path="addnewmachine" element={<Manage_machine />} />
                   <Route path="listmachine" element={<Listmachine />} />
                   <Route path="machineconfiguration" element={<Machineconfiguration />}/>
               </Route>
@@ -99,11 +101,9 @@ function Dashboard() {
                 <Route path="addnewuser" element={<Addnewuser />} />
                 <Route path="listuser" element={<Listuser />} />
                 <Route path="userpermission" element={<Userpermission />} >
-                <Route path="add-new-role" element={<AddNewRole/>}/>
+                <Route path="addnewuser" element={<AddNewRole />} /> 
                 </Route>
-              
-             
-                </Route>
+              </Route>
                
               <Route exact path="/refillermanager" element={<Refiller />}>
                 <Route path="1" element={<Refiller1 />} />
@@ -112,8 +112,9 @@ function Dashboard() {
               </Route>
              
               <Route exact path="/transactionreports" element={<Transactions />}>
-                   <Route path="credit_transaction_report" element={<Transactions1 />}/>
-                   <Route path="credit_report" element={<Transactions2 />}/>
+                   <Route path="transaction_report" element={<TransactionReport />}/>
+                   <Route path="credit_report" element={<CreditReport/>}/>
+                   <Route path="credit_transaction_report" element={<CreditTransactionReport />} />
               </Route>
 
               <Route exact path="/generalmanager" element={<Generalmanage />}>
