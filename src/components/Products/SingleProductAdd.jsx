@@ -2,10 +2,13 @@ import React from 'react'
 
 function SingleProductAdd() {
   return (
-    <div>
-        <p>Single product add</p>
-      
+    <>
+    <div className="add-user-container">
+      <div>
+        <span className="componet-title">Single Product Add</span>
+      </div>
     </div>
+    </>
   )
 }
 

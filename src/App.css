@@ -329,6 +329,25 @@ margin-top: 20px;
   margin: 3px 7px;
 }
 
+.upload-download-btn{
+/* background-color: #262626; */
+padding: 10px;
+padding-left: 16px;
+display: flex;
+flex-flow: row;
+
+}
+.upload-download-btn>button{
+  background-color: black;
+  color: white;
+  border: 0px;
+  align-self: center;
+  justify-self: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
 /* List user CSS : List USER COMPONENT  */
 
 
