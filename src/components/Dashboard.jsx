@@ -7,6 +7,7 @@ import UserManage from "./UserManage";
 import Addnewuser from "./Usermanage/Addnewuser";
 import Listuser from "./Usermanage/Listuser";
 import Userpermission from "./Usermanage/Userpermission";
+import AddNewRole from "./Usermanage/AddNewRole";
 
 import Companymanage from "./Companymanage";
 import Addnewcompany from "./Subroutes/Addnewcompany";
@@ -97,8 +98,12 @@ function Dashboard() {
               <Route exact path="/usermanage" element={<UserManage />}>
                 <Route path="addnewuser" element={<Addnewuser />} />
                 <Route path="listuser" element={<Listuser />} />
-                <Route path="userpermission" element={<Userpermission />} />
-              </Route>
+                <Route path="userpermission" element={<Userpermission />} >
+                <Route path="add-new-role" element={<AddNewRole/>}/>
+                </Route>
+              
+             
+                </Route>
                
               <Route exact path="/refillermanager" element={<Refiller />}>
                 <Route path="1" element={<Refiller1 />} />
