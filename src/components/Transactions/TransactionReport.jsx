@@ -9,7 +9,7 @@ function TransactionReport() {
    <div className="componet-sub-title">
         <span>Search Employee</span>
        </div>
-      <form >
+      <form className="sub-div ">
         <div className="flex-col">
           <div className="input-lable-v-div">
             <label>Start Date-Time</label>
@@ -67,7 +67,7 @@ function TransactionReport() {
         </div>
         </form>
     </div>
-    <div >
+    <div className="add-user-container" >
     <div className="componet-sub-title">
     <span>Employees</span>
    </div>

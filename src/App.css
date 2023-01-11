@@ -93,7 +93,7 @@ h3{
 .add-user-container{
   display: flex;
   flex-flow: column;
- 
+ padding:20px !important;
   /* background-color: aquamarine; */
  
 }
@@ -103,21 +103,23 @@ h3{
 color: black;
 font-size: 1.5em;
 font-weight: bold;
+
 }
 
 /* COMPONENT MAIN HEADING CSS */
 /* COMPONENT MAIN SUB-HEADING CSS */
 .componet-sub-title{
   color: black;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold;
   border-bottom: 1px solid black;
   border-top: 1px solid black;
   padding:5px;
+  margin-top: 10px;
   }
   .componet-sub2-title{
     color: black;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
     border-bottom: 1px solid black;
     border-top: 1px solid black;
@@ -138,16 +140,16 @@ font-weight: bold;
 
 }
 /* COMMMON FLEX CSS*/
+
 .form-2col-ver{
 /* background-color: aquamarine; */
 justify-content:space-around;
-margin-left: 20px;
 flex-wrap: wrap;
+margin-left: 20px;
 padding-bottom: 20px;
 margin-bottom: 30px;
-
-
 }
+.sub-div,
 .form-2col-ver>div{
   max-width:95%;
   min-width:713px;
@@ -156,10 +158,8 @@ justify-content: space-around;
 margin-top:20px;
 margin-left:10px;
 flex-wrap: wrap;
-
-
-
 }
+
  /* form left and right div */
 .form-2col-ver>div>div{  
   /* background-color: blue; */
