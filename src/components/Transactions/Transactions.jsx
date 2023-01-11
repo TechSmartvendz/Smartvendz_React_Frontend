@@ -5,10 +5,9 @@ import {TransactionManageData} from '../../Route/SubLinkJSON';
 function Transactions() {
 const [subLinkJSON,setSubLinkJSON]=useState(TransactionManageData);
   return (
-    <div>
-      <p>Transactions</p>
+      <>
       <SubLink sublinks={subLinkJSON} />
-    </div>
+      </>
   )
 }
 

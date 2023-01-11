@@ -121,7 +121,7 @@ function Addnewuser() {
          <div className="componet-sub-title">
           <span>Login Info</span>
          </div>
-         <div className="form-hori-div">
+         <div>
           <div className="flex-col" >
             <div className="input-lable-v-div">
               <label htmlFor="username">User Name</label>

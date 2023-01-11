@@ -93,7 +93,8 @@ h3{
 .add-user-container{
   display: flex;
   flex-flow: column;
-  background-color: aquamarine;
+ 
+  /* background-color: aquamarine; */
  
 }
 /* COMPONENT CONTATINER CSS */
@@ -127,11 +128,13 @@ font-weight: bold;
 .flex-row{
   display: flex;
   flex-flow:column;
+  flex-wrap: wrap;
 }
 
 .flex-col{
   display: flex;
   flex-flow:row;
+  flex-wrap: wrap;
 
 }
 /* COMMMON FLEX CSS*/
