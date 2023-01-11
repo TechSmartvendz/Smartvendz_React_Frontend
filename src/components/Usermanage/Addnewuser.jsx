@@ -16,46 +16,46 @@ function Addnewuser() {
             <div className="flex-row">
               <div className="input-lable-h-div">
                 <label htmlFor="name">Name</label>
-                <input name="name" />
+                <input name="name" type="text" required/>
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="ename">Employee Name</label>
-                <input name="Ename" />
+                <input name="Ename"  type="text" required/>
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="mname">Manufacture Name</label>
-                <input name="mname" />
+                <input  type="text" required name="mname" />
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="pdate">Purchase Date</label>
-                <input name="pdate" />
+                <input  name="pdate"  type="date" required />
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="pamount">Purchase Amount</label>
-                <input name="pamount" />
+                <input name="pamount"  type="text" required />
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="samount">Service Amount</label>
-                <input name="samount" />
+                <input name="samount"  type="text" required/>
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="sduration">Service Duration To</label>
-                <input name="sduration" />
+                <input name="sduration"  type="date" required />
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="sduration">Service Email</label>
-                <input htmlFor="sduration" />
+                <input htmlFor="sduration"  type="text" required />
               </div>
 
               <div className="input-lable-h-div">
-                <label htmlFor="textarea">Service Details</label>
+                <label htmlFor="textarea" required>Service Details</label>
                 <textarea />
               </div>
 
@@ -67,42 +67,42 @@ function Addnewuser() {
             <div  className="flex-row">
               <div className="input-lable-h-div">
                 <label htmlFor="mcode">Machine Code</label>
-                <input name="mcode" />
+                <input name="mcode"  type="text" required />
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="lname">Location Name</label>
-                <input name="lname" />
+                <input name="lname"  type="text" required/>
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="sno">Serial No</label>
-                <input name="sno" />
+                <input name="sno"  type="text" required />
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="pfrom">Purchase From</label>
-                <input name="pfrom" />
+                <input name="pfrom"  type="text" required/>
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="stype">Service Type</label>
-                <input name="stype" />
+                <input name="stype"   type="text" required/>
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="sdform">Service Duration From</label>
-                <input name="sdfrom" />
+                <input name="sdfrom"  type="text" required/>
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="sby"> Serviced By</label>
-                <input name="sby" />
+                <input name="sby"  type="text" required/>
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="sby">Service Mobile No</label>
-                <input name="sby" />
+                <input name="sby"  type="number" required/>
               </div>
 
               <div className="input-lable-h-div">
@@ -112,7 +112,7 @@ function Addnewuser() {
 
               <div className="input-lable-h-div">
                 <label htmlFor="wname">Warehouse Name</label>
-                <input name="wname" />
+                <input name="wname"  type="text" required/>
               </div>
             </div>
           </div>
@@ -122,6 +122,8 @@ function Addnewuser() {
           <span>Login Info</span>
          </div>
          <div className="form-hori-div">
+
+
           <div className="flex-col" >
             <div className="input-lable-v-div">
               <label htmlFor="username">User Name</label>

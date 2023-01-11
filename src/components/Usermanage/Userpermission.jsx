@@ -5,10 +5,9 @@ import Add_role_table from './Add_role_table';
 
 function Userpermission() {
   const [addrole,setAddrole]=useState(true);
-  function handleRole()
+  function handleRole(val)
   {
-   setAddrole(false)
-   
+   setAddrole(false);
  }   
   return (
  <>
@@ -18,7 +17,7 @@ function Userpermission() {
           <span className="componet-title">Role List</span>
         </div>
        
-        <NavLink className="option-btn" to="/user_manage/user_permission/addnewrole"> <button onClick={handleRole} >Add New Role</button></NavLink>
+        <NavLink className="option-btn" to="/usermanage/userpermission/addnewrole"> <button onClick={handleRole}>Add New Role</button></NavLink>
     {/*<div className="option-btn">
         <button >Temp Button</button>
         <button >Temp button</button>
@@ -32,7 +31,7 @@ function Userpermission() {
    (addrole) && 
    <Add_role_table/> 
   }
-
+ 
   
   </div>
   </>

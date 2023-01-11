@@ -11,7 +11,7 @@ import AddNewRole from "./Usermanage/AddNewRole"
 
 import Companymanage from "./Companymanage";
 import Addnewcompany from "./Company_Manage/Addnewcompany";
-import Listcompany from "./Subroutes/Listcompany";
+import Listcompany from "./Company_Manage/Listcompany";
 
 import Addnewmachine from "./MachineManage/Addnewmachine"
 import Listmachine from "../components/MachineManage/Listmachine";
@@ -99,7 +99,7 @@ function Dashboard() {
                 <Route path="addnewuser" element={<Addnewuser />} />
                 <Route path="listuser" element={<Listuser />} />
                 <Route path="userpermission" element={<Userpermission />} >
-                <Route path="addnewuser" element={<AddNewRole />} /> 
+                <Route path="addnewrole" element={<AddNewRole />} /> 
                 </Route>
               </Route>
                
