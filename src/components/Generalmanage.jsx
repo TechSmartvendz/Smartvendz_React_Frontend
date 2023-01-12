@@ -7,10 +7,10 @@ import {GeneralManagerData} from '../Route/SubLinkJSON';
 function Generalmanage() {
 const [subLinkJSON,setSubLinkJSON]=useState(GeneralManagerData);
   return (
-    <div>
-      <p>Refiller</p>
+   
+    <React.Fragment>
       <SubLink sublinks={subLinkJSON} />
-    </div>
+      </React.Fragment>
   )
 }
 

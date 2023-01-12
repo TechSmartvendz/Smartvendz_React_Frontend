@@ -200,7 +200,6 @@ margin-left:5px;
   .input-lable-v-div>select
   {
     font-size: 14px;
-    border-radius: 4px;
     line-height: 1.5;
     padding: 5px 10px;
     transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
@@ -243,7 +242,7 @@ font-weight: bold;
 
 .subroute-btn{
   background-color: rgb(73, 100, 231);
-  color: bisque;
+  color: rgb(252, 250, 249);
   margin-left: 2px;
   padding: 10px;
   border:0px;
@@ -364,5 +363,22 @@ margin-top: 20px;
 /* List user CSS : List USER COMPONENT  */
 
 
-
-
+/* General manage css added by sharan */
+/* country manage css */
+.general-manage-div>input,
+.general-manage-div>select
+{
+  margin:20px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+  border-radius: 4px; 
+  background: #dee1e2;
+  border:2px solid #dee1e2 ;
+  font-size: 14px;
+  line-height: 1.5;
+   margin-left:45px;
+   width: 200px; 
+}
+.general-manage-div>input:focus
+{
+  background: #fff;
+}

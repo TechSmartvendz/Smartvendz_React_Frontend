@@ -126,7 +126,7 @@ export const UserManagerData = [
     title: "User permission",
     path: "/usermanage/userpermission",    
     cName:""
-},
+}
 
 ];
 export const WareHouseData = [

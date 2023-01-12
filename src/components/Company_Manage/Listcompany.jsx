@@ -26,6 +26,7 @@ function Listcompany() {
    <div className="componet-sub2-title">
           <span>Total Company:</span>
         </div>
+       
         <div className="table_container-div">
     <table>
     <tbody>

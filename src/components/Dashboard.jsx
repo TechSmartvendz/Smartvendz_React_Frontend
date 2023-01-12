@@ -7,6 +7,7 @@ import UserManage from "./UserManage/UserManage";
 import Addnewuser from "./Usermanage/Addnewuser";
 import Listuser from "./Usermanage/Listuser";
 import Userpermission from "./Usermanage/Userpermission";
+import UserRole from "./Usermanage/UserRole";
 import AddNewRole from "./Usermanage/AddNewRole"
 
 import Companymanage from "./Companymanage";
@@ -29,10 +30,10 @@ import Transactions1 from "./Subroutes/Transactions1";
 import Transactions2 from "./Subroutes/Transactions2";
 
 import Generalmanage from "./Generalmanage";
-import Countrymanage from "./Subroutes/Countrymanage";
-import Citymanage from "./Subroutes/Citymanage";
-import Unitmanage from "./Subroutes/Unitmanage";
-import Statemanage from "./Subroutes/Statemanage";
+import Countrymanage from "./GeneralManage/Countrymanage";
+import Citymanage from "./GeneralManage/Citymanage";
+import Unitmanage from "./GeneralManage/Unitmanage";
+import Statemanage from "./GeneralManage/Statemanage";
 
 import Refiller from "./Refiller";
 import Refiller1 from "./Subroutes/Refiller1";
@@ -55,6 +56,7 @@ import Navbar from "../navbar/Navbar";
 import Refund from "./Refund";
 import Refund1 from "./Subroutes/Refund1"
 import Refund2 from "./Subroutes/Refund2"
+
 
 //TODO: GET info about this Usermanahe.css
 // import 'Usermanage.css'
@@ -98,9 +100,9 @@ function Dashboard() {
               <Route exact path="/usermanage" element={<UserManage />}>
                 <Route path="addnewuser" element={<Addnewuser />} />
                 <Route path="listuser" element={<Listuser />} />
-                <Route path="userpermission" element={<Userpermission />} >
-                <Route path="addnewrole" element={<AddNewRole />} /> 
-                </Route>
+                <Route path="userpermission" element={<Userpermission />} />
+                <Route path="userrole" element={<UserRole/>}/> 
+              
               </Route>
                
               <Route exact path="/refillermanager" element={<Refiller />}>
