@@ -7,9 +7,9 @@ import {MachineManageData} from '../../Route/SubLinkJSON';
 function MachineManage() {
 const [subLinkJSON,setSubLinkJSON]=useState(MachineManageData);
   return (
-    <div>
+  <>
       <SubLink sublinks={subLinkJSON} />
-    </div>
+      </>
   )
 }
 

@@ -170,9 +170,9 @@ flex-wrap: wrap;
  /* input and lable - horizontal div */
 .input-lable-h-div{
 /* background-color: red; */
-display:flex;
-flex-flow: row;
-justify-content:space-between;
+display:flex !important;
+flex-flow: row !important;
+justify-content:space-between !important;
 max-width:444px;
 margin:5px;
 flex-wrap: wrap;
@@ -327,6 +327,31 @@ margin-top: 20px;
   max-width: 99px;
   border-radius: 5px;
   margin: 3px 7px;
+}
+
+.input-lable-checkbox-div{
+ 
+  margin:5px;
+  padding: 5px;
+  
+}
+.input-lable-checkbox-div>label{
+  color: black;
+  font-size:0.9em;
+  font-weight: bold;
+  margin-left:5px;
+    }
+    .input-lable-checkbox-div>input{
+      margin-left:10px;
+    }
+    .input-lable-checkbox-div>div>label{
+      color: black;
+      font-size:0.9em;
+      font-weight: bold;
+      margin-left:5px;
+     }
+.input-lable-checkbox-div>div{
+margin-left: 100px ;
 }
 
 /* List user CSS : List USER COMPONENT  */
