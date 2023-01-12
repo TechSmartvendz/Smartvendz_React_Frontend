@@ -197,11 +197,12 @@ margin-left:5px;
   .input-lable-h-div>input,
 .input-lable-h-div>textarea,
 .input-lable-h-div>select,
+
   .input-lable-v-div>input,
   .input-lable-v-div>textarea,
   .input-lable-v-div>select
-  { font-size: 14px;
-    border-radius: 4px;
+  {
+    font-size: 14px;
     line-height: 1.5;
     padding: 5px 10px;
     transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
@@ -211,6 +212,8 @@ margin-left:5px;
     display: block;
     height: 30px;
     margin-left:5px;
+    /* width for input fields */
+    width: 230px; 
 
    }
     .input-lable-h-div>input:hover,
@@ -239,20 +242,19 @@ font-weight: bold;
 
 
 
-.lable-input-hori{
-display: flex;
-flex-flow:column;
-justify-content: space-between;
-padding:5px
-}
 
 .subroute-btn{
-  background-color: rgb(57, 57, 57);
-  color: bisque;
+  background-color: rgb(73, 100, 231);
+  color: rgb(252, 250, 249);
   margin-left: 2px;
   padding: 10px;
   border:0px;
   border-radius: 2px;
+  cursor: pointer;
+}
+/* changed by sharan*/
+.subroute-btn:hover{
+background-color: blue;
 }
 .submit-btn{
   background-color: black;
@@ -265,6 +267,11 @@ padding:5px
   min-width: 80px;
   max-width: 99px;
   border-radius: 5px;
+  cursor: pointer;
+}
+/* changed by sharan */
+.submit-btn:hover{
+  background-color: #262626;
 }
 
 /* List user CSS : List USER COMPONENT  */
@@ -291,6 +298,30 @@ justify-content: flex-end;
   border-radius: 5px;
 }
 
+.form-submit-button{
+  /* background-color: #3a3939; */
+  padding:10px;
+  display: flex !important;
+  flex-flow: row !important;
+  justify-content: flex-end !important;
+  width: 100%;
+  
+  }
+.form-submit-button>button,
+.form-submit-button>div{
+  margin: 5px;
+}
+.form-submit-button>button
+{
+  background-color: black;
+  color: white;
+  border: 0px;
+  align-self: center !important;
+  justify-self: center !important;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 
 
 .table_container-div{
@@ -310,13 +341,16 @@ margin-top: 20px;
   border-bottom: solid 1px rgb(60, 60, 60);
   
 }
-.table_container-div>table>tbody>tr>th,
+
 .table_container-div>table>tbody>tr>td
 { 
 
   text-align:center;
-
-}
+  }
+  /* changed by sharan */
+  .table_container-div>table>tbody>tr>th{
+    font-weight: bold;
+  }
 .table_container-div>table>tbody>tr>td>button{
   background-color: black;
   color: white;
@@ -357,5 +391,22 @@ margin-left: 100px ;
 /* List user CSS : List USER COMPONENT  */
 
 
-
-
+/* General manage css added by sharan */
+/* country manage css */
+.general-manage-div>input,
+.general-manage-div>select
+{
+  margin:20px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+  border-radius: 4px; 
+  background: #dee1e2;
+  border:2px solid #dee1e2 ;
+  font-size: 14px;
+  line-height: 1.5;
+   margin-left:45px;
+   width: 200px; 
+}
+.general-manage-div>input:focus
+{
+  background: #fff;
+}

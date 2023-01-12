@@ -16,10 +16,9 @@ function Listuser() {
         </div>
         <div className="option-btn">
         <button >Add New User</button>
-        <button >Add New User</button>
-        <button >Add New User</button>
-      </div>
-        <div className="componet-sub2-title">
+         </div>
+      
+         <div className="componet-sub2-title">
           <span>Total User:</span>
         </div>
 
@@ -38,7 +37,7 @@ function Listuser() {
               {userdata.map((data, key) => {
                 return (
                   <tr kay={key}>
-                    <td>{key + 1}</td>
+                    <td>{key+1}</td>
                     <td>{data.name}</td>
                     <td>{data.role}</td>
                     <td>{data.officelocation}</td>

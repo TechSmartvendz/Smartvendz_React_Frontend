@@ -7,8 +7,7 @@ function Userpermission() {
   const [addrole,setAddrole]=useState(true);
   function handleRole()
   {
-   setAddrole(false)
-   
+   setAddrole(false);
  }   
   return (
  <>
@@ -18,7 +17,7 @@ function Userpermission() {
           <span className="componet-title">Role List</span>
         </div>
        
-        <NavLink className="option-btn" to="/user_manage/user_permission/addnewrole"> <button onClick={handleRole} >Add New Role</button></NavLink>
+        <NavLink className="option-btn" to="/usermanage/userrole"> <button onClick={handleRole}>Add New Role</button></NavLink>
     {/*<div className="option-btn">
         <button >Temp Button</button>
         <button >Temp button</button>
@@ -27,12 +26,13 @@ function Userpermission() {
           <span>Total Roles:</span>
         </div>
         <Outlet/>
-  {
+        <Add_role_table/> 
+  {/*{
 //if addrole true in that case it will render if it become false on button click nothing will be render
-   (addrole) && 
-   <Add_role_table/> 
-  }
-
+   (addrole) && <Add_role_table/> 
+ 
+  } */}
+ 
   
   </div>
   </>

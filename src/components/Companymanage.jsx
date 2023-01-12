@@ -8,7 +8,6 @@ function Companymanage() {
 const [subLinkJSON,setSubLinkJSON]=useState(CompanyManagerData);
   return (
     <>
-      <p>Refiller</p>
       <SubLink sublinks={subLinkJSON} />
     </>
   )

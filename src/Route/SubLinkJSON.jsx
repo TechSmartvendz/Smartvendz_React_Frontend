@@ -121,7 +121,7 @@ export const UserManagerData = [
   
   },
   {
-      title: "LIst User",
+      title: "List User",
       path: "/usermanage/listuser",  
       cName:"" 
  
@@ -131,6 +131,7 @@ export const UserManagerData = [
     path: "/usermanage/userpermission",    
     cName:""
 }
+
 ];
 export const WareHouseData = [
    
