@@ -241,24 +241,29 @@ font-weight: bold;
 }
 
 
+.sub-route-div{
+  background-color: rgb(221, 221, 221) !important; 
 
+}
 
 .subroute-btn{
-  background-color: rgb(73, 100, 231);
-  color: rgb(252, 250, 249);
+  background-color: rgb(112, 223, 97);
+  color: rgb(0, 0, 0);
   margin-left: 2px;
   padding: 10px;
   border:0px;
+  transition: transform .2s;
   border-radius: 2px;
   cursor: pointer;
 }
 /* changed by sharan*/
 .subroute-btn:hover{
-background-color: blue;
+background-color: rgb(72, 255, 0);
+transform: scale(1.1);
 }
 .submit-btn{
   background-color: black;
-  color: white;
+  color: rgb(0, 0, 0);
   border: 0px;
   margin-top: 15px;
   align-self: center;

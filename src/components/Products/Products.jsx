@@ -6,7 +6,6 @@ function Products() {
 const [subLinkJSON,setSubLinkJSON]=useState(ProductsData);
   return (
     <>
-      <p>Products</p>
       <SubLink sublinks={subLinkJSON} />
     </>
   )

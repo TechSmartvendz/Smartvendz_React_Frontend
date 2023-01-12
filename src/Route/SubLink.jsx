@@ -5,7 +5,7 @@ function SubLink(props) {
   const [Sublinks,setSubLinks]=useState(props.sublinks)
   return (
     <>
-    <div>
+    <div className="sub-route-div">
       {Sublinks.map((item, index) => {
         return (
           <Link key={index} to={item.path}>
