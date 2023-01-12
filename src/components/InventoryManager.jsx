@@ -5,10 +5,10 @@ import {InventoryManagerData} from '../Route/SubLinkJSON';
 function InventoryManager() {
 const [subLinkJSON,setSubLinkJSON]=useState(InventoryManagerData);
   return (
-    <div>
+    <>
       <p>Refiller</p>
       <SubLink sublinks={subLinkJSON} />
-    </div>
+    </>
   )
 }
 

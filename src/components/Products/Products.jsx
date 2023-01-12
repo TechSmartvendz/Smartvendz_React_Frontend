@@ -5,10 +5,10 @@ import {ProductsData} from '../../Route/SubLinkJSON';
 function Products() {
 const [subLinkJSON,setSubLinkJSON]=useState(ProductsData);
   return (
-    <div>
+    <>
       <p>Products</p>
       <SubLink sublinks={subLinkJSON} />
-    </div>
+    </>
   )
 }
 

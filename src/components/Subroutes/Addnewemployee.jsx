@@ -2,24 +2,22 @@ import React from "react";
 
 function Addnewemployee() {
   function Download() {
-  
     axios({
       url: urlz, //your url
       method: "POST",
-    
+
       headers: {
-         "Content-Type": "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    }).then((res) => {
-      console.log(res.data);
-      fileDownload(res.data, "csvreport.csv");
     })
-    .error( err => console.log(err))
-      
-  
+      .then((res) => {
+        console.log(res.data);
+        fileDownload(res.data, "csvreport.csv");
+      })
+      .error((err) => console.log(err));
   }
-  const companies = ['abc','def','ghi','jkl','mno']
+  const companies = ["abc", "def", "ghi", "jkl", "mno"];
   const sampleCSV = [
     { cid: 1, mid: 1 },
     { cid: 2, mid: 2 },
@@ -35,39 +33,49 @@ function Addnewemployee() {
   ];
 
   return (
-    <div>
-      <option>Select User</option>
-      {/* <select>
-      {companies.map( (key) => (
-          <option title={result.Id}>{result.title}</option>
-      ))}
-      </select> */}
+    <>
+      {/* new */}
+      <div className="add-user-container">
+        <div>
+          <span className="componet-title">Add new employee</span>
+        </div>
+        <div className="componet-sub2-title">
+          <span>Bulk Employee Upload</span>
+        </div>
+        <form className="flex-row">
+          <div className="input-lable-v-div">
+            <label htmlFor="dropdown">Select company:</label>
+            <select id="dropdown">
+              <option value="N/A">Select company</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
 
-      <p>Add new employee</p>
-      <p> Bulk Employee Upload</p>
-      <p>Select company:</p>
-      <select id="dropdown">
-        <option value="N/A">Select company</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
-      <p>Select machine:</p>
-      <select id="dropdown">
-        <option value="N/A">Select machine</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
-      <p>Sample report/ CSV</p>
-      {/* <p>Sample CSV: </p> */}
-      <button onClick={Download} style={{cursor: 'pointer'}}>Download</button>
-      <p>Upload CSV: </p>
-      <input type="file" />
-      <button>Upload</button>
-    </div>
+          <div className="input-lable-v-div">
+            <label htmlFor="dropdown">Select machine:</label>
+            <select id="dropdown">
+              <option value="N/A">Select machine</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div className="input-lable-v-div">
+            <label>Upload CSV: </label>
+            <input type="file" />
+          </div>
+
+          <div className="upload-download-btn">
+            <button>Sample CSV</button>
+            <button>Upload</button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
 

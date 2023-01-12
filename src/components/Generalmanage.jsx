@@ -7,10 +7,10 @@ import {GeneralManagerData} from '../Route/SubLinkJSON';
 function Generalmanage() {
 const [subLinkJSON,setSubLinkJSON]=useState(GeneralManagerData);
   return (
-    <div>
+    <>
       <p>Refiller</p>
       <SubLink sublinks={subLinkJSON} />
-    </div>
+    </>
   )
 }
 
