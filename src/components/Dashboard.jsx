@@ -20,10 +20,10 @@ import Addnewcompany from "./Subroutes/Addnewcompany";
 import Listcompany from "./Subroutes/Listcompany";
 
 import Addnewmachine from "./MachineManage/Addnewmachine"
-import Listmachine from "../components/MachineManage/Listmachine";
-import Machineconfiguration from "../components/MachineManage/Machineconfiguration";
+import Listmachine from "./MachineManage/Listmachine";
+import Machineconfiguration from "./MachineManage/Machineconfiguration";
 //TODO:GET info about this "./Subroutes/Manage_machine"
-import Manage_machine from "./Subroutes/Manage_machine";
+import MachineManage from "./MachineManage/MachineManage";
 
 import Employeemanage from "./Employeemanage";
 import Addnewemployee from "./Subroutes/Addnewemployee";
@@ -85,8 +85,8 @@ function Dashboard() {
               <Route exact path="/products" element={<Products />} >
             </Route>
 
-              <Route exact path="/manage_machine" element={<Addnewmachine />}>
-                  <Route default path="addnewmachine" element={<Manage_machine />} />
+              <Route exact path="/manage_machine" element={<MachineManage />}>
+                  <Route default path="addnewmachine" element={<Addnewmachine />} />
                   <Route path="listmachine" element={<Listmachine />} />
                   <Route path="machineconfiguration" element={<Machineconfiguration />}/>
               </Route>
