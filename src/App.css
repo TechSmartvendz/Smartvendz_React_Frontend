@@ -263,7 +263,7 @@ transform: scale(1.1);
 }
 .submit-btn{
   background-color: black;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   border: 0px;
   margin-top: 15px;
   align-self: center;
@@ -415,3 +415,22 @@ margin-left: 100px ;
 {
   background: #fff;
 }
+
+.upload-download-btn{
+  /* background-color: #262626; */
+  padding: 10px;
+  padding-left: 16px;
+  display: flex;
+  flex-flow: row;
+  
+  }
+  .upload-download-btn>button{
+    background-color: black;
+    color: white;
+    border: 0px;
+    align-self: center;
+    justify-self: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+  }
