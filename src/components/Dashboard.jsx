@@ -16,7 +16,7 @@ import Userpermission from "./Usermanage/Userpermission";
 import UserRole from "./Usermanage/UserRole";
 import AddNewRole from "./Usermanage/AddNewRole"
 
-import Companymanage from "./Companymanage";
+import Companymanage from "./Company_Manage/Companymanage";
 import Addnewcompany from "./Company_Manage/Addnewcompany";
 import Listcompany from "./Company_Manage/Listcompany";
 

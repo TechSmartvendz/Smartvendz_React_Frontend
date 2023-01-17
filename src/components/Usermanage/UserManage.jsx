@@ -19,7 +19,4 @@ export default UserManage
 
 
    
-  //  "addnewuser"
-  //  "listuser"
-  //  "userpermission" 
-
+  

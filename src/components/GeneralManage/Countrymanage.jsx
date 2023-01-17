@@ -8,8 +8,6 @@ function Countrymanage() {
     {Country:"Srilanka"},
     {Country:"SouthAfrica"},
     {Country:"England"}
-
-
 ]
   return (
    <React.Fragment>
