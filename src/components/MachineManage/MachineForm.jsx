@@ -1,154 +1,215 @@
 
-import React from 'react'
+import React,{useState} from 'react'
+import {countrys} from '../OptionsJson';
+import { states } from '../OptionsJson';
+import { city } from '../OptionsJson';
+import { areas } from '../OptionsJson';
+import { products } from '../OptionsJson';
+import { companys } from '../OptionsJson';
+import { clients } from '../OptionsJson';
+import { Admins } from '../OptionsJson';
+import { Refiller } from '../OptionsJson';
+import { Refillers } from '../OptionsJson';
+import { warehouse } from '../OptionsJson';
 
 function MachineForm() {
+const[inputs,setInputs]=useState({});
+
+ 
+
+  const handleChange=(e)=>{
+   const name=e.target.name;
+   const value=e.target.value;
+   setInputs(values=>({...values,[name]:value}))
+   
+  }
+ const handleSubmit=(e)=>{
+ e.preventDefault();
+
+ console.log(inputs)
+ 
+ }
+
+
+
   return (
    <React.Fragment>
    <div className="add-user-container">
         <div>
           <span className="componet-title">Add New Machine</span>
         </div>
-        <form className="flex-row form-2col-ver">
+       
+        <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
             <span>Machine Details</span>
           </div>
           <div className="flex-col ">
             <div className="flex-row">
-              <div className="input-lable-h-div">
+             
+            <div className="input-lable-h-div">
                 <label htmlFor="machineName">Machine Name</label>
-                <input name="machineName" />
+                <input type="text" name="machineName" value={inputs.machineName || ""} onChange={handleChange} required/>
               </div>
 
               <div className="input-lable-h-div">
-                <label htmlFor="machineID">Mchine ID</label>
-                <input name="machineID" />
+                <label htmlFor="machineID">Machine ID</label>
+                <input name="machineId" type="text" value={inputs.machineId || ""} onChange={handleChange} />
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="country">Country</label>
-                <select name="country">
-                  <option>India</option>
-                  <option>Nepal</option>
-                  <option>Shrri Lanka</option>
-                </select>
-              </div>
+                <input name="country" list='country' type="search" value={inputs.country || ""} onChange={handleChange}/>
+                <datalist id='country'>
+                  {
+                    countrys.map((countr,k)=><option key={k}>{countr}</option>)                  }
+               </datalist>
+              
+               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="state">State</label>
-                <select name="state">
-                  <option>Karnataka</option>
-                  <option>Delhi</option>
-                  <option>Maharasthara</option>
-                </select>
+                <input name="state" list='state' value={inputs.state || ""} type="search" onChange={handleChange}/>
+                  <datalist id='state'>
+                  {
+                    states.map((sts,k)=><option key={k}>{sts}</option>)
+                  }
+                  
+                  </datalist>
+               
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="city">City</label>
-                <select name="city">
-                  <option>Banglore</option>
-                  <option>Manglore</option>
-                  <option>Mysore</option>
-                </select>
+              
+                <input name="city" list='city'  value={inputs.city || ""} type="search" onChange={handleChange} />
+              <datalist id='city'>
+              {
+              city.map((cit,k)=><option key={k}>{cit}</option>)
+              }
+              
+              </datalist>
+
+
+               
               </div>
               <div className="input-lable-h-div">
                 <label htmlFor="area">Area</label>
-                <select name="area">
-                  <option>HSR-Layout</option>
-                  <option>Electroni City</option>
-                  <option>BTM-Layout</option>
-                </select>
+                <input name="area" list='area' value={inputs.area || ""} type="search" onChange={handleChange}/>
+                 <datalist id='area'>
+                 {
+                  areas.map((ar,k)=><option key={k}>{ar}</option>)
+                 }
+                 
+                 </datalist>
+               
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="address">Address</label>
-                <input name="address" />
+                <input name="address" type="text"  value={inputs.address || ""} onChange={handleChange}  required/>
               </div>
               <div className="input-lable-h-div">
                 <label htmlFor="building">Building</label>
-                <input name="building" />
+                <input name="building" type="text"  value={inputs.building || ""} onChange={handleChange}  required/>
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="installLocation">Install Location</label>
-                <input name="installLocation" />
+                <input name="installLocation" type="text" value={inputs.installLocation || ""} onChange={handleChange}  required/>
               </div>
             </div>
 
             <div className="flex-row">
               <div className="input-lable-h-div">
                 <label htmlFor="productType">Product Type</label>
-                <select name="productType">
-                  <option>Snacks Vending</option>
-                  <option>IT Vending</option>
-                  <option>Stationary Vending</option>
-                </select>
+                <input name="productType" list='productType'  type="search" value={inputs.productType || ""} onChange={handleChange}/>
+                 <datalist id='productType'>
+                 {
+                  products.map((prod,k)=><option key={k}>{prod}</option>)
+                 }
+                 
+                 
+                 </datalist>
+               
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="totalSlot">Total Slots</label>
-                <input type="number" name="totalSlot" />
+                <input type="number" name="totalSlot"  value={inputs.totalSlot || ""} onChange={handleChange}  required/>
               </div>
               <div className="input-lable-h-div">
                 <label htmlFor="companyId">Company</label>
-                <select name="companyId">
-                  <option>BOSCH</option>
-                  <option>Juniper</option>
-                  <option>MIQ</option>
-                  <option>Diageo</option>
-                </select>
-              </div>
+                <input name="companyId" list="companyId" type="search" value={inputs.companyId || ""} onChange={handleChange}/>
+                  <datalist id='companyId'>
+                  {
+                    companys.map((comp,k)=><option key={k}>{comp}</option>)
+                  }
+                  
+                  
+                  </datalist>
+             </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="clientUserId">Client User</label>
-                <select name="clientUserId">
-                  <option>Raghu</option>
-                  <option>Neelesh</option>
-                  <option>Kuldeep</option>
-                  <option>Vinayak</option>
-                </select>
+                <input name="clientUserId" list='clientUserId' type="search" value={inputs.clientUserId || ""} onChange={handleChange}/>
+                  <datalist>
+                  {
+                    clients.map((clie,k)=><option key={k}>{clie}</option>)
+                  }
+                  
+                  </datalist>
+               
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="AdminId">Admin</label>
-                <select name="AdminId">
-                  <option>Chetan</option>
-                  <option>Dinesh</option>
-                  <option>Hemant</option>
-                  <option>Swapnil</option>
-                </select>
+                <input name="AdminId" list='AdminId' type="search" value={inputs.AdminId || ""} onChange={handleChange}/>
+                  <datalist id='AdminId'>
+                  {
+                    Admins.map((adm,k)=><option key={k}>{adm}</option>)
+                  }
+                  
+                  </datalist>
               </div>
               <div className="input-lable-h-div">
                 <label htmlFor="refiller">Refiller</label>
-                <select name="refiller">
-                  <option>Rakesh</option>
-                  <option>Kartika</option>
-                  <option>Anil</option>
-                  <option>Vanky</option>
-                </select>
+                <input name="refiller" list="refiller" type="search" value={inputs.refiller || ""} onChange={handleChange}/>
+                  <datalist id='refiller'>
+                 {
+                  Refiller.map((refil,k)=><option key={k}>{refil}</option>)
+                 }
+                  </datalist>
+                
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="refiller">Refiller</label>
-                <select name="refiller">
-                  <option>Rakesh</option>
-                  <option>Kartika</option>
-                  <option>Anil</option>
-                  <option>Vanky</option>
-                </select>
+                <input name="refillerf" list='refillerf' type="search" value={inputs.refillerf || ""}  onChange={handleChange}/>
+                  <datalist id="refillerf">
+                  
+                  {
+                       Refillers.map((refis,k)=><option key={k}>{refis}</option>)
+                  }
+                  
+                  </datalist>
               </div>
 
               <div className="input-lable-h-div">
                 <label htmlFor="warehouse">Ware House</label>
-                <select name="warehouse">
-                  <option>HSR warehouse</option>
-                  <option>Manyta Warehouse</option>
-                  <option>WhiteField Wareouse</option>
-                  <option>JP Nagar WareHouse</option>
-                </select>
+                <input name="warehouse" list='warehouse' type="search" value={inputs.warehouse || ""} onChange={handleChange}/>
+                 <datalist id='warehouse'>
+                 {
+                    warehouse.map((ware,k)=><option key={k}>{ware}</option>)
+                 }
+                 </datalist>
+
+
+
+                
               </div>
               <div className="input-lable-h-div">
                 <label htmlFor="remark">Remark</label>
-                <textarea />
+                <textarea  name="remark" value={inputs.remark || ""}  onChange={handleChange}  required/>
               </div>
             </div>
           </div>
@@ -156,7 +217,7 @@ function MachineForm() {
 
           <div className="flex-col">
             <div className="input-lable-v-div">
-              <button className="submit-btn">Save</button>
+              <button className="submit-btn" type="submit" >Save</button>
             </div>
           </div>
         </div> 

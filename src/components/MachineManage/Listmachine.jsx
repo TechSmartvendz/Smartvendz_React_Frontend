@@ -38,7 +38,7 @@ function Listmachine() {
               </tr>
               {userdata.map((data, key) => {
                 return (
-                  <tr kay={key}>
+                  <tr key={key}>
                     <td>{key + 1}</td>
                     <td>{data.name}</td>
                     <td>{data.role}</td>

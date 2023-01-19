@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Citymanage() {
   const citys=[
@@ -9,6 +9,21 @@ function Citymanage() {
     {City:"Noida"},
     {City:"Pune"}
   ]
+const [input,setInput]=useState("");
+const [option,setOption]=useState("karnatak");
+ 
+  const handleChange=(e)=>{
+  setInput(e.target.value)
+  }
+  const handleOption=(e)=>{
+    setOption(e.target.value);
+  }
+  const handleSubmit=(e)=>{
+   e.preventDefault();
+   console.log(input);
+   console.log(option);
+  }
+
   return (
     <React.Fragment>
     <div className="add-user-container">
@@ -16,7 +31,7 @@ function Citymanage() {
     <span className="componet-title">City Manage</span>
   </div>
  
-  <form className="flex-row form-2col-ver">
+  <form className="flex-row form-2col-ver"  onSubmit={handleSubmit}>
   <div className="componet-sub-title">
     <span>City Details</span>
   </div>
@@ -25,11 +40,11 @@ function Citymanage() {
   <div className='general-manage-div'>
   
    <label htmlFor="city">City:</label>
-  <input name="name" type="text" required/>
+  <input name="name" type="text" value={input} onChange={handleChange} required/>
  
   
   <label htmlFor='country'>State:</label>
- <select>
+ <select value={option} onChange={handleOption}>
  <option>Karnataka</option>
  <option>Tamilnadu</option>
  <option>Maharastra</option>

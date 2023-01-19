@@ -1,10 +1,11 @@
 import { useState} from "react";
-import MachineContext from "../../Context/MachineContext";
+// import MachineContext from "../../Context/MachineContext";
 import MachineForm from "./MachineForm";
 
 function Addnewmachine() {
+  const options=["Masala","Madangle","Naamkeen","Lays","Kurkure","Mountain div","cCormflakes","Raspry pi"]
 
-
+  const [bulk,setBulk]=useState("");
   const [array,setArray]=useState([])
   const [inputdata,setInputdata]=useState({slno:"",slotname:"",materialname:"",currentstock:"",initialstock:"",notinuse:""})
 
@@ -18,9 +19,11 @@ function Addnewmachine() {
       alert("please enter data in the form");
 
     }else{
-      setArray([...array,{slotname,materialname,currentstock,initialstock,notinuse}])
-      console.log(inputdata)
-      // setInputdata({slno:"",slotname:"",materialname:"",currentstock:"",initialstock:"",notinuse:""})
+      const datas=[...array,{slotname,materialname,currentstock,initialstock,notinuse}]
+      setArray(datas)
+     
+       console.log(inputdata)
+     
     }
    
   }
@@ -36,7 +39,12 @@ function changeData(e)
    total.splice(i,1)
    setArray(total);
   }
-
+ function addBulkData(e)
+ {
+ 
+  const datas=[...array,{slotname,materialname,currentstock,initialstock,notinuse}]
+  setBulk(console.log(datas))
+ }
   return (
     <>
     
@@ -45,10 +53,15 @@ function changeData(e)
       <div className="add-user-container">
       
 
+
       <div className="componet-sub-title">
       <span>Add Slots</span>
     </div>
+    <div className="option-btn">
+    <button onClick={addBulkData}>Save Table</button>
+     </div>
     <div  className="add-user-container">
+    
 
  <form className="flex-col">
  
@@ -59,13 +72,12 @@ function changeData(e)
  </div>
  <div className="input-lable-v-div">
  <label htmlFor='materialname'>Material Name</label>
- <select className='material' name='materialname' placeholder='Enter Material Name' value={inputdata.materialname || ""}   onChange={changeData} >
- <option></option>
- <option>ABC</option>
- <option>DEF</option>
- <option>IJK</option>
- <option>LMN</option>
-</select>
+ <input className='material' list="materialname" type="text" name='materialname' placeholder='Search Material Name' value={inputdata.materialname || ""}   onChange={changeData} />
+ <datalist id="materialname">
+ {
+  options.map((opt,k)=><option key={k}>{opt}</option>)
+ }
+ </datalist>
 </div>
 
 <div className="input-lable-v-div">

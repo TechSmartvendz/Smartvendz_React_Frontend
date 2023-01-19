@@ -104,3 +104,26 @@ padding:10px 10px 10px 10px;
 box-shadow: 2px 2px 20px 1px black;
 
 }
+
+
+/* datalist {
+  position: absolute;
+ 
+  border: 0 none;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+datalist option{
+  font-size: 0.8em;
+ 
+  background-color: rgb(41, 41, 41);
+  cursor: pointer;
+}
+
+/* active option styling */
+datalist option:hover, datalist option:focus {
+  color: #fff;
+  background-color: #036;
+  outline: 0 none;
+} */

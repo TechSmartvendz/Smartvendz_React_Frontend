@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Unitmanage() {
   const units=[
@@ -10,7 +10,22 @@ function Unitmanage() {
     {Unit:"Indiranagar"}
   ]
 
+const [input,setInput]=useState("");
+const [option,setOption]=useState("Bengaluru");
 
+
+const handleChange=(e)=>{
+  setInput(e.target.value);
+}
+const handleOption=(e)=>{
+  setOption(e.target.value);
+}
+
+const handleSubmit=(e)=>{
+  e.preventDefault();
+  console.log(input);
+  console.log(option);
+}
   return (
   
   <React.Fragment>
@@ -19,7 +34,7 @@ function Unitmanage() {
   <span className="componet-title">Unit Manage</span>
 </div>
 
-<form className="flex-row form-2col-ver">
+<form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
 <div className="componet-sub-title">
   <span>Unit Details</span>
 </div>
@@ -28,11 +43,11 @@ function Unitmanage() {
 <div className='general-manage-div'>
 
  <label htmlFor="city">Unit:</label>
-<input name="name" type="text" required/>
+<input name="name" type="text" value={input} onChange={handleChange} required/>
 
 
 <label htmlFor='country'>City:</label>
-<select>
+<select value={option} onChange={handleOption}>
 <option>Bengaluru</option>
 <option>Channai</option>
 <option>Hydrabad</option>

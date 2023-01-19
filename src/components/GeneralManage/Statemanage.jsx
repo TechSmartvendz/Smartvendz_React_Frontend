@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Statemanage() {
   const states=[
@@ -8,9 +8,23 @@ function Statemanage() {
     {State:"Srilanka"},
     {State:"SouthAfrica"},
     {State:"England"}
-
-
 ]
+
+const [input,setInput]=useState("");
+const [option,setOption]=useState("india");
+
+const handleChange=(e)=>{
+  setInput(e.target.value);
+ 
+}
+const handleOption=(e)=>{
+  setOption(e.target.value);
+}
+const handleSubmit=(e)=>{
+e.preventDefault();
+console.log(input);
+console.log(option)
+}
   return (
    <React.Fragment>
    <div className="add-user-container">
@@ -18,7 +32,7 @@ function Statemanage() {
    <span className="componet-title">State Manage</span>
  </div>
 
- <form className="flex-row form-2col-ver">
+ <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
  <div className="componet-sub-title">
    <span>State Details</span>
  </div>
@@ -27,11 +41,11 @@ function Statemanage() {
  <div className='general-manage-div'>
  
   <label htmlFor="name">State:</label>
- <input name="name" type="text" required/>
+ <input name="name" type="text" value={input} onChange={handleChange} required/>
 
  
  <label htmlFor='country'>Country:</label>
-<select>
+<select value={option}  onChange={handleOption}>
 <option>India</option>
 <option>Us</option>
 <option>China</option>

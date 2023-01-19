@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Countrymanage() {
   const country=[
@@ -9,6 +9,16 @@ function Countrymanage() {
     {Country:"SouthAfrica"},
     {Country:"England"}
 ]
+const [input,setInput]=useState("")
+
+const handleChange=(e)=>{
+setInput(e.target.value);
+}
+
+const handleSubmit=(e)=>{
+  e.preventDefault();
+  console.log(input);
+}
   return (
    <React.Fragment>
    <div className="add-user-container">
@@ -16,7 +26,7 @@ function Countrymanage() {
    <span className="componet-title">Country Manage</span>
  </div>
 
- <form className="flex-row form-2col-ver">
+ <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
  <div className="componet-sub-title">
    <span>Country Details</span>
  </div>
@@ -24,7 +34,7 @@ function Countrymanage() {
 
  <div className='general-manage-div'>
   <label htmlFor="name">Country:</label>
- <input name="name" type="text" required/>
+ <input name="name" type="text" value={input} onChange={handleChange} required/>
  <button className="submit-btn">Add New</button>
   </div>
   
