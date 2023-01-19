@@ -26,10 +26,12 @@ import Machineconfiguration from "./MachineManage/Machineconfiguration";
 //TODO:GET info about this "./Subroutes/Manage_machine"
 import MachineManage from "./MachineManage/MachineManage";
 
-import Employeemanage from "./Employeemanage";
-import Addnewemployee from "./Subroutes/Addnewemployee";
-import Updateemployee from "./Subroutes/Updateemployee";
-import SearchandUpdateemployee from "./Subroutes/SearchandUpdateemployee";
+import Employeemanage from "./Employee/Employeemanage";
+import Addnewemployee from "././Employee/Addnewemployee";
+import Updateemployee from "././Employee/Updateemployee";
+import SearchandUpdateemployee from "./Employee/SearchandUpdateemployee";
+import Addsingleemployee from "./Employee/Addsingleemployee";
+
 
 import Transactions from "./Transactions/Transactions";
 import TransactionReport from "./Transactions/TransactionReport";
@@ -43,13 +45,13 @@ import Citymanage from "./GeneralManage/Citymanage";
 import Unitmanage from "./GeneralManage/Unitmanage";
 import Statemanage from "./GeneralManage/Statemanage";
 
-import Refiller from "./Refiller";
-import Refiller1 from "./Subroutes/Refiller1";
-import Refiller2 from "./Subroutes/Refiller2";
+import Refiller from "./Refiller/Refiller";
+import Refiller1 from "./Refiller/Refiller1";
+import Refiller2 from "./Refiller/Refiller2";
 
-import InventoryManager from "./InventoryManager";
-import InventoryManager1 from "./Subroutes/InventoryManager1";
-import InventoryManager2 from "./Subroutes/InventoryManager2";
+import InventoryManager from "./Inventory Manager/InventoryManager";
+import InventoryManager1 from "./Inventory Manager/InventoryManager1";
+import InventoryManager2 from "./Inventory Manager/InventoryManager2";
 
 
 
@@ -61,9 +63,9 @@ import Home from "./Home";
 import Navbar from "../navbar/Navbar";
 
 
-import Refund from "./Refund";
-import Refund1 from "./Subroutes/Refund1"
-import Refund2 from "./Subroutes/Refund2"
+import Refund from "./Refund/Refund";
+import Refund1 from "./Refund/Refund1"
+import Refund2 from "./Refund/Refund2"
 
 
 //TODO: GET info about this Usermanahe.css
@@ -103,6 +105,8 @@ function Dashboard() {
                 <Route path="addnewemployee" element={<Addnewemployee />} />
                 <Route path="updateemployee" element={<Updateemployee />} />
                 <Route path="searchandupdateemployee" element={<SearchandUpdateemployee />} />
+                <Route path="addsingleemployee" element={<Addsingleemployee />} />
+
               </Route>
 
               <Route exact path="/usermanage" element={<UserManage />}>

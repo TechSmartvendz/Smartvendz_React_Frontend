@@ -3,7 +3,9 @@ import React from "react";
 function Error() {
   return (
     <>
-      <p>Oops, page not found</p>
+    <div className="add-user-container">
+    <h1>Page not found</h1>
+    </div>
     </>
   );
 }

@@ -1,6 +1,24 @@
-import React from "react";
+import React,{useState} from "react";
 
 function BulkProductUpload() {
+  const [data, setData] = useState({
+    company:"",
+    machine:""    
+  });
+  function handleChange(event) {
+    const{name,value} = event.target
+   setData((prevState) => {
+     return {
+       ...prevState,
+       [name]: value
+     };
+   });
+ }
+
+ function handleSubmit(event) {
+   event.preventDefault()
+   console.log(data)
+ }
   return (
     <>
       <div className="add-user-container">
@@ -10,11 +28,15 @@ function BulkProductUpload() {
         <div className="componet-sub2-title">
           <span> Bulk Product UploadFile</span>
         </div>
-        <form className="flex-row">
+        <form className="flex-row" onSubmit={handleSubmit}>
           <div className="input-lable-v-div">
-            <label htmlFor="dropdown">Select company:</label>
-            <select id="dropdown">
-              <option value="N/A">Select company</option>
+            <label htmlFor="company">Select company:</label>
+            <select 
+               id="company"
+               value={data.company}
+               onChange={handleChange}
+               name="company">
+              <option value="N/A">--Select company--</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -23,9 +45,14 @@ function BulkProductUpload() {
           </div>
 
           <div className="input-lable-v-div">
-            <label htmlFor="dropdown">Select machine:</label>
-            <select id="dropdown">
-              <option value="N/A">Select machine</option>
+            <label htmlFor="machine">Select machine:</label>
+            <select 
+            id="machine"
+            value={data.machine}
+            onChange={handleChange}
+            name="machine"
+            >
+              <option value="N/A">--Select machine--</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -33,9 +60,9 @@ function BulkProductUpload() {
             </select>
           </div>
           <div className="input-lable-v-div">
-            <label>Upload CSV: </label>
-            <input type="file" />
-          </div>
+            <label htmlFor="File">Upload CSV: </label>
+            <input type="file" id="File"/>
+          </div>  
 
           <div className="upload-download-btn">
             <button>Sample CSV</button>

@@ -6,7 +6,7 @@ function Listmachine() {
     { Slno: "", name: "Sharan", role: "support", officelocation: "Marthalli" },
     { Slno: "", name: "Shubham", role: "developer", officelocation: "Hebbal" },
     { Slno: "", name: "Kuldeep", role: "devloper", officelocation: "Nagvar" },
-    { Slno: "", name: "Dinesh", role: "Ac count", officelocation: "Itpl" },
+    { Slno: "", name: "Dinesh", role: "Ac count", officelocation: "Itpl" }
   ];
   return (
     <>
@@ -15,9 +15,8 @@ function Listmachine() {
           <span className="componet-title">Machine List</span>
         </div>
         <div className="option-btn">
-        <button >Add New Machine</button>
-       
-      </div>
+          <button>Add New Machine</button>
+        </div>
         <div className="componet-sub2-title">
           <span>Total Machine:</span>
         </div>
@@ -33,8 +32,6 @@ function Listmachine() {
                 <th>Client Admin</th>
                 <th>Admin</th>
                 <th>Action</th>
-                
-               
               </tr>
               {userdata.map((data, key) => {
                 return (
@@ -49,7 +46,6 @@ function Listmachine() {
                       <button className="btn_edit">Edit</button>
                       <button className="btn_delete">Delete</button>
                     </td>
-                  
                   </tr>
                 );
               })}
@@ -62,4 +58,3 @@ function Listmachine() {
 }
 
 export default Listmachine;
-

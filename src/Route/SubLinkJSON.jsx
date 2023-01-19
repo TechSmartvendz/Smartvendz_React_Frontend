@@ -23,6 +23,10 @@ export const EmployeeManageData = [
   {
     title: "Search and update employee",
     path: "/employeemanage/searchandupdateemployee"
+  },
+  {
+    title: "Add single employee",
+    path: "/employeemanage/addsingleemployee"
   }
 ];
 export const GeneralManagerData = [

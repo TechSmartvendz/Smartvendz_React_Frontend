@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/icons-material": "^5.11.0",
     "axios": "^1.2.1",
     "js-file-download": "^0.4.12",
     "prop-types": "^15.8.1",

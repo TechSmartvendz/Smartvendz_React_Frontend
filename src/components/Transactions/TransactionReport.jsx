@@ -1,6 +1,76 @@
-import React from "react";
+import React,{useState} from "react";
 
 function TransactionReport() {
+  const [data, setData] = useState({
+    startdate: "",
+    enddate:"",
+    product:"",
+    machineid:"",
+    companyid:"",
+    rfidno:""
+  
+  });
+  const transactionreportdata = [
+    {
+      cardno: "4143",
+      mid: "SlZV562",
+      lockerno: "12",
+      item: "HP black i5 500GB",
+      eid: "14116",
+      email: "null",
+      datetime: "7/11/2024 12:47:05",
+    },
+    {
+      cardno: "4143",
+      mid: "SlZV562",
+      lockerno: "12",
+      item: "HP black i5 500GB",
+      eid: "14116",
+      email: "null",
+      datetime: "7/11/2024 12:47:05",
+    },
+    {
+      cardno: "4143",
+      mid: "SlZV562",
+      lockerno: "12",
+      item: "HP black i5 500GB",
+      eid: "14116",
+      email: "null",
+      datetime: "7/11/2024 12:47:05",
+    },
+    {
+      cardno: "4143",
+      mid: "SlZV562",
+      lockerno: "12",
+      item: "HP black i5 500GB",
+      eid: "14116",
+      email: "null",
+      datetime: "7/11/2024 12:47:05",
+    },
+    {
+      cardno: "4143",
+      mid: "SlZV562",
+      lockerno: "12",
+      item: "HP black i5 500GB",
+      eid: "14116",
+      email: "null",
+      datetime: "7/11/2024 12:47:05",
+    },
+  ];
+  
+  function handleChange(event) {
+    const{name,value} = event.target
+   setData((prevState) => {
+     return {
+       ...prevState,
+       [name]: value
+     };
+   });
+ }
+  function handleSubmit(event) {
+    event.preventDefault()
+    console.log(data)
+  }
   return (
     <>
       <div className="add-user-container">
@@ -10,50 +80,97 @@ function TransactionReport() {
         <div className="componet-sub-title">
           <span>Search Employee</span>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="flex-col">
             <div className="input-lable-v-div">
-              <label>Start Date-Time</label>
-              <input type="date" />
+              <label htmlFor="start">Start Date-Time</label>
+
+                <input 
+                  type="date" 
+                  onChange={handleChange}
+                  name="startdate"
+                  value={data.startdate}
+                  id="start"
+                  required
+                />
             </div>
 
             <div className="input-lable-v-div">
-              <label>End Date-Time</label>
-              <input type="date" />
+              <label htmlFor="end">End Date-Time</label>
+              <input 
+                  type="date"  
+                  onChange={handleChange}
+                  name="enddate"
+                  value={data.enddate}
+                  id="end"
+                  required
+                />
+              
             </div>
 
             <div className="input-lable-v-div">
               <label>Product</label>
-              <select>
-                <option>All</option>
-                <option>2</option>
-                <option>3</option>
-              </select>
+
+                <select
+                value={data.product}
+                onChange={handleChange}
+                name="product"
+                >
+                  <option>All</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
             </div>
 
             <div className="input-lable-v-div">
-              <label> Machine ID</label>
-              <select>
-                <option>SVZLOCK001</option>
-                <option>SVZLOCK001</option>
-                <option>SVZLOCK001</option>
-                <option>SVZLOCK001</option>
-              </select>
+              <label htmlFor="machine"> Machine ID </label>
+
+                <select
+                value={data.machineid}
+                onChange={handleChange}
+                name="machineid"
+                id="machine"
+                >
+                  <option>SVZLOCK001</option>
+                  <option>SVZLOCK001</option>
+                  <option>SVZLOCK001</option>
+                  <option>SVZLOCK001</option>
+                </select>
             </div>
 
             <div className="input-lable-v-div">
-              <label> Company ID</label>
-              <select>
-                <option>SVZLOCK001</option>
-                <option>SVZLOCK001</option>
-                <option>SVZLOCK001</option>
-                <option>SVZLOCK001</option>
-              </select>
+              <label htmlFor="company"> Company ID</label>
+
+                <select
+                value={data.companyid}
+                onChange={handleChange}
+                name="companyid"
+                id="company"
+                
+                >
+                  <option>SVZLOCK001</option>
+                  <option>SVZLOCK001</option>
+                  <option>SVZLOCK001</option>
+                  <option>SVZLOCK001</option>
+                </select>
             </div>
 
             <div className="input-lable-v-div">
-              <label>Employee RFID Card No.</label>
-              <input type="text" />
+              <label htmlFor="rfid">Employee RFID Card No</label>
+
+                <input 
+                  type="text"
+                  placeholder="Enter RFID card no"
+                  onChange={handleChange} 
+                  value={data.rfidno}
+                  name="rfidno"
+                  id="rfid"
+                  required
+                />
+            </div>
+
+            <div className="input-lable-v-div">
+            <button className="submit-btn" type="submit">Submit</button>
             </div>
 
             <div className="input-lable-v-div">
@@ -82,51 +199,19 @@ function TransactionReport() {
                 <th>Date-Time</th>
               </tr>
 
-              <tr>
-                <td>4143</td>
-                <td>SlZV562</td>
-                <td>12</td>
-                <td>HP black i5 500GB</td>
-                <td>14116</td>
-                <td>null</td>
-                <td>7/11/2024 12:47:05</td>
-              </tr>
-              <tr>
-                <td>4143</td>
-                <td>SlZV562</td>
-                <td>12</td>
-                <td>HP black i5 500GB</td>
-                <td>14116</td>
-                <td>null</td>
-                <td>7/11/2024 12:47:05</td>
-              </tr>
-              <tr>
-                <td>4143</td>
-                <td>SlZV562</td>
-                <td>12</td>
-                <td>HP black i5 500GB</td>
-                <td>14116</td>
-                <td>null</td>
-                <td>7/11/2024 12:47:05</td>
-              </tr>
-              <tr>
-                <td>4143</td>
-                <td>SlZV562</td>
-                <td>12</td>
-                <td>HP black i5 500GB</td>
-                <td>14116</td>
-                <td>null</td>
-                <td>7/11/2024 12:47:05</td>
-              </tr>
-              <tr>
-                <td>4143</td>
-                <td>SlZV562</td>
-                <td>12</td>
-                <td>HP black i5 500GB</td>
-                <td>14116</td>
-                <td>null</td>
-                <td>7/11/2024 12:47:05</td>
-              </tr>
+              {transactionreportdata.map((data, key) => {
+                return (
+                  <tr key={key}>
+                    <td>{data.cardno}</td>
+                    <td>{data.mid}</td>
+                    <td>{data.lockerno}</td>
+                    <td>{data.item}</td>
+                    <td>{data.eid}</td>
+                    <td>{data.email}</td>
+                    <td>{data.datetime}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

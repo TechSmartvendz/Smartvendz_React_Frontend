@@ -1,6 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 
 function Addnewemployee() {
+  const[data, setData] = useState({
+    machine:"",
+    company:""
+    
+  })
   function Download() {
     axios({
       url: urlz, //your url
@@ -32,6 +37,22 @@ function Addnewemployee() {
     { cid: 4, mid: 4 },
   ];
 
+  function handleSubmit(event) {
+    event.preventDefault()
+    console.log(data)
+  }
+
+  function handleChange(event) {
+    const{name,value} = event.target
+    setData(prevData => {
+      return {
+        ...prevData,
+        [name]: value
+      }
+    })
+
+  }
+
   return (
     <>
       {/* new */}
@@ -42,31 +63,41 @@ function Addnewemployee() {
         <div className="componet-sub2-title">
           <span>Bulk Employee Upload</span>
         </div>
-        <form className="flex-row">
-          <div className="input-lable-v-div">
+        <form className="flex-row" onSubmit={handleSubmit}>
+        <div className="input-lable-v-div">
             <label htmlFor="dropdown">Select company:</label>
-            <select id="dropdown">
-              <option value="N/A">Select company</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
+            <input   
+            placeholder="Enter company name"
+            type="text"
+            onChange={handleChange}
+            value={data.company}
+            name="company"
+            list="dropdown"
+            />
+              <datalist id='dropdown'>
+                <option>1</option>
+                <option>2</option>
+              </datalist>
           </div>
 
           <div className="input-lable-v-div">
-            <label htmlFor="dropdown">Select machine:</label>
-            <select id="dropdown">
-              <option value="N/A">Select machine</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
+            <label htmlFor="machine">Select machine:</label>
+            <input
+            type="text"
+            onChange={handleChange}
+            value={data.machine}
+            name="machine"
+            placeholder="Enter machine name"
+            list="dropdown"
+            />
+                <datalist id='dropdown'>
+                  <option>1</option>
+                  <option>2</option>
+                </datalist>
           </div>
           <div className="input-lable-v-div">
-            <label>Upload CSV: </label>
-            <input type="file" />
+            <label htmlFor="file">Upload CSV: </label>
+            <input type="file" id="file" />
           </div>
 
           <div className="upload-download-btn">
