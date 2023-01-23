@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 
+// type="text"
+// name="cname"
+// className="company_input"
+// value={inputs.cname || ""}
+// onChange={handleChange}
+// required
 function Addnewcompany() {
+// const fieldsData=[{type:"text",name:"cname",className:"company_input",value:"inputs."}]
+
+
+
+
   const[inputs,setInputs]=useState({});
 
   const[option,setOption]=useState({});
