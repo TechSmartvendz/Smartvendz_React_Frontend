@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useCookies } from 'react-cookie';
 import "./App.css";
+import 'react-notifications-component/dist/theme.css'
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import AuthContext  from './Context/AuthContext';

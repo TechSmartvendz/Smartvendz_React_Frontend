@@ -1,143 +1,91 @@
 import axios from 'axios';
 import React, { useState ,useEffect} from 'react'
+import {postReq,getReq} from '../middleware/AxiosApisCall'
+import CountryTable from './CountryTable'
+import { Store } from 'react-notifications-component';
 
-// http://localhost:3000/login
-
-const tokens="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWJjMTc4OGNkZWVhNjM4Mzk1Y2NkMmQiLCJpYXQiOjE2Mzk3MTY3NDR9.wCHHhEiKNrD_1nQkaEoOCAS7f4rAxxpW1v9AL2aJfwo"
 
 function Countrymanage() {
- 
-  useEffect(()=>{
-    axios.get("http://localhost:3000/api/Country",{
-      headers:{
-        "Content-Type":"application/json",
-        Authorization:`Bearer ${tokens}`,
-      }
-    }).then((response)=>{
-     
-    }).catch((err)=>{
-      console.log(err.response)
-    })
-  },[])
+const path='Country';
+const [inputs, setInputs] = useState({});
+const [countryList,setCountryList]=useState();
 
 
-const [country,setCountry]=useState("")
-
-const [countrydata,setCountrydata]=useState({});
-
-useEffect(()=>{
-  axios.get("http://localhost:3000/api/Country",{
-    headers:{
-      "Content-Type":"application/json",
-      Authorization:`Bearer ${tokens}`,
-    }
-  }).then((response)=>{
-     console.log(response.data);
-  
-   
-    setCountrydata({data:response.data.data})
-  }).catch((err)=>{
-    console.log(err)
-  })
-},[])
-
-useEffect(()=>{console.log(countrydata.data)},[countrydata])
-
-
-const handleChange=(e)=>{
-setCountry(e.target.value);
+const loadCountry=async ()=>{
+  const response = await getReq(path)
+  setCountryList(response.data);
 }
+useEffect(() => {  loadCountry();}, []);
+useEffect(() => {  console.log(countryList)}, [countryList]);
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+  }
 
-const handleSubmit= async(e)=>{
-  e.preventDefault();
-
-  console.log(country)
- await axios.post("http://localhost:3000/api/Country",
-  { 
-  country:country
-  },
-  {
-  headers: {
-    "Content-Type": "application/json",
-     Authorization: `Bearer ${tokens}`,
-    }
- }
- 
- 
-  ).then((response)=>{
-    console.log(response.data)
-    alert(response.data.status)
-  
-    
-  }).catch((erro)=>{
-    console.log(erro.response)
-    alert(response.data.error)
-  })
- 
-}
-
- 
-
-
-  return (
-   <React.Fragment>
-   <div className="add-user-container">
-   <div>
-   <span className="componet-title">Country Manage</span>
- </div>
-
- <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
- <div className="componet-sub-title">
-   <span>Country Details</span>
- </div>
-
-
- <div className='general-manage-div'>
-  <label htmlFor="name">Country:</label>
- <input name="name" type="text" value={country} onChange={handleChange} required/>
- <button className="submit-btn">Add New</button>
-  </div>
-  
- </form>
- 
- <div className="componet-sub2-title">
- <span>Total Country:</span>
-</div>
-
-<div className="table_container-div">
-<table>
-    <tbody>
-    <tr>
-    <th>Country</th>
-    <th>Action</th>
-    </tr>
-
-    {
-
-      countrydata.data.map ((cou,l)=>{
-      //  console.log(cou)
-     return (
-        <tr key={l}>
-        <td>{cou.country}</td>
-       
-        <td>
-        <button className="btn_edit">Edit</button>
-        <button className="btn_delete">Delete</button>
-        </td>
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(`On Submit :${JSON.stringify(inputs)}`)
+    const response=await postReq(path,inputs)
+    if(response.status==="success"){
+      loadCountry();
       
-        </tr>
-      )
-    })
+      Store.addNotification({
+        title: "Add County",
+        message: "Country Added Succesfully",
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        dismiss: {
+          duration: 1000,
+     
+        }
+      });
     }
-    </tbody>
-    </table>
-  </div>
-   
- </div>
-
-   
-   </React.Fragment>
-  )
+    else{
+      Store.addNotification({
+        title: "Add County",
+        message: response.error,
+        type: "danger",
+        insert: "top",
+        container: "top-right",
+        dismiss: {
+          duration: 2000,
+          
+        }
+      });
+    } 
+  }
+  return (
+    <React.Fragment>
+  
+      <div className="add-user-container">
+        <div>
+          <span className="componet-title">Country Manage</span>
+        </div>
+        <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
+          <div className="componet-sub-title">
+            <span>Country Details</span>
+          </div>
+          <div className="general-manage-div">
+            <label htmlFor="name">Country:</label>
+            <input
+              name="country"
+              type="text"
+              onChange={handleChange}
+              required
+            />
+            <button className="submit-btn">Add New</button>
+          </div>
+        </form>
+        <div className="componet-sub2-title">
+          <span>Total Country:</span>
+        </div>
+        <CountryTable key={countryList} table={countryList} path={path} parentFunction={loadCountry}/> 
+      </div>
+    </React.Fragment>
+  );
 }
 
 export default Countrymanage
+

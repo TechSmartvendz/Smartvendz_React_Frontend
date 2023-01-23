@@ -121,7 +121,7 @@ datalist option{
   cursor: pointer;
 }
 
-/* active option styling */
+/* active option styling 
 datalist option:hover, datalist option:focus {
   color: #fff;
   background-color: #036;

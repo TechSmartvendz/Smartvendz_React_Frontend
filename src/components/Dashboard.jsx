@@ -37,7 +37,7 @@ import CreditReport from "./Transactions/CreditReport";
 import CreditTransactionReport from "./Transactions/CreditTransactionReport";
 
 
-import Generalmanage from "./Generalmanage";
+import Generalmanage from "./Generalmanage/Generalmanage";
 import Countrymanage from "./GeneralManage/Countrymanage";
 import Citymanage from "./GeneralManage/Citymanage";
 import Unitmanage from "./GeneralManage/Unitmanage";
@@ -65,6 +65,8 @@ import Refund from "./Refund";
 import Refund1 from "./Subroutes/Refund1"
 import Refund2 from "./Subroutes/Refund2"
 
+import { ReactNotifications } from 'react-notifications-component'
+
 
 //TODO: GET info about this Usermanahe.css
 // import 'Usermanage.css'
@@ -76,8 +78,8 @@ function Dashboard() {
         <Header />
         <div className="section">
           <Navbar />
+          <ReactNotifications />
           <div className="container">
-
           {/*FIXME: MAke this Routes a saprate components*/}
 
             <Routes>
