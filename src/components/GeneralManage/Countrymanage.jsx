@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import React, { useState ,useEffect} from 'react'
 import {postReq,getReq} from '../middleware/AxiosApisCall'
 import CountryTable from './CountryTable'
