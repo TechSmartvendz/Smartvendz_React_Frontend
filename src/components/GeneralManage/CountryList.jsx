@@ -2,13 +2,7 @@ import React, { useState } from 'react'
 
 function CountryList(props) {
     const [table,setTable]=useState(props.table);
-    // const [input,setInput]=useState({});
-
-    // const handleChange = (event) => {
-    //     const name = event.target.name;
-    //     const value = event.target.value;
-    //     setInput((values) => ({ ...values, [name]: value }));
-    //   }
+   
   return (
     <React.Fragment>
     <label htmlFor='country'>Country:</label>

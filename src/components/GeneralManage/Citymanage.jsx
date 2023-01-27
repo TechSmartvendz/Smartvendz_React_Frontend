@@ -6,7 +6,7 @@ import StateList from './StateList';
 function Citymanage() {
  const path="City"
  const spath="State"
-const [inputs,setInputs]=useState({city: ""});
+const [inputs,setInputs]=useState({});
 // const [option,setOption]=useState("karnatak");
  const [cityList,setCityList]=useState();
  const [statesList,setStatesList]=useState();

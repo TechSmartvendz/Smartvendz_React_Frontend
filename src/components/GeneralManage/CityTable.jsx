@@ -3,7 +3,7 @@ import { delReq } from '../middleware/AxiosApisCall';
 import { Store } from 'react-notifications-component';
 
 function CityTable(props) {
-  const [table,setTable]=useState(props.table);
+const [table,setTable]=useState(props.table);
 const [path,setPath]=useState(props.path);
 
 const deleteCountry = async (event) => { 
@@ -41,7 +41,7 @@ Store.addNotification({
    <table>
      <tbody>
        <tr>
-         <th>Country</th>
+         <th>City</th>
          <th>Action</th>
        </tr>
 
