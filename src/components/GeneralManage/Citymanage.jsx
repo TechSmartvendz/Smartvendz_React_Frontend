@@ -1,28 +1,71 @@
-import React, { useState } from 'react'
-
+import React, { useState,useEffect } from 'react'
+import { getReq, postReq } from '../middleware/AxiosApisCall';
+import { Store } from 'react-notifications-component';
+import CityTable from './CityTable';
+import StateList from './StateList';
 function Citymanage() {
-  const citys=[
-    {City:"Bengaluru"},
-    {City:"Channai"},
-    {City:"Mumbai"},
-    {City:"Hydrabad"},
-    {City:"Noida"},
-    {City:"Pune"}
-  ]
-const [input,setInput]=useState("");
-const [option,setOption]=useState("karnatak");
+ const path="City"
+ const spath="State"
+const [inputs,setInputs]=useState({city: ""});
+// const [option,setOption]=useState("karnatak");
+ const [cityList,setCityList]=useState();
+ const [statesList,setStatesList]=useState();
+
+ const loadCity=async()=>{
+  const response=await getReq(path)
+  setCityList(response.data)
+ }
+
+ useEffect(() => {
+ loadCity();
+ }, [])
+
+ const loadStatesz=async()=>{
+  const response=await getReq(spath)
+  setStatesList(response.data)
+ }
+ useEffect(() => {
+ loadStatesz();
+ }, [])
+ const handleChange=(event)=>{
  
-  const handleChange=(e)=>{
-  setInput(e.target.value)
+    const name=event.target.name;
+    const value=event.target.value;
+    setInputs((values)=>({...values,[name]:value}))
   }
-  const handleOption=(e)=>{
-    setOption(e.target.value);
+  
+   
+  const handleSubmit=async(event)=>{
+   event.preventDefault();
+  const response =await postReq(path,inputs)
+  if(response.status==="success")
+  {
+    loadCity();
+    Store.addNotification({
+      title:"Add City",
+      message:"City Added successfully",
+      type:"success",
+            insert: "top",
+            container: "top-right",
+            dismiss: {
+              duration: 1000,
+            }
+    })
   }
-  const handleSubmit=(e)=>{
-   e.preventDefault();
-   console.log(input);
-   console.log(option);
+  else{
+    Store.addNotification({
+      title:"Add City",
+      message:response.error,
+      type: "danger",
+      insert: "top",
+      container: "top-right",
+      dismiss: {
+        duration: 2000,
+        
+      }
+    })
   }
+}
 
   return (
     <React.Fragment>
@@ -40,17 +83,10 @@ const [option,setOption]=useState("karnatak");
   <div className='general-manage-div'>
   
    <label htmlFor="city">City:</label>
-  <input name="name" type="text" value={input} onChange={handleChange} required/>
+  <input name="city" type="text" value={inputs.city || "" } onChange={handleChange} required/>
  
   
-  <label htmlFor='country'>State:</label>
- <select value={option} onChange={handleOption}>
- <option>Karnataka</option>
- <option>Tamilnadu</option>
- <option>Maharastra</option>
- <option>Hydrabad</option>
- 
- </select>
+   <StateList key={statesList} table={statesList} path={spath}/>
  
  
   <button className="submit-btn">Add New</button>
@@ -62,32 +98,8 @@ const [option,setOption]=useState("karnatak");
   <div className="componet-sub2-title">
   <span>Total City:</span>
  </div>
- <div className="table_container-div">
- <table>
-     <tbody>
-     <tr>
-     <th>City</th>
-     <th>Action</th>
-     </tr>
+ <CityTable key={cityList} table={cityList} path={path} parentFunction={loadCity}/>
  
-     {
-      citys.map((cit,key)=>{
-       return(
-         <tr key={key}>
-         <td>{cit.City}</td>
-        
-         <td>
-         <button className="btn_edit">Edit</button>
-         <button className="btn_delete">Delete</button>
-         </td>
-       
-         </tr>
-       )
-     })
-     }
-     </tbody>
-     </table>
- </div>
  </div>
     
     </React.Fragment>

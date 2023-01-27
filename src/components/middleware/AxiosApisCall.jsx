@@ -5,12 +5,12 @@ const cookies = new Cookies();
 const token = cookies.get('JWTcookie')
 const instance = axios.create({
     baseURL: 'http://localhost:3000/api',
-    timeout: 1000,
+    timeout: 5000,
     headers: {'Authorization': 'Bearer '+token}
   });
 
 
-const baseUrl=""
+// const baseUrl=""
 export const getReq = async (path) => {
   try {
     const response = await instance.get(
@@ -49,4 +49,13 @@ export const postReq = async (path,body) => {
     }
   }
 
-
+export const editReq=async (path,param)=>{
+  try{
+const response= await instance.put(`/${path}/{param}`)
+const data=response.data
+return data
+  }
+  catch(error){
+    console.log(error)
+  }
+}

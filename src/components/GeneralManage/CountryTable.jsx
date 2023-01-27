@@ -7,6 +7,7 @@ function CountryTable(props) {
 
 const [table,setTable]=useState(props.table);
 const [path,setPath]=useState(props.path);
+
 const deleteCountry = async (event) => { 
 const response=await delReq(path,event)
 if(response.status==="success"){

@@ -1,30 +1,78 @@
-import React, { useState } from 'react'
-
+import React, { useState ,useEffect} from 'react'
+import { getReq, postReq } from '../middleware/AxiosApisCall';
+import { Store } from 'react-notifications-component';
+import StateTable from './StateTable';
+import CountryList from './CountryList';
+// import StateTable from './StateTable';
 function Statemanage() {
-  const states=[
-    {State:"Karnataka"},
-    {State:"Tamilnadu"},
-    {State:"Hydrabad"},
-    {State:"Srilanka"},
-    {State:"SouthAfrica"},
-    {State:"England"}
-]
+ const path="State"
+ const pathc="Country"
+const [inputs,setInputs]=useState({});
+const [stateList,setStateList]=useState();
+const [countriesList,setCountriesList]=useState();
+// const [option,setOption]=useState("");
 
-const [input,setInput]=useState("");
-const [option,setOption]=useState("india");
+const loadState=async ()=>{
+  const response= await getReq(path)
+  setStateList(response.data)
+  // console.log(stateList)
+}
+useEffect(()=>{loadState()}, [])
 
-const handleChange=(e)=>{
-  setInput(e.target.value);
+
+const loadCountry=async ()=>{
+  const response = await getReq(pathc)
  
+  setCountriesList(response.data);
+  // console.log(response.data);
+  // console.log(countriesList)
 }
-const handleOption=(e)=>{
-  setOption(e.target.value);
+useEffect(() => {  loadCountry();
+  
+}, []);
+
+
+const handleChange=(event)=>{
+  const name=event.target.name;
+  const value=event.target.value;
+ setInputs(values=>({...values,[name]:value}))
 }
-const handleSubmit=(e)=>{
-e.preventDefault();
-console.log(input);
-console.log(option)
+
+
+
+
+const handleSubmit=async(event)=>{
+event.preventDefault();
+const response=await postReq(path,inputs)
+if(response.status==="success"){
+  loadState();
+Store.addNotification({
+  title:"Add State",
+  message:"State Added successfully",
+  type:"success",
+        insert: "top",
+        container: "top-right",
+        dismiss: {
+          duration: 1000,
+     }
+})
 }
+else{
+  Store.addNotification({
+    title:"Add State",
+    message:response.error,
+    type: "danger",
+    insert: "top",
+    container: "top-right",
+    dismiss: {
+      duration: 2000,
+      
+    }
+  })
+}
+}
+
+
   return (
    <React.Fragment>
    <div className="add-user-container">
@@ -41,19 +89,9 @@ console.log(option)
  <div className='general-manage-div'>
  
   <label htmlFor="name">State:</label>
- <input name="name" type="text" value={input} onChange={handleChange} required/>
+ <input name="state" type="text" value={inputs.state || ""} onChange={handleChange} required/>
 
- 
- <label htmlFor='country'>Country:</label>
-<select value={option}  onChange={handleOption}>
-<option>India</option>
-<option>Us</option>
-<option>China</option>
-<option>Canada</option>
-
-</select>
-
-
+ <CountryList key={countriesList} table={countriesList} path={pathc}/>
  <button className="submit-btn">Add New</button>
 
   </div>
@@ -63,32 +101,7 @@ console.log(option)
  <div className="componet-sub2-title">
  <span>Total State:</span>
 </div>
-<div className="table_container-div">
-<table>
-    <tbody>
-    <tr>
-    <th>State</th>
-    <th>Action</th>
-    </tr>
-
-    {
-    states.map((sta,key)=>{
-      return(
-        <tr key={key}>
-        <td>{sta.State}</td>
-       
-        <td>
-        <button className="btn_edit">Edit</button>
-        <button className="btn_delete">Delete</button>
-        </td>
-      
-        </tr>
-      )
-    })
-    }
-    </tbody>
-    </table>
-</div>
+<StateTable key={stateList}  table={stateList} path={path} parentFunction={loadState}/>
 </div>
    </React.Fragment>
 

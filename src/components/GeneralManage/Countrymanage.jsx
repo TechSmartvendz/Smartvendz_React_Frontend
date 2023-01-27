@@ -16,7 +16,8 @@ const loadCountry=async ()=>{
   setCountryList(response.data);
 }
 useEffect(() => {  loadCountry();}, []);
-useEffect(() => {  console.log(countryList)}, [countryList]);
+
+// useEffect(() => {  console.log(countryList)}, [countryList]);
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -25,12 +26,13 @@ useEffect(() => {  console.log(countryList)}, [countryList]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(`On Submit :${JSON.stringify(inputs)}`)
+    // JSON.STRINGIFY NOT GETTING
+    // console.log(`On Submit :${JSON.stringify(inputs)}`)
     const response=await postReq(path,inputs)
     if(response.status==="success"){
       loadCountry();
-      
-      Store.addNotification({
+    
+     Store.addNotification({
         title: "Add County",
         message: "Country Added Succesfully",
         type: "success",
