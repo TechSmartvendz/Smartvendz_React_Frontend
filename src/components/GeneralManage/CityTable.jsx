@@ -49,6 +49,7 @@ Store.addNotification({
          table.map((item, index) => (
            <tr key={index}>
              <td>{item.city}</td>
+             <td>{item.state}</td>
              <td>
                <button className="btn_edit" >Edit</button>
                <button className="btn_delete" onClick={() => deleteCountry(item.city)}>Delete</button>

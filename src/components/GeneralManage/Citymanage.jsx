@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import { getReq, postReq } from '../middleware/AxiosApisCall';
 import { Store } from 'react-notifications-component';
 import CityTable from './CityTable';
-import StateList from './StateList';
+import DataList from './DataList';
 function Citymanage() {
  const path="City"
  const spath="State"
@@ -81,17 +81,11 @@ const [inputs,setInputs]=useState({});
  
  
   <div className='general-manage-div'>
-  
-   <label htmlFor="city">City:</label>
+  <label htmlFor="city">City:</label>
   <input name="city" type="text" value={inputs.city || "" } onChange={handleChange} required/>
- 
-  
-   <StateList key={statesList} table={statesList} path={spath}/>
- 
- 
+  <DataList path={'State'} handleChange={handleChange} name={'state'} heading={'State'}/>
   <button className="submit-btn">Add New</button>
- 
-   </div>
+  </div>
    
   </form>
   

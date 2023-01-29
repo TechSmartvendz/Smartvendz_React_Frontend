@@ -51,8 +51,7 @@ function StateTable(props) {
          table.map((item, index) => (
            <tr key={index}>
              <td>{item.state}</td>
-             {/*<td>{item.country}</td>*/}
-             <td></td>
+             <td>{item.country}</td>
              <td>
                <button className="btn_edit" >Edit</button>
                <button className="btn_delete" onClick={()=>deleteState(item.state)}>Delete</button>
