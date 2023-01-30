@@ -23,7 +23,7 @@ return (
 <datalist id={name} >
 { dataList !=null ?
 (dataList.map((e,i)=>{
-  return <option key={i} value={e[`${name}`]}>{e[`${name}`]}</option>
+  return <option key={i} value={e[name]}>{e[name]}</option>
 })
 ):
 <option>Country not found</option>
