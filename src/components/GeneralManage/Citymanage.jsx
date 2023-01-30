@@ -5,11 +5,11 @@ import CityTable from './CityTable';
 import DataList from './DataList';
 function Citymanage() {
  const path="City"
- const spath="State"
+
 const [inputs,setInputs]=useState({});
-// const [option,setOption]=useState("karnatak");
+
  const [cityList,setCityList]=useState();
- const [statesList,setStatesList]=useState();
+
 
  const loadCity=async()=>{
   const response=await getReq(path)
@@ -20,13 +20,7 @@ const [inputs,setInputs]=useState({});
  loadCity();
  }, [])
 
- const loadStatesz=async()=>{
-  const response=await getReq(spath)
-  setStatesList(response.data)
- }
- useEffect(() => {
- loadStatesz();
- }, [])
+
  const handleChange=(event)=>{
  
     const name=event.target.name;

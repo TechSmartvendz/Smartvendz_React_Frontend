@@ -2,41 +2,43 @@ import React,{useState} from 'react'
 import { delReq } from '../middleware/AxiosApisCall';
 import { Store } from 'react-notifications-component';
 
-function CityTable(props) {
-const [table,setTable]=useState(props.table);
-const [path,setPath]=useState(props.path);
+function AreaTable(props) {
 
-const deleteCountry = async (event) => { 
-const response=await delReq(path,event)
-if(response.status==="success"){
-props.parentFunction();
-Store.addNotification({
-  title: "Delete City",
-  message: "City Deleted Succesfully",
-  type: "success",
-  insert: "top",
-  container: "top-right",
-  dismiss: {
-  duration: 1000,
-  }
-});
-  }
-  else{
+    const [table,setTable]=useState(props.table);
+    const [path,setPath]=useState(props.path);
+    
+    const deleteArea = async (event) => { 
+    const response=await delReq(path,event)
+    if(response.status==="success"){
+    props.parentFunction();
     Store.addNotification({
-      title: "Delete City",
-      message: response.error,
-      type: "danger",
+      title: "Delete Area",
+      message: "Area Deleted Succesfully",
+      type: "success",
       insert: "top",
       container: "top-right",
       dismiss: {
-      duration: 2000,
+      duration: 1000,
       }
     });
-  } 
-}
+      }
+      else{
+        Store.addNotification({
+          title: "Delete Area",
+          message: response.error,
+          type: "danger",
+          insert: "top",
+          container: "top-right",
+          dismiss: {
+          duration: 2000,
+          }
+        });
+      } 
+    }
+
   return (
    <React.Fragment>
- 
+   
    <div className="table_container-div">
    <table>
      <tbody>
@@ -49,11 +51,11 @@ Store.addNotification({
        {table != null ? (
          table.map((item, index) => (
            <tr key={index}>
+             <td>{item.area}</td>
              <td>{item.city}</td>
-             <td>{item.state}</td>
              <td>
                <button className="btn_edit" >Edit</button>
-               <button className="btn_delete" onClick={() => deleteCountry(item.city)}>Delete</button>
+               <button className="btn_delete" onClick={() => deleteArea(item.area)}>Delete</button>
              </td>
            </tr>
          ))
@@ -66,8 +68,10 @@ Store.addNotification({
      </tbody>
    </table>
  </div>
+   
+   
    </React.Fragment>
   )
 }
 
-export default CityTable
+export default AreaTable

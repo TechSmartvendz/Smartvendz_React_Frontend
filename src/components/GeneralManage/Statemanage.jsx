@@ -8,7 +8,7 @@ function Statemanage() {
  const path="State"
 const [inputs,setInputs]=useState({});
 const [stateList,setStateList]=useState();
-const [countriesList,setCountriesList]=useState();
+
 
 const loadState=async ()=>{
   const response= await getReq(path)

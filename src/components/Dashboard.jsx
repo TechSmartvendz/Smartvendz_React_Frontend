@@ -14,7 +14,7 @@ import Addnewuser from "./Usermanage/Addnewuser";
 import Listuser from "./Usermanage/Listuser";
 import Userpermission from "./Usermanage/Userpermission";
 import UserRole from "./Usermanage/UserRole";
-import AddNewRole from "./Usermanage/AddNewRole"
+// import AddNewRole from "./Usermanage/AddNewRole"
 
 import Companymanage from "./Company_Manage/Companymanage";
 import Addnewcompany from "./Company_Manage/Addnewcompany";
@@ -42,6 +42,7 @@ import Countrymanage from "./GeneralManage/Countrymanage";
 import Citymanage from "./GeneralManage/Citymanage";
 import Unitmanage from "./GeneralManage/Unitmanage";
 import Statemanage from "./GeneralManage/Statemanage";
+import Areamanage from "./GeneralManage/Areamanage";
 
 import Refiller from "./Refiller";
 import Refiller1 from "./Subroutes/Refiller1";
@@ -132,6 +133,7 @@ function Dashboard() {
                   <Route path="statemanage" element={<Statemanage />} />
                   <Route path="citymanage" element={<Citymanage />} />
                   <Route path="unitmanage" element={<Unitmanage />} />
+                  <Route path="areamanage" element={<Areamanage/>}/>
               </Route>
 
               <Route exact path="/products" element={<Products />}>
