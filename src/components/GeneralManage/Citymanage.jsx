@@ -8,15 +8,15 @@ function Citymanage() {
 
 const [inputs,setInputs]=useState({});
 
- const [cityList,setCityList]=useState();
+ const [cityList,setCityList]=useState();//remove this 
 
 
- const loadCity=async()=>{
+ const loadCity=async()=>{   //remove this 
   const response=await getReq(path)
   setCityList(response.data)
  }
 
- useEffect(() => {
+ useEffect(() => {//remove this 
  loadCity();
  }, [])
 
@@ -35,7 +35,7 @@ const [inputs,setInputs]=useState({});
   if(response.status==="success")
   {
     loadCity();
-    Store.addNotification({
+    Store.addNotification({//remove this 
       title:"Add City",
       message:"City Added successfully",
       type:"success",
@@ -47,7 +47,7 @@ const [inputs,setInputs]=useState({});
     })
   }
   else{
-    Store.addNotification({
+    Store.addNotification({//remove this 
       title:"Add City",
       message:response.error,
       type: "danger",

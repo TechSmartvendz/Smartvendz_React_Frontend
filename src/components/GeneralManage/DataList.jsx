@@ -13,13 +13,14 @@ const loadList=async ()=>{
     loadList();
   }, []);
 
-  useEffect(() => {
-    console.log("🚀 ~ file: DataList.jsx:19 ~ DataList ~ dataList", dataList)
-  }, [dataList]);
+// useEffect(() => {
+//     console.log("🚀 ~ file: DataList.jsx:19 ~ DataList ~ dataList", dataList)
+// }, [dataList]);
+
 return (
 <React.Fragment>
 <label htmlFor={name}>{props.heading}:</label>
-<input list={name} name={name} onChange={props.handleChange} required/>
+<input list={name} name={name} onChange={props.handleChange} value={props.value} required/>
 <datalist id={name} >
 { dataList !=null ?
 (dataList.map((e,i)=>{
