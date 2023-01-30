@@ -19,7 +19,7 @@ const loadList=async ()=>{
 return (
 <React.Fragment>
 <label htmlFor={name}>{props.heading}:</label>
-<input list={name} name={name} onChange={props.handleChange}/>
+<input list={name} name={name} onChange={props.handleChange} required/>
 <datalist id={name} >
 { dataList !=null ?
 (dataList.map((e,i)=>{

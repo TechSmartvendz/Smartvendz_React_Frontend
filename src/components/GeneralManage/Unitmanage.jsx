@@ -2,15 +2,16 @@ import React, { useState,useEffect } from 'react'
 import { getReq, postReq } from '../middleware/AxiosApisCall';
 import { Store } from 'react-notifications-component';
 import UnitTable from './UnitTable';
-import CityList from './CityList';
+
+import DataList from './DataList';
 function Unitmanage() {
 
 const [inputs,setInputs]=useState({});
 const [unitList,setUnitList]=useState();
-const [citiesList,setCitiesList]=useState();
+
 
 const path="Unit"
-const upath="City"
+
 
 const handleChange=(event)=>{
  const name=event.target.name;
@@ -28,13 +29,13 @@ const loadUnit=async()=>{
       }, [])
 
 
-      const loadUnits=async()=>{
-        const response=await getReq(upath)
-        setCitiesList(response.data)
-      }
-useEffect(() => {
-  loadUnits();
-}, [])
+//       const loadUnits=async()=>{
+//         const response=await getReq(upath)
+//         setCitiesList(response.data)
+//       }
+// useEffect(() => {
+//   loadUnits();
+// }, [])
 
 
 
@@ -88,7 +89,7 @@ const handleSubmit=async(event)=>{
  <label htmlFor="city">Unit:</label>
 <input name="unit" type="text" value={inputs.unit || ""} onChange={handleChange} required/>
 
-<CityList key={citiesList} path={upath} table={citiesList} />
+
 
 
 

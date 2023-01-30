@@ -44,6 +44,7 @@ const deleteUnit=async(event)=>{
      <tbody>
        <tr>
          <th>Unit</th>
+        
          <th>Action</th>
        </tr>
 
@@ -51,6 +52,7 @@ const deleteUnit=async(event)=>{
          table.map((items, index) => (
            <tr key={index}>
              <td>{items.unit}</td>
+            
              <td>
                <button className="btn_edit" >Edit</button>
                <button className="btn_delete" onClick={() => deleteUnit(items.unit)}>Delete</button>
