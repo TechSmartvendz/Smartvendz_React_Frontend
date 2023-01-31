@@ -77,7 +77,7 @@ const tdData =() =>{
 return (
   <React.Fragment>
     <div className="componet-sub2-title">
-      <span>Total State: {tableData != null ? tableData.length : 0}</span>
+      <span>Total {path}: {tableData != null ? tableData.length : 0}</span>
     </div>
     <div className="table_container-div">
       <table>

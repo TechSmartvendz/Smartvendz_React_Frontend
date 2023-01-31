@@ -40,13 +40,14 @@ export const GeneralManagerData = [
     path: "/generalmanager/citymanage",    
   },
   {
+    title:"Area manage",
+    path:"/generalmanager/areamanage",
+  },
+  {
     title: "Unit manage",
     path: "/generalmanager/unitmanage",    
   },
-  {
-    title:"Area manage",
-    path:"/generalmanager/areamanage",
-  }
+ 
 ];
 export const InventoryManagerData = [
     
