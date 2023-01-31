@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { postReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableData from "../Partials/TableData"; //2
-import DataList from "../Partials/DataList";
 
 function Countrymanage() {
   const path = "Country";
