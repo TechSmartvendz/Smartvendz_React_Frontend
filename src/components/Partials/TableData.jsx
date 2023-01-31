@@ -16,6 +16,7 @@ function TableData(props) {
   }, []);
 
   const deleteState = async (event) => {
+    console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", event)
     // props.parentFunction();
     const response = await delReq(path, event);
     if (response.status === "success") {
@@ -32,12 +33,12 @@ function TableData(props) {
     }
   };
 
-  useEffect(() => {
-    console.log(
-      "🚀 ~ file: TableData.jsx:21 ~ StateTable ~ tableData",
-      tableData
-    );
-  }, [tableData]);
+  // useEffect(() => {
+  //   console.log(
+  //     "🚀 ~ file: TableData.jsx:21 ~ StateTable ~ tableData",
+  //     tableData
+  //   );
+  // }, [tableData]);
 
 
 
@@ -106,24 +107,25 @@ return (
 
           {
             tableData != null ? (
-            tableData.map((item, index) => (
-              <tr key={item.id}>
-             {Object.keys(item).filter(i=> i !== '_id').map((input, index) => {
-                
-                 <td>{input}</td>
-             })}
-               
-                <td>
-                  <button className="btn_edit">Edit</button>
-                  <button
-                    className="btn_delete"
-                    onClick={() => deleteState(item.state)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))
+            tableData.map((item, index) => {
+              // console.log("🚀 ~ file: TableData.jsx:111 ~ TableData ~ item", item)
+              return <tr key={item._id}>
+             	{Object.keys(item).filter(i=> i !== '_id').map((input, index) => {
+                 	return <td key={index}>{item[input]}</td>
+             	})}
+               	
+                	<td>
+                  	<button className="btn_edit">Edit</button>
+                  	<button
+                    	className="btn_delete" value={item.id}
+                    	onClick={() => deleteState(item._id)}
+                  	>
+                    	Delete
+                  	</button>
+                	</td>
+              	</tr>
+            })
+            
           ) : (
             <tr>
               <td> Data Not Found </td>
