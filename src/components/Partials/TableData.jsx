@@ -32,6 +32,7 @@ function TableData(props) {
       });
     }
   };
+  
 
   // useEffect(() => {
   //   console.log(
@@ -41,38 +42,38 @@ function TableData(props) {
   // }, [tableData]);
 
 
+//   const ThData =()=>{
+//    return ( <tr>
+//     {tableData != null ? (
+//       Object.keys(tableData[0]).map(
+//         (key) =>
+//           key != ("_id" || null) && (
+//             <th key={key}>
+//               <span style={{ textTransform: "capitalize" }}>
+//                 {key}
+//               </span>
+//             </th>
+//           )
+//       )
+//     ) : (
+//       <td></td>
+//     )}
+//     {tableData != null && <th>Actions</th>}
+//   </tr>)
+// }
 
-  const ThData =()=>{
-   return ( <tr>
-    {tableData != null ? (
-      Object.keys(tableData[0]).map(
-        (key) =>
-          key != ("_id" || null) && (
-            <th key={key}>
-              <span style={{ textTransform: "capitalize" }}>
-                {key}
-              </span>
-            </th>
-          )
-      )
-    ) : (
-      <td></td>
-    )}
-    {tableData != null && <th>Actions</th>}
-  </tr>)
-}
+// const tdData =() =>{
+  
+//   return tableData.map((data,index)=>{
+//     return(
+//         <tr>
+//         <td>{data}</td>
+//         </tr>
+//     )
+//   })
+  
+// }
 
-const tdData =() =>{
-  
-  return tableData.map((data,index)=>{
-    return(
-        <tr>
-        <td>{data}</td>
-        </tr>
-    )
-  })
-  
-}
   
 return (
   <React.Fragment>
@@ -136,7 +137,9 @@ return (
       </table>
       </div>
     </React.Fragment>
-  );
+  )
 }
+      
+
 
 export default TableData;

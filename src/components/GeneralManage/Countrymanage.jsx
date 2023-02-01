@@ -48,13 +48,7 @@ function Countrymanage() {
               onChange={handleChange}
               required
             />
-            {/* <DataList
-              value={inputs.country || ""}
-              path={"Country"}
-              handleChange={handleChange}
-              name={"country"}
-              heading={"Country"}
-            /> */}
+     
             <button className="submit-btn">Add New</button>
           </div>
         </form>
