@@ -22,19 +22,20 @@ function Statemanage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-   if(par.length){
-      const response = await patchReq(path, inputs,par.id);
+   if(par){
+      console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
+      const response = await patchReq(path, inputs,par);
       if (response.status === "success") {
         setPar()
         setTableRefresh(tableRefresh+1);//4
         setInputs({});//5
-        SuccessAlert({title: "Add State", message: "State Added successfully" });
+        SuccessAlert({title: "Edit State", message: "State Update successfully" });
       } else {
-        ErrorAlert({title: "Add State",message: response.error});
+        ErrorAlert({title: "Edit State",message: response.error});
       }
 
     }else{
-
+      console.log("🚀 ~ file: Statemanage.jsx:38 ~ handleSubmit ~ par", par)
       const response = await postReq(path, inputs);
       if (response.status === "success") {
         setTableRefresh(tableRefresh+1);//4
@@ -47,7 +48,7 @@ function Statemanage() {
   }
 
   const editClick=(pid)=>{
-    setPar(pid)
+    setPar(pid._id)
     setInputs(pid) 
 
   }
@@ -65,7 +66,7 @@ function Statemanage() {
         </div>
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
-            <span>State Details</span>
+            <span>{par?(<span>Edit </span>):(<span>Add </span>)}State </span>
           </div>
           <div className="general-manage-div">
             <label htmlFor="name">State:</label>
@@ -86,7 +87,7 @@ function Statemanage() {
             />
             {/* {isparamsTrue()} */}
             {/* <button className="submit-btn">{useParams().stateId ?"Edit":"Add New"}</button> */}
-            <button className="submit-btn">Add new</button>
+            <button className="submit-btn">{par?(<span>Update </span>):(<span>Add </span>)}</button>
           </div>
         </form>
         <TableData
