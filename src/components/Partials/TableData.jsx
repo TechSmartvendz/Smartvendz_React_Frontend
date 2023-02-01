@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { getReq, delReq } from "../middleware/AxiosApisCall";
+import { getReq, delReq, patchReq } from "../middleware/AxiosApisCall";
+import { useParams, useNavigate, redirect } from "react-router-dom";
 
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
 
 function TableData(props) {
+
+ 
   const [tableData, setTableData] = useState();
   const [path, setPath] = useState(props.path);
   const loadTableDate = async () => {
@@ -11,8 +14,15 @@ function TableData(props) {
     setTableData(response.data);
   };
 
+  // const editTableData = async (id,data) => {
+
+  //   const response = await editReq(path + id + data );
+  //   setTableData(response.data)
+  // }
+
   useEffect(() => {
     loadTableDate();
+    // editTableData()
   }, []);
 
   const deleteState = async (event) => {
@@ -33,6 +43,7 @@ function TableData(props) {
     }
   };
 
+
   // useEffect(() => {
   //   console.log(
   //     "🚀 ~ file: TableData.jsx:21 ~ StateTable ~ tableData",
@@ -40,11 +51,43 @@ function TableData(props) {
   //   );
   // }, [tableData]);
 
+<<<<<<< HEAD
   
+=======
+//   function updateTodo() {
+
+//  console.log(item._id)
+//  // axios.patch('https://jsonplaceholder.typicode.com/todos/1',{
+//  //   title:'This is the title',
+//  //   completed: false
+//  // })
+//  // .then( res => showOutput(res))
+//  // .catch( error => console.log(error))
+ 
+
+// }
+
+const navigate = useNavigate();
+
+function Redirect(item) {
+  // const navigate = useNavigate();
+  // navigate("/statemanage");
+  console.log(item);
+  props.editClick(item);
+
+
+     
+    //  {stateId ?redirect("/statemanage:stateId"):  redirect("/statemanage") }
+}
+
+
+
+>>>>>>> bae76ab8a7242e52a20a09f027ea7dcc27628ee3
 return (
+
   <React.Fragment>
     <div className="componet-sub2-title">
-      <span>Total State: {tableData != null ? tableData.length : 0}</span>
+      <span>Total {path}: {tableData != null ? tableData.length : 0}</span>
     </div>
     <div className="table_container-div">
       <table>
@@ -82,7 +125,19 @@ return (
              	})}
                	
                 	<td>
-                  	<button className="btn_edit">Edit</button>
+                  	<button className="btn_edit"
+                //    onClick={() => console.log(item._id)}>Edit</button>
+
+                
+                    onClick={() =>
+                      Redirect(item)
+                      
+                     }>
+                      Edit
+                      </button>
+
+
+
                   	<button
                     	className="btn_delete" value={item.id}
                     	onClick={() => deleteState(item._id)}
@@ -103,7 +158,9 @@ return (
       </table>
       </div>
     </React.Fragment>
-  );
+  )
 }
+      
+
 
 export default TableData;

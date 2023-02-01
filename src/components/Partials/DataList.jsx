@@ -8,6 +8,7 @@ const loadList=async ()=>{
     const response = await getReq(path)
 
     setDataList(response.data);
+    console.log(response.data)
   }
   useEffect(() => {
     loadList();
@@ -20,7 +21,7 @@ const loadList=async ()=>{
 return (
 <React.Fragment>
 <label htmlFor={name}>{props.heading}:</label>
-<input list={name} name={name} onChange={props.handleChange} value={props.value} required/>
+<input list={name} name={name} onChange={props.handleChange} value={props.value}  autoComplete={"off"} required/>
 <datalist id={name} >
 { dataList !=null ?
 (dataList.map((e,i)=>{
