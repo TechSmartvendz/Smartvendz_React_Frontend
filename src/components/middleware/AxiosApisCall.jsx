@@ -49,9 +49,9 @@ export const postReq = async (path,body) => {
     }
   }
 
-export const editReq=async (path,param)=>{
+export const patchReq=async (path,body,id)=>{
   try{
-const response= await instance.put(`/${path}/{param}`)
+const response= await instance.patch(`/${path}/${id}`,body)
 const data=response.data
 return data
   }

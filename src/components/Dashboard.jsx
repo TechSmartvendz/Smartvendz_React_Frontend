@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Outlet } from "react-router-dom";
 //FIXME:remove Add order
 import Addorder from "./Addorder";
 
@@ -130,7 +130,11 @@ function Dashboard() {
 
               <Route exact path="/generalmanager" element={<Generalmanage />}>
                   <Route path="countrymanage" element={<Countrymanage />} />
-                  <Route path="statemanage" element={<Statemanage />} />
+
+                  <Route path="statemanage" element={<Statemanage />}>
+                  <Route path=":stateId" element={<Statemanage />}/>
+                  </Route>
+
                   <Route path="citymanage" element={<Citymanage />} />
                   <Route path="unitmanage" element={<Unitmanage />} />
                   <Route path="areamanage" element={<Areamanage/>}/>
@@ -153,10 +157,13 @@ function Dashboard() {
                   <Route path="1" element={<InventoryManager1 />} />
                   <Route path="2" element={<InventoryManager2 />} />
               </Route>
+      
                
 
               <Route path="/*" element={<PageError />} />
+
             </Routes>
+              <Outlet />
           </div>
         </div>
         <Footer />
