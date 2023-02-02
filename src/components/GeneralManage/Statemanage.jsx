@@ -12,8 +12,6 @@ function Statemanage() {
  
   const[par, setPar] = useState()
   
-
- 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -52,11 +50,11 @@ function Statemanage() {
     setInputs(pid) 
 
   }
-  useEffect(() => {
+  // useEffect(() => {
    
-    console.log(par)
+  //   console.log(par)
    
-  }, [par]);
+  // }, [par]);
 
   return (
     <React.Fragment>
@@ -85,9 +83,7 @@ function Statemanage() {
               name={"country"}
               heading={"Country"}
             />
-            {/* {isparamsTrue()} */}
-            {/* <button className="submit-btn">{useParams().stateId ?"Edit":"Add New"}</button> */}
-            <button className="submit-btn">{par?(<span>Update </span>):(<span>Add New</span>)}</button>
+            <button className="submit-btn">{par?(<span>Update </span>):(<span>Add </span>)}</button>
           </div>
         </form>
         <TableData

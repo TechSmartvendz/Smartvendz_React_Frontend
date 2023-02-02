@@ -20,7 +20,19 @@ function Citymanage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(par){
-    const response = await patchReq(path, inputs,par);
+      console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
+      const response = await patchReq(path, inputs,par);
+      if (response.status === "success") {
+        setPar()
+        setTableRefresh(tableRefresh+1);//4
+        setInputs({});//5
+        SuccessAlert({title: "Edit City", message: "City Update successfully" });
+      } else {
+        ErrorAlert({title: "Edit City",message: response.error});
+      }
+    
+    }else {
+    const response = await postReq(path, inputs);
     if (response.status === "success") {
       setPar();
       setTableRefresh(tableRefresh + 1); //4
@@ -29,24 +41,17 @@ function Citymanage() {
     } else {
       ErrorAlert({ title: "Edit City", message: response.error });
     }
-  }else{
-    const response=await postReq(path,inputs)
-    if(response.status==="success"){
-     
-      setTableRefresh(tableRefresh+1);
-      setInputs({});
-      SuccessAlert({title:"Add City",message:"City Added successfully"})
-    }
-    else{
-      ErrorAlert({title:"Edit City",message:response.error})
-    }
   }
+  }
+
+    const editClick=(pid)=>{
+      setPar(pid._id)
+      setInputs(pid) 
   
-  }
-  const editClick=(pid)=>{
-   setPar(pid._id)
-   setInputs(pid)
-  } 
+    }
+ 
+
+  
 
   return (
     <React.Fragment>
@@ -57,6 +62,8 @@ function Citymanage() {
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
+          <span>{par?(<span>Edit </span>):(<span>Add </span>)}City </span>
+
             <span>City Details</span>
           </div>
 
@@ -85,6 +92,6 @@ function Citymanage() {
       </div>
     </React.Fragment>
   );
-}
 
+}
 export default Citymanage;

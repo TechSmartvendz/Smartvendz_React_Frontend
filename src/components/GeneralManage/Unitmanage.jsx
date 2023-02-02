@@ -60,7 +60,7 @@ console.log(par)
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
-            <span>Unit Details</span>
+          <span>{par?(<span>Edit </span>):(<span>Add </span>)}Unit </span>
           </div>
 
           <div className="general-manage-div">
