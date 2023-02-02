@@ -3,7 +3,6 @@ import {  postReq, patchReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";//1
 import TableData from "../Partials/TableData";//2
 import DataList from "../Partials/DataList";
-import { useParams } from "react-router-dom";
 
 function Statemanage() {
   const path = "State";
@@ -12,8 +11,6 @@ function Statemanage() {
  
   const[par, setPar] = useState()
   
-
- 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -52,11 +49,11 @@ function Statemanage() {
     setInputs(pid) 
 
   }
-  useEffect(() => {
+  // useEffect(() => {
    
-    console.log(par)
+  //   console.log(par)
    
-  }, [par]);
+  // }, [par]);
 
   return (
     <React.Fragment>
@@ -85,8 +82,6 @@ function Statemanage() {
               name={"country"}
               heading={"Country"}
             />
-            {/* {isparamsTrue()} */}
-            {/* <button className="submit-btn">{useParams().stateId ?"Edit":"Add New"}</button> */}
             <button className="submit-btn">{par?(<span>Update </span>):(<span>Add </span>)}</button>
           </div>
         </form>

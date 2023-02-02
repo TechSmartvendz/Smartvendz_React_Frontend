@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { postReq } from "../middleware/AxiosApisCall";
+import { postReq, patchReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableData from "../Partials/TableData"; //2
 import DataList from "../Partials/DataList";
@@ -9,14 +9,30 @@ function Citymanage() {
 
   const [inputs, setInputs] = useState({});
   const [tableRefresh, setTableRefresh] = useState(0); //3
+  const[par, setPar] = useState()
+
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if(par){
+      console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
+      const response = await patchReq(path, inputs,par);
+      if (response.status === "success") {
+        setPar()
+        setTableRefresh(tableRefresh+1);//4
+        setInputs({});//5
+        SuccessAlert({title: "Edit City", message: "City Update successfully" });
+      } else {
+        ErrorAlert({title: "Edit City",message: response.error});
+      }
+    
+    }else {
     const response = await postReq(path, inputs);
     if (response.status === "success") {
       setTableRefresh(tableRefresh + 1); //4
@@ -25,7 +41,18 @@ function Citymanage() {
     } else {
       ErrorAlert({ title: "Add City", message: response.error });
     }
-  };
+    
+    }
+  }
+
+    const editClick=(pid)=>{
+      setPar(pid._id)
+      setInputs(pid) 
+  
+    }
+ 
+
+  
 
   return (
     <React.Fragment>
@@ -36,6 +63,8 @@ function Citymanage() {
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
+          <span>{par?(<span>Edit </span>):(<span>Add </span>)}City </span>
+
             <span>City Details</span>
           </div>
 
@@ -56,19 +85,21 @@ function Citymanage() {
               name={"state"}
               heading={"State"}
             />
-            <button className="submit-btn">Add New</button>
+            {/* <button className="submit-btn">Add New</button> */}
+            <button className="submit-btn">{par?(<span>Update </span>):(<span>Add </span>)}</button>
+
           </div>
         </form>
 
-        {/* <div className="componet-sub2-title">
-  <span>Total City:</span>
- </div> */}
 
-        {/* <CityTable key={cityList} table={cityList} path={path} parentFunction={loadCity}/> */}
-        <TableData path={path} key={tableRefresh} />
+        <TableData
+          path={path}
+          key={tableRefresh}
+          editClick={editClick}
+        />
       </div>
     </React.Fragment>
   );
-}
 
+}
 export default Citymanage;

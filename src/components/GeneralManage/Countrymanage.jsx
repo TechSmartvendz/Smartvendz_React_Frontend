@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { postReq } from "../middleware/AxiosApisCall";
+import { postReq,patchReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableData from "../Partials/TableData"; //2
 
@@ -7,6 +7,8 @@ function Countrymanage() {
   const path = "Country";
   const [inputs, setInputs] = useState({});
   const [tableRefresh, setTableRefresh] = useState(0); //3
+  const[par, setPar] = useState()
+
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -16,18 +18,41 @@ function Countrymanage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await postReq(path, inputs);
-    if (response.status === "success") {
-      setTableRefresh(tableRefresh + 1); //4
-      setInputs({}); //5
-      SuccessAlert({
-        title: "Add Country",
-        message: "Country Added successfully",
-      });
+    if(par) {
+      console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
+      const response = await patchReq(path, inputs,par);
+      if (response.status === "success") {
+        setPar()
+        setTableRefresh(tableRefresh+1);//4
+        setInputs({});//5
+        SuccessAlert({title: "Edit Country", message: "Country Update successfully" });
+      } else {
+        ErrorAlert({title: "Edit Country",message: response.error});
+      }
+
     } else {
-      ErrorAlert({ title: "Add Country", message: response.error });
+      const response = await postReq(path, inputs);
+      if (response.status === "success") {
+        setTableRefresh(tableRefresh + 1); //4
+        setInputs({}); //5
+        SuccessAlert({
+          title: "Add Country",
+          message: "Country Added successfully",
+        });
+      } else {
+        ErrorAlert({ title: "Add Country", message: response.error });
+      }
+
     }
+
+ 
   };
+  
+  const editClick=(pid)=>{
+    setPar(pid._id)
+    setInputs(pid) 
+  }
+
 
   return (
     <React.Fragment>
@@ -37,7 +62,7 @@ function Countrymanage() {
         </div>
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
-            <span>Country Details</span>
+          <span>{par?(<span>Edit </span>):(<span>Add </span>)}Country </span>
           </div>
           <div className="general-manage-div">
             <label htmlFor="name">Country:</label>
@@ -49,10 +74,16 @@ function Countrymanage() {
               required
             />
      
-            <button className="submit-btn">Add New</button>
+            {/* <button className="submit-btn">Add New</button> */}
+          <button className="submit-btn">{par?(<span>Update </span>):(<span>Add </span>)}</button>
+
           </div>
         </form>
-        <TableData path={path} key={tableRefresh} />
+        <TableData
+          path={path}
+          key={tableRefresh}
+          editClick={editClick}
+        />
       </div>
     </React.Fragment>
   );

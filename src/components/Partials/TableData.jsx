@@ -24,9 +24,9 @@ const redirect=((item)=>{
   }, []);
 
   const deleteState = async (event) => {
-    console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", event._id);
+    console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", event);
     // props.parentFunction();
-    const response = await delReq(path, event._id);
+    const response = await delReq(path, event);
     if (response.status === "success") {
       loadTableDate();
       SuccessAlert({
@@ -90,8 +90,8 @@ const redirect=((item)=>{
 
                       <button
                         className="btn_delete"
-                        value={item.id}
-                        onClick={() => deleteState(item)}
+                        value={item._id}
+                        onClick={() => deleteState(item._id)}
                       >
                         Delete
                       </button>
