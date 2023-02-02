@@ -90,8 +90,8 @@ const redirect=((item)=>{
 
                       <button
                         className="btn_delete"
-                        value={item.id}
-                        onClick={() => deleteState(item.id)}
+                        value={item._id}
+                        onClick={() => deleteState(item._id)}
                       >
                         Delete
                       </button>
