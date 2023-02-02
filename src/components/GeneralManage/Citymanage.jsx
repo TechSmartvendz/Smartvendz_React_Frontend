@@ -41,19 +41,7 @@ function Citymanage() {
     } else {
       ErrorAlert({ title: "Edit City", message: response.error });
     }
-  }else{
-    const response=await postReq(path,inputs)
-    if(response.status==="success"){
-     
-      setTableRefresh(tableRefresh+1);
-      setInputs({});
-      SuccessAlert({title:"Add City",message:"City Added successfully"})
-    }
-    else{
-      ErrorAlert({title:"Edit City",message:response.error})
-    }
-    
-    }
+  }
   }
 
     const editClick=(pid)=>{
