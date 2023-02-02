@@ -11,8 +11,9 @@ function Unitmanage() {
   const [tableRefresh, setTableRefresh] = useState(0); //3
   const [par,setPar]=useState();
   const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+  const name = event.target.name;
+  
+  const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
