@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { postReq } from "../middleware/AxiosApisCall";
+import { postReq,patchReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableData from "../Partials/TableData"; //2
-import DataList from "../Partials/DataList";
+
 
 function Unitmanage() {
   const path = "Unit";
 
   const [inputs, setInputs] = useState({});
   const [tableRefresh, setTableRefresh] = useState(0); //3
-
+  const [par,setPar]=useState();
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -18,16 +18,38 @@ function Unitmanage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await postReq(path, inputs);
+    if(par){
+    const response = await patchReq(path, inputs,par);
     if (response.status === "success") {
+      setPar();
       setTableRefresh(tableRefresh + 1); //4
       setInputs({}); //5
-      SuccessAlert({ title: "Add Unit", message: "Unit Added successfully" });
+      SuccessAlert({ title: "Edit Unit", message: "Unit Updated successfully" });
     } else {
-      ErrorAlert({ title: "Add Unit", message: response.error });
+      ErrorAlert({ title: "Edit Unit", message: response.error });
     }
-  };
+    }else{
+         const response=await postReq(path,inputs)
+         if(response.status==="success"){
+          setTableRefresh(tableRefresh+1)
+          setInputs({});
+          SuccessAlert({title:"Add Unit",message:"Unit Added successfully"})
+         }
+         else{
+          ErrorAlert({title:"Add Unit",message:response.error})
+         }
 
+    }
+  
+  
+  };
+const editClick=(pid)=>{
+  setPar(pid._id)
+  setInputs(pid)
+}
+useEffect(() => {
+console.log(par)
+}, [par])
   return (
     <React.Fragment>
       <div className="add-user-container">
@@ -41,33 +63,21 @@ function Unitmanage() {
           </div>
 
           <div className="general-manage-div">
-            {/* <label htmlFor="city">Unit:</label> */}
-            {/* <input
-              name="unit"
-              type="text"
-              value={inputs.unit || ""}
-              onChange={handleChange}
-              required
-            /> */}
-
-            <DataList
+          <label htmlFor="name">Unit:</label>
+            <input
              value={inputs.unit || ""}
-
-              path={"Unit"}
-              handleChange={handleChange}
-              name={"unit"}
+              type='text'
+           
+              onChange={handleChange}
+              name="unit"
               heading={"Unit"}
             />
 
-            <button className="submit-btn">Add New</button>
+            <button className="submit-btn">{par ? (<span>Update</span>):<span>Add New</span>}</button>
           </div>
         </form>
 
-        {/* <div className="componet-sub2-title">
-          <span>Total Units:</span>
-        </div> */}
-
-        <TableData path={path} key={tableRefresh} />
+        <TableData path={path} key={tableRefresh} editClick={editClick}/>
       </div>
     </React.Fragment>
   );

@@ -3,7 +3,7 @@ import {  postReq, patchReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";//1
 import TableData from "../Partials/TableData";//2
 import DataList from "../Partials/DataList";
-import { useParams } from "react-router-dom";
+
 
 function Statemanage() {
   const path = "State";
@@ -44,7 +44,7 @@ function Statemanage() {
       } else {
         ErrorAlert({title: "Add State",message: response.error});
       }
-    };
+    }
   }
 
   const editClick=(pid)=>{
@@ -66,7 +66,7 @@ function Statemanage() {
         </div>
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
-            <span>{par?(<span>Edit </span>):(<span>Add </span>)}State </span>
+            <span>State </span>
           </div>
           <div className="general-manage-div">
             <label htmlFor="name">State:</label>
@@ -87,7 +87,7 @@ function Statemanage() {
             />
             {/* {isparamsTrue()} */}
             {/* <button className="submit-btn">{useParams().stateId ?"Edit":"Add New"}</button> */}
-            <button className="submit-btn">{par?(<span>Update </span>):(<span>Add </span>)}</button>
+            <button className="submit-btn">{par?(<span>Update </span>):(<span>Add New</span>)}</button>
           </div>
         </form>
         <TableData

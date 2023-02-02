@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getReq, delReq, patchReq } from "../middleware/AxiosApisCall";
-import { useParams, useNavigate, redirect } from "react-router-dom";
+
 
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
 
@@ -26,7 +26,7 @@ const redirect=((item)=>{
   const deleteState = async (event) => {
     console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", event);
     // props.parentFunction();
-    const response = await delReq(path, event._id);
+    const response = await delReq(path, event);
     if (response.status === "success") {
       loadTableDate();
       SuccessAlert({
