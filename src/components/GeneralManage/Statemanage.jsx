@@ -4,6 +4,7 @@ import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";//1
 import TableData from "../Partials/TableData";//2
 import DataList from "../Partials/DataList";
 
+
 function Statemanage() {
   const path = "State";
   const [inputs, setInputs] = useState({});
@@ -41,7 +42,7 @@ function Statemanage() {
       } else {
         ErrorAlert({title: "Add State",message: response.error});
       }
-    };
+    }
   }
 
   const editClick=(pid)=>{
@@ -63,7 +64,7 @@ function Statemanage() {
         </div>
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
-            <span>{par?(<span>Edit </span>):(<span>Add </span>)}State </span>
+            <span>State </span>
           </div>
           <div className="general-manage-div">
             <label htmlFor="name">State:</label>

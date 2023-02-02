@@ -74,16 +74,10 @@ function Countrymanage() {
               required
             />
      
-            {/* <button className="submit-btn">Add New</button> */}
-          <button className="submit-btn">{par?(<span>Update </span>):(<span>Add </span>)}</button>
-
+            <button className="submit-btn">{par?(<span>Update</span>):<span>Add New</span>}</button>
           </div>
         </form>
-        <TableData
-          path={path}
-          key={tableRefresh}
-          editClick={editClick}
-        />
+        <TableData path={path} key={tableRefresh}   editClick={editClick}/>
       </div>
     </React.Fragment>
   );

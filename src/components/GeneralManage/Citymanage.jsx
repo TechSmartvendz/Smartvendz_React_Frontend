@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { postReq, patchReq } from "../middleware/AxiosApisCall";
+import React, { useState} from "react";
+import { postReq ,patchReq} from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableData from "../Partials/TableData"; //2
 import DataList from "../Partials/DataList";
@@ -9,15 +9,14 @@ function Citymanage() {
 
   const [inputs, setInputs] = useState({});
   const [tableRefresh, setTableRefresh] = useState(0); //3
-  const[par, setPar] = useState()
-
+  const [par,setPar]=useState();
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(par){
@@ -35,11 +34,23 @@ function Citymanage() {
     }else {
     const response = await postReq(path, inputs);
     if (response.status === "success") {
+      setPar();
       setTableRefresh(tableRefresh + 1); //4
       setInputs({}); //5
-      SuccessAlert({ title: "Add City", message: "City Added successfully" });
+      SuccessAlert({ title: "Edit City", message: "City Update successfully" });
     } else {
-      ErrorAlert({ title: "Add City", message: response.error });
+      ErrorAlert({ title: "Edit City", message: response.error });
+    }
+  }else{
+    const response=await postReq(path,inputs)
+    if(response.status==="success"){
+     
+      setTableRefresh(tableRefresh+1);
+      setInputs({});
+      SuccessAlert({title:"Add City",message:"City Added successfully"})
+    }
+    else{
+      ErrorAlert({title:"Edit City",message:response.error})
     }
     
     }
@@ -85,18 +96,11 @@ function Citymanage() {
               name={"state"}
               heading={"State"}
             />
-            {/* <button className="submit-btn">Add New</button> */}
-            <button className="submit-btn">{par?(<span>Update </span>):(<span>Add </span>)}</button>
-
+            <button className="submit-btn">{par ? (<span>Update</span>):(<span>Add New</span>)}</button>
           </div>
         </form>
 
-
-        <TableData
-          path={path}
-          key={tableRefresh}
-          editClick={editClick}
-        />
+        <TableData path={path} key={tableRefresh} editClick={editClick}/>
       </div>
     </React.Fragment>
   );

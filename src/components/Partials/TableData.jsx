@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getReq, delReq, patchReq } from "../middleware/AxiosApisCall";
-import { useParams, useNavigate, redirect } from "react-router-dom";
+
 
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
 

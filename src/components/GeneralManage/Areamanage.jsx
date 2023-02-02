@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { postReq, patchReq } from "../middleware/AxiosApisCall";
+import { postReq ,patchReq} from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableData from "../Partials/TableData"; //2
 import DataList from "../Partials/DataList";
@@ -83,11 +83,8 @@ function Areamanage() {
             <button className="submit-btn">{par?(<span>Update </span>):(<span>Add </span>)}</button>
           </div>
         </form>
-        <TableData
-          path={path}
-          key={tableRefresh}
-          editClick={editClick}
-        />
+
+        <TableData path={path} key={tableRefresh} editClick={editClick} />
       </div>
     </React.Fragment>
   );
