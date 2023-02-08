@@ -12,7 +12,6 @@ function Unitmanage() {
   const [par,setPar]=useState();
   const handleChange = (event) => {
   const name = event.target.name;
-  
   const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
@@ -41,10 +40,9 @@ function Unitmanage() {
          }
 
     }
-  
-  
-  };
+   };
 const editClick=(pid)=>{
+ console.log(pid)
   setPar(pid._id)
   setInputs(pid)
 }

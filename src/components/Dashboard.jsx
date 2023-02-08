@@ -160,7 +160,7 @@ function Dashboard() {
       
                
 
-              <Route path="/*" element={<PageError />} />
+              <Route path="/*" element={<PageError/>} />
 
             </Routes>
               <Outlet />

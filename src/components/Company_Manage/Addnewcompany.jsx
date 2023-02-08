@@ -1,33 +1,61 @@
 import React, { useState } from "react";
+import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
+import { patchReq, postReq } from "../middleware/AxiosApisCall";
+import DataList from "../Partials/DataList";
+import { useNavigate } from "react-router-dom";
 
-// type="text"
-// name="cname"
-// className="company_input"
-// value={inputs.cname || ""}
-// onChange={handleChange}
-// required
 function Addnewcompany() {
-// const fieldsData=[{type:"text",name:"cname",className:"company_input",value:"inputs."}]
+const path="State"
+// const navigate=useNavigate();
+const[inputs,setInputs]=useState({});
 
-
-
-
-  const[inputs,setInputs]=useState({});
-
-  const[option,setOption]=useState({});
-
-  const handleChange=(e)=>{
-   const name=e.target.name;
-   const value=e.target.value;
+const [tableRefresh,setTableRefresh]=useState();
+// const[par,setPar]=useState();
+  const handleChange=(event)=>{
+   const name=event.target.name;
+   const value=event.target.value;
    setInputs(values=>({...values,[name]:value}))
-   setOption((values)=>({...values, [name]:value}))
+  
   }
- const handleSubmit=(e)=>{
- e.preventDefault();
+ const handleSubmit=async(event)=>{
+ event.preventDefault();
+// if(par)
+// {
+//   console.log(par)
+//   const response=await patchReq(path,inputs,par)
+//   if(Response.status==='success'){
+//     setPar()
+//     setTableRefresh(tableRefresh+1)
+//     setInputs({});
+//     SuccessAlert({title:"edit Company",message:"Company updated successfully"});
+//   }else{
+//     ErrorAlert({title:"Edit state",message:response.error})
+//   }
+// }else{
+  const response=await postReq(path,inputs)
+  if(response.status==='success')
+  {
+    console.log(inputs)
+    setTableRefresh(tableRefresh+1)
+    setInputs({})
+    // navigate("/companymanage/listcompany")
+    SuccessAlert({title:"Add Company",message:"Company Added successfully"})
+  }else{
+    ErrorAlert({title:"Add Company",message:response.error})
+  }
+}
+ 
+ 
 
- console.log(inputs)
- console.log(option)
- }
+//  const editClick=(pid)=>{
+//   setPar(pid._id)
+//   setInputs(pid) 
+// }
+              // name="state"
+              // type="text"
+              // value={inputs.state || ""}
+              // onChange={handleChange}
+              // required      
   return (
     <React.Fragment>
       <div className="add-user-container">
@@ -50,7 +78,7 @@ function Addnewcompany() {
               <input
                 type="text"
                 name="cname"
-                className="company_input"
+               
                 value={inputs.cname || ""}
                 onChange={handleChange}
                 required
@@ -64,7 +92,7 @@ function Addnewcompany() {
               <input
                 type="text"
                 name="cid"
-                className="company_input"
+             
                 value={inputs.cid || ""}
                 onChange={handleChange}
                 required
@@ -78,7 +106,7 @@ function Addnewcompany() {
               <input
                 type="text"
                 name="cadd"
-                className="company_input"
+              
                 value={inputs.cadd || ""}
                 onChange={handleChange}
                 required
@@ -92,7 +120,7 @@ function Addnewcompany() {
               <input
                 type="text"
                 name="clocation"
-                className="company_input"
+              
                 value={inputs.clocation || ""}
                 onChange={handleChange}
                 required
@@ -106,7 +134,7 @@ function Addnewcompany() {
               <input
                 type="text"
                 name="cbuildingno"
-                className="company_input"
+               
                 value={inputs.cbuildingno || ""}
                 onChange={handleChange}
                 required
@@ -114,15 +142,15 @@ function Addnewcompany() {
             </div>
 
             <div className="input-lable-h-div">
-              <label htmlFor="Cperson" className="adminlabel">
-                Company Person:
-              </label>
-              <select className="" name="company_person" value={option.company_person || ""} onChange={handleChange} required>
-                <option>Manoj</option>
-                <option>Dinesh</option>
-                <option>Shubham</option>
-                <option>Kuldeep</option>
-              </select>
+             
+              <DataList
+
+              value={inputs.country || ""}
+              path={"Country"}
+              handleChange={handleChange}
+              name={"country"}
+              heading={"Company Person"}
+            />
             </div>
           </div>
          
@@ -134,7 +162,7 @@ function Addnewcompany() {
               <input
                 type="email"
                 name="pemail"
-                className="company_input"
+               
                 value={inputs.pemail || ""}
                 onChange={handleChange}
                 required
@@ -148,7 +176,7 @@ function Addnewcompany() {
               <input
                 type="text"
                 name="pnum"
-                className="company_input"
+              
                 value={inputs.pnum || ""}
                 onChange={handleChange}
                 required
@@ -156,52 +184,51 @@ function Addnewcompany() {
             </div>
 
             <div className="input-lable-h-div">
-              <label htmlFor="country" className="adminlabel">
-                Country:
-              </label>
-              <select className="company_input" name="country" value={option.country || ""} onChange={handleChange} required>
-                <option>India</option>
-                <option>Srilanka</option>
-                <option>Australia</option>
-                <option>England</option>
-              </select>
+             
+              <DataList
+
+              value={inputs.country || ""}
+              path={"Country"}
+              handleChange={handleChange}
+              name={"country"}
+              heading={"Country"}
+            />
+             </div>
+
+            <div className="input-lable-h-div">
+             
+
+            <DataList
+
+            value={inputs.state || ""}
+            path={"City"}
+            handleChange={handleChange}
+            name={"state"}
+            heading={"State"}
+          />
             </div>
 
             <div className="input-lable-h-div">
-              <label htmlFor="state" className="adminlabel">
-                State:
-              </label>
+             
+            <DataList
 
-              <select className="company_input" name="state" value={option.state || ""} onChange={handleChange} required>
-                <option>Karnatak</option>
-                <option>Maharastra</option>
-                <option>Andra</option>
-                <option>Tamilnadu</option>
-              </select>
+            value={inputs.country || ""}
+            path={"City"}
+            handleChange={handleChange}
+            name={"country"}
+            heading={"City"}
+          />
             </div>
 
             <div className="input-lable-h-div">
-              <label htmlFor="pcity" className="adminlabel">
-                City:
-              </label>
-              <select className="company_input" name="city" value={option.city || ""} onChange={handleChange} required>
-                <option>Bengaluru</option>
-                <option>mumbai</option>
-                <option>Hydrabad</option>
-                <option>Channai</option>
-              </select>
-            </div>
+            <DataList
 
-            <div className="input-lable-h-div">
-              <label htmlFor="admin" className="adminlabel">
-                Admin:
-              </label>
-              <select className="company_input" name="admin" value={option.admin || ""} onChange={handleChange} required>
-                <option>Employee</option>
-                <option>Manager</option>
-                <option>Refiller</option>
-                <option>Account</option>
-              </select>
+            value={inputs.state || ""}
+            path={"Country"}
+            handleChange={handleChange}
+            name={"state"}
+            heading={"Admin"}
+          />
             </div>
             <div className="form-submit-button">
             <button type="submit" >Save Company</button>

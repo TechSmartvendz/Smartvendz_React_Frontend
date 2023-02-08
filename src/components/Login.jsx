@@ -5,13 +5,13 @@ import { useCookies } from "react-cookie";
 
 import Clogo from "../assets/snaxsmart.png";
 function Login() {
-  const [email, setEmail] = useState("");
+  const [userid, setUserid] = useState("");
   const [password, setPassword] = useState("");
   const [cookies, setCookie] = useCookies(["user"]);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
+  const updateUserid = (e) => {
+    setUserid(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -21,14 +21,14 @@ function Login() {
   const submitData = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:3000/login", {
-        email: email,
+      .post("http://localhost:3000/Login", {
+        user_id: userid,
         password: password,
       })
       .then((response) => {
         console.log(response.data);
 
-        setCookie("JWTcookie", response.data.session_token, { path: "/" });
+        setCookie("JWTcookie", response.data.data ,{ path: "/" });
         //  alert("successfully login");
         setIsLoggedIn(true);
         
@@ -48,13 +48,13 @@ function Login() {
           <h3>Sign In Here</h3>
           <form onSubmit={submitData}>
             <div className="inputdiv">
-              <label>Email</label>
+              <label>User ID</label>
               <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={updateEmail}
-                placeholder=" User email"
+                type="text"
+                name="user_id"
+                value={userid}
+                onChange={updateUserid}
+                placeholder="User ID"
                 required
               />
             </div>

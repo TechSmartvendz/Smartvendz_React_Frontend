@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getReq, delReq, patchReq } from "../middleware/AxiosApisCall";
-
+import { getReq, delReq } from "../middleware/AxiosApisCall";
 
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
 
@@ -14,6 +13,7 @@ function TableData(props) {
     setTableData(response.data);
   };
 const redirect=((item)=>{
+
     props.editClick(item);
 
   })
@@ -41,7 +41,7 @@ const redirect=((item)=>{
     }
   };
 
-  return (
+return (
     <React.Fragment>
       <div className="componet-sub2-title">
         <span>

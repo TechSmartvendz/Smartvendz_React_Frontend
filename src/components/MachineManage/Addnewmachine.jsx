@@ -45,6 +45,20 @@ function changeData(e)
   const datas=[...array,{slotname,materialname,currentstock,initialstock,notinuse}]
   setBulk(console.log(datas))
  }
+
+ //new one
+ const handleSubmit = async (event) => {
+  event.preventDefault();
+  console.log(inputs);
+  const response=await postReq(path,inputs)
+  if(response.status==="success"){
+  setInputs({})
+  SuccessAlert({title:"Add User",message:"User Added successfully"})
+  }else{
+    ErrorAlert({title:"Add User",message:response.error})
+  }
+}
+
   return (
     <>
     

@@ -19,6 +19,7 @@ function Statemanage() {
   };
 
   const handleSubmit = async (event) => {
+    
     event.preventDefault();
    if(par){
       console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
@@ -36,6 +37,7 @@ function Statemanage() {
       console.log("🚀 ~ file: Statemanage.jsx:38 ~ handleSubmit ~ par", par)
       const response = await postReq(path, inputs);
       if (response.status === "success") {
+        console.log(response.data)
         setTableRefresh(tableRefresh+1);//4
         setInputs({});//5
         SuccessAlert({title: "Add State", message: "State Added successfully" });

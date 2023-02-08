@@ -1,8 +1,32 @@
 import React from "react";
+// import { useForm } from "react-hook-form";
+
+import { template } from "../Partials/FormFields";
+
+
 
 function TransactionReport() {
+ 
+// const [dynamic,setDynamic]=useState(template);
+
+// const {register,handleSubmit}=useForm();
+
+
+// function handleSubmit(values)
+// {
+//   console.log(values)
+// }
+
+
+// const renderFields=(fields)=>{
+//  return fields.map((field)=>{
+//   let {title,type,name}=field;
+
+
+
   return (
-    <>
+    
+    <React.Fragment>
       <div className="add-user-container">
         <div>
           <span className="componet-title">Add New User</span>
@@ -10,12 +34,26 @@ function TransactionReport() {
         <div className="componet-sub-title">
           <span>Search Employee</span>
         </div>
-        <form>
+         
+
+        <form >
+               {
+               template.fields.map(field=>{
+                return (<div className="input-lable-v-div" key={field.name}>
+                <label htmlFor={field.name}>{field.title}</label>
+                <input type={field.type} id={field.id} name={field.name}  />
+                <datalist list={field.id}>{}</datalist>
+              </div>)
+               })
+               }
+
           <div className="flex-col">
-            <div className="input-lable-v-div">
+         
+            {/*<div className="input-lable-v-div">
               <label>Start Date-Time</label>
-              <input type="date" />
+              <input type="date" name="start_date"/>
             </div>
+
 
             <div className="input-lable-v-div">
               <label>End Date-Time</label>
@@ -61,10 +99,14 @@ function TransactionReport() {
             </div>
             <div className="input-lable-v-div">
               <button className="submit-btn">CSV Report</button>
-            </div>
+        </div>*/}
+
+
           </div>
         </form>
       </div>
+
+
       <div>
         <div className="componet-sub-title">
           <span>Employees</span>
@@ -131,7 +173,7 @@ function TransactionReport() {
           </table>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

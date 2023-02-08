@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { postReq,patchReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableData from "../Partials/TableData"; //2

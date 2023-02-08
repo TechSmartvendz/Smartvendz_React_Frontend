@@ -14,9 +14,7 @@ const loadList=async ()=>{
     loadList();
   }, []);
 
-// useEffect(() => {
-//     console.log("🚀 ~ file: DataList.jsx:19 ~ DataList ~ dataList", dataList)
-// }, [dataList]);
+
 
 return (
 <React.Fragment>
