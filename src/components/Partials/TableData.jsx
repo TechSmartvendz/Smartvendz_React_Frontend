@@ -10,7 +10,14 @@ function TableData(props) {
 
   const loadTableDate = async () => {
     const response = await getReq(path);
-    setTableData(response.data);
+    if(response.data.length){
+      console.log(response.data)
+      setTableData(response.data);
+    }else{
+      console.log(response.data)
+      setTableData(null);
+    }
+    
   };
 const redirect=((item)=>{
 
