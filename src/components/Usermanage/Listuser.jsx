@@ -4,10 +4,12 @@ import { useState,useEffect } from "react";
 import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
 import { delReq, getReq } from "../middleware/AxiosApisCall";
 import { useLocation ,useNavigate} from "react-router-dom";
+import TableData from "../Partials/TableData";
 
 function Listuser(props) {
 const path="User"
 const [tableData,setTableData]=useState();
+const[tableRefresh,setTableRefresh]=useState(0)
 // const [path,setPath]=useState();
 const [par,setPar]=useState(props.par)
 
@@ -46,7 +48,7 @@ navigate("/usermanage/addnewuser");
    }
 
   return (
-    <>
+    <React.Fragment>
       <div className="add-user-container">
         <div>
           <span className="componet-title">Users List</span>
@@ -55,43 +57,11 @@ navigate("/usermanage/addnewuser");
         <button onClick={()=>{navigate("/usermanage/addnewuser")}}>Add New User</button>
          </div>
       
-         <div className="componet-sub2-title">
-          <span>Total User:</span>
-        </div>
+        <TableData path={path} key={tableRefresh}/>
 
-        <div className="table_container-div">
-          <table>
-            <tbody>
-              <tr>
-                <th>Sl no</th>
-                <th> Name</th>
-                <th>Role</th>
-                <th>Office/Location</th>
-                <th>Action</th>
-                
-               
-              </tr>
-              {
-                tableData.map((data, key) => {
-                return (
-                    <tr key={key}>
-                    <td>{key+1}</td>
-                    <td>{data.user_first_name}</td>
-                    <td>{data.role}</td>
-                    <td>{data.user_current_address}</td>
-                    <td>
-                      <button className="btn_edit">Edit</button>
-                      <button className="btn_delete" onClick={deleteUser}>Delete</button>
-                    </td>
-                  
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+      
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

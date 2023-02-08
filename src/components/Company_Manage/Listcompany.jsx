@@ -28,7 +28,7 @@ const navigate=useNavigate();
   <div className="option-btn">
   <button onClick={()=>{navigate("/companymanage/addnewcompany")}}>Add New Company</button>
    </div>
-   <TableData path={path}/>
+
   </div>
   
     </React.Fragment>
