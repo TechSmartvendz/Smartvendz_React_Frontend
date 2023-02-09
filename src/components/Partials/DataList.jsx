@@ -18,6 +18,7 @@ const loadList=async ()=>{
 
 return (
 <React.Fragment>
+
 <label htmlFor={name}>{props.heading}:</label>
 <input list={name} name={name} onChange={props.handleChange} value={props.value}  autoComplete={"off"} required/>
 <datalist id={name} >
@@ -30,7 +31,7 @@ return (
 }
 </datalist>
 
-    
+
     </React.Fragment>
   )
 }

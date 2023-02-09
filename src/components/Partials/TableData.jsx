@@ -19,13 +19,10 @@ function TableData(props) {
     }
     
   };
-const redirect=((item)=>{
+const editClick=((item)=>{
     props.editClick(item);
-
   })
-
   useEffect(() => {
-   
     loadTableDate();
   }, []);
 
@@ -90,7 +87,7 @@ return (
                    { par!=item._id?(<td>
                       <button
                         className="btn_edit"
-                        onClick={() => props.redirect(item)}
+                        onClick={() =>editClick(item)}
                       >
                         Edit
                       </button>

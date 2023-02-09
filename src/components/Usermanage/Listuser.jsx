@@ -8,6 +8,7 @@ import TableData from "../Partials/TableData";
 
 function Listuser() {
 const path="User"
+const navigate=useNavigate()
 const [tableData,setTableData]=useState();
 const[tableRefresh,setTableRefresh]=useState(0)
 
@@ -24,25 +25,10 @@ const[tableRefresh,setTableRefresh]=useState(0)
   }, [])
 
   
-const navigate=useNavigate()
-const {userId}=useParams();
-const redirect=async(item)=>{
- 
- 
-navigate(`../addnewuser/${item._id}`);
-console.log(userId)
-console.log(item._id)
-// const response = await patchReq(path);
-// if (response.success) {
-//   setTableRefresh(tableRefresh+1);
-//   console.log(response.success)
-//   setInputs({});
-//   SuccessAlert({ title: "Add User", message: "User Updated successfully" });
-// } else {
-//   ErrorAlert({ title: "Add User", message: response.msg });
-// }
-  
 
+
+const editClick=async(item)=>{
+navigate(`../addnewuser/${item._id}`);
 }
 
   return (
@@ -52,10 +38,10 @@ console.log(item._id)
           <span className="componet-title">Users List</span>
         </div>
         <div className="option-btn">
-        <button onClick={()=>{navigate("/usermanage/addnewuser")}}>Add New User</button>
+        <button onClick={()=>{navigate("../addnewuser")}}>Add New User</button>
          </div>
       
-        <TableData path={path} key={tableRefresh} redirect={redirect}/>
+        <TableData path={path} key={tableRefresh} editClick={editClick}/>
 
       
       </div>

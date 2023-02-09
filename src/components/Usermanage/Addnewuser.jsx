@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
-
-import { postReq,patchReq,getReq } from "../middleware/AxiosApisCall";
+import DataList from "../Partials/DataList";
+import { postReq,putReq,getReq } from "../middleware/AxiosApisCall";
 import { useParams } from "react-router";
 // import DataList from "../Partials/DataList";
 function Addnewuser() {
@@ -13,9 +13,9 @@ function Addnewuser() {
 
   const loadDate = async () => {
     const response = await getReq(`${path}/${itemid}`);
-    if(response.data.length){
-      console.log(response.data)
-      setPar(response.data._id);
+    if(response.data){
+      // console.log(response.data)
+      setPar(itemid);
       setInputs(response.data);
     }else{
       console.log(response.data)
@@ -29,12 +29,8 @@ useEffect(() => {
     loadDate()
   }
   
-}, [itemid])
-useEffect(() => {
-  console.log(inputs[first_name])
-}, [inputs])
+}, [])
 
-// const editdirect=props.redirect();
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -43,18 +39,29 @@ useEffect(() => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputs);
-    const response = await postReq(path, inputs);
-    if (response.success) {
-      setInputs({});
-      SuccessAlert({ title: "Add User", message: "User Added successfully" });
+    if(par) {
+      const response = await putReq(path, inputs,par);
+      console.log("🚀 ~ file: Countrymanage.jsx:20 ~ handleSubmit ~ response", response)
+      if (response.success) {
+        setPar()
+        SuccessAlert({title: "Edit Country", message: "Country Update successfully" });
+      } else {
+        setPar();
+        ErrorAlert({title: "Edit Country",message: response.msg});
+      }
     } else {
-      ErrorAlert({ title: "Add User", message: response.msg });
+      const response = await postReq(path, inputs);
+      if (response.success) {
+        setInputs({}); //5
+        SuccessAlert({
+          title: "Add Country",
+          message: "Country Added successfully",
+        });
+      } else {
+        ErrorAlert({ title: "Add Country", message: response.msg });
+      }
     }
   };
-
- 
-
   return (
     <React.Fragment>
       <div className="add-user-container">
@@ -185,41 +192,37 @@ useEffect(() => {
               </div>
 
               <div className="input-lable-h-div">
-                <label htmlFor="city">City</label>
-                <input
-                  list="city"
-                  name="country"
-                  onChange={handleChange}
-                  required
-                />
-                <datalist id="city">
-                  <option>Bengaluru</option>
-                  <option>Pune</option>
-                </datalist>
-                {/*<DataList/>*/}
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="state" required>
-                  State
-                </label>
-                <input list="state" onChange={handleChange} required />
-                <datalist id="state">
-                  <option>Karnataka</option>
-                  <option>Andrapradesh</option>
-                </datalist>
-                {/*<DataList/>*/}
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="country">Country</label>
-                <input list="country" onChange={handleChange} />
-                <datalist id="country">
-                  <option>India</option>
-                  <option>America</option>
-                </datalist>
-                {/*<DataList/>*/}
-              </div>
+              <DataList
+              value={inputs.country || ""}
+              path={"Country"}
+              handleChange={handleChange}
+              name={"country"}
+              heading={"Country"}
+            /></div>
+            <div className="input-lable-h-div">
+            <DataList
+              value={inputs.state || ""}
+              path={"State"}
+              handleChange={handleChange}
+              name={"state"}
+              heading={"State"}
+            /></div> 
+            <div className="input-lable-h-div">
+            <DataList
+              value={inputs.city || ""}
+              path={"City"}
+              handleChange={handleChange}
+              name={"city"}
+              heading={"City"}
+            /></div> 
+            <div className="input-lable-h-div">
+            <DataList
+            value={inputs.area || ""}
+            path={"Area"}
+            handleChange={handleChange}
+            name={"area"}
+            heading={"Area"}
+          /></div> 
             </div>
           </div>
           {/* Log in info start from here*/}
