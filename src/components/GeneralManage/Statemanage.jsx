@@ -24,25 +24,28 @@ function Statemanage() {
    if(par){
       console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
       const response = await patchReq(path, inputs,par);
-      if (response.status === "success") {
+      if (response.success) {
         setPar()
         setTableRefresh(tableRefresh+1);//4
         setInputs({});//5
         SuccessAlert({title: "Edit State", message: "State Update successfully" });
       } else {
-        ErrorAlert({title: "Edit State",message: response.error});
+        setPar();
+        setTableRefresh(tableRefresh + 1); //4
+        setInputs({});
+        ErrorAlert({title: "Edit State",message: response.msg});
       }
 
     }else{
       console.log("🚀 ~ file: Statemanage.jsx:38 ~ handleSubmit ~ par", par)
       const response = await postReq(path, inputs);
-      if (response.status === "success") {
+      if (response.success) {
         console.log(response.data)
         setTableRefresh(tableRefresh+1);//4
         setInputs({});//5
         SuccessAlert({title: "Add State", message: "State Added successfully" });
       } else {
-        ErrorAlert({title: "Add State",message: response.error});
+        ErrorAlert({title: "Add State",message: response.msg});
       }
     }
   }

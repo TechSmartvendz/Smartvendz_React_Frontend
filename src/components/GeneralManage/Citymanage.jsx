@@ -22,24 +22,27 @@ function Citymanage() {
     if(par){
       console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
       const response = await patchReq(path, inputs,par);
-      if (response.status === "success") {
+      if (response.success) {
         setPar()
         setTableRefresh(tableRefresh+1);//4
         setInputs({});//5
         SuccessAlert({title: "Edit City", message: "City Update successfully" });
       } else {
-        ErrorAlert({title: "Edit City",message: response.error});
+        setPar();
+        setTableRefresh(tableRefresh + 1); //4
+        setInputs({});
+        ErrorAlert({title: "Edit City",message: response.msg});
       }
     
     }else {
     const response = await postReq(path, inputs);
-    if (response.status === "success") {
+    if (response.success) {
       setPar();
       setTableRefresh(tableRefresh + 1); //4
       setInputs({}); //5
       SuccessAlert({ title: "Edit City", message: "City Update successfully" });
     } else {
-      ErrorAlert({ title: "Edit City", message: response.error });
+      ErrorAlert({ title: "Edit City", message: response.msg });
     }
   }
   }
@@ -64,7 +67,7 @@ function Citymanage() {
           <div className="componet-sub-title">
           <span>{par?(<span>Edit </span>):(<span>Add </span>)}City </span>
 
-            <span>City Details</span>
+    
           </div>
 
           <div className="general-manage-div">

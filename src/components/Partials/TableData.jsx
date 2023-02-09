@@ -20,7 +20,6 @@ function TableData(props) {
     
   };
 const redirect=((item)=>{
-
     props.editClick(item);
 
   })
@@ -34,7 +33,7 @@ const redirect=((item)=>{
     console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", event);
     // props.parentFunction();
     const response = await delReq(path, event);
-    if (response.status === "success") {
+    if (response.success) {
       loadTableDate();
       SuccessAlert({
         title: "Data Deleted",
@@ -43,7 +42,7 @@ const redirect=((item)=>{
     } else {
       ErrorAlert({
         title: "${path} Delete: Error",
-        message: response.error,
+        message: response.msg,
       });
     }
   };
