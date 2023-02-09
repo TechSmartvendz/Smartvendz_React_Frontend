@@ -19,11 +19,11 @@ function TableData(props) {
     }
     
   };
-const redirect=((item)=>{
+// const redirect=((item)=>{
 
-    props.editClick(item);
+//     props.editClick(item);
 
-  })
+//   })
 
   useEffect(() => {
    
@@ -34,7 +34,7 @@ const redirect=((item)=>{
     console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", event);
     // props.parentFunction();
     const response = await delReq(path, event);
-    if (response.status === "success") {
+    if (response.success) {
       loadTableDate();
       SuccessAlert({
         title: "Data Deleted",
@@ -47,6 +47,7 @@ const redirect=((item)=>{
       });
     }
   };
+  
 
 return (
     <React.Fragment>
@@ -90,7 +91,7 @@ return (
                    { par!=item._id?(<td>
                       <button
                         className="btn_edit"
-                        onClick={() => redirect(item)}
+                        onClick={() => props.redirect(item)}
                       >
                         Edit
                       </button>
