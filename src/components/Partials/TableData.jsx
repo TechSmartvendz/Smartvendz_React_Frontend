@@ -46,6 +46,7 @@ const redirect=((item)=>{
       });
     }
   };
+  
 
 return (
     <React.Fragment>
@@ -89,7 +90,7 @@ return (
                    { par!=item._id?(<td>
                       <button
                         className="btn_edit"
-                        onClick={() => redirect(item)}
+                        onClick={() => props.redirect(item)}
                       >
                         Edit
                       </button>
@@ -113,7 +114,6 @@ return (
             )}
           </tbody>
         </table>
-              
       </div>
     </React.Fragment>
   );

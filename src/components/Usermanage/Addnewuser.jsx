@@ -1,11 +1,40 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
-import { postReq } from "../middleware/AxiosApisCall";
-import DataList from "../Partials/DataList";
+
+import { postReq,patchReq,getReq } from "../middleware/AxiosApisCall";
+import { useParams } from "react-router";
+// import DataList from "../Partials/DataList";
 function Addnewuser() {
+  const {id}=useParams();
+  const [itemid, setItemid] = useState(id);
   const path = "User";
   const [inputs, setInputs] = useState({});
+  const[par, setPar] = useState()
 
+  const loadDate = async () => {
+    const response = await getReq(`${path}/${itemid}`);
+    if(response.data.length){
+      console.log(response.data)
+      setPar(response.data._id);
+      setInputs(response.data);
+    }else{
+      console.log(response.data)
+      setPar();
+      setInputs();
+    } 
+  };
+  
+useEffect(() => {
+  if(itemid){
+    loadDate()
+  }
+  
+}, [itemid])
+useEffect(() => {
+  console.log(inputs[first_name])
+}, [inputs])
+
+// const editdirect=props.redirect();
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -23,6 +52,8 @@ function Addnewuser() {
       ErrorAlert({ title: "Add User", message: response.msg });
     }
   };
+
+ 
 
   return (
     <React.Fragment>

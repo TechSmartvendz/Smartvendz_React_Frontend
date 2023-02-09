@@ -109,7 +109,8 @@ function Dashboard() {
               </Route>
 
               <Route exact path="/usermanage" element={<UserManage />}>
-                <Route path="addnewuser" element={<Addnewuser />} />
+               <Route path="addnewuser" element={<Addnewuser />} />
+                <Route path="addnewuser/:id" element={<Addnewuser />} />
                 <Route path="listuser" element={<Listuser />} />
                 <Route path="userpermission" element={<Userpermission />} />
                 <Route path="userrole" element={<UserRole/>}/> 
