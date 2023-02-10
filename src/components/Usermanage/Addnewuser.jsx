@@ -282,6 +282,7 @@ useEffect(() => {
               <div className="input-lable-v-div">
                 <button type="submit" className="submit-btn">
                 {itemid ?<span>Update</span>:<span>Save</span>} 
+                  Save
                 </button>
               </div>
             </div>

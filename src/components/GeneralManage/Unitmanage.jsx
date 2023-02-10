@@ -20,18 +20,23 @@ function Unitmanage() {
     event.preventDefault();
     if(par){
     const response = await patchReq(path, inputs,par);
-    if (response.status === "success") {
+    if (response.success) {
       setPar();
       setTableRefresh(tableRefresh + 1); //4
       setInputs({}); //5
       SuccessAlert({ title: "Edit Unit", message: "Unit Updated successfully" });
     } else {
+      setPar();
+      setTableRefresh(tableRefresh + 1); //4
+      setInputs({});
       ErrorAlert({ title: "Edit Unit", message: response.error });
     }
     }else{
          const response=await postReq(path,inputs)
-         if(response.status==="success"){
+         if(response.success){
           setTableRefresh(tableRefresh+1)
+          setPar();
+          setTableRefresh(tableRefresh + 1); //4
           setInputs({});
           SuccessAlert({title:"Add Unit",message:"Unit Added successfully"})
          }
@@ -70,6 +75,7 @@ console.log(par)
               onChange={handleChange}
               name="unit"
               heading={"Unit"}
+              required
             />
 
             <button className="submit-btn">{par ? (<span>Update</span>):<span>Add New</span>}</button>

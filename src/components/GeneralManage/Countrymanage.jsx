@@ -8,34 +8,33 @@ function Countrymanage() {
   const [inputs, setInputs] = useState({});
   const [tableRefresh, setTableRefresh] = useState(0); //3
   const[par, setPar] = useState()
-
-
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(par) {
-      console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
       const response = await patchReq(path, inputs,par);
-     
-      if (response.status === "success") {
+      console.log("🚀 ~ file: Countrymanage.jsx:20 ~ handleSubmit ~ response", response)
+      if (response.success) {
         setPar()
         setTableRefresh(tableRefresh+1);//4
         setInputs({});//5
         SuccessAlert({title: "Edit Country", message: "Country Update successfully" });
       } else {
-        ErrorAlert({title: "Edit Country",message: response.error});
+        setPar();
+        setTableRefresh(tableRefresh + 1); //4
+        setInputs({});
+        ErrorAlert({title: "Edit Country",message: response.msg});
       }
 
     } 
     
     else {
       const response = await postReq(path, inputs);
-      if (response.status === "success") {
+      if (response.success) {
         setTableRefresh(tableRefresh + 1); //4
         setInputs({}); //5
         SuccessAlert({
@@ -43,12 +42,9 @@ function Countrymanage() {
           message: "Country Added successfully",
         });
       } else {
-        ErrorAlert({ title: "Add Country", message: response.error });
+        ErrorAlert({ title: "Add Country", message: response.msg });
       }
-
     }
-
- 
   };
   
   const editClick=(pid)=>{

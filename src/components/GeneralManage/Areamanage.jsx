@@ -23,24 +23,28 @@ function Areamanage() {
     if(par){
       console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
       const response = await patchReq(path, inputs,par);
-      if (response.status === "success") {
+      if (response.success) {
         setPar()
         setTableRefresh(tableRefresh+1);//4
         setInputs({});//5
         SuccessAlert({title: "Edit Area", message: "Area Update successfully" });
       } else {
-        ErrorAlert({title: "Edit Area",message: response.error});
+        setPar();
+        setTableRefresh(tableRefresh + 1); //4
+        setInputs({});
+        ErrorAlert({title: "Edit Area",message: response.msg});
       }
 
     }else {
 
       const response = await postReq(path, inputs);
-      if (response.status === "success") {
+      if (response.success) {
         setTableRefresh(tableRefresh + 1); //4
         setInputs({}); //5
         SuccessAlert({ title: "Add Area", message: "Area Added successfully" });
       } else {
-        ErrorAlert({ title: "Add Area", message: response.error });
+       
+        ErrorAlert({ title: "Add Area", message: response.msg});
       }
 
     }
