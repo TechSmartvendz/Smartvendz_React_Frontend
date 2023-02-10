@@ -5,13 +5,13 @@ const [dataList,setDataList]=useState(null);
 const [path,setPath]=useState(props.path); 
 const [name,setName]=useState(props.name); 
 const loadList=async ()=>{
-    const response = await getReq(path)
-
+    const response = await getReq(`${path}/Datalist`)
     setDataList(response.data);
     console.log(response.data)
   }
   useEffect(() => {
     loadList();
+    dataList
   }, []);
 
 
@@ -23,7 +23,7 @@ return (
 <datalist id={name} >
 { dataList !=null ?
 (dataList.map((e,i)=>{
-  return <option key={i} value={e[name]}>{e[name]}</option>
+  return <option key={i} value={e.id}>{e[name]}</option>
 })
 ):
 <option>Country not found</option>

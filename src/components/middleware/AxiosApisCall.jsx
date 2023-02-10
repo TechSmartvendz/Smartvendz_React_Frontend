@@ -35,17 +35,7 @@ export const postReq = async (path,body) => {
       console.log(error)
     }
   }
-  // export const postReq = async (path,body) => {
-  //   try {
-  //     const response = await instance.post(
-  //       `/${path}`,body
-  //     )
-  //   const data = response.data
-  //     return data
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+ 
 
   export const delReq = async (path,param) => {
 
