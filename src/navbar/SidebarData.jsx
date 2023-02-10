@@ -249,26 +249,7 @@ export const SidebarData = [
     path: "/*",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
-    submenu:[
-      {
-        title: "Add new user",
-        path: "/usermanage/addnewuser",  
-        cName: "abc",
-      
-      },
-      {
-          title: "List User",
-          path: "/usermanage/listuser",  
-          cName:"" 
-     
-      },
-      {
-        title: "User permission",
-        path: "/usermanage/userpermission",    
-        cName:""
-    }
     
-    ]
   }
 ];
 
