@@ -84,7 +84,7 @@ function Dashboard() {
           {/*FIXME: MAke this Routes a saprate components*/}
 
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route default exact path="/" element={<Home />} />
               <Route exact path="/addorder" element={<Addorder />} >
             </Route>
               <Route exact path="/products" element={<Products />} >
