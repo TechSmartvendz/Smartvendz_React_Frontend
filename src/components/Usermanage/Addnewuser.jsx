@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
 
-import { postReq,patchReq,getReq } from "../middleware/AxiosApisCall";
+import { postReq,putReq,getReq } from "../middleware/AxiosApisCall";
 import { useParams } from "react-router";
 // import DataList from "../Partials/DataList";
 function Addnewuser() {
@@ -9,18 +9,20 @@ function Addnewuser() {
   const [itemid, setItemid] = useState(id);
   const path = "User";
   const [inputs, setInputs] = useState({});
+  const [tableRefresh,setTableRefresh]=useState(0);
   const[par, setPar] = useState()
 
   const loadDate = async () => {
     const response = await getReq(`${path}/${itemid}`);
-    if(response.data.length){
+    if(response.data){
       console.log(response.data)
       setPar(response.data._id);
+     
       setInputs(response.data);
     }else{
       console.log(response.data)
-      setPar();
-      setInputs();
+    
+      setInputs(null);
     } 
   };
   
@@ -30,11 +32,8 @@ useEffect(() => {
   }
   
 }, [itemid])
-useEffect(() => {
-  console.log(inputs[first_name])
-}, [inputs])
 
-// const editdirect=props.redirect();
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -44,14 +43,29 @@ useEffect(() => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(inputs);
+    if(itemid){
+    const response = await putReq(path,inputs,itemid);
+    if (response.success) {
+   
+      setTableRefresh(tableRefresh+1);
+      setInputs({});
+      SuccessAlert({ title: "Edit User", message: "User Updated successfully" });
+    } else {
+      ErrorAlert({ title: "Edit User", message: response.msg });
+    }
+  }
+  
+  else{
     const response = await postReq(path, inputs);
     if (response.success) {
+      setTableRefresh(tableRefresh+1);
       setInputs({});
       SuccessAlert({ title: "Add User", message: "User Added successfully" });
     } else {
       ErrorAlert({ title: "Add User", message: response.msg });
     }
-  };
+  }
+  }
 
  
 
@@ -267,7 +281,7 @@ useEffect(() => {
 
               <div className="input-lable-v-div">
                 <button type="submit" className="submit-btn">
-                  Save
+                {itemid ?<span>Update</span>:<span>Save</span>} 
                 </button>
               </div>
             </div>

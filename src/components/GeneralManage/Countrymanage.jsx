@@ -21,6 +21,7 @@ function Countrymanage() {
     if(par) {
       console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
       const response = await patchReq(path, inputs,par);
+     
       if (response.status === "success") {
         setPar()
         setTableRefresh(tableRefresh+1);//4
@@ -30,7 +31,9 @@ function Countrymanage() {
         ErrorAlert({title: "Edit Country",message: response.error});
       }
 
-    } else {
+    } 
+    
+    else {
       const response = await postReq(path, inputs);
       if (response.status === "success") {
         setTableRefresh(tableRefresh + 1); //4

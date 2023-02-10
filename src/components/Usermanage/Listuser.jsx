@@ -11,9 +11,6 @@ const path="User"
 const [tableData,setTableData]=useState();
 const[tableRefresh,setTableRefresh]=useState(0)
 
-// const [par,setPar]=useState(props.par)
-
-  
   const loadTableDate=async()=>{
     const response=await getReq(path);
     setTableData(response.data)
@@ -25,23 +22,12 @@ const[tableRefresh,setTableRefresh]=useState(0)
 
   
 const navigate=useNavigate()
-const {userId}=useParams();
-const redirect=async(item)=>{
- 
- 
+
+
+const redirect=(item)=>{
 navigate(`../addnewuser/${item._id}`);
-console.log(userId)
+
 console.log(item._id)
-// const response = await patchReq(path);
-// if (response.success) {
-//   setTableRefresh(tableRefresh+1);
-//   console.log(response.success)
-//   setInputs({});
-//   SuccessAlert({ title: "Add User", message: "User Updated successfully" });
-// } else {
-//   ErrorAlert({ title: "Add User", message: response.msg });
-// }
-  
 
 }
 
