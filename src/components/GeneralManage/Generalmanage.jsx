@@ -9,7 +9,7 @@ const [subLinkJSON,setSubLinkJSON]=useState(GeneralManagerData);
   return (
    
     <React.Fragment>
-      <SubLink sublinks={subLinkJSON} />
+       <SubLink sublinks={subLinkJSON} />
       </React.Fragment>
   )
 }
