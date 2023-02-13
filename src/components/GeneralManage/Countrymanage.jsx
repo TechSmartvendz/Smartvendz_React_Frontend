@@ -16,8 +16,9 @@ function Countrymanage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(par) {
+      console.log('this id par'    +par)
       const response = await patchReq(path, inputs,par);
-      console.log("🚀 ~ file: Countrymanage.jsx:20 ~ handleSubmit ~ response", response)
+      console.log("🚀 ~ file: Countrymanage.jsx:20 ~ handleSubmit ~ response", response);
       if (response.success) {
         setPar()
         setTableRefresh(tableRefresh+1);//4
@@ -50,6 +51,7 @@ function Countrymanage() {
   const editClick=(pid)=>{
     setPar(pid._id)
     setInputs(pid) 
+    console.log('this is input ' ,inputs);
   }
 
 

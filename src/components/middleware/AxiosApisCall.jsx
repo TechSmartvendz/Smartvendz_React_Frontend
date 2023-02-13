@@ -61,6 +61,7 @@ return data
     console.log(error)
   }
 }
+
 export const putReq=async (path,body,id)=>{
   try{
 const response= await instance.put(`/${path}/${id}`,body)
@@ -71,3 +72,4 @@ return data
     console.log(error)
   }
 }
+

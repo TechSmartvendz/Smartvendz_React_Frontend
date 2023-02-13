@@ -84,21 +84,21 @@ function Dashboard() {
           {/*FIXME: MAke this Routes a saprate components*/}
 
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route default exact path="/" element={<Home />} />
               <Route exact path="/addorder" element={<Addorder />} >
             </Route>
               <Route exact path="/products" element={<Products />} >
             </Route>
 
-              <Route exact path="/manage_machine" element={<MachineManage />}>
-                  <Route default path="addnewmachine" element={<Addnewmachine />} />
-                  <Route path="listmachine" element={<Listmachine />} />
+              <Route exact path="/managemachine" element={<MachineManage />}>
+                  <Route path="addnewmachine" element={<Addnewmachine />} />
+                  <Route index path="listmachine" element={<Listmachine />} />
                   <Route path="machineconfiguration" element={<Machineconfiguration />}/>
               </Route>
 
             <Route exact path="/companymanage" element={<Companymanage />} >
                 <Route path="addnewcompany" element={<Addnewcompany />} />
-                <Route path="listcompany" element={<Listcompany />} />
+                <Route  index path="listcompany" element={<Listcompany />} />
               </Route>
     
 
@@ -111,51 +111,45 @@ function Dashboard() {
               <Route exact path="/usermanage" element={<UserManage />}>
                <Route path="addnewuser" element={<Addnewuser />} />
                 <Route path="addnewuser/:id" element={<Addnewuser />} />
-                <Route path="listuser" element={<Listuser />} />
+                <Route  index path="listuser" element={<Listuser />} />
                 <Route path="userpermission" element={<Userpermission />} />
                 <Route path="userrole" element={<UserRole/>}/> 
+                <Route path="userrole/:id" element={<UserRole/>}/> 
               
               </Route>
                
               <Route exact path="/refillermanager" element={<Refiller />}>
-                <Route path="1" element={<Refiller1 />} />
-                <Route path="2" element={<Refiller2 />} />
-                <Route path="3" element={<Addnewmachine />} />
+                <Route index path="managerefillrequest" element={<Refiller1 />} />
+                <Route path="managedc" element={<Refiller2 />} />
+                <Route path="managedcaccept" element={<Refiller1 />} />
+                <Route path="managecompletedrefillrequest" element={<Refiller2 />} />
               </Route>
-             
               <Route exact path="/transactionreports" element={<Transactions />}>
-                   <Route path="transaction_report" element={<TransactionReport />}/>
-                   <Route path="credit_report" element={<CreditReport/>}/>
-                   <Route path="credit_transaction_report" element={<CreditTransactionReport />} />
+                   <Route index path="transactionreport" element={<TransactionReport />}/>
+                   <Route path="creditreport" element={<CreditReport/>}/>
+                   <Route path="credittransactionreport" element={<CreditTransactionReport />} />
               </Route>
-
               <Route exact path="/generalmanager" element={<Generalmanage />}>
-                  <Route path="countrymanage" element={<Countrymanage />} />
-
+                  <Route index path="countrymanage" element={<Countrymanage />} />
                   <Route path="statemanage" element={<Statemanage />}>
                   <Route path=":stateId" element={<Statemanage />}/>
                   </Route>
-
                   <Route path="citymanage" element={<Citymanage />} />
                   <Route path="unitmanage" element={<Unitmanage />} />
                   <Route path="areamanage" element={<Areamanage/>}/>
               </Route>
-
               <Route exact path="/products" element={<Products />}>
               <Route path="productlist" element={<ProductList />} />
-                  <Route path="bulkproductupload" element={<BulkProductUpload />} />
+                  <Route index path="bulkproductupload" element={<BulkProductUpload />} />
                   <Route path="singleproductadd" element={<SingleProductAdd />} />
                   <Route path="updatebulkproduct" element={<UpdateBulkProduct />} />
-
               </Route>
-
               <Route exact path="/refundandsupport" element={<Refund />}>
-                  <Route path="1" element={<Refund1 />} />
+                  <Route index path="1" element={<Refund1 />} />
                   <Route path="2" element={<Refund2 />} />
               </Route>
-
               <Route exact path="/inventorymanager" element={<InventoryManager />}>
-                  <Route path="1" element={<InventoryManager1 />} />
+                  <Route index path="1" element={<InventoryManager1 />} />
                   <Route path="2" element={<InventoryManager2 />} />
               </Route>
       
