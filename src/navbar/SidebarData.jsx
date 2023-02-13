@@ -9,32 +9,34 @@ export const SidebarData = [
     path: "/",
     icon: <AiIcons.AiFillHome />,
     cName: "nav-text",
-   
+    permission:"home"
   },
   {
     title: "User Manage",
     path: "/usermanage",
     icon: <IoIcons.IoMdPeople />,
     cName: "nav-text",
+    permission:"usermanage",
     submenu:[
       {
         title: "Add new user",
         path: "/usermanage/addnewuser",  
         cName: "abc",
-      
+        permission:"addnewuser"
       },
       {
           title: "List User",
           path: "/usermanage/listuser",  
-          cName:"" 
+          cName:"" ,
+          permission:"listuser"
      
       },
       {
         title: "User permission",
         path: "/usermanage/userpermission",    
-        cName:""
-    }
-    
+        cName:"",
+        permission:"userpermission"
+      }
     ]
   },
   {
@@ -42,14 +44,17 @@ export const SidebarData = [
     path: "/companymanage",
     icon: <IoIcons.IoMdPeople />,
     cName: "nav-text",
+    permission:"companymanage",
     submenu:[
       {
         title: "Add new company",
-        path: "/companymanage/addnewcompany",    
+        path: "/companymanage/addnewcompany",
+        permission:"addnewcompany"  
       },
       {
         title: "List Company",
-        path: "/companymanage/listcompany"    
+        path: "/companymanage/listcompany" ,
+        permission:"listcompany"    
       }
     ]
   },
@@ -59,19 +64,23 @@ export const SidebarData = [
     path: "/managemachine",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
+    permission:"managemachine", 
     submenu:[
  
       {
         title: "Add new machine",
         path: "/managemachine/addnewmachine",
+        permission:"addnewmachine" 
       },
       {
         title: "List Machine",
         path: "/managemachine/listmachine",
+        permission:"listmachine" 
       },
       {
         title: "Machine Configuration",
         path: "/managemachine/machineconfiguration",
+        permission:"machineconfiguration" 
       }
     ]
   },
@@ -80,18 +89,22 @@ export const SidebarData = [
     path: "/employeemanage",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
+    permission:"employeemanage", 
     submenu:[  
       {
         title: "Add new employee",
-        path: "/employeemanage/addnewemployee"
+        path: "/employeemanage/addnewemployee",
+        permission:"addnewemployee" 
       },
       {
         title: "Update employee",
-        path: "/employeemanage/updateemployee"
+        path: "/employeemanage/updateemployee",
+        permission:"updateemployee"
       },
       {
         title: "Search and update employee",
-        path: "/employeemanage/searchandupdateemployee"
+        path: "/employeemanage/searchandupdateemployee",
+        permission:"searchandupdateemployee"
       }
     ]
   },
@@ -100,19 +113,23 @@ export const SidebarData = [
     path: "/transactionreports",
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: "nav-text",
+    permission:"listcompany", 
     submenu:[
 
       {
         title: "Transaction Report",
         path: "/transactionreports/transactionreport",
+        permission:"listcompany"
       },
       {
         title: "Credit Report",
-        path: "/transactionreports/creditreport"
+        path: "/transactionreports/creditreport",
+        permission:"listcompany"
       },
       {
         title: "Credit Transaction Report",
-        path: "/transactionreports/credittransactionreport"
+        path: "/transactionreports/credittransactionreport",
+        permission:"listcompany" 
       }
     ]
   },
@@ -121,27 +138,33 @@ export const SidebarData = [
     path: "/generalmanager",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
+    permission:"listcompany",
     submenu:[
   
       {
         title: "Country manage",
-        path: "/generalmanager/countrymanage",    
+        path: "/generalmanager/countrymanage", 
+        permission:"listcompany"   
       },
       {
         title: "State manage",
-        path: "/generalmanager/statemanage",    
+        path: "/generalmanager/statemanage",
+        permission:"listcompany"     
       },
       {
         title: "City manage",
-        path: "/generalmanager/citymanage",    
+        path: "/generalmanager/citymanage",
+        permission:"listcompany"     
       },
       {
         title:"Area manage",
         path:"/generalmanager/areamanage",
+        permission:"listcompany" 
       },
       {
         title: "Unit manage",
-        path: "/generalmanager/unitmanage",    
+        path: "/generalmanager/unitmanage",
+        permission:"listcompany"    
       },
      
     ]
@@ -151,22 +174,27 @@ export const SidebarData = [
     path: "/refillermanager",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
+    permission:"refillermanager",
     submenu:[
       {
         title: "Manage Refill Request",
         path: "/refillermanager/managerefillrequest",
+        permission:"managedc"
       },
       {
         title: "Manage DC",
-        path: "/refillermanager/managedc"
+        path: "/refillermanager/managedc",
+        permission:"managedc" 
       },
       {
         title: "ManageDC Accept",
-        path: "/refillermanager/managedcaccept"
+        path: "/refillermanager/managedcaccept",
+        permission:"managedcaccept" 
       },
       {
         title: "Manage Completed Request",
-        path: "/refillermanager/managecompletedrefillrequest"
+        path: "/refillermanager/managecompletedrefillrequest",
+        permission:"managecompletedrefillrequest" 
       }
     ]
   },
@@ -175,23 +203,28 @@ export const SidebarData = [
     path: "/products",
     icon: <FaIcons.FaCartPlus />,
     cName: "nav-text",
+    permission:"products", 
     submenu:[
       {
         title:"Product List",
-        path:"/products/productlist"
+        path:"/products/productlist",
+        permission:"productlist"
     
       },
       {
         title:"Bulk Product Upload",
-        path:"/products/bulkproductupload"
+        path:"/products/bulkproductupload",
+        permission:"bulkproductupload"
       },
       {
         title:"Single Product Add",
-        path:"/products/singleproductadd"
+        path:"/products/singleproductadd",
+        permission:"singleproductadd" 
       },
       {
         title:"Update Bulk Product",
-        path:"/products/updatebulkproduct"
+        path:"/products/updatebulkproduct",
+        permission:"updatebulkproduct"
       }
     ]
   },
@@ -200,15 +233,18 @@ export const SidebarData = [
     path: "/inventorymanager",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
+    permission:"listcompany",
     submenu:[
     
       {
         title: "1",
-        path: "/inventorymanager/1",    
+        path: "/inventorymanager/1",
+        permission:"listcompany"    
       },
       {
         title: "2",
-        path: "/inventorymanager/2",    
+        path: "/inventorymanager/2",
+        permission:"listcompany",     
       }
      
     ]
@@ -218,15 +254,18 @@ export const SidebarData = [
     path: "/warehouse",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
+    permission:"listcompany", 
     submenu:[
    
       {
         title: "Add new user",
-        path: "/warehouse/addnewuser",    
+        path: "/warehouse/addnewuser", 
+        permission:"listcompany"    
       },
       {
           title: "User permission",
-          path: "/warehouse/userpermission",    
+          path: "/warehouse/userpermission", 
+          permission:"listcompany" 
       }
     ]
   },
@@ -235,22 +274,27 @@ export const SidebarData = [
     path: "/refundandsupport",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
+    permission:"listcompany",
     submenu:[
       {
         title: "Manage Refill Request",
         path: "/refundandsupport/managerefillrequest",
+        permission:"listcompany"
       },
       {
         title: "Manage DC",
-        path: "/refundandsupport/managedc"
+        path: "/refundandsupport/managedc",
+        permission:"listcompany"
       },
       {
         title: "ManageDC Accept",
-        path: "/refundandsupport/managedcaccept"
+        path: "/refundandsupport/managedcaccept",
+        permission:"listcompany"
       },
       {
         title: "Manage Completed Request",
-        path: "/refundandsupport/managecompletedrefillrequest"
+        path: "/refundandsupport/managecompletedrefillrequest",
+        permission:"listcompany"
       }
     ]
   },
@@ -259,6 +303,7 @@ export const SidebarData = [
     path: "/*",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
+    permission:"listcompany"
     
   }
 ];
