@@ -152,18 +152,21 @@ export const SidebarData = [
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
     submenu:[
-   
       {
-        title: "1",
-        path: "/refillermanager/1",
+        title: "Manage Refill Request",
+        path: "/refillermanager/managerefillrequest",
       },
       {
-        title: "2",
-        path: "/refillermanager/2",
+        title: "Manage DC",
+        path: "/refillermanager/managedc"
       },
       {
-        title: "3",
-        path: "/refillermanager/3",
+        title: "ManageDC Accept",
+        path: "/refillermanager/managedcaccept"
+      },
+      {
+        title: "Manage Completed Request",
+        path: "/refillermanager/managecompletedrefillrequest"
       }
     ]
   },
@@ -233,14 +236,21 @@ export const SidebarData = [
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
     submenu:[
-   
       {
-        title: "1",
-        path: "/refundandsupport/1",
+        title: "Manage Refill Request",
+        path: "/refundandsupport/managerefillrequest",
       },
       {
-        title: "2",
-        path: "/refundandsupport/2"
+        title: "Manage DC",
+        path: "/refundandsupport/managedc"
+      },
+      {
+        title: "ManageDC Accept",
+        path: "/refundandsupport/managedcaccept"
+      },
+      {
+        title: "Manage Completed Request",
+        path: "/refundandsupport/managecompletedrefillrequest"
       }
     ]
   },
