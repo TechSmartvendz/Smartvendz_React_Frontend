@@ -114,6 +114,7 @@ function Dashboard() {
                 <Route  index path="listuser" element={<Listuser />} />
                 <Route path="userpermission" element={<Userpermission />} />
                 <Route path="userrole" element={<UserRole/>}/> 
+                <Route path="userrole/:id" element={<UserRole/>}/> 
               
               </Route>
                

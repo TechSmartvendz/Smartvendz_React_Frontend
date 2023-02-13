@@ -60,11 +60,13 @@ return (
                 Object.keys(tableData[0]).map(
                   (key) =>
                     key != ("_id" || null) && (
+                      
                       <th key={key}>
                         <span style={{ textTransform: "capitalize" }}>
                           {key}
                         </span>
                       </th>
+              
                     )
                 )
               ) : (

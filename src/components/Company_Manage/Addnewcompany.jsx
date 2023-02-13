@@ -20,7 +20,7 @@ const[par,setPar]=useState();
   }
  const handleSubmit=async(event)=>{
  event.preventDefault();
- if(par)
+//  if(par)
 // {
 //   console.log(par)
 //   const response=await patchReq(path,inputs,par)
@@ -33,17 +33,17 @@ const[par,setPar]=useState();
 //     ErrorAlert({title:"Edit state",message:response.error})
 //   }
 // }else{
-  const response=await postReq(path,inputs)
-  if(response.status==='success')
-  {
-    console.log(inputs)
-    setTableRefresh(tableRefresh+1)
-    setInputs({})
-    // navigate("/companymanage/listcompany")
-    SuccessAlert({title:"Add Company",message:"Company Added successfully"})
-  }else{
-    ErrorAlert({title:"Add Company",message:response.error})
-  }
+//   const response=await postReq(path,inputs)
+//   if(response.status==='success')
+//   {
+//     console.log(inputs)
+//     setTableRefresh(tableRefresh+1)
+//     setInputs({})
+//     // navigate("/companymanage/listcompany")
+//     SuccessAlert({title:"Add Company",message:"Company Added successfully"})
+//   }else{
+//     ErrorAlert({title:"Add Company",message:response.error})
+//   }
 }
  
  
@@ -242,4 +242,4 @@ const[par,setPar]=useState();
   );
 }
 
-export default Addnewcompany;
+export default Addnewcompany
