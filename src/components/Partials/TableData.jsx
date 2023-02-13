@@ -38,7 +38,7 @@ const editClick=((item)=>{
       });
     } else {
       ErrorAlert({
-        title: "${path} Delete: Error",
+        title: `${path} Delete: Error`,
         message: response.msg,
       });
     }
