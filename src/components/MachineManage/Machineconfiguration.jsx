@@ -3,16 +3,35 @@ import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
 import { postReq } from "../middleware/AxiosApisCall";
 
 function Machineconfiguration() {
-  const [inputs, setInputs] = useState();
+  const [inputs, setInputs] = useState(
+    {
+      mtype: "",
+      svty: "",
+      rfidcard: "",
+      URL: "",
+      rfid: true,
+      qrupi: true,
+      mobilea: true,
+      microrfid: true
+    }
+  );
   const path = "Machine";
 
   function handleChange(event) {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    const{name,value,type,checked}= event.target
+
+    // setInputs((values) => ({ ...values, [name]: value }));
+    setInputs((prevState) => {
+      return {
+        ...prevState,
+        [name]: type === "checkbox" ? checked:value
+      }
+    })
   }
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(inputs);
     
     const response = await postReq(inputs, path);
     if ((response.status = "success")) {
@@ -42,9 +61,19 @@ function Machineconfiguration() {
                 Select Machine type
               </label>
 
-              <input list="mtype" className="type" />
+              <input 
+              list="mtype" 
+              className="type" 
+              type="text" 
+              name="mtype"
+              value={inputs.mtype ||""}
+              onChange={handleChange}
+              />
 
-              <datalist id="mtype">
+              <datalist id="mtype"
+              
+
+              >
                 <option>GVC DEVICE</option>
                 <option>RASPBARRY PI</option>
               </datalist>
@@ -52,7 +81,15 @@ function Machineconfiguration() {
 
             <div className="input-lable-h-div">
               <label htmlFor="vendtype">Select Vend type</label>
-              <input list="svty" className="type" />
+              <input 
+              list="svty" 
+              className="type" 
+              onChange={handleChange}
+              type="text" 
+              name="svty"
+              value={inputs.svty ||""}
+
+              />
               <datalist id="svty">
                 <option>NORMAL VEND</option>
                 <option>CREDIT VEND</option>
@@ -61,18 +98,42 @@ function Machineconfiguration() {
 
             <div className="input-lable-checkbox-div">
               <label className="access">Access Type:</label>
-              <input type="checkbox" name="rfid" />
+              <input 
+              type="checkbox" 
+              name="rfid" 
+              onChange={handleChange}
+              checked={inputs.rfid}
+           
+
+              />
               <label htmlFor="rfid">RFID(HID)</label>
               <div>
-                <input type="checkbox" name="qrupi" />
+                <input 
+                type="checkbox" 
+                name="qrupi" 
+                onChange={handleChange}
+                checked={inputs.qrupi}
+                />
                 <label htmlFor="qrupi">QR UPI</label>
               </div>
               <div>
-                <input type="checkbox" name="mobilea" />
+                <input 
+                type="checkbox" 
+                name="mobilea" 
+                checked={inputs.mobilea}
+                onChange={handleChange}
+
+                />
                 <label htmlFor="mobileapp">MOBILE APPLICATION</label>
               </div>
               <div>
-                <input type="checkbox" name="microrfid" />
+                <input 
+                type="checkbox" 
+                checked={inputs.microrfid}
+                name="microrfid" 
+                onChange={handleChange}
+
+                />
                 <label htmlFor="myrfid">RFID(MFARE RFID)</label>
               </div>
             </div>
@@ -82,9 +143,16 @@ function Machineconfiguration() {
                 RFID CARD
               </label>
 
-              <input list="rfid" className="rfidcard" />
+              <input 
+              list="rfidcard" 
+              className="rfidcard" 
+              onChange={handleChange}
+              type="text" 
+              name="rfidcard"
+              value={inputs.rfidcard ||""}
+              />
 
-              <datalist id="rfid">
+              <datalist id="rfidcard">
                 <option>HID 26</option>
                 <option>HID 34</option>
               </datalist>
@@ -93,7 +161,14 @@ function Machineconfiguration() {
               <label htmlFor="apiurl" className="labelapi">
                 API URL:
               </label>
-              <input name="URL" className="api" type="text" />
+              <input 
+              name="URL" 
+              className="api" 
+              type="text" 
+              onChange={handleChange}
+              value={inputs.URL ||""}
+
+              />
             </div>
             <div className="input-lable-h-div">
               <button type="submit" className="submit-btn">

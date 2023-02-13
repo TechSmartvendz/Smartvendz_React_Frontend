@@ -19,6 +19,7 @@ const [tableRefresh,setTableRefresh]=useState();
   }
  const handleSubmit=async(event)=>{
  event.preventDefault();
+ console.log(inputs);
 // if(par)
 // {
 //   console.log(par)
