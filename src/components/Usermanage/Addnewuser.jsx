@@ -6,15 +6,15 @@ import { useParams } from "react-router";
 // import DataList from "../Partials/DataList";
 function Addnewuser() {
   const {id}=useParams();
-  const [itemid, setItemid] = useState(id);
+  const [itemid, setItemid] = useState(id);//id passed
   const path = "User";
   const [inputs, setInputs] = useState({});
-  const[par, setPar] = useState()
+  const[par, setPar] = useState()//
 
   const loadDate = async () => {
     const response = await getReq(`${path}/${itemid}`);
     if(response.data){
-      // console.log(response.data)
+     
       setPar(itemid);
       setInputs(response.data);
     }else{
@@ -40,6 +40,7 @@ useEffect(() => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(par) {
+       console.log('this is ',par);
       const response = await putReq(path, inputs,par);
       console.log("🚀 ~ file: Countrymanage.jsx:20 ~ handleSubmit ~ response", response)
       if (response.success) {

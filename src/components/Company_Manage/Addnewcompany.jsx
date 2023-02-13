@@ -5,12 +5,13 @@ import DataList from "../Partials/DataList";
 import { useNavigate } from "react-router-dom";
 
 function Addnewcompany() {
-const path="State"
+const path="User"
 // const navigate=useNavigate();
 const[inputs,setInputs]=useState({});
 
 const [tableRefresh,setTableRefresh]=useState();
-// const[par,setPar]=useState();
+const[par,setPar]=useState();
+
   const handleChange=(event)=>{
    const name=event.target.name;
    const value=event.target.value;
@@ -19,7 +20,7 @@ const [tableRefresh,setTableRefresh]=useState();
   }
  const handleSubmit=async(event)=>{
  event.preventDefault();
-// if(par)
+ if(par)
 // {
 //   console.log(par)
 //   const response=await patchReq(path,inputs,par)
