@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getReq, delReq } from "../middleware/AxiosApisCall";
 
-import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
+import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg" ;
 
 function TableData(props) {
   const [tableData, setTableData] = useState();

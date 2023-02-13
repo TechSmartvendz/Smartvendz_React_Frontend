@@ -277,7 +277,7 @@ transform: scale(1.1);
 }
 /* changed by sharan */
 .submit-btn:hover{
-  background-color: #262626;
+  background-color: #287e2e;
 }
 
 /* List user CSS : List USER COMPONENT  */
@@ -303,6 +303,9 @@ justify-content: flex-end;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+}
+.option-btn>button:hover{
+  background-color: green;
 }
 
 .form-submit-button{

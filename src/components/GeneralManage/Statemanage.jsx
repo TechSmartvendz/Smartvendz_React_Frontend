@@ -51,6 +51,7 @@ function Statemanage() {
   }
 
   const editClick=(pid)=>{
+    console.log('this is ', pid)
     setPar(pid._id)
     setInputs(pid) 
 

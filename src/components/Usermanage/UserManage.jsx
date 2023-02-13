@@ -15,7 +15,7 @@ const [subLinkJSON,setSubLinkJSON]=useState(UserManagerData);
   )
 }
 
-export default UserManage
+export default UserManage;
 
 
    
