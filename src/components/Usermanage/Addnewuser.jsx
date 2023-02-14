@@ -222,7 +222,7 @@ useEffect(() => {
                   <option>Karnataka</option>
                   <option>Andrapradesh</option>
                 </datalist>
-                {/*<DataList/>*/}
+               
               </div>
 
               <div className="input-lable-h-div">

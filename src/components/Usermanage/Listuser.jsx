@@ -24,7 +24,7 @@ const[tableRefresh,setTableRefresh]=useState(0)
 const navigate=useNavigate()
 
 
-const redirect=(item)=>{
+const editClick=(item)=>{
 navigate(`../addnewuser/${item._id}`);
 
 console.log(item._id)
@@ -41,7 +41,7 @@ console.log(item._id)
         <button onClick={()=>{navigate("/usermanage/addnewuser")}}>Add New User</button>
          </div>
       
-        <TableData path={path} key={tableRefresh} redirect={redirect}/>
+        <TableData path={path} key={tableRefresh} editClick={editClick}/>
 
       
       </div>

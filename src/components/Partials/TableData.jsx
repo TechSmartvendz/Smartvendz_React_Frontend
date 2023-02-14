@@ -75,7 +75,8 @@ return (
               {tableData != null && <th>Actions</th>}
             </tr>
 
-            {tableData != null ? (
+            {
+              tableData != null ? (
               tableData.map((item, index) => {
                 // console.log("🚀 ~ file: TableData.jsx:111 ~ TableData ~ item", item)
                 return (

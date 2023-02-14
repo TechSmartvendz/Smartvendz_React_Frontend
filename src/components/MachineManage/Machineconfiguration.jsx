@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
 import { postReq } from "../middleware/AxiosApisCall";
-
+import { useNavigate } from "react-router-dom";
 function Machineconfiguration() {
   const [inputs, setInputs] = useState();
   const path = "Machine";
-
+const navigate=useNavigate();
   function handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
@@ -31,6 +31,9 @@ function Machineconfiguration() {
         <div>
           <span className="componet-title">Machine List</span>
         </div>
+        <div className="option-btn">
+        <button onClick={()=>{navigate(-1)}}>Back</button>
+         </div>
         <div className="componet-sub2-title">
           <span>Total Machine:</span>
         </div>

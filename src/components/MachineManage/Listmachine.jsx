@@ -55,7 +55,7 @@ navigate("/machinemanage/addnewmachine");
         </div>
         <div className="option-btn">
         <button  onClick={()=>{navigate("/manage_machine/addnewmachine")}}>Add New Machine</button>
-       
+               
       </div>
         <div className="componet-sub2-title">
           <span>Total Machine:</span>
