@@ -3,8 +3,9 @@ import { postReq ,patchReq} from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableData from "../Partials/TableData"; //2
 import DataList from "../Partials/DataList";
-
+import { useNavigate } from "react-router-dom";
 function Areamanage() {
+  const navigate=useNavigate();
   const path = "Area";
 
   const [inputs, setInputs] = useState({});
@@ -59,8 +60,11 @@ function Areamanage() {
   return (
     <React.Fragment>
       <div className="add-user-container">
-        <div>
+        <div className="headingdiv">
           <span className="componet-title">Area Manage</span>
+          <div>
+          <button onClick={(()=>navigate(-1))}>Back</button>
+          </div>
         </div>
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>

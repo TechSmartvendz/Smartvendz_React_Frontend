@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {  postReq, patchReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";//1
 import TableData from "../Partials/TableData";//2
 import DataList from "../Partials/DataList";
-
+import { useNavigate } from "react-router-dom";
 
 function Statemanage() {
+  const navigate=useNavigate();
   const path = "State";
   const [inputs, setInputs] = useState({});
   const [tableRefresh,setTableRefresh]=useState(0);//3
@@ -56,17 +57,16 @@ function Statemanage() {
     setInputs(pid) 
 
   }
-  // useEffect(() => {
-   
-  //   console.log(par)
-   
-  // }, [par]);
+  
 
   return (
     <React.Fragment>
       <div className="add-user-container">
-        <div>
+        <div className="headingdiv">
           <span className="componet-title">State Manage</span>
+          <div>
+          <button onClick={(()=>navigate(-1))}>Back</button>
+          </div>
         </div>
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">

@@ -286,7 +286,7 @@ transform: scale(1.1);
 padding:10px;
 display: flex;
 flex-flow: row;
-justify-content: flex-end;
+justify-content: flex-start;
 
 }
 .option-btn>button,
@@ -427,8 +427,9 @@ margin-left: 100px ;
   padding-left: 16px;
   display: flex;
   flex-flow: row;
-  
+  cursor: pointer;
   }
+  
   .upload-download-btn>button{
     background-color: black;
     color: white;
@@ -438,5 +439,24 @@ margin-left: 100px ;
     padding: 10px;
     border-radius: 5px;
     margin: 5px;
+    cursor: pointer;
   }
-   
+
+  /* created by Sharan for Back button */
+ .headingdiv{
+  display: flex;
+flex-flow: row;
+justify-content: space-between;
+
+ }
+ .headingdiv>div>button{
+  background-color: rgb(10, 88, 223);
+  color: white;
+  padding: 6px;
+  border-radius: 5px;
+  cursor: pointer;
+ }
+ .headingdiv>div>button:hover{
+  background-color: rgb(40, 87, 226);
+  color: rgb(21, 13, 13);
+ }

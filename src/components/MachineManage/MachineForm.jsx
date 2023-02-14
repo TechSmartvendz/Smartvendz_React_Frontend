@@ -11,8 +11,9 @@ import { Admins } from '../OptionsJson';
 import { Refiller } from '../OptionsJson';
 import { Refillers } from '../OptionsJson';
 import { warehouse } from '../OptionsJson';
-
+import { Navigate, useNavigate } from 'react-router-dom';
 function MachineForm() {
+  const navigate=useNavigate();
 const[inputs,setInputs]=useState({});
 
  
@@ -35,8 +36,12 @@ const[inputs,setInputs]=useState({});
   return (
    <React.Fragment>
    <div className="add-user-container">
-        <div>
+        
+         <div className='headingdiv'>
           <span className="componet-title">Add New Machine</span>
+          <div>
+          <button onClick={(()=>navigate(-1))}>Back</button>
+         </div>
         </div>
        
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>

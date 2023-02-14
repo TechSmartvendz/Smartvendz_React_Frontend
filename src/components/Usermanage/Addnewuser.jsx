@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
 
 import { postReq,putReq,getReq } from "../middleware/AxiosApisCall";
-import { useParams } from "react-router";
+import { useParams ,useNavigate} from "react-router";
 // import DataList from "../Partials/DataList";
 function Addnewuser() {
   const {id}=useParams();
@@ -12,6 +12,7 @@ function Addnewuser() {
   const [tableRefresh,setTableRefresh]=useState(0);
   const[par, setPar] = useState()
 
+  const navigate=useNavigate();
   const loadDate = async () => {
     const response = await getReq(`${path}/${itemid}`);
     if(response.data){
@@ -72,10 +73,19 @@ useEffect(() => {
   return (
     <React.Fragment>
       <div className="add-user-container">
-        <div>
+        <div className="headingdiv">
           <span className="componet-title">Add New User</span>
+       
+           <div>
+          <button
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            Back
+          </button>
         </div>
-
+        </div>
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
             <span>User Details</span>
@@ -282,7 +292,7 @@ useEffect(() => {
               <div className="input-lable-v-div">
                 <button type="submit" className="submit-btn">
                 {itemid ?<span>Update</span>:<span>Save</span>} 
-                  Save
+                 
                 </button>
               </div>
             </div>

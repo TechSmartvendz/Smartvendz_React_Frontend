@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { postReq,patchReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableData from "../Partials/TableData"; //2
-
+import { useNavigate } from "react-router-dom";
 function Countrymanage() {
+  const navigate=useNavigate();
   const path = "Country";
   const [inputs, setInputs] = useState({});
   const [tableRefresh, setTableRefresh] = useState(0); //3
@@ -58,8 +59,11 @@ function Countrymanage() {
   return (
     <React.Fragment>
       <div className="add-user-container">
-        <div>
+        <div className="headingdiv">
           <span className="componet-title">Country Manage</span>
+          <div>
+          <button onClick={(()=>navigate(-1))}>Back</button>
+          </div>
         </div>
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">

@@ -8,7 +8,7 @@ function Employeemanage() {
 const [subLinkJSON,setSubLinkJSON]=useState(EmployeeManageData);
   return (
     <>
-      <p>Refiller</p>
+     
       <SubLink sublinks={subLinkJSON} />
     </>
   )
