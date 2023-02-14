@@ -7,7 +7,7 @@ export const template={
             type:"checkbox",
             name:"usermanage",
             value:"usermanage",
-            ischecked:"inputs.addnewuser||false",
+           
             
             sections:[
                {

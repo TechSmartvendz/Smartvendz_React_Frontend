@@ -104,7 +104,7 @@ function AddNewRole() {
                 return (
                   <div  key={key}>
                   <label htmlFor={data.name}>{data.title}</label>
-                  <input  type={data.type} name={data.name} checked={data.ischecked} onChange={handleChange} />
+                  <input  type={data.type} name={data.name} checked={inputs[data.name]||false} onChange={handleChange} />
                   
                   {
                     data.sections.map((fields,ke)=>{
@@ -112,7 +112,7 @@ function AddNewRole() {
                         <section key={ke}>
                         <div className="input-lable-checkbox-div" >
                           <div >
-                            <input  type={fields.type} name={fields.name} checked={inputs[fields.name]}  onChange={handleChange} />
+                            <input  type={fields.type} name={fields.name} checked={inputs[fields.name]||false}  onChange={handleChange} />
                             <label htmlFor='addnewuser'>{fields.title}</label>
           
                           </div>
