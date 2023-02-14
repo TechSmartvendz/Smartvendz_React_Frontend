@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { postReq,patchReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableData from "../Partials/TableData"; //2
-
+import { useNavigate } from "react-router-dom";
 
 function Unitmanage() {
+  const navigate=useNavigate();
   const path = "Unit";
 
   const [inputs, setInputs] = useState({});
@@ -57,8 +58,12 @@ console.log(par)
   return (
     <React.Fragment>
       <div className="add-user-container">
-        <div>
+        <div className="headingdiv">
           <span className="componet-title">Unit Manage</span>
+          <div>
+          <button onClick={(()=>navigate(-1))}>Back</button>
+          
+          </div>
         </div>
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>

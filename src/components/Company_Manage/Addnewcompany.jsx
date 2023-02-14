@@ -5,6 +5,8 @@ import DataList from "../Partials/DataList";
 import { useNavigate } from "react-router-dom";
 
 function Addnewcompany() {
+
+ const navigate =useNavigate(); 
 const path="User"
 // const navigate=useNavigate();
 const[inputs,setInputs]=useState({});
@@ -60,8 +62,12 @@ const[par,setPar]=useState();
   return (
     <React.Fragment>
       <div className="add-user-container">
-        <div>
+        <div className="headingdiv">
           <span className="componet-title">Add New Company</span>
+           <div>
+         <button onClick={()=>{navigate(-1)}}>Back</button>
+      </div>
+      
         </div>
 
         <form onSubmit={handleSubmit} className="flex-row form-2col-ver">

@@ -50,8 +50,11 @@ navigate("/machinemanage/addnewmachine");
   return (
     <>
       <div className="add-user-container">
-        <div>
+        <div className="headingdiv">
           <span className="componet-title">Machine List</span>
+          <div>
+          <button onClick={(()=>navigate(-1))}>Back</button>
+          </div>
         </div>
         <div className="option-btn">
         <button  onClick={()=>{navigate("/manage_machine/addnewmachine")}}>Add New Machine</button>

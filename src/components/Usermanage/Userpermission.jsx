@@ -35,8 +35,13 @@ function Userpermission() {
     return (
       <React.Fragment>
         <div className="add-user-container">
-          <div>
-            <span className="componet-title">Roles List</span>
+          <div className='headingdiv'>
+            <span className="componet-title">Role List</span>
+            <div>
+            <button onClick={(()=>navigate(-1))}>Back</button>
+            
+            
+            </div>
           </div>
           <div className="option-btn">
           <button onClick={()=>{navigate("../userrole")}}>Add New Role</button>

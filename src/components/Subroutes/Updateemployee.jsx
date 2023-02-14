@@ -1,14 +1,19 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 function Updateemployee() {
+  const navigate=useNavigate();
   return (
     <>
     {/* new */}
     <div className="add-user-container">
-      <div>
-        <span className="componet-title">Add new employee</span>
+      <div className='headingdiv'>
+        <span className="componet-title">Update Employee</span>
+        <div>
+        <button onClick={(()=>{navigate(-1)})}>Back</button>
+        </div>
       </div>
-      <div className="componet-sub2-title">
+
+      <div className="componet-sub-title">
         <span>Update Employee </span>
       </div>
       <form className="flex-row">

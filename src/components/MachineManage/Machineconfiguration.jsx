@@ -28,12 +28,15 @@ const navigate=useNavigate();
   return (
     <React.Fragment>
       <div className="add-user-container">
-        <div>
+        <div className="headingdiv">
           <span className="componet-title">Machine List</span>
-        </div>
+      
         <div className="option-btn">
         <button onClick={()=>{navigate(-1)}}>Back</button>
          </div>
+
+         </div>
+
         <div className="componet-sub2-title">
           <span>Total Machine:</span>
         </div>

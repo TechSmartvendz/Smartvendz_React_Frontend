@@ -1,6 +1,8 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 function Addnewemployee() {
+
+const navigate=useNavigate();
   function Download() {
     axios({
       url: urlz, //your url
@@ -36,10 +38,13 @@ function Addnewemployee() {
     <>
       {/* new */}
       <div className="add-user-container">
-        <div>
+        <div className="headingdiv">
           <span className="componet-title">Add new employee</span>
+          <div>
+          <button onClick={(()=>navigate(-1))}>Back</button>
+          </div>
         </div>
-        <div className="componet-sub2-title">
+        <div className="componet-sub-title">
           <span>Bulk Employee Upload</span>
         </div>
         <form className="flex-row">

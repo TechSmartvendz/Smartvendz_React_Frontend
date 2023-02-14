@@ -1,14 +1,18 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 function SearchandUpdateemployee() {
+  const navigate=useNavigate();
   return (
     <>
       {/* new */}
       <div className="add-user-container">
-        <div>
-          <span className="componet-title">Search and update employee</span>
+        <div className="headingdiv">
+          <span className="componet-title">Search and Udate Employee</span>
+          <div>
+          <button onClick={(()=>navigate(-1))}>Back</button>
+          </div>
         </div>
-        <div className="componet-sub2-title">
+        <div className="componet-sub-title">
           <span>Search and Update Employee </span>
         </div>
 

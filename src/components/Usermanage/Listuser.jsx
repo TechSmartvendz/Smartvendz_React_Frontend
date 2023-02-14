@@ -34,9 +34,17 @@ console.log(item._id)
   return (
     <React.Fragment>
       <div className="add-user-container">
-        <div>
-          <span className="componet-title">Users List</span>
-        </div>
+       
+      <div className="headingdiv">
+
+     <span className="componet-title">Users List</span>
+      
+     <div>
+    <button onClick={()=>{navigate(-1)}}>Back</button>
+      </div>
+      
+      </div>
+
         <div className="option-btn">
         <button onClick={()=>{navigate("/usermanage/addnewuser")}}>Add New User</button>
          </div>
