@@ -11,7 +11,6 @@ const loadList=async ()=>{
   }
   useEffect(() => {
     loadList();
-    dataList
   }, []);
 
 
