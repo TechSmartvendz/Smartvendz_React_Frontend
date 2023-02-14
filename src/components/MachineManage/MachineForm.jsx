@@ -56,54 +56,7 @@ const[inputs,setInputs]=useState({});
                 <input name="machineId" type="text" value={inputs.machineId || ""} onChange={handleChange} />
               </div>
 
-              <div className="input-lable-h-div">
-                <label htmlFor="country">Country</label>
-                <input name="country" list='country' type="search" value={inputs.country || ""} onChange={handleChange}/>
-                <datalist id='country'>
-                  {
-                    countrys.map((countr,k)=><option key={k}>{countr}</option>)                  }
-               </datalist>
-              
-               </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="state">State</label>
-                <input name="state" list='state' value={inputs.state || ""} type="search" onChange={handleChange}/>
-                  <datalist id='state'>
-                  {
-                    states.map((sts,k)=><option key={k}>{sts}</option>)
-                  }
-                  
-                  </datalist>
-               
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="city">City</label>
-              
-                <input name="city" list='city'  value={inputs.city || ""} type="search" onChange={handleChange} />
-              <datalist id='city'>
-              {
-              city.map((cit,k)=><option key={k}>{cit}</option>)
-              }
-              
-              </datalist>
-
-
-               
-              </div>
-              <div className="input-lable-h-div">
-                <label htmlFor="area">Area</label>
-                <input name="area" list='area' value={inputs.area || ""} type="search" onChange={handleChange}/>
-                 <datalist id='area'>
-                 {
-                  areas.map((ar,k)=><option key={k}>{ar}</option>)
-                 }
-                 
-                 </datalist>
-               
-              </div>
-
+             
               <div className="input-lable-h-div">
                 <label htmlFor="address">Address</label>
                 <input name="address" type="text"  value={inputs.address || ""} onChange={handleChange}  required/>
@@ -182,20 +135,10 @@ const[inputs,setInputs]=useState({});
                 
               </div>
 
-              <div className="input-lable-h-div">
-                <label htmlFor="refiller">Refiller</label>
-                <input name="refillerf" list='refillerf' type="search" value={inputs.refillerf || ""}  onChange={handleChange}/>
-                  <datalist id="refillerf">
-                  
-                  {
-                       Refillers.map((refis,k)=><option key={k}>{refis}</option>)
-                  }
-                  
-                  </datalist>
-              </div>
+             
 
               <div className="input-lable-h-div">
-                <label htmlFor="warehouse">Ware House</label>
+                <label htmlFor="warehouse">Warehouse</label>
                 <input name="warehouse" list='warehouse' type="search" value={inputs.warehouse || ""} onChange={handleChange}/>
                  <datalist id='warehouse'>
                  {
