@@ -27,7 +27,7 @@ return (
   return <option key={i} value={e.id}>{e[name]}</option>
 })
 ):
-<option>Data Not found</option>
+<option>Country not found</option>
 }
 </datalist>
 

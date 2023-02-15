@@ -17,7 +17,7 @@ function SubMenu(props) {
     { sideBarData.map((item, index) => {
       if(navData[item.permission]){
       return (
-        <li key={index} className={item.cName} id='visible' onClick={()=>{console.log("clicked")}}>
+        <li key={index} className={item.cName} id='visible'>
           <Link to={item.path}>
             {item.icon}
             <span>{item.title}</span>
