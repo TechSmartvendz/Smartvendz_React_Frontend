@@ -13,6 +13,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(cookies.JWTcookie != undefined);
   const [sidebar, setSidebar] = useState();
 
+
   return (
     <>
       <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>

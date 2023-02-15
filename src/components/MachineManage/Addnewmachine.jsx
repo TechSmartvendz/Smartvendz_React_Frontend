@@ -84,25 +84,14 @@ function changeData(e)
  <input type="text" name='slotname' className='slot'  placeholder="Enter Slot Name" value={inputdata.slotname || ""} onChange={changeData}/>
  
  </div>
- <div className="input-lable-v-div">
- <label htmlFor='materialname'>Material Name</label>
- <input className='material' list="materialname" type="text" name='materialname' placeholder='Search Material Name' value={inputdata.materialname || ""}   onChange={changeData} />
- <datalist id="materialname">
- {
-  options.map((opt,k)=><option key={k}>{opt}</option>)
- }
- </datalist>
-</div>
+ 
 
 <div className="input-lable-v-div">
-<label htmlFor='currentstock'>Current Stock</label>
+<label htmlFor='currentstock'>MAX Quantity</label>
 <input type="text" name='currentstock' className='current_s' placeholder='Enter Current Stock' value={inputdata.currentstock || ""}  onChange={changeData}/>
 </div>
 
-<div className="input-lable-v-div">
-<label htmlFor='intitialstock'>Initial Stock</label>
-<input type="text" className='istock' name='initialstock' placeholder='Enter Initial stock' value={inputdata.initialstock || ""} onChange={changeData}/>
-</div>
+
 
 <div className="input-lable-v-div">
 <label htmlFor='notinuse'>Not in use</label>
