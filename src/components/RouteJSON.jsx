@@ -17,12 +17,12 @@ export const RouteJSON = [
         element: "<Addnewcompany />",
         id: 21,
       },
-      {
-        title: "List Company",
-        path: "/companymanage/listcompany",
-        element: "<Listcompany />",
-        id: 22,
-      },
+      // {
+      //   title: "List Company",
+      //   path: "/companymanage/listcompany",
+      //   element: "<Listcompany />",
+      //   id: 22,
+      // },
     ],
   },
   {

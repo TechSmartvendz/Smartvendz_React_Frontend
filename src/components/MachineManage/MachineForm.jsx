@@ -45,9 +45,11 @@ const[inputs,setInputs]=useState({});
         </div>
        
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
-          <div className="componet-sub-title">
+      
+        <div className="componet-sub-title">
             <span>Machine Details</span>
           </div>
+          
           <div className="flex-col ">
             <div className="flex-row">
              
@@ -161,6 +163,7 @@ const[inputs,setInputs]=useState({});
               </div>
             </div>
           </div>
+        
           <div>
 
           <div className="flex-col">
@@ -168,7 +171,9 @@ const[inputs,setInputs]=useState({});
               <button className="submit-btn" type="submit" >Save</button>
             </div>
           </div>
+          
         </div> 
+        
         </form>
       </div>
    

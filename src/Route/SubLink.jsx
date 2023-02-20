@@ -16,7 +16,8 @@ function SubLink(props) {
     //     );
     //   })}
     // </div>
-    <Outlet/>
+     <Outlet/>
+   
     
   );
 }

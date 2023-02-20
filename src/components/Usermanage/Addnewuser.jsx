@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
-
+import { template } from "../Partials/FormFields";
 import { postReq,putReq,getReq } from "../middleware/AxiosApisCall";
 import { useParams ,useNavigate} from "react-router";
 // import DataList from "../Partials/DataList";
@@ -73,6 +73,8 @@ useEffect(() => {
   return (
     <React.Fragment>
       <div className="add-user-container">
+
+      
         <div className="headingdiv">
           <span className="componet-title">Add New User</span>
        
@@ -86,217 +88,104 @@ useEffect(() => {
           </button>
         </div>
         </div>
+
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
             <span>User Details</span>
           </div>
 
           <div className="flex-col ">
-            <div className="flex-row">
-              <div className="input-lable-h-div">
-                <label htmlFor="first_name"> First Name</label>
-                <input
-                  name="first_name"
-                  type="text"
-                  value={inputs.first_name || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
 
-              <div className="input-lable-h-div">
-                <label htmlFor="middle_name">Middle Name</label>
-
-                <input
-                  name="middle_name"
-                  type="text"
-                  value={inputs.middle_name || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="last_name">Last Name</label>
-                <input
-                  type="text"
-                  name="last_name"
-                  value={inputs.last_name || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="mobile">Mobile</label>
-                <input
-                  name="mobile"
-                  type="text"
-                  value={inputs.mobile || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="alter_mobile">Alternate Mobile</label>
-                <input
-                  name="alter_mobile"
-                  type="text"
-                  value={inputs.alter_mobile || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="input-lable-h-div">
-                <label htmlFor="email">User Email</label>
-
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter user email"
-                  value={inputs.email || ""}
-                  onChange={handleChange}
-                autoComplete="off"
-                  required
-                />
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="current_address">Current Addresss</label>
-                <input
-                  name="current_address"
-                  type="text"
-                  value={inputs.current_address || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="per_address">Permanent Address</label>
-                <input
-                  name="per_address"
-                  type="text"
-                  value={inputs.per_address || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+           
+          <div className="flex-row">
+              
+            {
+                template.addnewuser.map((adduser)=>{
+                  return (
+                   
+                    <div className="input-lable-h-div">
+                    <label htmlFor={adduser.name}>{adduser.title}</label>
+                    <input
+                      name={adduser.name}
+                      type={adduser.type}
+                      value={inputs[adduser.name] || ""}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                 
+                  )
+                })
+              
+            }
             </div>
 
             <div className="flex-row">
-              <div className="input-lable-h-div">
-                <label htmlFor="role">Role</label>
-                <input
-                  name="role"
-                  type="text"
-                  value={inputs.role || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="pdate">Display Name</label>
-                <input
-                  name="display_name"
-                  type="text"
-                  value={inputs.display_name || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="city">City</label>
-                <input
-                  list="city"
-                  name="country"
-                  onChange={handleChange}
-                  required
-                />
-                <datalist id="city">
-                  <option>Bengaluru</option>
-                  <option>Pune</option>
-                </datalist>
-                {/*<DataList/>*/}
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="state" required>
-                  State
-                </label>
-                <input list="state" onChange={handleChange} required />
-                <datalist id="state">
-                  <option>Karnataka</option>
-                  <option>Andrapradesh</option>
-                </datalist>
-               
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="country">Country</label>
-                <input list="country" onChange={handleChange} />
-                <datalist id="country">
-                  <option>India</option>
-                  <option>America</option>
-                </datalist>
-                {/*<DataList/>*/}
-              </div>
+            {
+              template.addnewuser1.map((adduser1)=>{
+                return (
+                 
+                  <div className="input-lable-h-div">
+                    <label htmlFor={adduser1.name}>{adduser1.title}</label>
+                    <input
+                      name={adduser1.name}
+                      type={adduser1.type}
+                      value={inputs[adduser1.name] || ""}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                
+                )
+              })
+            }
             </div>
-          </div>
+
+           </div>
+
+           
           {/* Log in info start from here*/}
 
           <div className="componet-sub-title">
             <span>Login Info</span>
           </div>
+
           <div>
-            <div className="flex-col">
-              <div className="input-lable-v-div">
-                <label htmlFor="user_id">User Id</label>
-                <input
-                  name="user_id"
-                  type="text"
-                  value={inputs.user_id || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
 
-              <div className="input-lable-v-div">
-                <label htmlFor="password">Password</label>
-
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Enter password"
-                  value={inputs.password || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="input-lable-v-div">
-                <label htmlFor="cpassword">Confirm Password</label>
-                <input
-                  type="password"
-                  name="cpassword"
-                  placeholder="Confirm Password"
-                  value={inputs.cpassword || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="input-lable-v-div">
-                <button type="submit" className="submit-btn">
-                {itemid ?<span>Update</span>:<span>Save</span>} 
-                 
-                </button>
-              </div>
-            </div>
+          <div className="flex-col">
+          {
+            template.loginInfo.map((log)=>{
+              return(
+               
+                <div className="input-lable-v-div">
+                  <label htmlFor={log.name}>{log.title}</label>
+                  <input
+                    name={log.name}
+                    type={log.type}
+                    value={inputs[log.name] || ""}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              
+              )
+            })
+           
+          }
+          <div className="input-lable-v-div">
+          <button type="submit" className="submit-btn">
+          {itemid ?<span>Update</span>:<span>Save</span>} 
+          </button>
           </div>
+
+          </div>
+          
+             
+
+            </div>
+        
+
+
         </form>
       </div>
     </React.Fragment>

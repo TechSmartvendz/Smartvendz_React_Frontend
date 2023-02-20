@@ -70,7 +70,7 @@ function Statemanage() {
         </div>
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
-            <span>State </span>
+            <span>State</span>
           </div>
           <div className="general-manage-div">
             <label htmlFor="name">State:</label>

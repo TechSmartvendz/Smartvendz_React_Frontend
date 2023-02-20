@@ -74,7 +74,8 @@ function changeData(e)
     <div className="option-btn">
     <button onClick={addBulkData}>Save Table</button>
      </div>
-    <div  className="add-user-container">
+   
+     <div  className="add-user-container">
     
 
  <form className="flex-col">

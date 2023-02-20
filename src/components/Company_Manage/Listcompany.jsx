@@ -46,7 +46,7 @@ const navigate=useNavigate();
 
   list.map((data,key)=>{
     return(
-   <tr>
+   <tr key={key}>
    <td>{data.companyname}</td>
    <td>{data.companyid}</td>
    <td>{data.contactperson}</td>
