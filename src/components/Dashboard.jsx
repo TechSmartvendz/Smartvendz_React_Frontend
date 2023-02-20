@@ -102,6 +102,7 @@ function Dashboard() {
 
             <Route exact path="/companymanage" element={<Companymanage />} >
                 <Route path="addnewcompany" element={<Addnewcompany />} />
+                <Route path="addnewcompany/:id" element={<Addnewcompany />} />
                 <Route  index path="listcompany" element={<Listcompany />} />
                 <Route path="companyadmins" element={<CompanyAdmins />} />
                 <Route path="companymachines" element={<CompanyMachines />} />

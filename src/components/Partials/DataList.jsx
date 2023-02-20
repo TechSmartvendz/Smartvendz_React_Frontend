@@ -4,6 +4,7 @@ function DataList(props) {
 const [dataList,setDataList]=useState(null);
 const [path,setPath]=useState(props.path); 
 const [name,setName]=useState(props.name); 
+const [option,setOption]=useState(props.option); 
 const loadList=async ()=>{
     const response = await getReq(`${path}/Datalist`)
     setDataList(response.data);
@@ -24,7 +25,7 @@ return (
 { dataList !=null ?
 (dataList.map((e,i)=>{
   
-  return <option key={i} value={e.id}>{e[name]}</option>
+  return <option key={i} value={e.id}>{e[option]}</option>
 })
 ):
 <option>Country not found</option>

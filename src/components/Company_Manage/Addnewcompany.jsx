@@ -1,226 +1,289 @@
-import React, { useState } from "react";
-import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
-import { patchReq, postReq } from "../middleware/AxiosApisCall";
+import React, { useState, useEffect } from "react";
+import { postReq ,patchReq,getReq} from "../middleware/AxiosApisCall";
 import DataList from "../Partials/DataList";
-import { useNavigate } from "react-router-dom";
+import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
+import TableData2 from "../Partials/TableData2"; 
+import { useParams, useNavigate } from "react-router";
+
 
 function Addnewcompany() {
+  const navigate = useNavigate();
 
- const navigate =useNavigate(); 
-const path="User"
-// const navigate=useNavigate();
-const[inputs,setInputs]=useState({});
+  const {id}=useParams();
+  const [itemid, setItemid] = useState(id);
+  const [tableRefresh,setTableRefresh]=useState(0);
+  const[par, setPar] = useState()
+  const path = "Company";
+  const companyUsersPath="Company/CompanyUsers"
+  const [inputs, setInputs] = useState({});
+  const [inputs2, setInputs2] = useState({});
+  const [companyusertable, setcompanyusertable] = useState();
+ 
+  const loadDate = async () => {
+    const response = await getReq(`${path}/${itemid}`);
+    if(response.data){
+      console.log("🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data", response.data)
+      console.log(response.data)
+      console.log("🚀 ~ file: Addnewcompany.jsx:27 ~ loadDate ~ response.data", response.data)
+      setInputs2((values) => ({ ...values, companyid: response.data.companyid }));
+      setInputs(response.data);
+    }else{
+      console.log(response.data)
+    
+    } 
+  };
+  const loadDate2 = async () => {
+    const response = await getReq(`${companyUsersPath}/${itemid}`);
+    if(response.data.length){
+      console.log("🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data", response.data)
+      console.log(response.data)
+      setcompanyusertable(response.data);
+    }else{
+      console.log(response.data)
+    
+      setcompanyusertable(null);
+    } 
+  };
 
-const [tableRefresh,setTableRefresh]=useState();
-const[par,setPar]=useState();
-
-  const handleChange=(event)=>{
-   const name=event.target.name;
-   const value=event.target.value;
-   setInputs(values=>({...values,[name]:value}))
   
-  }
- const handleSubmit=async(event)=>{
- event.preventDefault();
-//  if(par)
-// {
-//   console.log(par)
-//   const response=await patchReq(path,inputs,par)
-//   if(Response.status==='success'){
-//     setPar()
-//     setTableRefresh(tableRefresh+1)
-//     setInputs({});
-//     SuccessAlert({title:"edit Company",message:"Company updated successfully"});
-//   }else{
-//     ErrorAlert({title:"Edit state",message:response.error})
-//   }
-// }else{
-//   const response=await postReq(path,inputs)
-//   if(response.status==='success')
-//   {
-//     console.log(inputs)
-//     setTableRefresh(tableRefresh+1)
-//     setInputs({})
-//     // navigate("/companymanage/listcompany")
-//     SuccessAlert({title:"Add Company",message:"Company Added successfully"})
-//   }else{
-//     ErrorAlert({title:"Add Company",message:response.error})
-//   }
-}
- 
- 
+useEffect(() => {
+  if(itemid){
+    loadDate()
+    loadDate2()
 
-//  const editClick=(pid)=>{
-//   setPar(pid._id)
-//   setInputs(pid) 
-// }
-              // name="state"
-              // type="text"
-              // value={inputs.state || ""}
-              // onChange={handleChange}
-              // required      
+  }
+}, [itemid])
+useEffect(() => {
+  if(itemid){
+    console.log("🚀 ~ file: Addnewcompany.jsx:62 ~ Addnewcompany ~ inputs2", inputs2)
+  }
+}, [inputs2])
+
+
+useEffect(() => {
+  if(itemid){
+    console.log("🚀 ~ file: Addnewcompany.jsx:68 ~ Addnewcompany ~ companyusertable", companyusertable)
+  }
+}, [companyusertable])
+
+
+
+  function handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  }
+  function handleChange2(event) {
+    const name = event.target.name;
+    const checked = event.target.checked;
+    if (event.target.type == "checkbox") {
+      setInputs2((values) => ({ ...values, [name]: checked }));
+    } else {
+      setInputs2((values) => ({ ...values, [name]: event.target.value }));
+   
+  }
+  }
+  
+  const handleSubmit2 = async (event) => {
+    event.preventDefault();
+    console.log(inputs);
+    const response = await postReq(companyUsersPath, inputs2);
+    if (response.success) {
+      SuccessAlert({
+        title: "Assign User ",
+        message: "Assign Usersuccessfully",
+      });
+      loadDate2();
+     
+    } else {
+      ErrorAlert({ title: "Assign User ", message: response.msg });
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(inputs);
+    const response = await postReq(path, inputs);
+    if (response.success) {
+      SuccessAlert({
+        title: "Add Company",
+        message: "Company Added successfully",
+      });
+      navigate(`${response.data._id}`);
+    } else {
+      ErrorAlert({ title: "Add Company", message: response.msg });
+    }
+  };
+
+  const editClick=(pid)=>{
+    setPar(pid._id)
+    setInputs2(pid) 
+    console.log('this is input ' ,inputs);
+  }
+
+
   return (
     <React.Fragment>
       <div className="add-user-container">
         <div className="headingdiv">
-          <span className="componet-title">Add New Company</span>
-           <div>
-         <button onClick={()=>{navigate(-1)}}>Back</button>
-      </div>
-    
+          <span className="componet-title">Add Company</span>
+          <div>
+            <button onClick={() => navigate(-1)}>Back</button>
+          </div>
         </div>
-        <form onSubmit={handleSubmit} className="flex-row form-2col-ver">
+
+        <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
             <span>Company Details</span>
           </div>
-          <div className="flex-col ">
+
             <div className="flex-row">
-              <div className="input-lable-h-div">
-                <label htmlFor="cname" className="adminlabel">
-                  Company Name:
-                </label>
+              
+            <div className="input-lable-h-div">
+                <label htmlFor="companyid"> Company ID</label>
                 <input
                   type="text"
-                  name="cname"
-                  value={inputs.cname || ""}
+                  name="companyid"
+                  className="slot"
+                  value={inputs.companyid || ""}
                   onChange={handleChange}
-                  required
                 />
               </div>
+
               <div className="input-lable-h-div">
-                <label htmlFor="cname" className="adminlabel">
-                  Company ID:
-                </label>
+                <label htmlFor="companyname">Company Name </label>
                 <input
                   type="text"
-                  name="cid"
-                  value={inputs.cid || ""}
+                  name="companyname"
+                  value={inputs.companyname || ""}
                   onChange={handleChange}
-                  required
                 />
               </div>
+
               <div className="input-lable-h-div">
-                <label htmlFor="Caddress" className="adminlabel">
-                  Company Address:
-                </label>
+                <label htmlFor="address">Address </label>
                 <input
                   type="text"
-                  name="cadd"
-                  value={inputs.cadd || ""}
+                  name="address"
+                  value={inputs.address || ""}
                   onChange={handleChange}
-                  required
                 />
               </div>
+
               <div className="input-lable-h-div">
-                <label htmlFor="Clocation" className="adminlabel">
-                  Company Location:
-                </label>
+              <DataList
+              value={inputs.area || ""}
+                path={"Area"}
+                handleChange={handleChange}
+                name={"area"}
+                option={"area"}
+                heading={"Area"}
+              />
+              </div>
+
+              <div className="input-lable-h-div">
+                <label htmlFor="telephone">Telephone </label>
                 <input
                   type="text"
-                  name="clocation"
-
-                  value={inputs.clocation || ""}
+                  name="telephone"
+                  value={inputs.telephone || ""}
                   onChange={handleChange}
-                  required
                 />
               </div>
+
               <div className="input-lable-h-div">
-                <label htmlFor="Cbno" className="adminlabel">
-                  Company Building No:
-                </label>
+                <label htmlFor="altTelepone">Alternate Telephone </label>
                 <input
                   type="text"
-                  name="cbuildingno"
-                  value={inputs.cbuildingno || ""}
+                  name="altTelepone"
+                  value={inputs.altTelepone || ""}
                   onChange={handleChange}
-                  required
                 />
               </div>
-              <div className="input-lable-h-div">
-                <DataList
-                  value={inputs.country || ""}
-                  path={"Country"}
-                  handleChange={handleChange}
-                  name={"country"}
-                  heading={"Company Person"}
-                />
-              </div>
-            </div>
-            <div className="flex-row">
-              <div className="input-lable-h-div" >
-                <label htmlFor="cperson" className="adminlabel">
-                  Contact Person:
-                </label>
-                <input
-                  type="email"
-                  name="pemail"
 
-                  value={inputs.pemail || ""}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
               <div className="input-lable-h-div">
-                <label htmlFor="cperson" className="adminlabel">
-                  Contact Person:
-                </label>
+                <label htmlFor="email">Email </label>
                 <input
                   type="text"
-                  name="pnum"
-
-                  value={inputs.pnum || ""}
+                  name="email"
+                  value={inputs.email || ""}
                   onChange={handleChange}
-                  required
                 />
               </div>
-              <div className="input-lable-h-div">
-                <DataList
-                  value={inputs.country || ""}
-                  path={"Country"}
-                  handleChange={handleChange}
-                  name={"country"}
-                  heading={"Country"}
-                />
-              </div>
-              <div className="input-lable-h-div">
-                <DataList
 
-                  value={inputs.state || ""}
-                  path={"City"}
-                  handleChange={handleChange}
-                  name={"state"}
-                  heading={"State"}
-                />
-              </div>
               <div className="input-lable-h-div">
-                <DataList
+              <button className="submit-btn" type="submit" >Save</button>
+             </div>
+           
 
-                  value={inputs.country || ""}
-                  path={"City"}
-                  handleChange={handleChange}
-                  name={"country"}
-                  heading={"City"}
-                />
-              </div>
-              <div className="input-lable-h-div">
-                <DataList
+           </div>
+      
 
-                  value={inputs.state || ""}
-                  path={"Country"}
-                  handleChange={handleChange}
-                  name={"state"}
-                  heading={"Admin"}
-                />
-              </div>
-              <div className="form-submit-button">
-                <button type="submit" >Save Company</button>
-              </div>
-            </div>
-            </div>
         </form>
       </div>
+    
+      {/* second form */}
+      <div className="add-user-container">
+      <div className="componet-sub-title">
+      <span>Add Comapny</span>
+      </div>
+
+      <form className="flex-col" onSubmit={handleSubmit2} >
+
+      <div className="input-lable-v-div">
+      <DataList
+      value={inputs2.companyid || ""}
+        path={"Company"}
+        handleChange={handleChange2}
+        name={"companyid"}
+        option={"companyid"}
+        heading={"Company"}
+      />
+      </div>
+
+      <div className="input-lable-v-div">
+      <DataList
+      value={inputs2.role || ""}
+        path={"Permission"}
+        handleChange={handleChange2}
+        name={"role"}
+        option={"role"}
+        heading={"User Type"}
+      />
+      </div>
+      <div className="input-lable-v-div">
+      <DataList
+      value={inputs2.assign_user || ""}
+        path={"User"}
+        handleChange={handleChange2}
+        name={"assign_user"}
+        option={"user_id"}
+        heading={"Assign User"}
+      />
+      </div>
+
+   
+   <div className="input-lable-v-div">
+   <label htmlFor='checks'>Activate</label>
+   <input type="checkbox" name=' active_status'    value={inputs2. active_status || ""} onChange={handleChange2}/>
+   </div>
+      
+   <div className="input-lable-h-div">
+   <button className="submit-btn" type="submit" >Save</button>
+  </div>
+
+
+      </form>
+      </div>
+
+      <div className="table_container-div">
+      <TableData2 path={companyUsersPath} key={companyusertable}  data={companyusertable} editClick={editClick}/>
+    
+    </div>
+
+      
     </React.Fragment>
   );
 }
 
-export default Addnewcompany
+export default Addnewcompany;
