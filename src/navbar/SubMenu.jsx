@@ -22,7 +22,7 @@ function SubMenu(props) {
             {item.icon}
             <span>{item.title}</span>
           </Link>
-          <ul id="hidden" className="nav-menu-items ulbg">
+          <ul key={index}  id="hidden" className="nav-menu-items ulbg">
         {item.submenu && item.submenu.map((type, index) => {
           if(navData[type.permission]){
           return <li key={index} className={item.cName} ><Link  to={type.path}>{item.icon}<span>{type.title}</span></Link> </li>

@@ -67,17 +67,14 @@ const[par,setPar]=useState();
            <div>
          <button onClick={()=>{navigate(-1)}}>Back</button>
       </div>
-      
+    
         </div>
-
         <form onSubmit={handleSubmit} className="flex-row form-2col-ver">
           <div className="componet-sub-title">
             <span>Company Details</span>
           </div>
-
           <div className="flex-col ">
             <div className="flex-row">
-
               <div className="input-lable-h-div">
                 <label htmlFor="cname" className="adminlabel">
                   Company Name:
@@ -85,13 +82,11 @@ const[par,setPar]=useState();
                 <input
                   type="text"
                   name="cname"
-
                   value={inputs.cname || ""}
                   onChange={handleChange}
                   required
                 />
               </div>
-
               <div className="input-lable-h-div">
                 <label htmlFor="cname" className="adminlabel">
                   Company ID:
@@ -99,13 +94,11 @@ const[par,setPar]=useState();
                 <input
                   type="text"
                   name="cid"
-
                   value={inputs.cid || ""}
                   onChange={handleChange}
                   required
                 />
               </div>
-
               <div className="input-lable-h-div">
                 <label htmlFor="Caddress" className="adminlabel">
                   Company Address:
@@ -113,13 +106,11 @@ const[par,setPar]=useState();
                 <input
                   type="text"
                   name="cadd"
-
                   value={inputs.cadd || ""}
                   onChange={handleChange}
                   required
                 />
               </div>
-
               <div className="input-lable-h-div">
                 <label htmlFor="Clocation" className="adminlabel">
                   Company Location:
@@ -133,7 +124,6 @@ const[par,setPar]=useState();
                   required
                 />
               </div>
-
               <div className="input-lable-h-div">
                 <label htmlFor="Cbno" className="adminlabel">
                   Company Building No:
@@ -141,17 +131,13 @@ const[par,setPar]=useState();
                 <input
                   type="text"
                   name="cbuildingno"
-
                   value={inputs.cbuildingno || ""}
                   onChange={handleChange}
                   required
                 />
               </div>
-
               <div className="input-lable-h-div">
-
                 <DataList
-
                   value={inputs.country || ""}
                   path={"Country"}
                   handleChange={handleChange}
@@ -160,7 +146,6 @@ const[par,setPar]=useState();
                 />
               </div>
             </div>
-
             <div className="flex-row">
               <div className="input-lable-h-div" >
                 <label htmlFor="cperson" className="adminlabel">
@@ -175,7 +160,6 @@ const[par,setPar]=useState();
                   required
                 />
               </div>
-
               <div className="input-lable-h-div">
                 <label htmlFor="cperson" className="adminlabel">
                   Contact Person:
@@ -189,11 +173,8 @@ const[par,setPar]=useState();
                   required
                 />
               </div>
-
               <div className="input-lable-h-div">
-
                 <DataList
-
                   value={inputs.country || ""}
                   path={"Country"}
                   handleChange={handleChange}
@@ -201,10 +182,7 @@ const[par,setPar]=useState();
                   heading={"Country"}
                 />
               </div>
-
               <div className="input-lable-h-div">
-
-
                 <DataList
 
                   value={inputs.state || ""}
@@ -214,9 +192,7 @@ const[par,setPar]=useState();
                   heading={"State"}
                 />
               </div>
-
               <div className="input-lable-h-div">
-
                 <DataList
 
                   value={inputs.country || ""}
@@ -226,7 +202,6 @@ const[par,setPar]=useState();
                   heading={"City"}
                 />
               </div>
-
               <div className="input-lable-h-div">
                 <DataList
 

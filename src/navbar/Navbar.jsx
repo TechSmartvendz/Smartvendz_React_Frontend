@@ -52,7 +52,7 @@ function Navbar() {
               />
             </Link>
           </li>
-          {navData? <SubMenu key={navData} navData={navData} sideBarData={sideBarData}/>:<h1>NO DATA</h1>}
+          {navData? <SubMenu key={navData} navData={navData} sideBarData={sideBarData}/>:(()=>{setSidebar(!sidebar)})}
           
       
         </ul>
