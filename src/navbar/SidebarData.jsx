@@ -55,6 +55,16 @@ export const SidebarData = [
         title: "List Company",
         path: "/companymanage/listcompany" ,
         permission:"listcompany"    
+      },
+      {
+        title: "Company Admins",
+        path: "/companymanage/companyadmins" ,
+        permission:"companyadmins"    
+      },
+      {
+        title: "Company Machines",
+        path: "/companymanage/companymachines" ,
+        permission:"companymachines"    
       }
     ]
   },

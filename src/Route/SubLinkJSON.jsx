@@ -9,6 +9,14 @@ export const CompanyManagerData = [
   {
     title: "List Company",
     path: "/companymanage/listcompany"    
+  },
+  {
+    title: "Company Client Admin",
+    path: "/companymanage/companyadmins"    
+  },
+  {
+    title: "Company Machine",
+    path: "/companymanage/companymachines"    
   }
 ];
 export const EmployeeManageData = [  

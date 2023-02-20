@@ -1,5 +1,6 @@
 import { Routes, Route, Link, Outlet } from "react-router-dom";
 //FIXME:remove Add order
+import React from "react";
 import Addorder from "./Addorder";
 
 
@@ -19,6 +20,8 @@ import UserRole from "./Usermanage/UserRole";
 import Companymanage from "./Company_Manage/Companymanage";
 import Addnewcompany from "./Company_Manage/Addnewcompany";
 import Listcompany from "./Company_Manage/Listcompany";
+import CompanyAdmins from "./Company_Manage/CompanyAdmins";
+import CompanyMachines from "./Company_Manage/CompanyMachines";
 
 import Addnewmachine from "./MachineManage/Addnewmachine"
 import Listmachine from "./MachineManage/Listmachine";
@@ -69,12 +72,13 @@ import Refund2 from "./Subroutes/Refund2"
 import { ReactNotifications } from 'react-notifications-component'
 
 
+
 //TODO: GET info about this Usermanahe.css
 // import 'Usermanage.css'
 
 function Dashboard() {
   return (
-    <>
+    <React.Fragment>
       <div className="root">
         <Header />
         <div className="section">
@@ -99,6 +103,8 @@ function Dashboard() {
             <Route exact path="/companymanage" element={<Companymanage />} >
                 <Route path="addnewcompany" element={<Addnewcompany />} />
                 <Route  index path="listcompany" element={<Listcompany />} />
+                <Route path="companyadmins" element={<CompanyAdmins />} />
+                <Route path="companymachines" element={<CompanyMachines />} />
               </Route>
     
 
@@ -163,7 +169,7 @@ function Dashboard() {
         </div>
         <Footer />
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+
 import React, { useState, useEffect } from "react";
 import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
 
@@ -8,16 +8,16 @@ import { template } from "../Partials/FormFields";
 
 function AddNewRole() {
   const navigate = useNavigate();
-  const navigate = useNavigate();
+  
   const { id } = useParams();
   console.log("🚀 ~ file: AddNewRole.jsx:9 ~ AddNewRole ~ id", id);
-  const [itemid, setItemid] = useState(id); //id passed
+   //id passed
   console.log("🚀 ~ file: AddNewRole.jsx:9 ~ AddNewRole ~ id", id);
   const [itemid, setItemid] = useState(id); //id passed
   const path = "Permission";
   const [inputs, setInputs] = useState({});
 
-  const [par, setPar] = useState(); //
+ //
 
   const [par, setPar] = useState(); //
 
@@ -37,16 +37,14 @@ function AddNewRole() {
   useEffect(() => {
     if (itemid) {
       loadDate();
-    if (itemid) {
-      loadDate();
     }
+  
   }, []);
-  }, []);
+
   useEffect(() => {
     console.log("🚀 ~ file: AddNewRole.jsx:13 ~ AddNewRole ~ inputs", inputs);
   }, [inputs]);
-    console.log("🚀 ~ file: AddNewRole.jsx:13 ~ AddNewRole ~ inputs", inputs);
-  }, [inputs]);
+    
   function handleChange(event) {
     const name = event.target.name;
     const checked = event.target.checked;
@@ -54,13 +52,9 @@ function AddNewRole() {
       setInputs((values) => ({ ...values, [name]: checked }));
     } else {
       setInputs((values) => ({ ...values, [name]: event.target.value }));
-    if (event.target.type == "checkbox") {
-      setInputs((values) => ({ ...values, [name]: checked }));
-    } else {
-      setInputs((values) => ({ ...values, [name]: event.target.value }));
-    }
+   
   }
-
+  }
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (par) {
@@ -73,11 +67,7 @@ function AddNewRole() {
           title: `Edit ${path}`,
           message: `${path} Update successfully`,
         });
-        setPar();
-        SuccessAlert({
-          title: `Edit ${path}`,
-          message: `${path} Update successfully`,
-        });
+       
         navigate(`../userpermission`);
       } else {
         setPar();
@@ -101,10 +91,9 @@ function AddNewRole() {
   return (
     <React.Fragment>
       <div className="add-user-container">
-        <div>
+        <div className="headingdiv">
           <span className="componet-title">{par ? "Edit Role" :"Add New Role"}</span>
-        </div>
-        <div className="option-btn">
+          <div >
           <button
             onClick={() => {
               navigate(-1);
@@ -113,6 +102,8 @@ function AddNewRole() {
             Back
           </button>
         </div>
+        </div>
+        
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
@@ -127,13 +118,7 @@ function AddNewRole() {
               value={inputs.role || ""}
               onChange={handleChange}
             />
-            <label htmlFor="role_name">Role Name :</label>
-            <input
-              type="text"
-              name="role"
-              value={inputs.role || ""}
-              onChange={handleChange}
-            />
+            
           </div>
 
           <div>
@@ -177,9 +162,9 @@ function AddNewRole() {
       </div>
     </React.Fragment>
   );
-  );
+  
 }
 
 export default AddNewRole;
 
-export default AddNewRole;
+

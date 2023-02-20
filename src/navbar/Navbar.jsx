@@ -24,6 +24,7 @@ function Navbar() {
     console.log("loadData() start")
     const response = await getReq(`${path}`);
     if (response.data) {
+      console.log(response.data);
      setNavData(response.data);
     } else {
       console.log(response.data);
@@ -41,25 +42,24 @@ function Navbar() {
   }, [navData]);
 
   return (
-    <>
+    <React.Fragment>
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items">
           <li>
-            <Link to="#" className="navbar-icon crossbutton">
+           {/* <Link to="#" className="navbar-icon crossbutton">
               <AiIcons.AiOutlineClose
                 size={25}
                 onClick={() => setSidebar(!sidebar)}
               />
-            </Link>
+          </Link>*/}
           </li>
           {navData? <SubMenu key={navData} navData={navData} sideBarData={sideBarData}/>:<h1>NO DATA</h1>}
           
       
         </ul>
       </nav>
-      {/*  </NavContext.Provider>
-   </IconContext.Provider> */}
-    </>
+    
+    </React.Fragment>
   );
 }
 
