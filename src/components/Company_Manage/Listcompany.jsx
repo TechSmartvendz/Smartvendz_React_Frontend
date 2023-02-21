@@ -8,6 +8,7 @@ import TableData from "../Partials/TableData";
 
 function Listcompany() {
 const path="Company"
+const pathd="User/:id"
 const [tableData,setTableData]=useState();
 const[tableRefresh,setTableRefresh]=useState(0)
 
@@ -19,6 +20,7 @@ const[tableRefresh,setTableRefresh]=useState(0)
   useEffect(() => {
     loadTableDate()
   }, [])
+
 
   
 const navigate=useNavigate()
@@ -49,7 +51,7 @@ console.log(item._id)
         <button onClick={()=>{navigate("/usermanage/addnewuser")}}>Add New User</button>
          </div>
       
-        <TableData path={path} key={tableRefresh} editClick={editClick}/>
+        <TableData path={path}  key={tableRefresh} editClick={editClick}/>
 
       
       </div>

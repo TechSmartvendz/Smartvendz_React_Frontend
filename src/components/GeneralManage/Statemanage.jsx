@@ -86,6 +86,7 @@ function Statemanage() {
               value={inputs.country || ""}
               path={"Country"}
               handleChange={handleChange}
+              option={"country"}
               name={"country"}
               heading={"Country"}
             />

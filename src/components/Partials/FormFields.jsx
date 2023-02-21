@@ -1,109 +1,107 @@
+import DataList from "./DataList";
 export const template = {
-
-addnewuser:[
-  {
-  title:"First Name",
-  name:"first_name",
-  type:"text",
-  required:true
-  },
-  {
-    title:"Middle Name",
-    name:"middle_name",
-    type:"text",
-    required:true
+  addnewuser: [
+    {
+      title: "First Name",
+      name: "first_name",
+      type: "text",
+      required: true,
     },
     {
-      title:"Last Name",
-      name:"last_name",
-      type:"text",
-      required:true
-      },
-      {
-        title:"Mobile",
-        name:"mobile",
-        type:"text",
-        required:true
-        },
-        {
-          title:"Alternate Mobile",
-          name:"alter_mobile",
-          type:"text",
-          required:true
-          },
-          {
-            title:"User Email",
-            name:"email",
-            type:"text",
-            required:true
-            },
-            {
-              title:"Current Addresss",
-              name:"current_address",
-              type:"text",
-              required:true
-              },
-              {
-                title:"Permanent Address",
-                name:"per_address",
-                type:"text",
-                required:true
-                },
-             
-],
-addnewuser1:[
-{
-title:'Role',
-name:'role',
-type:'text',
-require:true
-},
-{
-title:"Display Name",
-name:'display_name',
-type:'text',
-require:true
-
-},
-{
-  title:"City",
-  name:'city',
-  type:'text',
-  require:true
-  },
-  {
-    title:"State",
-    name:'state',
-    type:'text',
-    require:true
-  },
-  {
-    title:'Country',
-    name:'country',
-    type:'text',
-    required:true
-  }
-],
-loginInfo:[
-  {
-title:'User ID',
-name:'user_id',
-type:'text',
-required:true
-  },
-  {
-    title:'Password',
-    name:'password',
-    type:'password',
-    required:true
-   },
-   {
-    title:'Confirm Password',
-    name:'cpassword',
-    type:'password',
-    required:true
-   }
-],
+      title: "Middle Name",
+      name: "middle_name",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "Last Name",
+      name: "last_name",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "Mobile",
+      name: "mobile",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "Alternate Mobile",
+      name: "alter_mobile",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "User Email",
+      name: "email",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "Current Addresss",
+      name: "current_address",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "Permanent Address",
+      name: "per_address",
+      type: "text",
+      required: true,
+    },
+  ],
+  addnewuser1: [
+    {
+      title: "Role",
+      name: "role",
+      type: "text",
+      require: true,
+    },
+    {
+      title: "Display Name",
+      name: "display_name",
+      type: "text",
+      require: true,
+    },
+    {
+      title: "City",
+      name: "city",
+      type: "datalist",
+      require: true,
+    },
+    {
+      title: "State",
+      name: "state",
+      type: "datalist",
+      require: true,
+    },
+    {
+      title: "Country",
+      name: "country",
+      type: "datalist",
+      required: true,
+    },
+  ],
+  loginInfo: [
+    {
+      title: "User ID",
+      name: "user_id",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "Password",
+      name: "password",
+      type: "password",
+      required: true,
+    },
+    {
+      title: "Confirm Password",
+      name: "cpassword",
+      type: "password",
+      required: true,
+    },
+  ],
   mains: [
     {
       title: "User Manage",

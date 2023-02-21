@@ -82,6 +82,7 @@ function CompanyMachines() {
           value={inputs.country || ""}
           path={"Country"}
           handleChange={handleChange}
+          option={"option"}
           name={"user"}
           heading={"Machine Permission"}
         />

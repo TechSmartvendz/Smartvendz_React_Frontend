@@ -4,6 +4,7 @@ import { getReq, delReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg" ;
 
 function TableData(props) {
+  
   const [tableData, setTableData] = useState();
   const [path, setPath] = useState(props.path);
   const [par, setpar] = useState(props.par);

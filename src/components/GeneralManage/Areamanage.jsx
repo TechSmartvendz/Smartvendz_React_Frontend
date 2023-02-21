@@ -85,6 +85,7 @@ function Areamanage() {
             value={inputs.city || ""}
               path={"City"}
               handleChange={handleChange}
+              option={"city"}
               name={"city"}
               heading={"City"}
             />

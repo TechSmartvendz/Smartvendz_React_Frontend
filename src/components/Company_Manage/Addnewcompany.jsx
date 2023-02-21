@@ -21,11 +21,12 @@ function Addnewcompany() {
  
   const loadDate = async () => {
     const response = await getReq(`${path}/${itemid}`);
-    if(response.data){
+  if(response.data){
       console.log("🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data", response.data)
       console.log(response.data)
       console.log("🚀 ~ file: Addnewcompany.jsx:27 ~ loadDate ~ response.data", response.data)
       setInputs2((values) => ({ ...values, companyid: response.data.companyid }));
+      console.log('this is company id.....'+response.data.companyid);
       setInputs(response.data);
     }else{
       console.log(response.data)
@@ -35,6 +36,7 @@ function Addnewcompany() {
   const loadDate2 = async () => {
     const response = await getReq(`${companyUsersPath}/${itemid}`);
     if(response.data.length){
+      console.log('this is length:'+response.data.length)
       console.log("🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data", response.data)
       console.log(response.data)
       setcompanyusertable(response.data);

@@ -3,6 +3,7 @@ import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
 import { template } from "../Partials/FormFields";
 import { postReq,putReq,getReq } from "../middleware/AxiosApisCall";
 import { useParams ,useNavigate} from "react-router";
+import DataList from "../Partials/DataList";
 // import DataList from "../Partials/DataList";
 function Addnewuser() {
   const {id}=useParams();
@@ -68,6 +69,23 @@ useEffect(() => {
   }
   }
 
+  function dataslist()
+  {
+if(template.addnewuser1.type==='datalist')
+{
+return (<DataList  
+value={inputs.template.addnewuser1.name || ""}
+path={template.addnewuser1.title}
+
+option={template.addnewuser1.name}
+name={template.addnewuser1.name}/>)
+
+  }else{
+    return null;
+  }
+  }
+
+  dataslist();
  
 
   return (
@@ -122,14 +140,16 @@ useEffect(() => {
 
             <div className="flex-row">
             {
-              template.addnewuser1.map((adduser1)=>{
+        dataslist && template.addnewuser1.map((adduser1)=>{
+
+        
                 return (
                  
                   <div className="input-lable-h-div">
                     <label htmlFor={adduser1.name}>{adduser1.title}</label>
                     <input
                       name={adduser1.name}
-                      type={adduser1.type}
+                      type={adduser1.type }
                       value={inputs[adduser1.name] || ""}
                       onChange={handleChange}
                       required
