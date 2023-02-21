@@ -47,6 +47,19 @@ function Addnewcompany() {
     } 
   };
 
+  const loadDate3 = async (assignid) => {
+    const response = await getReq(`${companyUsersPath}/${itemid}/${assignid}`);
+    if(response.data.length){
+      console.log("🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data", response.data)
+      console.log(response.data)
+      setInputs2(response.data[0])
+    }else{
+      console.log(response.data)
+    
+      setcompanyusertable(null);
+    } 
+  };
+
   
 useEffect(() => {
   if(itemid){
@@ -55,18 +68,18 @@ useEffect(() => {
 
   }
 }, [itemid])
-useEffect(() => {
-  if(itemid){
-    console.log("🚀 ~ file: Addnewcompany.jsx:62 ~ Addnewcompany ~ inputs2", inputs2)
-  }
-}, [inputs2])
+// useEffect(() => {
+//   if(itemid){
+//     console.log("🚀 ~ file: Addnewcompany.jsx:62 ~ Addnewcompany ~ inputs2", inputs2)
+//   }
+// }, [inputs2])
 
 
-useEffect(() => {
-  if(itemid){
-    console.log("🚀 ~ file: Addnewcompany.jsx:68 ~ Addnewcompany ~ companyusertable", companyusertable)
-  }
-}, [companyusertable])
+// useEffect(() => {
+//   if(itemid){
+//     console.log("🚀 ~ file: Addnewcompany.jsx:68 ~ Addnewcompany ~ companyusertable", companyusertable)
+//   }
+// }, [companyusertable])
 
 
 
@@ -117,10 +130,9 @@ useEffect(() => {
     }
   };
 
-  const editClick=(pid)=>{
-    setPar(pid._id)
-    setInputs2(pid) 
-    console.log('this is input ' ,inputs);
+  const editClick=(pid) => {
+    loadDate3(pid._id)
+    console.log("🚀 ~ file: Addnewcompany.jsx:119 ~ editClick ~ pid", pid)
   }
 
 
@@ -139,151 +151,153 @@ useEffect(() => {
             <span>Company Details</span>
           </div>
 
-            <div className="flex-row">
-              
+          <div className="flex-row">
             <div className="input-lable-h-div">
-                <label htmlFor="companyid"> Company ID</label>
-                <input
-                  type="text"
-                  name="companyid"
-                  className="slot"
-                  value={inputs.companyid || ""}
-                  onChange={handleChange}
-                />
-              </div>
+              <label htmlFor="companyid"> Company ID</label>
+              <input
+                type="text"
+                name="companyid"
+                className="slot"
+                value={inputs.companyid || ""}
+                onChange={handleChange}
+              />
+            </div>
 
-              <div className="input-lable-h-div">
-                <label htmlFor="companyname">Company Name </label>
-                <input
-                  type="text"
-                  name="companyname"
-                  value={inputs.companyname || ""}
-                  onChange={handleChange}
-                />
-              </div>
+            <div className="input-lable-h-div">
+              <label htmlFor="companyname">Company Name </label>
+              <input
+                type="text"
+                name="companyname"
+                value={inputs.companyname || ""}
+                onChange={handleChange}
+              />
+            </div>
 
-              <div className="input-lable-h-div">
-                <label htmlFor="address">Address </label>
-                <input
-                  type="text"
-                  name="address"
-                  value={inputs.address || ""}
-                  onChange={handleChange}
-                />
-              </div>
+            <div className="input-lable-h-div">
+              <label htmlFor="address">Address </label>
+              <input
+                type="text"
+                name="address"
+                value={inputs.address || ""}
+                onChange={handleChange}
+              />
+            </div>
 
-              <div className="input-lable-h-div">
+            <div className="input-lable-h-div">
               <DataList
-              value={inputs.area || ""}
+                value={inputs.area || ""}
                 path={"Area"}
                 handleChange={handleChange}
                 name={"area"}
                 option={"area"}
                 heading={"Area"}
               />
-              </div>
+            </div>
 
-              <div className="input-lable-h-div">
-                <label htmlFor="telephone">Telephone </label>
-                <input
-                  type="text"
-                  name="telephone"
-                  value={inputs.telephone || ""}
-                  onChange={handleChange}
-                />
-              </div>
+            <div className="input-lable-h-div">
+              <label htmlFor="telephone">Telephone </label>
+              <input
+                type="text"
+                name="telephone"
+                value={inputs.telephone || ""}
+                onChange={handleChange}
+              />
+            </div>
 
-              <div className="input-lable-h-div">
-                <label htmlFor="altTelepone">Alternate Telephone </label>
-                <input
-                  type="text"
-                  name="altTelepone"
-                  value={inputs.altTelepone || ""}
-                  onChange={handleChange}
-                />
-              </div>
+            <div className="input-lable-h-div">
+              <label htmlFor="altTelepone">Alternate Telephone </label>
+              <input
+                type="text"
+                name="altTelepone"
+                value={inputs.altTelepone || ""}
+                onChange={handleChange}
+              />
+            </div>
 
-              <div className="input-lable-h-div">
-                <label htmlFor="email">Email </label>
-                <input
-                  type="text"
-                  name="email"
-                  value={inputs.email || ""}
-                  onChange={handleChange}
-                />
-              </div>
+            <div className="input-lable-h-div">
+              <label htmlFor="email">Email </label>
+              <input
+                type="text"
+                name="email"
+                value={inputs.email || ""}
+                onChange={handleChange}
+              />
+            </div>
 
-              <div className="input-lable-h-div">
-              <button className="submit-btn" type="submit" >Save</button>
-             </div>
-           
-
-           </div>
-      
-
+            <div className="input-lable-h-div">
+              <button className="submit-btn" type="submit">
+                Save
+              </button>
+            </div>
+          </div>
         </form>
       </div>
-    
+
       {/* second form */}
       <div className="add-user-container">
-      <div className="componet-sub-title">
-      <span>Add Comapny</span>
-      </div>
+        <div className="componet-sub-title">
+          <span>Add Comapny</span>
+        </div>
 
-      <form className="flex-col" onSubmit={handleSubmit2} >
+        <form className="flex-col" onSubmit={handleSubmit2}>
+          <div className="input-lable-v-div">
+            <DataList
+              value={inputs2.companyid || ""}
+              path={"Company"}
+              handleChange={handleChange2}
+              name={"companyid"}
+              option={"companyid"}
+              heading={"Company"}
+            />
+          </div>
 
-      <div className="input-lable-v-div">
-      <DataList
-      value={inputs2.companyid || ""}
-        path={"Company"}
-        handleChange={handleChange2}
-        name={"companyid"}
-        option={"companyid"}
-        heading={"Company"}
-      />
-      </div>
+          <div className="input-lable-v-div">
+            <DataList
+              value={inputs2.role || ""}
+              path={"Permission"}
+              handleChange={handleChange2}
+              name={"role"}
+              option={"role"}
+              heading={"User Type"}
+            />
+          </div>
+          <div className="input-lable-v-div">
+            <DataList
+              value={inputs2.assign_user || ""}
+              path={"User"}
+              handleChange={handleChange2}
+              name={"assign_user"}
+              option={"user_id"}
+              heading={"Assign User"}
+            />
+          </div>
 
-      <div className="input-lable-v-div">
-      <DataList
-      value={inputs2.role || ""}
-        path={"Permission"}
-        handleChange={handleChange2}
-        name={"role"}
-        option={"role"}
-        heading={"User Type"}
-      />
-      </div>
-      <div className="input-lable-v-div">
-      <DataList
-      value={inputs2.assign_user || ""}
-        path={"User"}
-        handleChange={handleChange2}
-        name={"assign_user"}
-        option={"user_id"}
-        heading={"Assign User"}
-      />
-      </div>
+          <div className="input-lable-v-div">
+            <label htmlFor="active_status">Activate</label>
+            <input
+              type="checkbox"
+              name=" active_status"
+              checked={inputs2.active_status ||false}
+              onChange={handleChange2}
+            />
+          </div>
 
-   
-   <div className="input-lable-v-div">
-   <label htmlFor='checks'>Activate</label>
-   <input type="checkbox" name=' active_status'    value={inputs2. active_status || ""} onChange={handleChange2}/>
-   </div>
-      
-   <div className="input-lable-h-div">
-   <button className="submit-btn" type="submit" >Save</button>
-  </div>
-
-
-      </form>
+          <div className="input-lable-h-div">
+            <button className="submit-btn" type="submit">
+              Save
+            </button>
+          </div>
+        </form>
       </div>
 
       <div className="table_container-div">
-      <TableData2 path={companyUsersPath} key={companyusertable}  data={companyusertable} editClick={editClick}/>
-    
-    </div>
-
-      
+        <TableData2
+          path={companyUsersPath}
+          key={companyusertable}
+          data={companyusertable}
+          editClick={editClick}
+        />
+      </div>
     </React.Fragment>
   );
 }
