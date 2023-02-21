@@ -21,13 +21,13 @@ function Navbar() {
   const [sideBarData, setSideBarData] = useState(SidebarData);
 
   const loadDate = async () => {
-    console.log("loadData() start")
+    // console.log("loadData() start")
     const response = await getReq(`${path}`);
     if (response.data) {
-      console.log(response.data);
+      // console.log(response.data);
      setNavData(response.data);
     } else {
-      console.log(response.data);
+      // console.log(response.data);
       setNavData();
     }
    
@@ -37,21 +37,21 @@ function Navbar() {
     loadDate();
    }, []);
 
-  useEffect(() => {
-   console.log("navData~"+navData)
-  }, [navData]);
+  // useEffect(() => {
+  // //  console.log("navData~"+navData)
+  // }, [navData]);
 
   return (
     <React.Fragment>
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items">
           <li>
-           {/* <Link to="#" className="navbar-icon crossbutton">
+            <Link to="#" className="navbar-icon crossbutton">
               <AiIcons.AiOutlineClose
                 size={25}
                 onClick={() => setSidebar(!sidebar)}
               />
-          </Link>*/}
+          </Link>*
           </li>
           {navData? <SubMenu key={navData} navData={navData} sideBarData={sideBarData}/>:(()=>{setSidebar(!sidebar)})}
           

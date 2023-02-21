@@ -15,7 +15,7 @@ function App() {
 
 
   return (
-    <>
+    <React.Fragment>
       <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
         {isLoggedIn ? (
           <NavContext.Provider value={{ sidebar, setSidebar }}>
@@ -25,7 +25,7 @@ function App() {
           <Login />
         )}
       </AuthContext.Provider>
-    </>
+      </React.Fragment>
   );
 }
 

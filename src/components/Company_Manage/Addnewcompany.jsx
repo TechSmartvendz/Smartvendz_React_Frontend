@@ -1,85 +1,67 @@
 import React, { useState, useEffect } from "react";
-import { postReq ,patchReq,getReq} from "../middleware/AxiosApisCall";
+import { postReq, patchReq, getReq } from "../middleware/AxiosApisCall";
 import DataList from "../Partials/DataList";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
-import TableData2 from "../Partials/TableData2"; 
+import TableData2 from "../Partials/TableData2";
 import { useParams, useNavigate } from "react-router";
-
 
 function Addnewcompany() {
   const navigate = useNavigate();
-
-  const {id}=useParams();
-  const [itemid, setItemid] = useState(id);
-  const [tableRefresh,setTableRefresh]=useState(0);
-  const[par, setPar] = useState()
   const path = "Company";
-  const companyUsersPath="Company/CompanyUsers"
+  const companyUsersPath = "Company/CompanyUsers";
   const [inputs, setInputs] = useState({});
   const [inputs2, setInputs2] = useState({});
+
+  const { id } = useParams();
+  const [itemid, setItemid] = useState(id);
   const [companyusertable, setcompanyusertable] = useState();
- 
+
+
   const loadDate = async () => {
     const response = await getReq(`${path}/${itemid}`);
-    if(response.data){
-      console.log("🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data", response.data)
-      console.log(response.data)
-      console.log("🚀 ~ file: Addnewcompany.jsx:27 ~ loadDate ~ response.data", response.data)
-      setInputs2((values) => ({ ...values, companyid: response.data.companyid }));
+    if (response.data) {
+      console.log(
+        "🚀 ~ file: Addnewcompany.jsx:27 ~ loadDate ~ response.data",
+        response.data
+      );
+      setInputs2((values) => ({
+        ...values,
+        companyid: response.data.companyid,
+      }));
       setInputs(response.data);
-    }else{
-      console.log(response.data)
-    
-    } 
+    } else {
+      navigate(`../`);
+      console.log(response.data);
+    }
   };
-  const loadDate2 = async () => {
+  const loadDateUsertable = async () => {
     const response = await getReq(`${companyUsersPath}/${itemid}`);
-    if(response.data.length){
-      console.log("🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data", response.data)
-      console.log(response.data)
+    if (response.data.length) {
+      console.log(
+        "🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data",
+        response.data
+      );
+      console.log(response.data);
       setcompanyusertable(response.data);
-    }else{
-      console.log(response.data)
-    
+    } else {
       setcompanyusertable(null);
-    } 
+    }
   };
 
   const loadDate3 = async (assignid) => {
     const response = await getReq(`${companyUsersPath}/${itemid}/${assignid}`);
-    if(response.data.length){
-      console.log("🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data", response.data)
-      console.log(response.data)
-      setInputs2(response.data[0])
-    }else{
-      console.log(response.data)
-    
+    if (response.data.length) {
+      console.log(
+        "🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data",
+        response.data
+      );
+      console.log(response.data);
+      setInputs2(response.data[0]);
+    } else {
+      console.log(response.data);
       setcompanyusertable(null);
-    } 
+    }
   };
-
-  
-useEffect(() => {
-  if(itemid){
-    loadDate()
-    loadDate2()
-
-  }
-}, [itemid])
-// useEffect(() => {
-//   if(itemid){
-//     console.log("🚀 ~ file: Addnewcompany.jsx:62 ~ Addnewcompany ~ inputs2", inputs2)
-//   }
-// }, [inputs2])
-
-
-// useEffect(() => {
-//   if(itemid){
-//     console.log("🚀 ~ file: Addnewcompany.jsx:68 ~ Addnewcompany ~ companyusertable", companyusertable)
-//   }
-// }, [companyusertable])
-
-
 
   function handleChange(event) {
     const name = event.target.name;
@@ -87,35 +69,39 @@ useEffect(() => {
     setInputs((values) => ({ ...values, [name]: value }));
   }
   function handleChange2(event) {
+    console.log(
+      "🚀 ~ file: Addnewcompany.jsx:99 ~ handleChange2 ~ event.target.type",
+      event.target.type
+    );
     const name = event.target.name;
     const checked = event.target.checked;
     if (event.target.type == "checkbox") {
       setInputs2((values) => ({ ...values, [name]: checked }));
     } else {
       setInputs2((values) => ({ ...values, [name]: event.target.value }));
-   
+    }
   }
-  }
-  
   const handleSubmit2 = async (event) => {
     event.preventDefault();
-    console.log(inputs);
+
     const response = await postReq(companyUsersPath, inputs2);
     if (response.success) {
       SuccessAlert({
         title: "Assign User ",
-        message: "Assign Usersuccessfully",
+        message: "Assign User successfully",
       });
-      loadDate2();
-     
+      loadDateUsertable();
+      setInputs2();
+      setInputs2((values) => ({
+        ...values,
+        companyid: response.data.companyid,
+      }));
     } else {
       ErrorAlert({ title: "Assign User ", message: response.msg });
     }
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputs);
     const response = await postReq(path, inputs);
     if (response.success) {
       SuccessAlert({
@@ -123,16 +109,40 @@ useEffect(() => {
         message: "Company Added successfully",
       });
       navigate(`${response.data._id}`);
+      setItemid(response.data._id);
+      setInputs2();
+      setInputs2((values) => ({
+        ...values,
+        companyid: response.data.companyid,
+      }));
     } else {
       ErrorAlert({ title: "Add Company", message: response.msg });
     }
   };
 
-  const editClick=(pid) => {
-    loadDate3(pid._id)
-    console.log("🚀 ~ file: Addnewcompany.jsx:119 ~ editClick ~ pid", pid)
-  }
+  const editClick = (pid) => {
+    loadDate3(pid._id);
+  };
 
+  useEffect(() => {
+    console.log("U1");
+    if (itemid) {
+      console.log("U1A");
+      loadDate();
+      loadDateUsertable();
+    }
+  }, [itemid]);
+
+  useEffect(() => {
+    if(id){
+    setItemid(id)}
+    else{
+      setcompanyusertable()
+      setInputs2({})
+      setInputs({})
+      setItemid()
+    }
+  }, [id]);
 
   return (
     <React.Fragment>
@@ -203,11 +213,11 @@ useEffect(() => {
             </div>
 
             <div className="input-lable-h-div">
-              <label htmlFor="altTelepone">Alternate Telephone </label>
+              <label htmlFor="alt_telepone">Alternate Telephone </label>
               <input
                 type="text"
-                name="altTelepone"
-                value={inputs.altTelepone || ""}
+                name="alt_telepone"
+                value={inputs.alt_telepone || ""}
                 onChange={handleChange}
               />
             </div>
@@ -274,8 +284,9 @@ useEffect(() => {
             <label htmlFor="active_status">Activate</label>
             <input
               type="checkbox"
-              name=" active_status"
-              checked={inputs2.active_status ||false}
+              name="active_status"
+              value={inputs2.active_status || false}
+              checked={inputs2.active_status || false}
               onChange={handleChange2}
             />
           </div>
