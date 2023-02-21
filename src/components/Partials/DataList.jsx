@@ -8,7 +8,7 @@ const [option,setOption]=useState(props.option);
 const loadList=async ()=>{
     const response = await getReq(`${path}/Datalist`)
     setDataList(response.data);
-    console.log(response.data)
+    // console.log(response.data)
   }
   useEffect(() => {
     loadList();
