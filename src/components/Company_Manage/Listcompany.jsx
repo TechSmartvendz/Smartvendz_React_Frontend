@@ -25,8 +25,7 @@ const navigate=useNavigate()
 
 
 const editClick=(item)=>{
-navigate(`../addnewuser/${item._id}`);
-
+navigate(`../addnewcompany/${item._id}`);
 console.log(item._id)
 
 }
