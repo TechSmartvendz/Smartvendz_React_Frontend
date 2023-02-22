@@ -183,11 +183,14 @@ function Addnewcompany() {
     <React.Fragment>
       <div className="add-user-container">
         <div className="headingdiv">
-          <span className="componet-title">Add Company</span>
+          <span className="componet-title">{itemid ? 'Edit Company' :'Add Company Details'} </span>
           <div>
             <button onClick={() => navigate(-1)}>Back</button>
           </div>
         </div>
+        <div className="option-btn">
+        <button onClick={()=>{navigate("/companymanage/listcompany")}}>Company List</button>
+         </div>
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
@@ -269,7 +272,7 @@ function Addnewcompany() {
 
             <div className="input-lable-h-div">
               <button className="submit-btn" type="submit">
-                Save
+              {itemid  ? 'Update' :'Save'}  
               </button>
             </div>
           </div>
@@ -281,7 +284,7 @@ function Addnewcompany() {
       {itemid && <React.Fragment>
         <div className="add-user-container">
         <div className="componet-sub-title">
-          <span>Add Comapny</span>
+          <span>{par ? 'Update Assigned User':'Assign User'}</span>
         </div>
 
         <form className="flex-col" onSubmit={handleSubmit2}>
@@ -330,7 +333,7 @@ function Addnewcompany() {
 
           <div className="input-lable-h-div">
             <button className="submit-btn" type="submit">
-              Save
+              {par ? 'Update' : 'Save'}
             </button>
           </div>
         </form>

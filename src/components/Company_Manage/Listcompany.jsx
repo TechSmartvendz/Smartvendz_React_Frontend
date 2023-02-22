@@ -38,7 +38,7 @@ console.log(item._id)
        
       <div className="headingdiv">
 
-     <span className="componet-title">Users List</span>
+     <span className="componet-title">Company List</span>
       
      <div>
     <button onClick={()=>{navigate(-1)}}>Back</button>
@@ -47,7 +47,7 @@ console.log(item._id)
       </div>
 
         <div className="option-btn">
-        <button onClick={()=>{navigate("/usermanage/addnewuser")}}>Add New User</button>
+        <button onClick={()=>{navigate("/companymanage/addnewcompany")}}>Add New Company</button>
          </div>
       
         <TableData path={path}  key={tableRefresh} editClick={editClick}/>
