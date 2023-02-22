@@ -88,7 +88,6 @@ function Statemanage() {
               handleChange={handleChange}
               option={"country"}
               name={"country"}
-              option={"country"}
               heading={"Country"}
             />
             <button className="submit-btn">{par?(<span>Update </span>):(<span>Add </span>)}</button>
