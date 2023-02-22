@@ -16,23 +16,19 @@ function Addnewuser() {
   const loadDate = async () => {
     const response = await getReq(`${path}/${itemid}`);
     if(response.data){
-      console.log(response.data)
       setPar(response.data._id);
-     
       setInputs(response.data);
     }else{
       console.log(response.data)
-    
       setInputs(null);
     } 
   };
   
 useEffect(() => {
-  if(itemid){
-    loadDate()
+  if (itemid) {
+    loadDate();
   }
-  
-}, [itemid])
+}, [itemid]);
 
 
   const handleChange = (event) => {
@@ -47,7 +43,6 @@ useEffect(() => {
     if(itemid){
     const response = await putReq(path,inputs,itemid);
     if (response.success) {
-   
       setTableRefresh(tableRefresh+1);
       setInputs({});
       SuccessAlert({ title: "Edit User", message: "User Updated successfully" });
