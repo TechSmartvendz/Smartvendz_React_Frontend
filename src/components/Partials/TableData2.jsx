@@ -4,7 +4,9 @@ import { getReq, delReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg" ;
 
 function TableData(props) {
+
   const [tableData, setTableData] = useState(props.data);
+  console.log("🚀 ~ file: TableData2.jsx:9 ~ TableData ~ props.data", props.data)
   const [path, setPath] = useState(props.path);
   const [par, setpar] = useState(props.par);
 
@@ -22,14 +24,13 @@ function TableData(props) {
 const editClick=((item)=>{
     props.editClick(item);
   })
- ;
 
   const deleteState = async (event) => {
     console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", event);
     // props.parentFunction();
     const response = await delReq(path, event);
     if (response.success) {
-      loadTableDate();
+      props.loadDateUsertable();
       SuccessAlert({
         title: "Data Deleted",
         message: `${path} : Delete Succesfully `,
@@ -47,15 +48,15 @@ return (
     <React.Fragment>
       <div className="componet-sub2-title">
         <span>
-          Total {path}: {tableData != null ? tableData.length : 0}
+          Total {props.name}: {props.data != null ? props.data.length : 0}
         </span>
       </div>
       <div className="table_container-div">
         <table>
           <tbody>
             <tr>
-              {tableData != null ? (
-                Object.keys(tableData[0]).map(
+              {props.data != null ? (
+                Object.keys(props.data[0]).map(
                   (key) =>
                     key != ("_id" || null) && (
                       
@@ -70,13 +71,13 @@ return (
               ) : (
                 <td></td>
               )}
-              {tableData != null && <th>Actions</th>}
+              {props.data != null && <th>Actions</th>}
             </tr>
 
             {
-              tableData != null ? (
-              tableData.map((item, index) => {
-                // console.log("🚀 ~ file: TableData.jsx:111 ~ TableData ~ item", item)
+              props.data != null ? (
+              props.data.map((item, index) => {
+                // console.log("🚀 ~ file: props.data.jsx:111 ~ props.data ~ item", item)
                 return (
                   <tr key={item._id}>
                     {Object.keys(item)

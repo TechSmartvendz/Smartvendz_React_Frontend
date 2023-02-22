@@ -9,7 +9,6 @@ function CompanyMachines() {
    const [inputs, setInputs] = useState({});
    const [par,setPar]=useState();
    const [tableRefresh,setTableRefresh]=useState({})
-
    const handleChange = (event) => {
        const name = event.target.name;
        const value = event.target.value;
