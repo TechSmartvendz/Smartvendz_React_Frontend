@@ -86,6 +86,7 @@ function Areamanage() {
               path={"City"}
               handleChange={handleChange}
               name={"city"}
+              option={"city"}
               heading={"City"}
             />
             <button className="submit-btn">{par?(<span>Update </span>):(<span>Add </span>)}</button>
