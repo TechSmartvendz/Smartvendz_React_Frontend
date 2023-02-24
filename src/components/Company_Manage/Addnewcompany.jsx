@@ -87,11 +87,8 @@ function Addnewcompany() {
         });
         setPar()
         loadDateUsertable();
-        setInputs2();
-        setInputs2((values) => ({
-          ...values,
-          companyid: response.data.companyid,
-        }));
+        setInputs2({});
+        loadDate();
       } else {
         ErrorAlert({ title: " Update Assign User ", message: response.msg });
       }
@@ -103,11 +100,8 @@ function Addnewcompany() {
           message: "Assign User successfully",
         });
         loadDateUsertable();
-        setInputs2();
-        setInputs2((values) => ({
-          ...values,
-          companyid: response.data.companyid,
-        }));
+        setInputs2({});
+        loadDate();
       } else {
         ErrorAlert({ title: "Assign User ", message: response.msg });
       }

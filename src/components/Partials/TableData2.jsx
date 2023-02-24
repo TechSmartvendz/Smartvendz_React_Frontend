@@ -43,7 +43,11 @@ const editClick=((item)=>{
     }
   };
   
+  useEffect(() => { 
+    setTableData(props.data)
 
+    
+  }, [props.data]);
 return (
     <React.Fragment>
       <div className="componet-sub2-title">

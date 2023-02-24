@@ -8,7 +8,9 @@ import { useParams, useNavigate } from "react-router";
 function Addnewmachine() {
   const navigate = useNavigate();
   const path = "Machine";
-  const companyUsersPath = "Machine/Slot";
+  const ComponentName = "Machine";
+  const subPath = "Machine/Slot";
+  const listPath = "/managemachine/listmachine";
   const [inputs, setInputs] = useState({});
   const [inputs2, setInputs2] = useState({});
 
@@ -25,7 +27,7 @@ function Addnewmachine() {
 
       setInputs2((values) => ({
         ...values,
-        companyid: response.data.companyid,
+        machineid: response.data.machineid,
       }));
       setInputs(response.data);
     } else {
@@ -34,25 +36,20 @@ function Addnewmachine() {
     }
   };
   const loadDateUsertable = async () => {
-    const response = await getReq(`${companyUsersPath}/${itemid}`);
+    const response = await getReq(`${subPath}/${itemid}`);
     if (response.data.length) {
-      console.log(
-        "🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data",
-        response.data
-      );
+      console.log("🚀 ~ file: Addnewmachine.jsx:41 ~ loadDateUsertable ~ response.data", response.data)
       console.log(response.data);
       setcompanyusertable(response.data);
     } else {
       setcompanyusertable(null);
     }
   };
-  const loadCompanyUserData = async (assignid) => {
-    const response = await getReq(`${companyUsersPath}/${itemid}/${assignid}`);
+  const loadSubFormData = async (assignid) => {
+    const response = await getReq(`${subPath}/${itemid}/${assignid}`);
     if (response.data.length) {
-      console.log(
-        "🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data",
-        response.data
-      );
+    console.log("🚀 ~ file: Addnewmachine.jsx:52 ~ loadSubFormData ~ response.data", response.data)
+   
       console.log(response.data);
       setInputs2(response.data[0]);
     } else {
@@ -79,37 +76,31 @@ function Addnewmachine() {
   const handleSubmit2 = async (event) => {
     event.preventDefault();
     if(par){
-      const response = await putReq(companyUsersPath,inputs2,par);
+      const response = await putReq(subPath,inputs2,par);
       if (response.success) {
         SuccessAlert({
-          title: " Update Assign User ",
-          message: "Assign User Updated successfully",
+          title: " Update Slot",
+          message: "Slot Details Updated successfully",
         });
         setPar()
         loadDateUsertable();
-        setInputs2();
-        setInputs2((values) => ({
-          ...values,
-          companyid: response.data.companyid,
-        }));
+        setInputs2({});
+        loadDate();
       } else {
-        ErrorAlert({ title: " Update Assign User ", message: response.msg });
+        ErrorAlert({ title: "Update Slot", message: response.msg });
       }
     }else{
-      const response = await postReq(companyUsersPath, inputs2);
+      const response = await postReq(subPath, inputs2);
       if (response.success) {
         SuccessAlert({
-          title: "Assign User ",
-          message: "Assign User successfully",
+          title: "Create Slot",
+          message: "Slot Created successfully",
         });
         loadDateUsertable();
-        setInputs2();
-        setInputs2((values) => ({
-          ...values,
-          companyid: response.data.companyid,
-        }));
+        setInputs2({});
+        loadDate();
       } else {
-        ErrorAlert({ title: "Assign User ", message: response.msg });
+        ErrorAlert({ title: "Create Slot", message: response.msg });
       }
     }
     
@@ -120,42 +111,42 @@ function Addnewmachine() {
       const response = await putReq(path, inputs,itemid);
       if (response.success) {
         SuccessAlert({
-          title: "Update Company",
-          message: "Company Updated successfully",
+          title: "Update Machine",
+          message: "Machine Updated successfully",
         });
         setItemid(response.data._id);
         setInputs2();
         setInputs2((values) => ({
           ...values,
-          companyid: response.data.companyid,
+          machineid: inputs.machineid,
         }));
       } else {
-        ErrorAlert({ title: "Update Company", message: response.msg });
+        ErrorAlert({ title: "Update Machine", message: response.msg });
       }
     } 
     else{
       const response = await postReq(path, inputs);
       if (response.success) {
         SuccessAlert({
-          title: "Add Company",
-          message: "Company Added successfully",
+          title: "Add Machine",
+          message: "Machine Added successfully",
         });
         navigate(`${response.data._id}`);
         setItemid(response.data._id);
         setInputs2();
         setInputs2((values) => ({
           ...values,
-          companyid: response.data.companyid,
+          machineid:inputs.machineid,
         }));
       } else {
-        ErrorAlert({ title: "Add Company", message: response.msg });
+        ErrorAlert({ title: "Add Machine", message: response.msg });
       }
     }
    
   };
 
   const editClick = (pid) => {
-    loadCompanyUserData(pid._id);
+    loadSubFormData(pid._id);
     setPar(pid._id);
 
   };
@@ -183,93 +174,95 @@ function Addnewmachine() {
     <React.Fragment>
       <div className="add-user-container">
         <div className="headingdiv">
-          <span className="componet-title">Add Machine</span>
+          <span className="componet-title">{itemid ? `Edit ${ComponentName} Details` :`Add ${ComponentName} Details`} </span>
           <div>
             <button onClick={() => navigate(-1)}>Back</button>
           </div>
         </div>
+        <div className="option-btn">
+        <button onClick={()=>{navigate(listPath)}}>{ComponentName} List</button>
+         </div>
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
-            <span>Ma Details</span>
+            <span>{ComponentName} Details</span>
           </div>
 
           <div className="flex-row">
             <div className="input-lable-h-div">
-              <label htmlFor="companyid"> Company ID</label>
+              <label htmlFor="machineid"> Machine ID</label>
               <input
                 type="text"
-                name="companyid"
-                className="slot"
-                value={inputs.companyid || ""}
+                name="machineid"
+                value={inputs.machineid || ""}
                 onChange={handleChange}
               />
             </div>
 
             <div className="input-lable-h-div">
-              <label htmlFor="companyname">Company Name </label>
+              <label htmlFor="machinename">Machine Name</label>
               <input
                 type="text"
-                name="companyname"
-                value={inputs.companyname || ""}
+                name="machinename"
+                value={inputs.machinename || ""}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-lable-h-div">
+            <DataList
+              value={inputs.companyid || ""}
+              path={"Company"}
+              handleChange={handleChange}
+              name={"companyid"}
+              option={"companyid"}
+              heading={"Company"}
+            />
+          </div>
+            <div className="input-lable-h-div">
+              <label htmlFor="building">Building Name/No </label>
+              <input
+                type="text"
+                name="building"
+                value={inputs.building || ""}
+                onChange={handleChange}
+              />
+            </div>
+
+         
+
+            <div className="input-lable-h-div">
+              <label htmlFor="location">Location </label>
+              <input
+                type="text"
+                name="location"
+                value={inputs.location || ""}
                 onChange={handleChange}
               />
             </div>
 
             <div className="input-lable-h-div">
-              <label htmlFor="address">Address </label>
+              <label htmlFor="producttype">Product Type </label>
               <input
                 type="text"
-                name="address"
-                value={inputs.address || ""}
+                name="producttype"
+                value={inputs.producttype || ""}
                 onChange={handleChange}
               />
             </div>
 
             <div className="input-lable-h-div">
-              <DataList
-                value={inputs.area || ""}
-                path={"Area"}
-                handleChange={handleChange}
-                name={"area"}
-                option={"area"}
-                heading={"Area"}
-              />
-            </div>
-
-            <div className="input-lable-h-div">
-              <label htmlFor="telephone">Telephone </label>
+              <label htmlFor="totalslots">Total Slots </label>
               <input
-                type="text"
-                name="telephone"
-                value={inputs.telephone || ""}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="input-lable-h-div">
-              <label htmlFor="alt_telepone">Alternate Telephone </label>
-              <input
-                type="text"
-                name="alt_telepone"
-                value={inputs.alt_telepone || ""}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="input-lable-h-div">
-              <label htmlFor="email">Email </label>
-              <input
-                type="text"
-                name="email"
-                value={inputs.email || ""}
+                type="number"
+                name="totalslots"
+                value={inputs.totalslots || ""}
                 onChange={handleChange}
               />
             </div>
 
             <div className="input-lable-h-div">
               <button className="submit-btn" type="submit">
-                Save
+              {itemid  ? 'Update' :'Save'}  
               </button>
             </div>
           </div>
@@ -281,43 +274,43 @@ function Addnewmachine() {
       {itemid && <React.Fragment>
         <div className="add-user-container">
         <div className="componet-sub-title">
-          <span>Add Comapny</span>
+          <span>{par ? 'Update Planogram':'Make Planogram'}</span>
         </div>
 
         <form className="flex-col" onSubmit={handleSubmit2}>
-          <div className="input-lable-v-div">
-            <DataList
-              value={inputs2.companyid || ""}
-              path={"Company"}
-              handleChange={handleChange2}
-              name={"companyid"}
-              option={"companyid"}
-              heading={"Company"}
-            />
-          </div>
 
-          <div className="input-lable-v-div">
-            <DataList
-              value={inputs2.role || ""}
-              path={"Permission"}
-              handleChange={handleChange2}
-              name={"role"}
-              option={"role"}
-              heading={"User Type"}
-            />
-          </div>
-          <div className="input-lable-v-div">
-            <DataList
-              value={inputs2.assign_user || ""}
-              path={"User"}
-              handleChange={handleChange2}
-              name={"assign_user"}
-              option={"user_id"}
-              heading={"Assign User"}
-            />
-          </div>
+        <div className="input-lable-h-div">
+        <DataList
+          value={inputs2.machineid || ""}
+          path={path}
+          handleChange={handleChange2}
+          name={"machineid"}
+          option={"machineid"}
+          heading={"Machine ID"}
+        />
+      </div>
 
-          <div className="input-lable-v-div">
+        <div className="input-lable-h-div">
+        <label htmlFor="slot">Slot Name/No.</label>
+        <input
+          type="text"
+          name="slot"
+          value={inputs2.slot || ""}
+          onChange={handleChange2}
+        />
+      </div>
+
+         
+      <div className="input-lable-h-div">
+      <label htmlFor="maxquantity">MAX Quantity</label>
+      <input
+        type="number"
+        name="maxquantity"
+        value={inputs2.maxquantity || ""}
+        onChange={handleChange2}
+      />
+    </div>
+    <div className="input-lable-v-div">
             <label htmlFor="active_status">Activate</label>
             <input
               type="checkbox"
@@ -326,11 +319,11 @@ function Addnewmachine() {
               checked={inputs2.active_status || false}
               onChange={handleChange2}
             />
-          </div>
+    </div>
 
           <div className="input-lable-h-div">
             <button className="submit-btn" type="submit">
-              Save
+              {par ? 'Update' : 'Save'}
             </button>
           </div>
         </form>
@@ -338,10 +331,10 @@ function Addnewmachine() {
 
       <div className="table_container-div">
         <TableData2
-          path={companyUsersPath}
-          key={companyusertable}
+          path={subPath}
+          key={subPath}
           data={companyusertable}
-          name={"Assign Users"}
+          name={"Planogram"}
           editClick={editClick}
           editbutton={false}
           loadDateUsertable={loadDateUsertable}

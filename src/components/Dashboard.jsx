@@ -96,6 +96,7 @@ function Dashboard() {
 
               <Route exact path="/managemachine" element={<MachineManage />}>
                   <Route path="addnewmachine" element={<Addnewmachine />} />
+                  <Route path="addnewmachine/:id" element={<Addnewmachine />} />
                   <Route index path="listmachine" element={<Listmachine />} />
                   <Route path="machineconfiguration" element={<Machineconfiguration />}/>
               </Route>
