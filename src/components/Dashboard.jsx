@@ -149,6 +149,7 @@ function Dashboard() {
               <Route exact path="/products" element={<Products />}>
               <Route path="productlist" element={<ProductList />} />
                   <Route index path="bulkproductupload" element={<BulkProductUpload />} />
+                  <Route path="singleproductadd/:id" element={<SingleProductAdd />} />
                   <Route path="singleproductadd" element={<SingleProductAdd />} />
                   <Route path="updatebulkproduct" element={<UpdateBulkProduct />} />
               </Route>

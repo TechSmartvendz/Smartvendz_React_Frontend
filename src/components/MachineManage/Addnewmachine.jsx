@@ -184,9 +184,7 @@ function Addnewmachine() {
          </div>
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
-          <div className="componet-sub-title">
-            <span>{ComponentName} Details</span>
-          </div>
+         
 
           <div className="flex-row">
             <div className="input-lable-h-div">
@@ -338,7 +336,6 @@ function Addnewmachine() {
           editClick={editClick}
           editbutton={false}
           loadDateUsertable={loadDateUsertable}
-
         />
       </div>
       </React.Fragment>

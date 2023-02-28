@@ -3,10 +3,10 @@ import { getReq, delReq } from "../middleware/AxiosApisCall";
 
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg" ;
 
-function TableData(props) {
+function TableData2(props) {
 
   const [tableData, setTableData] = useState(props.data);
-  console.log("🚀 ~ file: TableData2.jsx:9 ~ TableData ~ props.data", props.data)
+
   const [path, setPath] = useState(props.path);
   const [par, setpar] = useState(props.par);
 
@@ -122,4 +122,4 @@ return (
   );
 }
 
-export default TableData;
+export default TableData2;

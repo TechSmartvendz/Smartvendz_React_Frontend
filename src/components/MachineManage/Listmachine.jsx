@@ -8,7 +8,6 @@ import TableData from "../Partials/TableData";
 
 function Listmachine() {
 const path="Machine"
-
 const [tableData,setTableData]=useState();
 const[tableRefresh,setTableRefresh]=useState(0)
 
@@ -19,13 +18,8 @@ const[tableRefresh,setTableRefresh]=useState(0)
   }
   useEffect(() => {
     loadTableDate()
-  }, [])
-
-
-  
+  }, []) 
 const navigate=useNavigate()
-
-
 const editClick=(item)=>{
 navigate(`../addnewmachine/${item._id}`);
 console.log(item._id)

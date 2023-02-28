@@ -168,6 +168,23 @@ flex-wrap: wrap;
   flex-wrap: wrap;
 
 }
+
+.table-data-per-page>input{
+  font-size:0.9em;
+font-weight: bold;
+font-size: 14px;
+line-height: 1.5;
+padding: 5px 10px;
+transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+border: 2px solid #dee1e2;
+color: rgb(14, 14, 16);
+background: #dee1e2;
+display: block;
+height: 30px;
+margin:0px 10px 0px 5px ;
+/* width for input fields */
+width: 70px; 
+}
  /* input and lable - horizontal div */
 .input-lable-h-div{
 /* background-color: red; */
@@ -266,6 +283,7 @@ transform: scale(1.1);
   background-color: black;
   color: rgb(255, 255, 255);
   border: 0px;
+  margin-left:15px;
   margin-top: 15px;
   align-self: center;
   justify-self: center;
@@ -306,6 +324,39 @@ justify-content: flex-start;
 }
 .option-btn>button:hover{
   background-color: green;
+}
+.justi-spacebt{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.table-page-nav-btn{
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.table-page-nav-btn>button
+{
+  background-color: black;
+  color: white;
+  border: 0px;
+  height: 30px;
+  width: 30px;
+  margin: 0px 5px 0px 5px; 
+  border-radius: 50px;
+  cursor: pointer;
+}
+.table-page-nav-btn>span
+{
+  
+  margin: 0px 10px 0px 10px; 
+ 
+ 
 }
 
 .form-submit-button{
