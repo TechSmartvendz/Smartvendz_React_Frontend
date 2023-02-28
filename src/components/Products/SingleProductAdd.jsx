@@ -107,33 +107,41 @@ function Addnewmachine() {
   };
   const handleSubmit = async (event) => {//TODO:Handle Add and Update Form
     event.preventDefault();
-    if (par) {
-      const response = await putReq(path, inputs, par);
-      if (response.success) {
-        SuccessAlert({
-          title: `Update ${ComponentName}`,
-          message: `${ComponentName} Updated successfully`,
-        });
-        setPar();
-        setInputs({});
-        setaddproductformstate(false);
+    let data =await CleanData(inputs2)
+    if(Object.keys(data).length){
+      if (par) {
+        const response = await putReq(path, data, par);
+        if (response.success) {
+          SuccessAlert({
+            title: `Update ${ComponentName}`,
+            message: `${ComponentName} Updated successfully`,
+          });
+          setPar();
+          setInputs({});
+          setaddproductformstate(false);
+        } else {
+          ErrorAlert({ title: `Update ${ComponentName}`, message: response.msg });
+        }
       } else {
-        ErrorAlert({ title: `Update ${ComponentName}`, message: response.msg });
+        const response = await postReq(path, data);
+        if (response.success) {
+          SuccessAlert({
+            title: `Add ${ComponentName}`,
+            message: `${ComponentName} Added successfully`,
+          });
+          setPar();
+          setInputs({});
+          setaddproductformstate(false);
+        } else {
+          ErrorAlert({ title: `Add ${ComponentName}`, message: response.msg });
+        }
       }
-    } else {
-      const response = await postReq(path, inputs);
-      if (response.success) {
-        SuccessAlert({
-          title: `Add ${ComponentName}`,
-          message: `${ComponentName} Added successfully`,
-        });
-        setPar();
-        setInputs({});
-        setaddproductformstate(false);
-      } else {
-        ErrorAlert({ title: `Add ${ComponentName}`, message: response.msg });
-      }
+
+    }else{
+      ErrorAlert({ title: `Add ${ComponentName}`, message:"Product Id/PRoduct Name Required" });
     }
+   
+   
   };
   const editClick = (pid) => {//TODO:Handle Edit request from  Table Componenet
     setPar(pid._id);
@@ -196,6 +204,7 @@ function Addnewmachine() {
                   name="productid"
                   value={inputs.productid || ""}
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="input-lable-v-div">
@@ -205,6 +214,7 @@ function Addnewmachine() {
                   name="productname"
                   value={inputs.productname || ""}
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="input-lable-v-div">

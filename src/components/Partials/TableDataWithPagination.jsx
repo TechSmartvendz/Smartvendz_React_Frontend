@@ -17,8 +17,8 @@ function TableDataWithPagination(props) {
 
   const loadTableDate = async () => {
     const response = await getReq(`${path}/Table/${page}/${dataPerPage}`);
-    if (response.data) {
-      console.log("RUN GET Table PAgination")
+    if (response.data.metadata) {
+     
       setTableData(response.data.data);
       setMetaData(response.data.metadata);
     } else {
