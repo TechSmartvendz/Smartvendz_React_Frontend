@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
+import { csvGetReq } from "../middleware/AxiosApisCallExport";
 import { CleanData} from "../middleware/CleanData";
 import DataList from "../Partials/DataList";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableDataWithPagination from "../Partials/TableDataWithPagination";
 import { useParams, useNavigate } from "react-router";
+import fileDownload from 'js-file-download';
 
 function Addnewmachine() {
   const navigate = useNavigate();
@@ -78,36 +80,25 @@ function Addnewmachine() {
           setSearchData()
         }
   };
-       
   const handleSubmit3 = async (event) => { //TODO:Submit Search Form
     event.preventDefault();
-    if (par) {
-      const response = await postReq(`${path}/Search`, inputs2);
-      if (response.success) {
-        SuccessAlert({
-          title: " Update Slot",
-          message: "Slot Details Updated successfully",
-        });
-        loadDateUsertable();
-      } else {
+  
+      const response = await postReq(`${path}/ExportCSV`, inputs2);
+      if (response) {
+        console.log("🚀 ~ file: SingleProductAdd.jsx:151 ~ sampleCSVFile ~ response:", response)
+        fileDownload(response, `${ComponentName}${Date.now()}.csv`);
+          SuccessAlert({
+            title: `Export ${ComponentName} File`,
+            message: "Export ${ComponentName} file Downloaded successfully",
+          });
+        } else {
         ErrorAlert({ title: "Update Slot", message: response.msg });
       }
-    } else {
-      const response = await postReq(path, inputs2);
-      if (response.success) {
-        SuccessAlert({
-          title: "Create Slot",
-          message: "Slot Created successfully",
-        });
-        loadDateUsertable();
-      } else {
-        ErrorAlert({ title: "Create Slot", message: response.msg });
-      }
-    }
+  
   };
   const handleSubmit = async (event) => {//TODO:Handle Add and Update Form
     event.preventDefault();
-    let data =await CleanData(inputs2)
+    let data =await CleanData(inputs)
     if(Object.keys(data).length){
       if (par) {
         const response = await putReq(path, data, par);
@@ -142,6 +133,21 @@ function Addnewmachine() {
     }
    
    
+  };
+
+  const sampleCSVFile = async (event) => { //TODO:Submit Search Form
+   
+    const response = await csvGetReq(`${path}/SampleCSV`);
+      if (response) {
+      console.log("🚀 ~ file: SingleProductAdd.jsx:151 ~ sampleCSVFile ~ response:", response)
+      fileDownload(response, "csvreport.csv");
+        SuccessAlert({
+          title: "Sample Upload File",
+          message: "Sample Upload file Downloaded successfully",
+        });
+      } else {
+        ErrorAlert({ title: "Update Slot", message: response.msg });
+      }
   };
   const editClick = (pid) => {//TODO:Handle Edit request from  Table Componenet
     setPar(pid._id);
@@ -183,6 +189,9 @@ function Addnewmachine() {
               ? `Search ${ComponentName} `
               : par?`Update New ${ComponentName}`:`Add New ${ComponentName}`}
           </button>
+          <button onClick={sampleCSVFile}>
+          {` Download Sample file`}
+        </button>
         </div>
       </div>
 
