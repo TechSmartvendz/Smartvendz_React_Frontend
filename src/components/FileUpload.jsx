@@ -41,7 +41,7 @@ const FileUpload = () => {
                 Math.round((progressEvent.loaded * 100) / progressEvent.total)
               )
             );
-          },
+          }
         }
       );
 

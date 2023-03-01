@@ -28,7 +28,18 @@ function TableDataWithPagination(props) {
     }
   };
   const loadSearchData = async (event) => { //TODO:Submit Search Form
-    console.log("RUN Search Load")
+    if(props.reject){
+      console.log(searchData.length)
+      setTableData(searchData)
+        let metadat2={
+           count: searchData.length,
+           start: 1,
+           end: searchData.length,
+           page: 1
+        }
+        setMetaData(metadat2)
+    }else{
+      console.log("RUN Search Load")
       const response = await postReq(`${path}/Search/${page}/${dataPerPage}`, searchData);
       if (response.data) {
         setTableData(response.data.data);
@@ -37,6 +48,11 @@ function TableDataWithPagination(props) {
         props.clear();
        
       }
+    }
+      console.log("🚀 ~ file: TableDataWithPagination.jsx:54 ~ loadSearchData ~ searchData:", searchData)
+      console.log("🚀 ~ file: TableDataWithPagination.jsx:54 ~ loadSearchData ~ searchData:", searchData)
+      console.log("🚀 ~ file: TableDataWithPagination.jsx:54 ~ loadSearchData ~ searchData:", searchData)
+    
   
   };
   const deleteState = async (event) => {

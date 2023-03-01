@@ -140,6 +140,11 @@ font-weight: bold;
   flex-wrap: wrap;
 
 }
+.flex-space-bt{
+  justify-content: space-between;
+  align-content: center;
+
+}
 /* COMMMON FLEX CSS*/
 
 .form-2col-ver{
@@ -185,6 +190,8 @@ margin:0px 10px 0px 5px ;
 /* width for input fields */
 width: 70px; 
 }
+
+
  /* input and lable - horizontal div */
 .input-lable-h-div{
 /* background-color: red; */
@@ -215,6 +222,7 @@ margin-left:5px;
   .input-lable-h-div>input,
 .input-lable-h-div>textarea,
 .input-lable-h-div>select,
+
 
   .input-lable-v-div>input,
   .input-lable-v-div>textarea,

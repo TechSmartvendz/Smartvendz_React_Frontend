@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
-import { csvGetReq } from "../middleware/AxiosApisCallExport";
+
 import { CleanData} from "../middleware/CleanData";
 import DataList from "../Partials/DataList";
+import BulkUpload from "../Partials/BulkUpload";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableDataWithPagination from "../Partials/TableDataWithPagination";
 import { useParams, useNavigate } from "react-router";
-import fileDownload from 'js-file-download';
+
 
 function Addnewmachine() {
   const navigate = useNavigate();
@@ -15,9 +16,11 @@ function Addnewmachine() {
   const [inputs, setInputs] = useState({});
   const [inputs2, setInputs2] = useState({});
   const [addproductformstate, setaddproductformstate] = useState(); //Add form state use to show or hide add product form
+  const [bulkformstate, setbulkformstate] = useState(false);
   const [par, setPar] = useState(); //var to show company user form state for edit or add new req
   const [itemid, setItemid] = useState(); //var to show company  form state for edit or add new req
   const [searchData,setSearchData] = useState();
+  const [reject,setReject] = useState(false);
 
 
   const clearform = () => {//TODO:Clear all State take to initial State
@@ -73,7 +76,6 @@ function Addnewmachine() {
     console.log("🚀 ~ file: SingleProductAdd.jsx:73 ~ handleSubmit2 ~ inputs2:", inputs2)
     event.preventDefault();
      let clean =await CleanData(inputs2)
-       
         if(Object.keys(clean).length){
           setSearchData(clean)
         }else{
@@ -82,8 +84,8 @@ function Addnewmachine() {
   };
   const handleSubmit3 = async (event) => { //TODO:Submit Search Form
     event.preventDefault();
-  
-      const response = await postReq(`${path}/ExportCSV`, inputs2);
+    let clean =await CleanData(inputs2)
+      const response = await postReq(`${path}/ExportCSV`, clean);
       if (response) {
         console.log("🚀 ~ file: SingleProductAdd.jsx:151 ~ sampleCSVFile ~ response:", response)
         fileDownload(response, `${ComponentName}${Date.now()}.csv`);
@@ -127,27 +129,19 @@ function Addnewmachine() {
           ErrorAlert({ title: `Add ${ComponentName}`, message: response.msg });
         }
       }
-
     }else{
       ErrorAlert({ title: `Add ${ComponentName}`, message:"Product Id/PRoduct Name Required" });
     }
    
    
   };
+ 
 
-  const sampleCSVFile = async (event) => { //TODO:Submit Search Form
-   
-    const response = await csvGetReq(`${path}/SampleCSV`);
-      if (response) {
-      console.log("🚀 ~ file: SingleProductAdd.jsx:151 ~ sampleCSVFile ~ response:", response)
-      fileDownload(response, "csvreport.csv");
-        SuccessAlert({
-          title: "Sample Upload File",
-          message: "Sample Upload file Downloaded successfully",
-        });
-      } else {
-        ErrorAlert({ title: "Update Slot", message: response.msg });
-      }
+
+  const rejectdata = (data) => {//TODO:Handle Edit request from  Table Componenet
+    console.log("🚀 ~ file: SingleProductAdd.jsx:141 ~ rejectdata ~ data:", data)
+    setReject(true)
+    setSearchData(data)
   };
   const editClick = (pid) => {//TODO:Handle Edit request from  Table Componenet
     setPar(pid._id);
@@ -182,18 +176,25 @@ function Addnewmachine() {
             <button onClick={clearform}>Clear </button>
           </div>
         </div>
-
         <div className="option-btn">
           <button onClick={addproduct}>
             {addproductformstate
               ? `Search ${ComponentName} `
               : par?`Update New ${ComponentName}`:`Add New ${ComponentName}`}
           </button>
-          <button onClick={sampleCSVFile}>
-          {` Download Sample file`}
-        </button>
+        <button onClick={()=>{setbulkformstate(!bulkformstate);}}>
+        {`Bulk ${ComponentName} Upload`}
+      </button>
         </div>
       </div>
+
+
+      {bulkformstate && <BulkUpload
+        ComponentName={ComponentName}
+        name={"Products"} 
+        path={path}
+        rejectdata={rejectdata}
+        />}
 
       {addproductformstate && (
         <React.Fragment>
@@ -292,7 +293,7 @@ function Addnewmachine() {
         </React.Fragment>
       )}
 
-      {!addproductformstate && (
+      {(!addproductformstate&&!bulkformstate)&& (
         <React.Fragment>
           <div className="add-user-container">
             <div className="componet-sub-title">
@@ -351,6 +352,7 @@ function Addnewmachine() {
               name={"Products"}
               editClick={editClick}
               clear={clearform}
+              reject={reject}
               // loadDateUsertable={loadDateUsertable}
             />
           </div>
