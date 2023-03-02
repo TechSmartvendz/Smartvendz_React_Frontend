@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-function Updateemployee() {
+function Employeecredit() {
   const navigate=useNavigate();
   return (
     <>
@@ -53,4 +53,4 @@ function Updateemployee() {
   )
 }
 
-export default Updateemployee
+export default Employeecredit;

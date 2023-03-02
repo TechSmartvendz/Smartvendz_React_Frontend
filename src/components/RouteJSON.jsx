@@ -32,15 +32,15 @@ export const RouteJSON = [
     id: 3,
     sublinks: [
       {
-        title: "Add new employee",
-        path: "/employeemanage/addnewemployee",
-        element: "<Addnewemployee/>",
+        title: "Add And Edit Employee",
+        path: "/employeemanage/addandeditemployee",
+        element: "<AddandEditemployee/>",
         id: 31,
       },
       {
-        title: "Update employee",
-        path: "/employeemanage/updateemployee",
-        element: "<Updateemployee/>",
+        title: "Employee Credits",
+        path: "/employeemanage/employeecredit",
+        element: "<Employeecredit/>",
         id: 32,
       },
     ],

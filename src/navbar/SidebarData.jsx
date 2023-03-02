@@ -95,27 +95,23 @@ export const SidebarData = [
     ]
   },
   {
-    title: "Employee Manage",
+    title: " Employee Manage",
     path: "/employeemanage",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
-    permission:"employeemanage", 
+    permission:"managemachine", 
     submenu:[  
       {
-        title: "Add new employee",
-        path: "/employeemanage/addnewemployee",
-        permission:"addnewemployee" 
+        title: "Add And Edit Employee",
+        path: "/employeemanage/addandeditemployee",
+        permission:"addnewmachine" 
       },
       {
-        title: "Update employee",
-        path: "/employeemanage/updateemployee",
-        permission:"updateemployee"
+        title: "Employee Credits",
+        path: "/employeemanage/employeecredit",
+        permission:"addnewmachine"
       },
-      {
-        title: "Search and update employee",
-        path: "/employeemanage/searchandupdateemployee",
-        permission:"searchandupdateemployee"
-      }
+     
     ]
   },
   {

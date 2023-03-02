@@ -9,6 +9,7 @@ function Countrymanage() {
   const [inputs, setInputs] = useState({});
   const [tableRefresh, setTableRefresh] = useState(0); //3
   const[par, setPar] = useState()
+  
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;

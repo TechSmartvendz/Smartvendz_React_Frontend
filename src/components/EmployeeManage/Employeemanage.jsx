@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
-import SubLink from '../Route/SubLink';
-import {EmployeeManageData} from '../Route/SubLinkJSON';
+import React,{useState} from 'react';
+import SubLink from '../../Route/SubLink';
+import { EmployeeManageData } from '../../Route/SubLinkJSON';
 
 
 
@@ -14,4 +14,4 @@ const [subLinkJSON,setSubLinkJSON]=useState(EmployeeManageData);
   )
 }
 
-export default Employeemanage
+export default Employeemanage;

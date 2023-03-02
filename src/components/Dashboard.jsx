@@ -29,10 +29,10 @@ import Machineconfiguration from "./MachineManage/Machineconfiguration";
 //TODO:GET info about this "./Subroutes/Manage_machine"
 import MachineManage from "./MachineManage/MachineManage";
 
-import Employeemanage from "./Employeemanage";
-import Addnewemployee from "./Subroutes/Addnewemployee";
-import Updateemployee from "./Subroutes/Updateemployee";
-import SearchandUpdateemployee from "./Subroutes/SearchandUpdateemployee";
+import Employeemanage from '../components/EmployeeManage/Employeemanage';
+import AddandEditemployee from "../components/EmployeeManage/AddandEditemployee";
+import Employeecredit from "../components/EmployeeManage/Employeecredit";
+
 
 import Transactions from "./Transactions/Transactions";
 import TransactionReport from "./Transactions/TransactionReport";
@@ -111,9 +111,9 @@ function Dashboard() {
     
 
               <Route exact path="/employeemanage" element={<Employeemanage />}>
-                <Route path="addnewemployee" element={<Addnewemployee />} />
-                <Route path="updateemployee" element={<Updateemployee />} />
-                <Route path="searchandupdateemployee" element={<SearchandUpdateemployee />} />
+                <Route path="addandeditemployee" element={<AddandEditemployee />} />
+                <Route path="employeecredit" element={<Employeecredit />} />
+                
               </Route>
 
               <Route exact path="/usermanage" element={<UserManage />}>

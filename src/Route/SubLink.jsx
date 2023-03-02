@@ -22,4 +22,4 @@ function SubLink(props) {
   );
 }
 
-export default SubLink
+export default SubLink;

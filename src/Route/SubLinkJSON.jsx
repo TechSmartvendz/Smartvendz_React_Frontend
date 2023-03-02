@@ -21,17 +21,14 @@ export const CompanyManagerData = [
 ];
 export const EmployeeManageData = [  
   {
-    title: "Add new employee",
-    path: "/employeemanage/addnewemployee"
+    title: "Add And Edit Employee",
+    path: "/employeemanage/addandeditemployee"
   },
   {
-    title: "Update employee",
-    path: "/employeemanage/updateemployee"
+    title: "Employee Credits",
+    path: "/employeemanage/employeecredit"
   },
-  {
-    title: "Search and update employee",
-    path: "/employeemanage/searchandupdateemployee"
-  }
+  
 ];
 export const GeneralManagerData = [
   
