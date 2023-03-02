@@ -14,8 +14,8 @@ const[tableRefresh,setTableRefresh]=useState(0)
 
   const loadTableDate=async()=>{
     const response=await getReq(path);
-    setTableData(response.data)
-    console.log(tableData)
+   setTableData(response.data)
+   console.log(tableData)
   }
   useEffect(() => {
     loadTableDate()

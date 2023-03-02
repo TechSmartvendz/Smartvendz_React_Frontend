@@ -98,7 +98,7 @@ return (
 
                       <button
                         className="btn_delete"
-                        value={item._id}
+                         value={item._id}
                         onClick={() => deleteState(item._id)}
                       >
                         Delete

@@ -29,10 +29,10 @@ import Machineconfiguration from "./MachineManage/Machineconfiguration";
 //TODO:GET info about this "./Subroutes/Manage_machine"
 import MachineManage from "./MachineManage/MachineManage";
 
-import Employeemanage from "./Employeemanage";
-import Addnewemployee from "./Subroutes/Addnewemployee";
-import Updateemployee from "./Subroutes/Updateemployee";
-import SearchandUpdateemployee from "./Subroutes/SearchandUpdateemployee";
+import Employeemanage from "./EmployeeManage/Employeemanage";
+import Addnewemployee from "./EmployeeManage/Addnewemployee";
+import Updateemployee from "./EmployeeManage/Updateemployee";
+import SearchandUpdateemployee from "./EmployeeManage/SearchandUpdateemployee";
 
 import Transactions from "./Transactions/Transactions";
 import TransactionReport from "./Transactions/TransactionReport";
