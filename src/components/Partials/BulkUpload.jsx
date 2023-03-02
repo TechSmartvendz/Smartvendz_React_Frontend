@@ -49,7 +49,9 @@ const bulkUpload = async (event) => { //TODO:Submit Search Form
         SuccessAlert({
           title: `Import ${ComponentName} File`,
           message: `Import  ${ComponentName} file Downloaded successfully`,
-        });}
+        });
+        props.importSuccess();
+      }
         else{
           props.rejectdata(response.data.reject_data);
           ErrorAlert({ title: "Import File", message: `${response.data.reject_data.length} Data Rejected ` });

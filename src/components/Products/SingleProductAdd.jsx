@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
+import fileDownload from 'js-file-download';
 
 import { CleanData} from "../middleware/CleanData";
 import DataList from "../Partials/DataList";
@@ -21,6 +22,8 @@ function Addnewmachine() {
   const [itemid, setItemid] = useState(); //var to show company  form state for edit or add new req
   const [searchData,setSearchData] = useState();
   const [reject,setReject] = useState(false);
+  const [importsuccess,setImportSuccess] = useState(0);
+
 
 
   const clearform = () => {//TODO:Clear all State take to initial State
@@ -30,16 +33,17 @@ function Addnewmachine() {
     setItemid();
     setaddproductformstate(false);
     setSearchData()
+    setbulkformstate(false)
   };
-  const loadDateUsertable = async () => { //FIXME://not using right now it will use in search product
-    const response = await getReq(`${Product}/${itemid}`);
-    if (response.data.length) {
-      console.log(response.data);
-      setcompanyusertable(response.data);
-    } else {
-      setcompanyusertable(null);
-    }
-  };
+  // const loadDateUsertable = async () => { //FIXME://not using right now it will use in search product
+  //   const response = await getReq(`${Product}/${itemid}`);
+  //   if (response.data.length) {
+  //     console.log(response.data);
+  //     setcompanyusertable(response.data);
+  //   } else {
+  //     setcompanyusertable(null);
+  //   }
+  // };
   const loadDate = async () => { //TODO://Using to load edit form Data 
     const response = await getReq(`${path}/${par}`);
     if (response.data) {
@@ -135,19 +139,29 @@ function Addnewmachine() {
    
    
   };
- 
-
-
-  const rejectdata = (data) => {//TODO:Handle Edit request from  Table Componenet
+ const rejectdata = (data) => {//TODO:Handle Edit request from  Table Componenet
     console.log("🚀 ~ file: SingleProductAdd.jsx:141 ~ rejectdata ~ data:", data)
     setReject(true)
     setSearchData(data)
   };
+  const importSuccess = (data) => {//TODO:Handle Edit request from  Table Componenet
+    setImportSuccess(importsuccess+1)
+  };
+
   const editClick = (pid) => {//TODO:Handle Edit request from  Table Componenet
     setPar(pid._id);
   };
   const addproduct = () => {//TODO:Handle Hide and Show of Add Product From
     setaddproductformstate(!addproductformstate);
+    setbulkformstate(false);
+  };
+  const bulkupload = () => {//TODO:Handle Hide and Show of Add Product From
+    if(reject){
+      setSearchData()
+      setReject(false)
+    }
+    setbulkformstate(!bulkformstate);
+    setaddproductformstate(false);
   };
   useEffect(() => {//TODO:Handle Edit State for MAke Add Form in Update form
     if (par) {
@@ -182,7 +196,7 @@ function Addnewmachine() {
               ? `Search ${ComponentName} `
               : par?`Update New ${ComponentName}`:`Add New ${ComponentName}`}
           </button>
-        <button onClick={()=>{setbulkformstate(!bulkformstate);}}>
+        <button onClick={bulkupload}>
         {`Bulk ${ComponentName} Upload`}
       </button>
         </div>
@@ -194,6 +208,7 @@ function Addnewmachine() {
         name={"Products"} 
         path={path}
         rejectdata={rejectdata}
+        importSuccess={importSuccess}
         />}
 
       {addproductformstate && (
@@ -346,7 +361,7 @@ function Addnewmachine() {
           <div className="table_container-div">
             <TableDataWithPagination
               path={path}
-              key={searchData}
+              key={searchData||importsuccess}
               searchData={searchData}
               componentName={ComponentName}
               name={"Products"}

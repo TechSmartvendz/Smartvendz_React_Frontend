@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { getReq, delReq,postReq } from "../middleware/AxiosApisCall";
-
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
 
 function TableDataWithPagination(props) {
@@ -191,7 +190,7 @@ function TableDataWithPagination(props) {
               ) : (
                 <td></td>
               )}
-              {tableData != null && <th>Actions</th>}
+              {tableData != null && ((!('error' in tableData[0]))&&<th>Actions</th>)}
             </tr>
 
             {tableData != null ? (
@@ -202,7 +201,7 @@ function TableDataWithPagination(props) {
                     {Object.keys(item)
                       .filter((i) => i !== "_id")
                       .map((input, index) => {
-                        return <td key={index}>{item[input]}</td>;
+                        return <td className={(input=="error")?"red-text":""} key={index}>{item[input]}</td>;
                       })}
 
                     {par != item._id ? (
@@ -213,10 +212,8 @@ function TableDataWithPagination(props) {
                         >
                           Edit
                         </button>
-
                         <button
                           className="btn_delete"
-                          value={item._id}
                           onClick={() => deleteState(item._id)}
                         >
                           Delete

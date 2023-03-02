@@ -175,9 +175,9 @@ flex-wrap: wrap;
 }
 
 .table-data-per-page>input{
-  font-size:0.9em;
+  font-size:0.8em;
 font-weight: bold;
-font-size: 14px;
+font-size: 13px;
 line-height: 1.5;
 padding: 5px 10px;
 transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
@@ -190,7 +190,12 @@ margin:0px 10px 0px 5px ;
 /* width for input fields */
 width: 70px; 
 }
-
+.red-text{
+  color:red
+}
+.green-text{
+  color:green
+}
 
  /* input and lable - horizontal div */
 .input-lable-h-div{
