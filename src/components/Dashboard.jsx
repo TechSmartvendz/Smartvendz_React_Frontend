@@ -71,6 +71,8 @@ import Refund2 from "./Subroutes/Refund2"
 
 import { ReactNotifications } from 'react-notifications-component'
 
+import AddNewUserP from "./Usermanage/AddNewUserP";
+
 
 
 //TODO: GET info about this Usermanahe.css
@@ -123,6 +125,7 @@ function Dashboard() {
                 <Route path="userpermission" element={<Userpermission />} />
                 <Route path="userrole" element={<UserRole/>}/> 
                 <Route path="userrole/:id" element={<UserRole/>}/> 
+                <Route path="addnewuserp" element={<AddNewUserP/>}/>
               
               </Route>
                

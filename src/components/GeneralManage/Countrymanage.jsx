@@ -41,6 +41,7 @@ function Countrymanage() {
         setTableRefresh(tableRefresh + 1); //4
         setInputs({}); //5
         SuccessAlert({
+         
           title: "Add Country",
           message: "Country Added successfully",
         });

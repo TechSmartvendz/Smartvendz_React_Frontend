@@ -65,7 +65,7 @@ function Addnewcompany() {
                 type="text"
                 name="cid"
                 className="company_input"
-                value={inputs.cid || ""}
+                value={inputs.cid || " " }
                 onChange={handleChange}
                 required
               />

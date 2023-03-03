@@ -54,6 +54,7 @@ function AddandEditemployee() {
       console.log(response.data);
     }
   };
+
   function handleChange(event) { //TODO:Handle Form Data Add Form 
     const name = event.target.name;
     const value = event.target.value;
@@ -174,7 +175,7 @@ function AddandEditemployee() {
   return (
 
     <React.Fragment>
-<div className="add-user-container">
+   <div className="add-user-container">
         <div className="headingdiv">
           <span className="componet-title"> {ComponentName}</span>
           <div>
@@ -192,6 +193,7 @@ function AddandEditemployee() {
         {`Bulk ${ComponentName} Upload`}
       </button>
         </div>
+        
       </div>
 
 
@@ -261,6 +263,8 @@ function AddandEditemployee() {
                   onChange={handleChange}
                 />
               </div>
+             
+             
               <div className="input-lable-v-div">
                 <label htmlFor="costcenter">Cost Center</label>
                 <input

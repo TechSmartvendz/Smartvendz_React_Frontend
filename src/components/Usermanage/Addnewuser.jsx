@@ -132,7 +132,7 @@ name={template.addnewuser1.name}/>)
               
             }
             </div>
-
+{/* next map start form here */}
             <div className="flex-row">
             {
         dataslist && template.addnewuser1.map((adduser1)=>{
@@ -154,6 +154,7 @@ name={template.addnewuser1.name}/>)
                 )
               })
             }
+
             </div>
 
            </div>
@@ -187,6 +188,7 @@ name={template.addnewuser1.name}/>)
             })
            
           }
+          
           <div className="input-lable-v-div">
           <button type="submit" className="submit-btn">
           {itemid ?<span>Update</span>:<span>Save</span>} 

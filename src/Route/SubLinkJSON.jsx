@@ -140,7 +140,14 @@ export const UserManagerData = [
     title: "User permission",
     path: "/usermanage/userpermission",    
     cName:""
-}
+},
+
+{
+  title: "Add New User P",
+  path: "/usermanage/addnewuserp",    
+  cName:""
+},
+
 
 ];
 export const WareHouseData = [
