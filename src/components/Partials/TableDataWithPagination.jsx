@@ -26,6 +26,8 @@ function TableDataWithPagination(props) {
       setMetaData(null);
     }
   };
+
+  /* to be worked concept not clear     */
   const loadSearchData = async (event) => { //TODO:Submit Search Form
     if(props.reject){
       console.log(searchData.length)
@@ -89,6 +91,8 @@ function TableDataWithPagination(props) {
     console.log(maxpagelimit);
     setPage(maxpagelimit);
   };
+
+  /* not understand blur, confusion */
   const setdataperpage = (event) => {
     if (event.target.value <= metadata.count && event.target.value > 0) {
       setDataPerPage(event.target.value);
@@ -161,6 +165,7 @@ function TableDataWithPagination(props) {
               &lt;&lt;
             </button>
             <button onClick={previouspage}>&lt;</button>
+           { /* not clear */ }
             <span>
               {metadata &&
                 `${metadata.start} to ${
