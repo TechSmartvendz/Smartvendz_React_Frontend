@@ -64,23 +64,33 @@ useEffect(() => {
   }
   }
 
-  function dataslist()
+  function dataslist(user1)
   {
-if(template.addnewuser1.type==='datalist')
-{
-return (<DataList  
-value={inputs.template.addnewuser1.name || ""}
-path={template.addnewuser1.title}
+    console.log('user Name:',user1.name)
 
-option={template.addnewuser1.name}
-name={template.addnewuser1.name}/>)
+    if(user1.type==='datalist')
+{
+return (
+  <div className="input-lable-h-div">
+<DataList  
+value={inputs[user1.name] || null}
+path={user1.name}
+
+option={user1.name}
+name={user1.name}
+heading={user1.title}
+
+/>
+
+</div>
+)
 
   }else{
     return null;
   }
   }
 
-  dataslist();
+ 
  
 
   return (
@@ -103,6 +113,7 @@ name={template.addnewuser1.name}/>)
         </div>
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
+        
           <div className="componet-sub-title">
             <span>User Details</span>
           </div>
@@ -124,6 +135,8 @@ name={template.addnewuser1.name}/>)
                       value={inputs[adduser.name] || ""}
                       onChange={handleChange}
                       required
+                      autoComplete="off"
+                    
                     />
                   </div>
                  
@@ -135,11 +148,11 @@ name={template.addnewuser1.name}/>)
 {/* next map start form here */}
             <div className="flex-row">
             {
-        dataslist && template.addnewuser1.map((adduser1)=>{
+         template.addnewuser1.map((adduser1)=>{
 
         
                 return (
-                 
+                 adduser1.type==='datalist' ?  dataslist(adduser1) :
                   <div className="input-lable-h-div">
                     <label htmlFor={adduser1.name}>{adduser1.title}</label>
                     <input
@@ -148,9 +161,10 @@ name={template.addnewuser1.name}/>)
                       value={inputs[adduser1.name] || ""}
                       onChange={handleChange}
                       required
+                     autoComplete="off"
                     />
                   </div>
-                
+                 
                 )
               })
             }
@@ -181,6 +195,7 @@ name={template.addnewuser1.name}/>)
                     value={inputs[log.name] || ""}
                     onChange={handleChange}
                     required
+                    autoComplete="off"
                   />
                 </div>
               

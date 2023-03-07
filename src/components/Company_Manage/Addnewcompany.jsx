@@ -200,6 +200,7 @@ function Addnewcompany() {
                 className="slot"
                 value={inputs.companyid || ""}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </div>
 
@@ -210,6 +211,7 @@ function Addnewcompany() {
                 name="companyname"
                 value={inputs.companyname || ""}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </div>
 
@@ -220,6 +222,7 @@ function Addnewcompany() {
                 name="address"
                 value={inputs.address || ""}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </div>
 
@@ -241,6 +244,7 @@ function Addnewcompany() {
                 name="telephone"
                 value={inputs.telephone || ""}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </div>
 
@@ -251,6 +255,7 @@ function Addnewcompany() {
                 name="alt_telepone"
                 value={inputs.alt_telepone || ""}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </div>
 
@@ -261,6 +266,7 @@ function Addnewcompany() {
                 name="email"
                 value={inputs.email || ""}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </div>
 
@@ -322,6 +328,7 @@ function Addnewcompany() {
               value={inputs2.active_status || false}
               checked={inputs2.active_status || false}
               onChange={handleChange2}
+              autoComplete="off"
             />
           </div>
 

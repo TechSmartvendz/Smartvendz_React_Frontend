@@ -14,7 +14,7 @@ import { useParams, useNavigate } from "react-router";
 
 function AddandEditemployee() {
   const navigate = useNavigate();
-  const path = "Product";
+  const path = "Employee";
   const ComponentName = "Employee";
   const [inputs, setInputs] = useState({});
   const [inputs2, setInputs2] = useState({});
@@ -216,12 +216,24 @@ function AddandEditemployee() {
               </span>
             </div>
             <form className="flex-col" onSubmit={handleSubmit}>
+            <div className="input-lable-v-div">
+                <label htmlFor="logicid">Logic ID</label>
+                <input
+                  type="text"
+                  name="logicid"
+                  value={inputs.logicid || ""}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+             
+             
               <div className="input-lable-v-div">
                 <label htmlFor="cardnumber">Card Number</label>
                 <input
                   type="text"
-                  name="productid"
-                  value={inputs.productid || ""}
+                  name="cardnumber"
+                  value={inputs.cardnumber || ""}
                   onChange={handleChange}
                   required
                 />
@@ -230,8 +242,8 @@ function AddandEditemployee() {
                 <label htmlFor="employeeid">Employee ID</label>
                 <input
                   type="text"
-                  name="productname"
-                  value={inputs.productname || ""}
+                  name="employeeid"
+                  value={inputs.employeeid || ""}
                   onChange={handleChange}
                   required
                 />
@@ -240,8 +252,8 @@ function AddandEditemployee() {
                 <label htmlFor="employeename">Employee Name</label>
                 <input
                   type="text"
-                  name="description"
-                  value={inputs.description || ""}
+                  name="employeename"
+                  value={inputs.employeename || ""}
                   onChange={handleChange}
                 />
               </div>
@@ -249,8 +261,8 @@ function AddandEditemployee() {
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
-                  name="materialtype"
-                  value={inputs.materialtype || ""}
+                  name="email"
+                  value={inputs.email || ""}
                   onChange={handleChange}
                 />
               </div>
@@ -258,8 +270,8 @@ function AddandEditemployee() {
                 <label htmlFor="manageremail">Manager Email</label>
                 <input
                   type="email"
-                  name="sellingprice"
-                  value={inputs.sellingprice || ""}
+                  name="manageremail"
+                  value={inputs.manageremail || ""}
                   onChange={handleChange}
                 />
               </div>
@@ -269,41 +281,32 @@ function AddandEditemployee() {
                 <label htmlFor="costcenter">Cost Center</label>
                 <input
                   type="text"
-                  name="mass"
-                  value={inputs.mass || ""}
+                  name="costcenter"
+                  value={inputs.costcenter || ""}
                   onChange={handleChange}
                 />
               </div>
 
               <div className="input-lable-v-div">
-                <label htmlFor="department">Department</label>
+                <label htmlFor="costcentermanagername">Cost Center Manager Name</label>
                 <input
                   type="text"
-                  name="mass"
-                  value={inputs.mass || ""}
+                  name="costcentermanagername"
+                  value={inputs.costcentermanagername || ""}
                   onChange={handleChange}
                 />
               </div>
              
               <div className="input-lable-v-div">
-                <label htmlFor="costcentermanagername">Cost Center Manager Name</label>
+                <label htmlFor="department">Department</label>
                 <input
                   type="text"
-                  name="remark"
-                  value={inputs.remark || ""}
+                  name="department"
+                  value={inputs.department || ""}
                   onChange={handleChange}
                 />
               </div>
-              <div className="input-lable-v-div">
-                <DataList
-                  value={inputs.unit || ""}
-                  path={"Unit"}
-                  handleChange={handleChange}
-                  name={"unit"}
-                  option={"unit"}
-                  heading={"Logic"}
-                />
-              </div>
+            
 
               <div className="input-lable-h-div">
                 <button className="submit-btn" type="submit">
@@ -324,15 +327,18 @@ function AddandEditemployee() {
               <span>{`Search and Edit ${ComponentName}`}</span>
             </div>
             <form className="flex-col" onSubmit={handleSubmit2}>
+            
             <div className="input-lable-v-div">
-                <label htmlFor="cardno">Card no</label>
+                <label htmlFor="cardnumber">Card Number</label>
                 <input
                   type="text"
-                  name="productid"
-                  value={inputs2.productid || ""}
+                  name="cardnumber"
+                  value={inputs2.cardnumber || ""}
                   onChange={handleChange2}
                 />
               </div>
+
+           
 
 
 
@@ -340,8 +346,8 @@ function AddandEditemployee() {
                 <label htmlFor="employeeid">Employee ID</label>
                 <input
                   type="text"
-                  name="productid"
-                  value={inputs2.productid || ""}
+                  name="employeeid"
+                  value={inputs2.employeeid || ""}
                   onChange={handleChange2}
                 />
               </div>
@@ -349,8 +355,8 @@ function AddandEditemployee() {
                 <label htmlFor="employeename">Employee Name</label>
                 <input
                   type="text"
-                  name="productname"
-                  value={inputs2.productname || ""}
+                  name="employeename"
+                  value={inputs2.employeename || ""}
                   onChange={handleChange2}
                 />
               </div>
@@ -359,8 +365,8 @@ function AddandEditemployee() {
                 <label htmlFor="companyid">Company ID</label>
                 <input
                   type="text"
-                  name="materialtype"
-                  value={inputs2.materialtype || ""}
+                  name="companyid"
+                  value={inputs2.companyid || ""}
                   onChange={handleChange2}
                 />
               </div>
@@ -369,8 +375,8 @@ function AddandEditemployee() {
                 <label htmlFor="machineid">Machine ID</label>
                 <input
                   type="text"
-                  name="materialtype"
-                  value={inputs2.materialtype || ""}
+                  name="machineid"
+                  value={inputs2.machineid || ""}
                   onChange={handleChange2}
                 />
               </div>
@@ -379,8 +385,8 @@ function AddandEditemployee() {
                 <label htmlFor="logicid">Logic ID</label>
                 <input
                   type="text"
-                  name="materialtype"
-                  value={inputs2.materialtype || ""}
+                  name="logicid"
+                  value={inputs2.logicid || ""}
                   onChange={handleChange2}
                 />
               </div>
@@ -406,7 +412,7 @@ function AddandEditemployee() {
               key={searchData||importsuccess}
               searchData={searchData}
               componentName={ComponentName}
-              name={"Products"}
+              name={"Employees"}
               editClick={editClick}
               clear={clearform}
               reject={reject}

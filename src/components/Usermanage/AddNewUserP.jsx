@@ -1,12 +1,13 @@
 import React,{useState} from 'react'
 import { template } from '../Partials/FormFields'
 import { useNavigate } from 'react-router-dom'
-
-
+import { postReq } from '../middleware/AxiosApisCall';
+import { SuccessAlert,ErrorAlert } from '../middleware/AlertMsg';
 function AddNewUserP() {
-
+const path="User"
 const navigate=useNavigate();
 const [inputs,setInputs]=useState({});
+
 
 function handleChange(e)
 {
@@ -18,11 +19,17 @@ setInputs((values)=>({
 
 }
 
-const handleSubmit=(e)=>
+const handleSubmit=async(e)=>
 {
     e.preventDefault();
     console.log(inputs);
-
+const response =await postReq(path,inputs)
+if(response.success){
+    SuccessAlert({title:"Add User",message:"User Added Successfully"});
+}else
+{
+    ErrorAlert({title:"Add User",message:response.message})
+}
     
 }
   return (

@@ -1,7 +1,7 @@
-import axios from "axios";
+// import axios from "axios";
 import React from "react";
 import { useState,useEffect } from "react";
-import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
+// import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
 import {  getReq ,patchReq} from "../middleware/AxiosApisCall";
 import { useNavigate, useParams} from "react-router-dom";
 import TableData from "../Partials/TableData";
@@ -16,6 +16,7 @@ const[tableRefresh,setTableRefresh]=useState(0)
     setTableData(response.data)
     console.log(tableData)
   }
+  
   useEffect(() => {
     loadTableDate()
   }, [])
@@ -25,6 +26,7 @@ const navigate=useNavigate()
 
 
 const editClick=(item)=>{
+
 navigate(`../addnewuser/${item._id}`);
 
 console.log(item._id)

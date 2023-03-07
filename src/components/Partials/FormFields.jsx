@@ -56,7 +56,7 @@ addnewuser1:[
 {
 title:'Role',
 name:'role',
-type:'text',
+type:'role',
 require:true
 },
 {
@@ -69,19 +69,19 @@ require:true
 {
   title:"City",
   name:'city',
-  type:'text',
+  type:'datalist',
   require:true
   },
   {
     title:"State",
     name:'state',
-    type:'text',
+    type:'datalist',
     require:true
   },
   {
     title:'Country',
     name:'country',
-    type:'text',
+    type:'datalist',
     required:true
   }
 ],

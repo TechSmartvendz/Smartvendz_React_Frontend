@@ -8,6 +8,7 @@ function TableData(props) {
   const [tableData, setTableData] = useState();
   const [path, setPath] = useState(props.path);
   const [par, setpar] = useState(props.par);
+     console.log('this is par:',par);
 
   const loadTableDate = async () => {
     const response = await getReq(path);
@@ -83,12 +84,13 @@ return (
                 return (
                   <tr key={item._id}>
                     {Object.keys(item)
+                   
                       .filter((i) => i !== "_id")
                       .map((input, index) => {
                         return <td key={index}>{item[input]}</td>;
                       })}
 
-                   { par!=item._id?(<td>
+                   { par !=item._id ?(<td>
                       <button
                         className="btn_edit"
                         onClick={() =>editClick(item)}

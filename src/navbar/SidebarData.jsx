@@ -42,6 +42,12 @@ export const SidebarData = [
         path: "/usermanage/addnewuserp",    
         cName:"",
         permission:"addnewuser"
+      },
+      {
+        title:" List UserP",
+        path:"/usermanage/listuserp",
+        cName:"",
+        permission:"listuser",
       }
     ]
   },

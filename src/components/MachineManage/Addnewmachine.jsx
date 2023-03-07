@@ -194,6 +194,7 @@ function Addnewmachine() {
                 name="machineid"
                 value={inputs.machineid || ""}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </div>
 
@@ -204,9 +205,11 @@ function Addnewmachine() {
                 name="machinename"
                 value={inputs.machinename || ""}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </div>
             <div className="input-lable-h-div">
+          
             <DataList
               value={inputs.companyid || ""}
               path={"Company"}
@@ -215,6 +218,7 @@ function Addnewmachine() {
               option={"companyid"}
               heading={"Company"}
             />
+
           </div>
             <div className="input-lable-h-div">
               <label htmlFor="building">Building Name/No </label>
@@ -223,6 +227,7 @@ function Addnewmachine() {
                 name="building"
                 value={inputs.building || ""}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </div>
 
@@ -235,6 +240,7 @@ function Addnewmachine() {
                 name="location"
                 value={inputs.location || ""}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </div>
 
@@ -245,6 +251,7 @@ function Addnewmachine() {
                 name="producttype"
                 value={inputs.producttype || ""}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </div>
 
@@ -255,6 +262,7 @@ function Addnewmachine() {
                 name="totalslots"
                 value={inputs.totalslots || ""}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </div>
 
@@ -278,6 +286,7 @@ function Addnewmachine() {
         <form className="flex-col" onSubmit={handleSubmit2}>
 
         <div className="input-lable-h-div">
+      
         <DataList
           value={inputs2.machineid || ""}
           path={path}
@@ -295,6 +304,7 @@ function Addnewmachine() {
           name="slot"
           value={inputs2.slot || ""}
           onChange={handleChange2}
+          autoComplete="off"
         />
       </div>
 
@@ -306,6 +316,7 @@ function Addnewmachine() {
         name="maxquantity"
         value={inputs2.maxquantity || ""}
         onChange={handleChange2}
+        autoComplete="off"
       />
     </div>
     <div className="input-lable-v-div">
@@ -316,6 +327,7 @@ function Addnewmachine() {
               value={inputs2.active_status || false}
               checked={inputs2.active_status || false}
               onChange={handleChange2}
+              autoComplete="off"
             />
     </div>
 

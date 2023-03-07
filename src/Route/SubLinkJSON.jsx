@@ -147,6 +147,11 @@ export const UserManagerData = [
   path: "/usermanage/addnewuserp",    
   cName:""
 },
+{
+  title:"List UserP",
+  path:"/usermanage/listuserp",
+  cName:""
+}
 
 
 ];

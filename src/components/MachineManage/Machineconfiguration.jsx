@@ -222,10 +222,12 @@ function Machineconfiguration() {
                   value={inputs.productid || ""}
                   onChange={handleChange}
                   required
+                  autoComplete="off"
                 />
               </div>
 
               <div className="input-lable-h-div">
+           
               <DataList
               value={inputs.companyid || ""}
               path={"Company"}
@@ -237,13 +239,15 @@ function Machineconfiguration() {
               </div>
 
               <div className="input-lable-h-div">
-              <DataList
+            
+            <DataList
               value={inputs.companyid || ""}
               path={"Machine"}
               handleChange={handleChange}
               name={"machineid"}
               option={"machineid"}
               heading={"Machine ID"}
+
             />
 
               </div>
@@ -304,6 +308,7 @@ function Machineconfiguration() {
               </div>   
             </form>
           </div>
+          
         </React.Fragment>
         
       )}
@@ -324,6 +329,7 @@ function Machineconfiguration() {
                   name="logicid"
                   value={inputs2.logicid || ""}
                   onChange={handleChange2}
+                  autoComplete="off"
                 />
               </div>
 
@@ -334,6 +340,7 @@ function Machineconfiguration() {
                   name="machineid"
                   value={inputs2.machineid || ""}
                   onChange={handleChange2}
+                  autoComplete="off"
                 />
               </div>
 
@@ -344,6 +351,7 @@ function Machineconfiguration() {
                   name="companyid"
                   value={inputs2.companyid || ""}
                   onChange={handleChange2}
+                  autoComplete="off"
                 />
               </div>
 
@@ -354,6 +362,7 @@ function Machineconfiguration() {
                   name="logictype"
                   value={inputs2.logictype || ""}
                   onChange={handleChange2}
+                  autoComplete="off"
                 />
               </div>
 
@@ -364,6 +373,7 @@ function Machineconfiguration() {
                   name="credittype"
                   value={inputs2.credittype || ""}
                   onChange={handleChange2}
+                  autoComplete="off"
                 />
               </div>
 
