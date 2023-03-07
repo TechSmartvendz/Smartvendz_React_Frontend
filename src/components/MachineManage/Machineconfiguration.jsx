@@ -13,7 +13,7 @@ import { useParams, useNavigate } from "react-router";
 
 function Machineconfiguration() {
   const navigate = useNavigate();
-  const path = "Product";
+  const path = "Logic";
   const ComponentName = "Logic";
   const [inputs, setInputs] = useState({});
   const [inputs2, setInputs2] = useState({});
@@ -58,7 +58,7 @@ function Machineconfiguration() {
   function handleChange(event) { //TODO:Handle Form Data Add Form 
     const name = event.target.name;
     const value = event.target.value;
-    const checked=event.target.checked;
+    const checked=event.target.isChecked;
     if(event.target.type =='checkbox')
     {
       setInputs((values)=>({...values,[name]:checked}))
@@ -102,7 +102,7 @@ function Machineconfiguration() {
       }
   
   };
-  const handleSubmit = async (event) => {//TODO:Handle Add and Update Form
+  const handleSubmit = async (event) => {   //TODO:Handle Add and Update Form
     event.preventDefault();
     let data =await CleanData(inputs)
     if(Object.keys(data).length){
@@ -148,9 +148,9 @@ function Machineconfiguration() {
   //   setImportSuccess(importsuccess+1)
   // };
 
-  // const editClick = (pid) => {//TODO:Handle Edit request from  Table Componenet
-  //   setPar(pid._id);
-  // };
+  const editClick = (pid) => {//TODO:Handle Edit request from  Table Componenet
+    setPar(pid._id);
+  };
   const addproduct = () => {//TODO:Handle Hide and Show of Add Product From
     setaddproductformstate(!addproductformstate);
     setbulkformstate(false);
@@ -219,12 +219,28 @@ function Machineconfiguration() {
                 <input
                   type="text"
                   name="logicid"
-                  value={inputs.productid || ""}
+                  value={inputs.logicid || ""}
                   onChange={handleChange}
                   required
                   autoComplete="off"
                 />
               </div>
+              <div className="input-lable-h-div">
+                <label htmlFor="logictype">Logic Type</label>
+                <input list="logictype" name="logictype"  value={inputs.logictype || ""}   onChange={handleChange}/>
+
+                <datalist id='logictype'>
+                <option>L1</option>
+                <option>L2</option>
+                <option>L3</option>
+                <option>L4</option>
+                <option>L5</option>
+                <option>L6</option>
+                <option>L7</option>
+                <option>L8</option>
+
+                </datalist>
+                </div>
 
               <div className="input-lable-h-div">
            
@@ -241,7 +257,7 @@ function Machineconfiguration() {
               <div className="input-lable-h-div">
             
             <DataList
-              value={inputs.companyid || ""}
+              value={inputs.machineid || ""}
               path={"Machine"}
               handleChange={handleChange}
               name={"machineid"}
@@ -254,52 +270,44 @@ function Machineconfiguration() {
 
              <div className="input-lable-h-div">
              
-              <div className="input-lable-checkbox-div">
-              <input type="checkbox" name='credit' checked={inputs.credit || false} onChange={handleChange}/>
-              <label className="access" htmlFor="credit">Credit</label>
              
-              <div>
-              <input type="checkbox" name="accumulate" checked={inputs.accumulate || false } onChange={handleChange} />
-              <label htmlFor="accumulate" >Accumulate</label>
-              </div>
-              
-              <div>
-                <input type="checkbox" name="forefeite" checked={inputs.forefeite || false} onChange={handleChange}/>
-                <label htmlFor="forefeite" >Fore Feit</label>
-              </div>
-
-              </div>
-
+             
+              <label className="access" htmlFor="credit">Credit Enable</label>
+              <input type="checkbox" name='creditenable' isChecked={inputs.creditenable || false} onChange={handleChange}/>
+            
               </div>
 
               <div className="input-lable-h-div">
-              <div className="input-lable-checkbox-div">
-             <input type="checkbox" name="autocreditrenewal" checked={inputs.autocreditrenewal || false} onChange={handleChange}/>
-              <label className="access">Auto Credit Renewal</label>
+              {/* <input type="checkbox" name="accumulate" checked={inputs.accumulate || false } onChange={handleChange} /> */}
+              <label htmlFor="accumulate" >Credit Type</label>
+              <select name="credittype" value={inputs.credittype|| ""} onChange={handleChange}>
+                <option></option>
+                <option>accumulate</option>
+                <option>forfeit</option>
+
+              </select>
+              
               </div>
-              </div>
-             
-             
+              
               <div className="input-lable-h-div">
-                <label htmlFor="logictype">Logic Type</label>
-                <input list="logictype"/>
-
-                <datalist id='logictype'>
-                <option>L1</option>
-                <option>L2</option>
-                <option>L3</option>
-                <option>L4</option>
-                <option>L5</option>
-                <option>L6</option>
-                <option>L7</option>
-                <option>L8</option>
-
-                </datalist>
-                </div>
-
              
+              <label htmlFor="creditamount" >Credit Amount</label>
+              <input type="number" name="creditamount" value={inputs.creditamount || false} onChange={handleChange}/>
               
+              </div>
+
               
+
+           
+
+              <div className="input-lable-h-div">
+              <label className="access" htmlFor="creditautorenew">Credit Auto Renew</label>
+              <input type="checkbox" name="creditautorenew" isChecked={inputs.creditautorenew || false} onChange={handleChange}/>
+              
+             
+              </div>
+             
+             
               <div className="input-lable-h-div">
                 <button className="submit-btn" type="submit">
                   {par ? "Update" : "Save"}
@@ -381,11 +389,30 @@ function Machineconfiguration() {
                 <button className="submit-btn" type="submit">
                   Search
                 </button>
-                <button className="submit-btn" type="button" onClick={handleSubmit3}>
+                {/* <button className="submit-btn" type="button" onClick={handleSubmit3}>
                   Export CSV
-                </button>
+                </button> */}
               </div>
             </form>
+          </div>
+        </React.Fragment>
+      )}
+
+      {!addproductformstate && (
+        <React.Fragment>
+          <div className="table_container-div">
+            
+            <TableDataWithPagination
+              path={path}
+              key={searchData||importsuccess}
+              searchData={searchData}
+              componentName={ComponentName}
+              name={"Logic"}
+              editClick={editClick}
+              clear={clearform}
+              reject={reject}
+              // loadDateUsertable={loadDateUsertable}
+            />
           </div>
         </React.Fragment>
       )}
