@@ -79,6 +79,7 @@ function Statemanage() {
               type="text"
               value={inputs.state || ""}
               onChange={handleChange}
+              autoComplete="off"
               required
             />
             <DataList

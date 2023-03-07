@@ -37,7 +37,7 @@ function TransactionReport() {
          
 
         <form >
-               {
+               {/* {
                template.fields.map(field=>{
                 return (<div className="input-lable-v-div" key={field.name}>
                 <label htmlFor={field.name}>{field.title}</label>
@@ -45,7 +45,7 @@ function TransactionReport() {
                 <datalist list={field.id}>{}</datalist>
               </div>)
                })
-               }
+               } */}
 
           <div className="flex-col">
          

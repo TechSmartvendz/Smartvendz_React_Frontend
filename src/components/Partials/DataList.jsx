@@ -3,7 +3,7 @@ import { getReq} from '../middleware/AxiosApisCall';
 function DataList(props) {
 const [dataList,setDataList]=useState(null);
 const [path,setPath]=useState(props.path); 
-const [name,setName]=useState(props.name); 
+// const [name,setName]=useState(props.name); 
 const [option,setOption]=useState(props.option); 
 const loadList=async ()=>{
     const response = await getReq(`${path}/Datalist`)

@@ -82,6 +82,9 @@ return (
                 // console.log("🚀 ~ file: TableData.jsx:111 ~ TableData ~ item", item)
                 return (
                   <tr key={item._id}>
+                    
+                   
+
                     {Object.keys(item)
                       .filter((i) => i !== "_id")
                       .map((input, index) => {

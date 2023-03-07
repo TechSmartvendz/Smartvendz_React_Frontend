@@ -107,7 +107,7 @@ name={template.addnewuser1.name}/>)
             <span>User Details</span>
           </div>
 
-          <div className="flex-col ">
+          {/* <div className="flex-col "> */}
 
            
           <div className="flex-row">
@@ -139,7 +139,7 @@ name={template.addnewuser1.name}/>)
 
         
                 return (
-                 
+                 <>
                   <div className="input-lable-h-div">
                     <label htmlFor={adduser1.name}>{adduser1.title}</label>
                     <input
@@ -149,14 +149,59 @@ name={template.addnewuser1.name}/>)
                       onChange={handleChange}
                       required
                     />
+                  
                   </div>
+
+                 
+                    </>
                 
                 )
               })
             }
             </div>
 
-           </div>
+            {/* <div className="input-lable-h-div">
+                    <DataList
+                      value={inputs.city || ""}
+                      path={path}
+                      handleChange={handleChange}
+                      name={"machineid"}
+                      option={"machineid"}
+                      heading={"Role"}
+                    />
+             </div>
+
+            <div className="input-lable-h-div">
+                    <DataList
+                      value={inputs.city || ""}
+                      path={path}
+                      handleChange={handleChange}
+                      name={"machineid"}
+                      option={"machineid"}
+                      heading={"City"}
+                    />
+             </div>
+             <div className="input-lable-h-div">
+                    <DataList
+                      value={inputs.state || ""}
+                      path={path}
+                      handleChange={handleChange}
+                      name={"machineid"}
+                      option={"machineid"}
+                      heading={"State"}
+                    />
+              </div>
+              <div className="input-lable-h-div">
+                    <DataList
+                      value={inputs.country || ""}
+                      path={path}
+                      handleChange={handleChange}
+                      name={"machineid"}
+                      option={"machineid"}
+                      heading={"Country"}
+                    />
+              </div> */}
+           {/* </div> */}
 
            
           {/* Log in info start from here*/}
@@ -180,6 +225,7 @@ name={template.addnewuser1.name}/>)
                     value={inputs[log.name] || ""}
                     onChange={handleChange}
                     required
+                    autoComplete="off"
                   />
                 </div>
               

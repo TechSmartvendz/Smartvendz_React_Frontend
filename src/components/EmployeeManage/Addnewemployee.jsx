@@ -1,92 +1,3 @@
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
-// function Addnewemployee() {
-
-// // const navigate=useNavigate();
-// //   function Download() {
-// //     axios({
-// //       url: urlz, //your url
-// //       method: "POST",
-
-// //       headers: {
-// //         "Content-Type": "application/json",
-// //         Authorization: `Bearer ${token}`,
-// //       },
-// //     })
-// //       .then((res) => {
-// //         console.log(res.data);
-// //         fileDownload(res.data, "csvreport.csv");
-// //       })
-// //       .error((err) => console.log(err));
-// //   }
-// //   const companies = ["abc", "def", "ghi", "jkl", "mno"];
-// //   const sampleCSV = [
-// //     { cid: 1, mid: 1 },
-// //     { cid: 2, mid: 2 },
-// //     { cid: 3, mid: 3 },
-// //     { cid: 4, mid: 4 },
-// //   ];
-
-// //   const uploadCSV = [
-// //     { cid: 1, mid: 1 },
-// //     { cid: 2, mid: 2 },
-// //     { cid: 3, mid: 3 },
-// //     { cid: 4, mid: 4 },
-// //   ];
-
-//   return (
-//     <>
-//       {/* new */}
-//       {/* <div className="add-user-container">
-//         <div className="headingdiv">
-//           <span className="componet-title">Add new employee</span>
-//           <div>
-//           <button onClick={(()=>navigate(-1))}>Back</button>
-//           </div>
-//         </div>
-//         <div className="componet-sub-title">
-//           <span>Bulk Employee Upload</span>
-//         </div>
-//         <form className="flex-row">
-//           <div className="input-lable-v-div">
-//             <label htmlFor="dropdown">Select company:</label>
-//             <select id="dropdown">
-//               <option value="N/A">Select company</option>
-//               <option value="1">1</option>
-//               <option value="2">2</option>
-//               <option value="3">3</option>
-//               <option value="4">4</option>
-//             </select>
-//           </div>
-
-//           <div className="input-lable-v-div">
-//             <label htmlFor="dropdown">Select machine:</label>
-//             <select id="dropdown">
-//               <option value="N/A">Select machine</option>
-//               <option value="1">1</option>
-//               <option value="2">2</option>
-//               <option value="3">3</option>
-//               <option value="4">4</option>
-//             </select>
-//           </div>
-//           <div className="input-lable-v-div">
-//             <label>Upload CSV: </label>
-//             <input type="file" />
-//           </div>
-
-//           <div className="upload-download-btn">
-//             <button>Sample CSV</button>
-//             <button>Upload</button>
-//           </div>
-//         </form>
-//       </div> */}
-//     </>
-    
-//   );
-// }
-
-// export default Addnewemployee;
-
 
 import React, { useState, useEffect } from "react";
 import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
@@ -312,13 +223,27 @@ function Addnewemployee() {
               </span>
             </div>
             <form className="flex-col" onSubmit={handleSubmit}>
+          
+            <div className="input-lable-v-div">
+                <label htmlFor="logicid"> Logic ID </label>
+                <input
+                  type="text"
+                  name="logicid"
+                  value={inputs.logicid || ""}
+                  onChange={handleChange}
+                  autoComplete={"off"}
+                  required
+                />
+              </div>
+
               <div className="input-lable-v-div">
-                <label htmlFor="employeeid"> Employee ID</label>
+                <label htmlFor="employeeid"> Employee ID </label>
                 <input
                   type="text"
                   name="employeeid"
                   value={inputs.employeeid || ""}
                   onChange={handleChange}
+                  autoComplete={"off"}
                   required
                 />
               </div>
@@ -329,6 +254,7 @@ function Addnewemployee() {
                   name="employeename"
                   value={inputs.employeename || ""}
                   onChange={handleChange}
+                  autoComplete={"off"}
                   required
                 />
               </div>
@@ -339,46 +265,57 @@ function Addnewemployee() {
                   name="email"
                   value={inputs.email || ""}
                   onChange={handleChange}
+                  autoComplete={"off"}
+
                 />
               </div>
               <div className="input-lable-v-div">
-                <label htmlFor="me">Manager Email</label>
+                <label htmlFor="manageremail">Manager Email</label>
                 <input
                   type="text"
-                  name="me"
+                  name="manageremail"
                   value={inputs.manageremail || ""}
                   onChange={handleChange}
+                  autoComplete={"off"}
+
                 />
               </div>
               <div className="input-lable-v-div">
-                <label htmlFor="cc">Cost-center</label>
+                <label htmlFor="costcenter">Cost-center</label>
                 <input
                   type="text"
-                  name="cc"
+                  name="costcenter"
                   value={inputs.costcenter || ""}
                   onChange={handleChange}
-                />
-              </div>
-              <div className="input-lable-v-div">
-                <label htmlFor="dpt">Department</label>
-                <input
-                  type="text"
-                  name="dpt"
-                  value={inputs.department || ""}
-                  onChange={handleChange}
-                />
-              </div>
-          
-              <div className="input-lable-v-div">
-                <label htmlFor="ccmn">Cost center manager name </label>
-                <input
-                  type="text"
-                  name="ccmn"
-                  value={inputs.constcentermanagername || ""}
-                  onChange={handleChange}
+                  autoComplete={"off"}
                 />
               </div>
 
+               
+              <div className="input-lable-v-div">
+                <label htmlFor="constcentermanagername">Cost center manager name </label>
+                <input
+                  type="text"
+                  name="constcentermanagername"
+                  value={inputs.constcentermanagername || ""}
+                  onChange={handleChange}
+                  autoComplete={"off"}
+
+                />
+              </div>
+
+              <div className="input-lable-v-div">
+                <label htmlFor="department">Department</label>
+                <input
+                  type="text"
+                  name="department"
+                  value={inputs.department || ""}
+                  onChange={handleChange}
+                  autoComplete={"off"}
+
+                />
+              </div>
+         
               <div className="input-lable-h-div">
                 <button className="submit-btn" type="submit">
                   {par ? "Update" : "Save"}
@@ -397,12 +334,14 @@ function Addnewemployee() {
             </div>
             <form className="flex-col" onSubmit={handleSubmit2}>
             <div className="input-lable-v-div">
-                <label htmlFor="cno"> Card Number</label>
+                <label htmlFor="cardnumber"> Card Number</label>
                 <input
                   type="text"
-                  name="cno"
-                  value={inputs2.cardno || ""}
+                  name="cardnumber"
+                  value={inputs2.cardnumber || ""}
                   onChange={handleChange2}
+                  autoComplete={"off"}
+
                 />
               </div>
               <div className="input-lable-v-div">
@@ -412,6 +351,8 @@ function Addnewemployee() {
                   name="employeeid"
                   value={inputs2.employeeid || ""}
                   onChange={handleChange2}
+                  autoComplete={"off"}
+
                 />
               </div>
               <div className="input-lable-v-div">
@@ -421,26 +362,32 @@ function Addnewemployee() {
                   name="employeename"
                   value={inputs2.employeename || ""}
                   onChange={handleChange2}
+                  autoComplete={"off"}
+
                 />
               </div>
 
               <div className="input-lable-v-div">
-                <label htmlFor="cid"> Company ID</label>
+                <label htmlFor="companyid"> Company ID</label>
                 <input
                   type="text"
-                  name="cid"
-                  value={inputs2.employeeid || ""}
+                  name="companyid"
+                  value={inputs2.companyid || ""}
                   onChange={handleChange2}
+                  autoComplete={"off"}
+
                 />
               </div>
 
               <div className="input-lable-v-div">
-                <label htmlFor="mid"> Machine ID</label>
+                <label htmlFor="machineid"> Machine ID</label>
                 <input
                   type="text"
-                  name="mid"
-                  value={inputs2.employeeid || ""}
+                  name="machineid"
+                  value={inputs2.machineid || ""}
                   onChange={handleChange2}
+                  autoComplete={"off"}
+
                 />
               </div>
 
@@ -449,20 +396,13 @@ function Addnewemployee() {
                 <input
                   type="text"
                   name="logicid"
-                  value={inputs2.employeeid || ""}
+                  value={inputs2.logicid || ""}
                   onChange={handleChange2}
+                  autoComplete={"off"}
+
                 />
               </div>
 
-              {/* <div className="input-lable-v-div">
-                <label htmlFor="materialtype">Material Type</label>
-                <input
-                  type="text"
-                  name="materialtype"
-                  value={inputs2.materialtype || ""}
-                  onChange={handleChange2}
-                />
-              </div> */}
               <div className="input-lable-h-div">
                 <button className="submit-btn" type="submit">
                   Search

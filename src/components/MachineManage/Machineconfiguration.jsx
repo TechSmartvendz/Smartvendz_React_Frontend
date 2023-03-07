@@ -1,118 +1,3 @@
-// import React, { useState } from "react";
-// import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
-// import { postReq } from "../middleware/AxiosApisCall";
-// import { useNavigate } from "react-router-dom";
-// function Machineconfiguration() {
-//   const [inputs, setInputs] = useState();
-//   const path = "Machine";
-// const navigate=useNavigate();
-//   function handleChange(event) {
-//     const name = event.target.name;
-//     const value = event.target.value;
-//     setInputs((values) => ({ ...values, [name]: value }));
-//   }
-//   const handleSubmit = async (event) => {
-//     event.preventDefault();
-    
-//     const response = await postReq(inputs, path);
-//     if ((response.status = "success")) {
-//       SuccessAlert({
-//         title: "Add New Machine",
-//         message: "New Machine Added Successfully",
-//       });
-//     } else {
-//       ErrorAlert({ title: "Add New Machine", message: response.error });
-//     }
-//   };
-
-  // return (
-  //   <React.Fragment>
-  //     <div className="add-user-container">
-  //       <div className="headingdiv">
-  //         <span className="componet-title">Machine List</span>
-      
-  //       <div className="option-btn">
-  //       <button onClick={()=>{navigate(-1)}}>Back</button>
-  //        </div>
-
-  //        </div>
-
-  //       <div className="componet-sub2-title">
-  //         <span>Total Machine:</span>
-  //       </div>
-
-  //       <form onSubmit={handleSubmit} className="flex-row form-2col-ver">
-  //         <div className="flex-row">
-  //           <div className="input-lable-h-div">
-  //             <label htmlFor="machinetype" className="">
-  //               Select Machine type
-  //             </label>
-
-  //             <input list="mtype" className="type" />
-
-  //             <datalist id="mtype">
-  //               <option>GVC DEVICE</option>
-  //               <option>RASPBARRY PI</option>
-  //             </datalist>
-  //           </div>
-
-  //           <div className="input-lable-h-div">
-  //             <label htmlFor="vendtype">Select Vend type</label>
-  //             <input list="svty" className="type" />
-  //             <datalist id="svty">
-  //               <option>NORMAL VEND</option>
-  //               <option>CREDIT VEND</option>
-  //             </datalist>
-  //           </div>
-
-  //           <div className="input-lable-checkbox-div">
-  //             <label className="access">Access Type:</label>
-  //             <input type="checkbox" name="rfid" />
-  //             <label htmlFor="rfid">RFID(HID)</label>
-  //             <div>
-  //               <input type="checkbox" name="qrupi" />
-  //               <label htmlFor="qrupi">QR UPI</label>
-  //             </div>
-  //             <div>
-  //               <input type="checkbox" name="mobilea" />
-  //               <label htmlFor="mobileapp">MOBILE APPLICATION</label>
-  //             </div>
-  //             <div>
-  //               <input type="checkbox" name="microrfid" />
-  //               <label htmlFor="myrfid">RFID(MFARE RFID)</label>
-  //             </div>
-  //           </div>
-
-  //           <div className="input-lable-h-div">
-  //             <label htmlFor="rfidcard" className="">
-  //               RFID CARD
-  //             </label>
-
-  //             <input list="rfid" className="rfidcard" />
-
-  //             <datalist id="rfid">
-  //               <option>HID 26</option>
-  //               <option>HID 34</option>
-  //             </datalist>
-  //           </div>
-  //           <div className="input-lable-h-div">
-  //             <label htmlFor="apiurl" className="labelapi">
-  //               API URL:
-  //             </label>
-  //             <input name="URL" className="api" type="text" />
-  //           </div>
-  //           <div className="input-lable-h-div">
-  //             <button type="submit" className="submit-btn">
-  //               Submit
-  //             </button>
-  //           </div>
-  //         </div>
-  //         <div className="flex-row"></div>
-  //       </form>
-  //     </div>
-  //   </React.Fragment>
-  // );
-// }
 
 import React, { useState, useEffect } from "react";
 import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
@@ -128,7 +13,7 @@ import { useParams, useNavigate } from "react-router";
 
 function Machineconfiguration() {
   const navigate = useNavigate();
-  const path = "Product";
+  const path = "Logic";
   const ComponentName = "Logic";
   const [inputs, setInputs] = useState({});
   const [inputs2, setInputs2] = useState({});
@@ -181,7 +66,13 @@ function Machineconfiguration() {
   function handleChange(event) { //TODO:Handle Form Data Add Form 
     const name = event.target.name;
     const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    const checked = event.target.checked
+    // setInputs((values) => ({ ...values, [name]: value }));
+    if (event.target.type == "checkbox") {
+      setInputs((values) => ({ ...values, [name]: checked }));
+    } else {
+      setInputs((values) => ({ ...values, [name]: value }));
+    }
   }
   function handleChange2(event) { //TODO:Handle Search Form
     const name = event.target.name;
@@ -342,11 +233,24 @@ function Machineconfiguration() {
                 <input
                   type="text"
                   name="logicid"
-                  value={inputs.productid || ""}
+                  value={inputs.logicid || ""}
                   onChange={handleChange}
                   required
                 />
               </div>
+
+              <div className="input-lable-h-div">
+                <label htmlFor="logictype">Logic Type</label>
+                <input list="logictype"/>
+                <datalist id='logictype'>
+                <option>L1</option>
+                <option>L2</option>
+                <option>L3</option>
+                <option>L4</option>
+                <option>L5</option>
+                </datalist>
+                </div>
+
               <div className="input-lable-h-div">
               <DataList
               value={inputs.companyid || ""}
@@ -359,7 +263,7 @@ function Machineconfiguration() {
               </div>
               <div className="input-lable-h-div">
               <DataList
-              value={inputs.companyid || ""}
+              value={inputs.machineid || ""}
               path={"Machine"}
               handleChange={handleChange}
               name={"machineid"}
@@ -369,38 +273,50 @@ function Machineconfiguration() {
               </div>
              <div className="input-lable-h-div">
               <div className="input-lable-checkbox-div">
-              <input type="checkbox" name='credit' checked={inputs.credit || false} onChange={handleChange}/>
-              <label className="access" htmlFor="credit">Credit</label>
+              <input type="checkbox" name='creditenable' checked={inputs.creditenable} onChange={handleChange}/>
+              <label className="access" htmlFor="creditenable">Credit</label>
               <div>
-              <input type="checkbox" name="accumulate" checked={inputs.accumulate || false } onChange={handleChange} />
-              <label htmlFor="accumulate" >Accumulate</label>
+
+
+                {inputs.creditenable &&
+                 (   <>
+                 <div className="input-lable-h-div">
+                    <label htmlFor="crtype">Credit Type:</label>
+                    <select id="crtype" value={inputs.credittype}  name="credittype" onChange={handleChange}>
+                    <option>accumulate</option>
+                    <option>forfeit</option>
+
+                    </select>
+                    </div>
+
+                <div className="input-lable-h-div">
+                <label htmlFor="creditamount">Credit Amount:</label>
+                <input
+                  type="text"
+                  name="creditamount"
+                  value={inputs.creditamount || ""}
+                  onChange={handleChange}
+                  required
+                />
               </div>
-              <div>
-                <input type="checkbox" name="forefeite" checked={inputs.forefeite || false} onChange={handleChange}/>
-                <label htmlFor="forefeite" >Fore Feit</label>
+                    </>
+                 )
+                }
+
+
+          
               </div>
+       
+
               </div>
               </div>
               <div className="input-lable-h-div">
               <div className="input-lable-checkbox-div">
-             <input type="checkbox" name="autocreditrenewal" checked={inputs.autocreditrenewal || false} onChange={handleChange}/>
-              <label className="access">Auto Credit Renewal</label>
+             <input type="checkbox" name="creditautorenew" checked={inputs.creditautorenew || false} onChange={handleChange}/>
+              <label className="creditautorenew">Auto Credit Renewal</label>
               </div>
               </div>
-              <div className="input-lable-h-div">
-                <label htmlFor="logictype">Logic Type</label>
-                <input list="logictype"/>
-                <datalist id='logictype'>
-                <option>L1</option>
-                <option>L2</option>
-                <option>L3</option>
-                <option>L4</option>
-                <option>L5</option>
-                <option>L6</option>
-                <option>L7</option>
-                <option>L8</option>
-                </datalist>
-                </div>
+
               <div className="input-lable-h-div">
                 <button className="submit-btn" type="submit">
                   {par ? "Update" : "Save"}
@@ -408,183 +324,6 @@ function Machineconfiguration() {
               </div>
               </div>
             </form>
-
-         {/* <form className="flex-col" onSubmit={handleSubmit2}>
-              <div className="input-lable-h-div">
-                <label htmlFor="logicid"> Logic ID</label>
-                <input
-                  type="text"
-                  name="logicid"
-                  value={inputs2.logicid || ""}
-                  onChange={handleChange2}
-                />
-                </div>
-              <div className="input-lable-h-div">
-                <label htmlFor="companyid"> Company ID</label>
-                <input
-                  type="text"
-                  name="companyid"
-                  value={inputs2.companyid || ""}
-                  onChange={handleChange2}
-                />
-              </div>
-
-              <div className="input-lable-h-div">
-                <label htmlFor="machineid"> Machine ID</label>
-                <input
-                  type="text"
-                  name="machineid"
-                  value={inputs2.machineid || ""}
-                  onChange={handleChange2}
-                />
-              </div>
-              <div className="input-lable-h-div">
-             
-              <div className="input-lable-checkbox-div">
-              <input type="checkbox" name='credit' checked={inputs.credit || false} onChange={handleChange}/>
-              <label className="access" htmlFor="credit">Credit</label>
-             
-              <div>
-              <input type="checkbox" name="accumulate" checked={inputs.accumulate || false } onChange={handleChange} />
-              <label htmlFor="accumulate" >Accumulate</label>
-              </div>
-              
-              <div>
-                <input type="checkbox" name="forefeite" checked={inputs.forefeite || false} onChange={handleChange}/>
-                <label htmlFor="forefeite" >Fore Feit</label>
-              </div>
-
-              </div>
-
-              </div>
-              <div className="input-lable-h-div">
-              <div className="input-lable-checkbox-div">
-             <input type="checkbox" name="autocreditrenewal" checked={inputs.autocreditrenewal || false} onChange={handleChange}/>
-              <label className="access">Auto Credit Renewal</label>
-              </div>
-              </div>
-
-
-
-          <div className="input-lable-h-div">
-                <DataList
-                  value={inputs.companyid || ""}
-                  path={"Company"}
-                  handleChange={handleChange}
-                  name={"companyid"}
-                  option={"companyid"}
-                  heading={"LogicType"}
-                />
-          </div>
-
-
-
-      
-          </form> */}
-
-
-        {/* <form onSubmit={handleSubmit} className="flex-row form-2col-ver">
-          <div className="flex-row">
-            <div className="input-lable-h-div">
-              <label htmlFor="machinetype" className="">
-                Logic ID
-              </label>
-
-              <input list="mtype" className="type" />
-
-              <datalist id="mtype">
-                <option>GVC DEVICE</option>
-                <option>RASPBARRY PI</option>
-              </datalist>
-            </div>
-
-            <div className="input-lable-h-div">
-              <label htmlFor="machinetype" className="">
-                Company ID
-              </label>
-
-              <input list="mtype" className="type" />
-
-              <datalist id="mtype">
-                <option>GVC DEVICE</option>
-                <option>RASPBARRY PI</option>
-              </datalist>
-            </div>
-
-            <div className="input-lable-h-div">
-              <label htmlFor="machinetype" className="">
-                Machine ID
-              </label>
-
-              <input list="mtype" className="type" />
-
-              <datalist id="mtype">
-                <option>GVC DEVICE</option>
-                <option>RASPBARRY PI</option>
-              </datalist>
-            </div>
-
-
-         
-
-            <div className="input-lable-checkbox-div">
-            <input type="checkbox" name="access" />
-
-              <label className="access">Credit:</label>
-
-              <div>
-              <input type="checkbox" name="accumulate" />
-              <label htmlFor="accumulate">accumulate</label>
-              </div>
-
-              <div>
-                <input type="checkbox" name="forfeit" />
-                <label htmlFor="forfeit">forfeit</label>
-              </div>
-             
-            
-            </div>
-
-
-            
-
-            <div className="input-lable-checkbox-div">
-            <input type="checkbox" name="access" />
-
-              <label className="access">Auto credit renewal</label>
-
-              </div>
-
-            <div className="input-lable-h-div">
-              <label htmlFor="machinetype" className="">
-                Logic Type
-              </label>
-
-              <input list="mtype1" className="type" />
-
-              <datalist id="mtype1">
-                <option>l1</option>
-                <option>l2</option>
-                <option>l3</option>
-                <option>l4</option>
-                <option>l5</option>
-                <option>l6</option>
-                <option>l7</option>
-                <option>l8</option>
-              </datalist>
-            </div>
-
-       
-       
-    
-            <div className="input-lable-h-div">
-              <button type="submit" className="submit-btn">
-                Submit
-              </button>
-            </div>
-          </div>
-          <div className="flex-row"></div>
-        </form> */}
       </div>
     </React.Fragment>
       )}
@@ -664,7 +403,7 @@ function Machineconfiguration() {
               key={searchData||importsuccess}
               searchData={searchData}
               componentName={ComponentName}
-              name={"Products"}
+              name={"Machine"}
               editClick={editClick}
               clear={clearform}
               reject={reject}

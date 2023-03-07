@@ -79,6 +79,7 @@ function Areamanage() {
               type="text"
               value={inputs.area || ""}
               onChange={handleChange}
+              autoComplete="off"
               required
             />
             <DataList

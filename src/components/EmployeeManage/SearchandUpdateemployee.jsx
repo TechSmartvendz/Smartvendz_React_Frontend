@@ -1,43 +1,4 @@
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
-
-  // const navigate=useNavigate();
-  
-    // <>
-    //   {/* new */}
-    //   <div className="add-user-container">
-    //     <div className="headingdiv">
-    //       <span className="componet-title">Search and Udate Employee</span>
-    //       <div>
-    //       <button onClick={(()=>navigate(-1))}>Back</button>
-    //       </div>
-    //     </div>
-    //     <div className="componet-sub-title">
-    //       <span>Search and Update Employee </span>
-    //     </div>
-
-    //     <form className="flex-row">
-    //       <div className="input-lable-v-div">
-    //         <label>Select company:</label>
-    //         <select>
-    //           <option value="N/A">Select company</option>
-    //           <option value="1">1</option>
-    //           <option value="2">2</option>
-    //           <option value="3">3</option>
-    //           <option value="4">4</option>
-    //         </select>
-    //       </div>
-
-    //       <div className="input-lable-v-div">
-    //         <input type="search" placeholder="Search..." />
-    //       </div>
-    //       <div className="upload-download-btn">
-    //         <button>Search</button>
-    //       </div>
-    //     </form>
-    //   </div>
-    // </>
-    
+   
 import React, { useState, useEffect } from "react";
 import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
 import fileDownload from 'js-file-download';
@@ -269,6 +230,7 @@ function SearchandUpdateemployee() {
                   name="employeeid"
                   value={inputs.employeeid || ""}
                   onChange={handleChange}
+                  autoComplete={"off"}
                   required
                 />
               </div>
@@ -279,6 +241,7 @@ function SearchandUpdateemployee() {
                   name="employeename"
                   value={inputs.employeename || ""}
                   onChange={handleChange}
+                  autoComplete={"off"}
                   required
                 />
               </div>
@@ -298,6 +261,7 @@ function SearchandUpdateemployee() {
                   name="me"
                   value={inputs.manageremail || ""}
                   onChange={handleChange}
+                  autoComplete={"off"}
                 />
               </div>
               <div className="input-lable-v-div">
@@ -316,6 +280,7 @@ function SearchandUpdateemployee() {
                   name="dpt"
                   value={inputs.department || ""}
                   onChange={handleChange}
+                  autoComplete={"off"}
                 />
               </div>
           
@@ -326,6 +291,8 @@ function SearchandUpdateemployee() {
                   name="ccmn"
                   value={inputs.constcentermanagername || ""}
                   onChange={handleChange}
+                  autoComplete={"off"}
+
                 />
               </div>
 
@@ -353,6 +320,7 @@ function SearchandUpdateemployee() {
                   name="cno"
                   value={inputs2.cardno || ""}
                   onChange={handleChange2}
+                  autoComplete={"off"}
                 />
               </div>
               <div className="input-lable-v-div">
@@ -362,6 +330,7 @@ function SearchandUpdateemployee() {
                   name="employeeid"
                   value={inputs2.employeeid || ""}
                   onChange={handleChange2}
+                  autoComplete={"off"}
                 />
               </div>
               <div className="input-lable-v-div">
@@ -371,6 +340,8 @@ function SearchandUpdateemployee() {
                   name="employeename"
                   value={inputs2.employeename || ""}
                   onChange={handleChange2}
+                  autoComplete={"off"}
+
                 />
               </div>
 
@@ -381,6 +352,8 @@ function SearchandUpdateemployee() {
                   name="cid"
                   value={inputs2.employeeid || ""}
                   onChange={handleChange2}
+                  autoComplete={"off"}
+
                 />
               </div>
 
@@ -391,6 +364,8 @@ function SearchandUpdateemployee() {
                   name="mid"
                   value={inputs2.employeeid || ""}
                   onChange={handleChange2}
+                  autoComplete={"off"}
+
                 />
               </div>
 
@@ -401,6 +376,8 @@ function SearchandUpdateemployee() {
                   name="logicid"
                   value={inputs2.employeeid || ""}
                   onChange={handleChange2}
+                  autoComplete={"off"}
+
                 />
               </div>
 

@@ -77,6 +77,7 @@ function Countrymanage() {
               value={inputs.country || ""}
               onChange={handleChange}
               required
+              autoComplete="off"
             />
      
             <button className="submit-btn">{par?(<span>Update</span>):<span>Add New</span>}</button>

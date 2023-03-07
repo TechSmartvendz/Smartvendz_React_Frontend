@@ -78,6 +78,7 @@ function Citymanage() {
               type="text"
               value={inputs.city || ""}
               onChange={handleChange}
+              autoComplete="off"
               required
             />
             <DataList
