@@ -58,7 +58,7 @@ function Machineconfiguration() {
   function handleChange(event) { //TODO:Handle Form Data Add Form 
     const name = event.target.name;
     const value = event.target.value;
-    const checked=event.target.isChecked;
+    const checked=event.target.checked;
     if(event.target.type =='checkbox')
     {
       setInputs((values)=>({...values,[name]:checked}))
@@ -121,6 +121,7 @@ function Machineconfiguration() {
         }
       } else {
         const response = await postReq(path, data);
+        console.log("response DATA:",response.data);
         if (response.success) {
           SuccessAlert({
             title: `Add ${ComponentName}`,
@@ -230,6 +231,7 @@ function Machineconfiguration() {
                 <input list="logictype" name="logictype"  value={inputs.logictype || ""}   onChange={handleChange}/>
 
                 <datalist id='logictype'>
+
                 <option>L1</option>
                 <option>L2</option>
                 <option>L3</option>
@@ -256,15 +258,16 @@ function Machineconfiguration() {
 
               <div className="input-lable-h-div">
             
-            <DataList
+              <DataList
               value={inputs.machineid || ""}
               path={"Machine"}
               handleChange={handleChange}
+
               name={"machineid"}
               option={"machineid"}
               heading={"Machine ID"}
 
-            />
+              />
 
               </div>
 
@@ -273,7 +276,7 @@ function Machineconfiguration() {
              
              
               <label className="access" htmlFor="credit">Credit Enable</label>
-              <input type="checkbox" name='creditenable' isChecked={inputs.creditenable || false} onChange={handleChange}/>
+              <input type="checkbox" name='creditenable'  checked={inputs.creditenable || false} onChange={handleChange}/>
             
               </div>
 
@@ -302,7 +305,7 @@ function Machineconfiguration() {
 
               <div className="input-lable-h-div">
               <label className="access" htmlFor="creditautorenew">Credit Auto Renew</label>
-              <input type="checkbox" name="creditautorenew" isChecked={inputs.creditautorenew || false} onChange={handleChange}/>
+              <input type="checkbox" name="creditautorenew"  checked={inputs.creditautorenew || false} onChange={handleChange}/>
               
              
               </div>

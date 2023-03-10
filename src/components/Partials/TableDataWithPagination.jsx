@@ -176,7 +176,7 @@ function TableDataWithPagination(props) {
         <table>
           <tbody>
             <tr>
-              {tableData != null ? (
+              { tableData != null ? (
                 Object.keys(tableData[0]).map(
                   (key) =>
                     key != ("_id" || null) && (
@@ -192,7 +192,7 @@ function TableDataWithPagination(props) {
               )}
               {tableData != null && ((!('error' in tableData[0]))&&<th>Actions</th>)}
             </tr>
-
+                                                                           
             {tableData != null ? (
               tableData.map((item, index) => {
                 // console.log("🚀 ~ file: tableData.jsx:111 ~ tableData ~ item", item)

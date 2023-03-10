@@ -21,6 +21,7 @@ return (
 
 <label htmlFor={name}>{props.heading}:</label>
 <input list={name} name={name} onChange={props.handleChange} value={props.value}  autoComplete={"off"} required/>
+
 <datalist id={name} >
 { dataList !=null ?
 (dataList.map((e,i)=>{
@@ -28,7 +29,9 @@ return (
   return <option key={i} value={e.id}>{e[option]}</option>
 })
 ):
+
 <option>Country not found</option>
+
 }
 </datalist>
 
@@ -37,4 +40,4 @@ return (
   )
 }
 
-export default DataList
+export default DataList;

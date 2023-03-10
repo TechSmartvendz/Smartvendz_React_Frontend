@@ -106,7 +106,7 @@
 }
 .nav-text:hover .ulbg {
   display: inline;
-  background-color: rgb(54, 54, 54);
+  background-color: rgb(2, 59, 76);
   transition:  background-color 15s;
   transition-timing-function: ease-in;
 }

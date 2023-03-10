@@ -14,7 +14,8 @@ function SubMenu(props) {
   
   return (
     <React.Fragment>
-    { sideBarData.map((item, index) => {
+    {
+       sideBarData.map((item, index) => {
       if(navData[item.permission]){
       return (
         <li key={index} className={item.cName} id='visible'>
@@ -29,6 +30,7 @@ function SubMenu(props) {
           }
         })}
        </ul>
+       
         </li> 
       );
     }})
