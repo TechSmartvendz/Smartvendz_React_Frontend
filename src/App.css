@@ -437,6 +437,68 @@ margin-top: 20px;
   margin: 3px 7px;
 }
 
+/* new css Changed by Sharan */
+.table_containernew-div{
+
+  margin-top: 25px;
+  width:fit-content;
+ overflow-x: scroll;
+
+  }
+  .table_containernew-div>table{
+    border: 2px solid black;
+   
+  }
+  .table_containernew-div>table>tbody>tr:nth-child(even){
+    background-color: #dddddd;
+  }
+  .table_containernew-div>table>tbody>tr>th{
+    border-bottom: solid 1px rgb(60, 60, 60);
+    text-align:left;
+   
+  }
+  .table_containernew-div>table>tbody>tr{
+    border-bottom: solid 1px rgb(60, 60, 60);
+    text-align:left;
+   
+  }
+  
+  .table_containernew-div>table>tbody>tr>td
+   
+  { 
+  
+    text-align:left;
+
+     padding:10px;
+
+    }
+    /*b changed by sharan */
+    .table_containernew-div>table>tbody>tr>th{
+      font-weight: bold;
+     }
+
+  .table_containernew-div>table>tbody>tr>td>button{
+    background-color: black;
+    color: white;
+    border: 0px;
+  
+    padding: 5px;
+    min-width: 80px;
+    max-width: 99px;
+    border-radius: 5px;
+    margin: 3px 7px;
+  }
+  .table_containernew-div>table>tbody>tr>td>input {
+   padding:6px;
+   border-radius: 5px;
+   background-color: #f1f0f0;    
+   font-size:20px;
+  
+  }
+
+
+
+
 .input-lable-checkbox-div{
  
   margin:5px;

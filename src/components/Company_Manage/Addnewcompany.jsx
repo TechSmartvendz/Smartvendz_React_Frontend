@@ -337,6 +337,7 @@ function Addnewcompany() {
               {par ? 'Update' : 'Save'}
             </button>
           </div>
+
         </form>
       </div>
 
@@ -352,6 +353,7 @@ function Addnewcompany() {
 
         />
       </div>
+      
       </React.Fragment>
       }
       

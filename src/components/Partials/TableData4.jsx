@@ -13,6 +13,7 @@ function TableData4() {
       Swap: "",
       ReplaceItem: "",
     },
+    
     {
       SLNO: "2",
       SlotCode: "A2",
@@ -109,15 +110,15 @@ function TableData4() {
               <input
                 type="text"
                 name="machineid"
-                // value={inputs.machineid || ""}
-                // onChange={handleChange}
+                value={inputs.machineid || ""}
+                onChange={handleChange}
               />
             </div>
             <div className="input-lable-h-div">
               <DataList
-                //   value={inputs.companyid || ""}
+                value={inputs.companyid || ""}
                 path={"Company"}
-                //   handleChange={handleChange}
+                handleChange={handleChange}
                 name={"companyid"}
                 option={"companyid"}
                 heading={"Machine Code"}
@@ -128,8 +129,8 @@ function TableData4() {
               <input
                 type="text"
                 name="machinename"
-                // value={inputs.machinename || ""}
-                // onChange={handleChange}
+                value={inputs.machinename || ""}
+                onChange={handleChange}
               />
             </div>
 
@@ -138,9 +139,13 @@ function TableData4() {
               <input
                 type="text"
                 name="machinename"
-                // value={inputs.machinename || ""}
-                // onChange={handleChange}
+                value={inputs.machinename || ""}
+                onChange={handleChange}
               />
+            </div>
+
+            <div>
+              <button className="submit-btn">Get Machine</button>
             </div>
           </div>
         </form>
@@ -150,6 +155,9 @@ function TableData4() {
 
         <form onSubmit={handleSubmit}>
           <div className="table_containernew-div">
+            <div className="input-lable-v-div">
+              <button className="submit-btn">Save</button>
+            </div>
             <table>
               <tbody>
                 <tr>
@@ -188,8 +196,17 @@ function TableData4() {
                               return (
                                 <td key={index}>
                                   <input
-                                    name={item}
-                                    value={item[input] || ""}
+                                    style={{
+                                      width:
+                                        [input] == "SlotCode" ||
+                                        [input] == "ClosingStock" ||
+                                        [input] == "CurrentStock" ||
+                                        [input] == "RefillQuantity" ||
+                                        [input] == "SaleQuantity"
+                                          ? "100px"
+                                          : "300px",
+                                    }}
+                                    name={[input]}
                                     onChange={handleChange}
                                   />
                                 </td>
