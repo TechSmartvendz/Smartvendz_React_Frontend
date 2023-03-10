@@ -47,13 +47,15 @@ import Unitmanage from "./GeneralManage/Unitmanage";
 import Statemanage from "./GeneralManage/Statemanage";
 import Areamanage from "./GeneralManage/Areamanage";
 
-import Refiller from "./Refiller";
-import Refiller1 from "./Subroutes/Refiller1";
-import Refiller2 from "./Subroutes/Refiller2";
+
 
 import InventoryManager from "./InventoryManager";
 import InventoryManager1 from "./Subroutes/InventoryManager1";
 import InventoryManager2 from "./Subroutes/InventoryManager2";
+
+import RefillerManager from "./RefillerManage/RefillerManager";
+import Manage_Refill_Request from "./RefillerManage/Manage_Refill_Request";
+import Refiller_Refilling_Request from "./RefillerManage/Refiller_Refilling_Request";
 
 
 
@@ -73,7 +75,6 @@ import { ReactNotifications } from 'react-notifications-component'
 
 import AddNewUserP from "./Usermanage/AddNewUserP";
 import ListUserP from "./Usermanage/ListUserP";
-
 
 
 //TODO: GET info about this Usermanahe.css
@@ -131,12 +132,11 @@ function Dashboard() {
               
               </Route>
                
-              <Route exact path="/refillermanager" element={<Refiller />}>
-                <Route index path="managerefillrequest" element={<Refiller1 />} />
-                <Route path="managedc" element={<Refiller2 />} />
-                <Route path="managedcaccept" element={<Refiller1 />} />
-                <Route path="managecompletedrefillrequest" element={<Refiller2 />} />
+              <Route exact path="/refillermanager" element={<RefillerManager/>}>
+                <Route index path="managerefillrequest" element={<Manage_Refill_Request />} />
+               <Route path="refillerrefillingrequest" element={<Refiller_Refilling_Request />} />
               </Route>
+              
               <Route exact path="/transactionreports" element={<Transactions />}>
                    <Route index path="transactionreport" element={<TransactionReport />}/>
                    <Route path="creditreport" element={<CreditReport/>}/>

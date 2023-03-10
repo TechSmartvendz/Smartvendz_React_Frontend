@@ -81,21 +81,19 @@ export const MachineManageData = [
     path: "/manage_machine/machineconfiguration",
   }
 ];
-export const RefillerManage = [
+export const RefillersManager = [
    
   {
-    title: "1",
-    path: "/refillermanager/1",
+    title: "Manage Refill Request",
+    path: "/refillermanager/managerefillrequest",
   },
   {
-    title: "2",
-    path: "/refillermanager/2",
+    title: "Refiller Refilling Request",
+    path: "/refillermanager/refillerrefillingrequest",
   },
-  {
-    title: "3",
-    path: "/refillermanager/3",
-  }
+ 
 ];
+
 export const RefundandSupportData = [
    
   {
@@ -107,6 +105,7 @@ export const RefundandSupportData = [
     path: "/refundandsupport/2"
   }
 ];
+
 export const TransactionManageData = [
 
   {

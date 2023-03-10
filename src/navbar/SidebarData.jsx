@@ -200,20 +200,11 @@ export const SidebarData = [
         permission:"managedc"
       },
       {
-        title: "Manage DC",
-        path: "/refillermanager/managedc",
+        title: "Refiller Refilling Request",
+        path: "/refillermanager/refillerrefillingrequest",
         permission:"managedc" 
       },
-      {
-        title: "ManageDC Accept",
-        path: "/refillermanager/managedcaccept",
-        permission:"managedcaccept" 
-      },
-      {
-        title: "Manage Completed Request",
-        path: "/refillermanager/managecompletedrefillrequest",
-        permission:"managecompletedrefillrequest" 
-      }
+     
     ]
   },
   {
