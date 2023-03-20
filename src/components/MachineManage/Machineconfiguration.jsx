@@ -367,7 +367,7 @@ function Machineconfiguration() {
               </div>
 
               <div className="input-lable-v-div">
-                <label htmlFor="machineid">Logic Type</label>
+                <label htmlFor="logictype">Logic Type</label>
                 <input
                   type="text"
                   name="logictype"
@@ -378,7 +378,7 @@ function Machineconfiguration() {
               </div>
 
               <div className="input-lable-v-div">
-                <label htmlFor="logicid">Credit Type</label>
+                <label htmlFor="credittype">Credit Type</label>
                 <input
                   type="text"
                   name="credittype"

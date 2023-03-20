@@ -9,8 +9,9 @@ import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableDataWithPagination from "../Partials/TableDataWithPagination";
 import { useParams, useNavigate } from "react-router";
 
+// import { CleanDatalist } from "../Partials/ClearDatalist";
 
-function Addnewmachine() {
+ function Addnewmachine() {
   const navigate = useNavigate();
   const path = "Product";
   const ComponentName = "Product";
@@ -61,6 +62,7 @@ function Addnewmachine() {
       setItemid();
       console.log(response.data);
     }
+    
   };
   function handleChange(event) { //TODO:Handle Form Data Add Form 
     const name = event.target.name;
@@ -370,6 +372,7 @@ function Addnewmachine() {
               reject={reject}
               // loadDateUsertable={loadDateUsertable}
             />
+          
           </div>
         </React.Fragment>
       )}

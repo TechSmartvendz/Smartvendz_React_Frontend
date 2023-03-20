@@ -468,7 +468,7 @@ margin-top: 20px;
   { 
   
     text-align:left;
-
+background-color: rgb(182, 182, 246);
      padding:10px;
 
     }
@@ -491,12 +491,12 @@ margin-top: 20px;
   .table_containernew-div>table>tbody>tr>td>input {
    padding:6px;
    border-radius: 5px;
-   background-color: #f1f0f0;    
+   background-color: #b6dbf9;    
    font-size:20px;
   
   }
 
-
+  #f1f0f0
 
 
 .input-lable-checkbox-div{

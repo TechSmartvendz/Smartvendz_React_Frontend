@@ -1,8 +1,13 @@
 import React from 'react'
+import DataList2 from '../Partials/DataList2'
 
 function InventoryManager1() {
   return (
-    <div>InventoryManager1</div>
+    <React.Fragment>
+
+    <DataList2/>
+    
+    </React.Fragment>
   )
 }
 
