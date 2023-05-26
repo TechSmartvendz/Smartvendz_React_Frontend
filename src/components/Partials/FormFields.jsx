@@ -2,18 +2,22 @@ import DataList from "./DataList";
 export const template = {
 
   addnewuser: [
+   
     {
       title: "First Name",
       name: "first_name",
       type: "text",
+      
       required: true
     },
+
     {
       title: "Middle Name",
       name: "middle_name",
       type: "text",
       required: true
     },
+    
     {
       title:"Last Name",
       name:"last_name",

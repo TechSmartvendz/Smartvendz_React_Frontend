@@ -82,13 +82,8 @@ const [inputs,setInputs]=useState({});
               </tr>
 
               <tr>
-                <td>
-                  <input name="requestno" onChange={handleChange} />
-                </td>
-                <td>
-                  <input name="requesdate" onChange={handleChange} />
-                </td>
-                <td>
+               
+                {/* <td>
                   {" "}
                   <DataList
                     value={inputs.country || ""}
@@ -98,7 +93,8 @@ const [inputs,setInputs]=useState({});
                     name={"country"}
                     heading={"Country"}
                   />
-                </td>
+                  
+                </td> */}
                
                
               </tr>

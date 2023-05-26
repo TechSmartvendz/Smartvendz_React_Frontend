@@ -4,9 +4,9 @@ import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";//1
 import TableData from "../Partials/TableData";//2
 import DataList from "../Partials/DataList";
 import { useNavigate } from "react-router-dom";
-import CleanDatalist from "../Partials/ClearDatalist";
+// import CleanDatalist from "../Partials/ClearDatalist";
 
-import { QueryClientProvider ,QueryClient} from 'react-query'
+
 function Statemanage() {
   const navigate=useNavigate();
   const path = "State";
@@ -54,13 +54,14 @@ function Statemanage() {
   }
 
   const editClick=(pid)=>{
+
     console.log('this is ', pid)
     setPar(pid._id)
     setInputs(pid) 
 
   }
   
-  const queryClient=new QueryClient()
+  
 
   return (
     <React.Fragment>
@@ -84,9 +85,17 @@ function Statemanage() {
               onChange={handleChange}
               required
             />
+            <DataList
+              value={inputs.country || ""}
 
-       <QueryClientProvider client={queryClient}>
-           
+              path={"Country"}
+              handleChange={handleChange}
+              name={"country"}
+              option={"country"}
+              heading={"Country"}
+            />
+     
+{/*            
             <CleanDatalist
 
               value={inputs.country || ""}
@@ -95,9 +104,9 @@ function Statemanage() {
               option={"country"}
               name={"country"}
               heading={"Country"}
-            />
+            /> */}
 
-            </QueryClientProvider>
+           
             <button className="submit-btn">{par?(<span>Update </span>):(<span>Add </span>)}</button>
           </div>
         </form>

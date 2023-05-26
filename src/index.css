@@ -33,9 +33,9 @@ body::-webkit-scrollbar{
   padding-bottom: 5px;
 }
 .headercontent {
-  background-color: rgb(22, 22, 22);
+  /* background-color: rgb(250, 247, 247); */
   color: white;
-  width: 150px;
+  width: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,6 +47,7 @@ body::-webkit-scrollbar{
   display:flex; 
 }
 .navbar-btn{
+
 display: flex;
 justify-content: center;
 align-items: center ;
@@ -65,6 +66,13 @@ margin-left: 10px;
   background-color: rgba(0, 0, 0, 0);
   padding:9px;
   border-radius: 4px;
+  margin-bottom: 23px;
+}
+.nav-li{
+  
+ display: flex;
+  
+  justify-content:center;
 }
 .navbar-icon:hover {
   /* background-color:rgb(146, 146, 146); */
@@ -90,6 +98,11 @@ margin-left: 10px;
 .logout-btn {
   font-size: 20px;
   cursor: pointer;
+  width:25px;
+  height:25px;
+  background-color: rgb(232, 6, 6);
+  border-radius:5px;
+  rotate: -90deg
 }
 .container{
   background-color: rgb(189, 189, 189);

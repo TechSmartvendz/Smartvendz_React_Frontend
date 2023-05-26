@@ -73,8 +73,6 @@ import Refund2 from "./Subroutes/Refund2"
 
 import { ReactNotifications } from 'react-notifications-component'
 
-import AddNewUserP from "./Usermanage/AddNewUserP";
-import ListUserP from "./Usermanage/ListUserP";
 
 
 //TODO: GET info about this Usermanahe.css
@@ -86,7 +84,7 @@ function Dashboard() {
       <div className="root">
         <Header />
         <div className="section">
-          <Navbar />
+          <Navbar/>
           <ReactNotifications />
           <div className="container">
           {/*FIXME: MAke this Routes a saprate components*/}
@@ -127,8 +125,7 @@ function Dashboard() {
                 <Route path="userpermission" element={<Userpermission />} />
                 <Route path="userrole" element={<UserRole/>}/> 
                 <Route path="userrole/:id" element={<UserRole/>}/> 
-                <Route path="addnewuserp" element={<AddNewUserP/>}/>
-                <Route path="listuserp" element={<ListUserP/>}/>
+               
               
               </Route>
                

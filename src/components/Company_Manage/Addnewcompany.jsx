@@ -31,6 +31,7 @@ function Addnewcompany() {
     } else {
       navigate(`../`);
       console.log(response.data);
+      
     }
   };
   const loadDateUsertable = async () => {
@@ -289,6 +290,7 @@ function Addnewcompany() {
 
         <form className="flex-col" onSubmit={handleSubmit2}>
           <div className="input-lable-v-div">
+           
             <DataList
               value={inputs2.companyid || ""}
               path={"Company"}
@@ -297,6 +299,7 @@ function Addnewcompany() {
               option={"companyid"}
               heading={"Company"}
             />
+
           </div>
 
           <div className="input-lable-v-div">
@@ -309,6 +312,7 @@ function Addnewcompany() {
               heading={"User Type"}
             />
           </div>
+
           <div className="input-lable-v-div">
             <DataList
               value={inputs2.assign_user || ""}

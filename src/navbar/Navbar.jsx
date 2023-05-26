@@ -37,6 +37,8 @@ function Navbar() {
     loadDate();
    }, []);
 
+
+
   // useEffect(() => {
   // //  console.log("navData~"+navData)
   // }, [navData]);
@@ -44,8 +46,10 @@ function Navbar() {
   return (
     <React.Fragment>
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+   
         <ul className="nav-menu-items">
-          <li>
+
+          <li className="nav-li">
             <Link to="#" className="navbar-icon crossbutton">
               <AiIcons.AiOutlineClose
                 size={25}
@@ -53,6 +57,8 @@ function Navbar() {
               />
           </Link>*
           </li>
+          <input type="text" id="mySearch" placeholder="Search..."  />
+
           {navData? <SubMenu key={navData} navData={navData} sideBarData={sideBarData}/>:(()=>{setSidebar(!sidebar)})}
           
       

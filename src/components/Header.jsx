@@ -10,7 +10,7 @@ import Navbar from "../navbar/Navbar";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
-
+import {AiOutlineLogout} from 'react-icons/ai'
 
 function Header() {
  
@@ -19,7 +19,7 @@ function Header() {
   const { sidebar, setSidebar } = useContext(NavContext);
 
   function logout() {
-    alert("Are you want to Log out?");
+
     setIsLoggedIn(false);
    
     removeCookie('JWTcookie',{path:"/"});
@@ -85,9 +85,7 @@ function Header() {
         </div>
 
         <div className="headercontent">
-          <button className="logout-btn" onClick={logout}>
-            Logout
-          </button>
+        <AiOutlineLogout className='logout-btn'  onClick={logout}/>
         </div>
       </div>
     </>

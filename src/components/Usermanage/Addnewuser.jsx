@@ -6,6 +6,7 @@ import { useParams, useNavigate } from "react-router";
 import DataList from "../Partials/DataList";
 // import DataList from "../Partials/DataList";
 function Addnewuser() {
+  
   const { id } = useParams();
   const [itemid, setItemid] = useState(id);
   const path = "User";
@@ -14,7 +15,9 @@ function Addnewuser() {
   const [par, setPar] = useState();
 
   const navigate = useNavigate();
+
   const loadDate = async () => {
+    
     const response = await getReq(`${path}/${itemid}`);
     if (response.data) {
       setPar(response.data._id);
@@ -65,17 +68,20 @@ function Addnewuser() {
   };
 
   function dataslist(user1) {
+
     console.log("user Name:", user1.name);
 
     if (user1.type === "datalist") {
       return (
         <div className="input-lable-h-div">
           <DataList
+
             value={inputs[user1.name] || null}
             path={user1.name}
             option={user1.name}
             name={user1.name}
             heading={user1.title}
+
           />
         </div>
       );
@@ -155,7 +161,7 @@ function Addnewuser() {
           </div>
 
           <div>
-          git
+          
             <div className="flex-col">
               {template.loginInfo.map((log) => {
                 return (

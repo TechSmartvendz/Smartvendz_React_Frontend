@@ -59,6 +59,8 @@
 .nav-menu-items {
   width: 100%;
   min-height: fit-content;
+
+  
 }
 .nav-text {
   display: flex;

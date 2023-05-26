@@ -4,6 +4,7 @@ import { Cookies } from 'react-cookie';
 const cookies = new Cookies();
 const token = cookies.get('JWTcookie')
 // console.log(token)
+
 const instance = axios.create({
     baseURL: 'http://localhost:3000/api',
     timeout: 5000,
@@ -50,7 +51,7 @@ export const postReq = async (path,body) => {
       console.warn(error)
     }
   }
-
+  
 export const patchReq=async (path,body,id)=>{
   try{
 const response= await instance.patch(`/${path}/${id}`,body)
@@ -63,13 +64,16 @@ return data
 }
 
 export const putReq=async (path,body,id)=>{
+
   try{
 const response= await instance.put(`/${path}/${id}`,body)
 const data=response.data
 return data
   }
+
   catch(error){
     console.warn(error)
   }
+
 }
 

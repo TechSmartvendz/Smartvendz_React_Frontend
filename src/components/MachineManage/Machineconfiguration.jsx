@@ -37,6 +37,7 @@ function Machineconfiguration() {
   };
 
   const loadDate = async () => { //TODO://Using to load edit form Data 
+   
     const response = await getReq(`${path}/${par}`);
     if (response.data) {
       console.log(
@@ -59,6 +60,7 @@ function Machineconfiguration() {
     const name = event.target.name;
     const value = event.target.value;
     const checked=event.target.checked;
+
     if(event.target.type =='checkbox')
     {
       setInputs((values)=>({...values,[name]:checked}))
@@ -80,6 +82,7 @@ function Machineconfiguration() {
     console.log("🚀 ~ file: SingleProductAdd.jsx:73 ~ handleSubmit2 ~ inputs2:", inputs2)
     event.preventDefault();
      let clean =await CleanData(inputs2)
+
         if(Object.keys(clean).length){
           setSearchData(clean)
         }else{
@@ -94,6 +97,7 @@ function Machineconfiguration() {
         console.log("🚀 ~ file: SingleProductAdd.jsx:151 ~ sampleCSVFile ~ response:", response)
         fileDownload(response, `${ComponentName}${Date.now()}.csv`);
           SuccessAlert({
+            
             title: `Export ${ComponentName} File`,
             message: "Export ${ComponentName} file Downloaded successfully",
           });
@@ -105,6 +109,7 @@ function Machineconfiguration() {
   const handleSubmit = async (event) => {   //TODO:Handle Add and Update Form
     event.preventDefault();
     let data =await CleanData(inputs)
+
     if(Object.keys(data).length){
       if (par) {
         const response = await putReq(path, data, par);
@@ -156,14 +161,15 @@ function Machineconfiguration() {
     setaddproductformstate(!addproductformstate);
     setbulkformstate(false);
   };
-  const bulkupload = () => {//TODO:Handle Hide and Show of Add Product From
-    if(reject){
-      setSearchData()
-      setReject(false)
-    }
-    setbulkformstate(!bulkformstate);
-    setaddproductformstate(false);
-  };
+  // const bulkupload = () => {//TODO:Handle Hide and Show of Add Product From
+  //   if(reject){
+  //     setSearchData()
+  //     setReject(false)
+  //   }
+  //   setbulkformstate(!bulkformstate);
+  //   setaddproductformstate(false);
+  // };
+
   useEffect(() => {//TODO:Handle Edit State for MAke Add Form in Update form
     if (par) {
       setaddproductformstate(true);
@@ -180,6 +186,7 @@ function Machineconfiguration() {
   useEffect(() => {//TODO:Handle Edit State for MAke Add Form in Update form
    console.log(searchData)
   }, [searchData]);
+
   return (
     <React.Fragment>
     <div className="add-user-container">
@@ -187,7 +194,7 @@ function Machineconfiguration() {
           <span className="componet-title"> {ComponentName}</span>
           <div>
             <button onClick={() => navigate(-1)}>Back</button>
-            <button onClick={clearform}>Clear </button>
+            <button onClick={clearform}> Clear </button>
           </div>
         </div>
         <div className="option-btn">
@@ -196,9 +203,9 @@ function Machineconfiguration() {
               ? `Search ${ComponentName} `
               : par?`Update New ${ComponentName}`:`Add New ${ComponentName}`}
           </button>
-        <button onClick={bulkupload}>
+        {/* <button onClick={bulkupload}>
         {`Bulk ${ComponentName} Upload`}
-      </button>
+      </button> */}
         </div>
         
       </div>
@@ -242,27 +249,29 @@ function Machineconfiguration() {
                 <option>L8</option>
 
                 </datalist>
+                
                 </div>
-
+              
               <div className="input-lable-h-div">
-           
               <DataList
+
               value={inputs.companyid || ""}
               path={"Company"}
               handleChange={handleChange}
               name={"companyid"}
               option={"companyid"}
               heading={"Company ID"}
-            />
+              />
+              
               </div>
 
               <div className="input-lable-h-div">
             
               <DataList
+
               value={inputs.machineid || ""}
               path={"Machine"}
               handleChange={handleChange}
-
               name={"machineid"}
               option={"machineid"}
               heading={"Machine ID"}

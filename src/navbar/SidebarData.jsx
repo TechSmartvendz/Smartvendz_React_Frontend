@@ -37,18 +37,7 @@ export const SidebarData = [
         cName:"",
         permission:"userpermission"
       },
-      {
-        title: "Add New User P",
-        path: "/usermanage/addnewuserp",    
-        cName:"",
-        permission:"addnewuser"
-      },
-      {
-        title:" List UserP",
-        path:"/usermanage/listuserp",
-        cName:"",
-        permission:"listuser",
-      }
+     
     ]
   },
   {
@@ -68,16 +57,16 @@ export const SidebarData = [
         path: "/companymanage/listcompany" ,
         permission:"listcompany"    
       },
-      {
-        title: "Company Admins",
-        path: "/companymanage/companyadmins" ,
-        permission:"companyadmins"    
-      },
-      {
-        title: "Company Machines",
-        path: "/companymanage/companymachines" ,
-        permission:"companymachines"    
-      }
+      // {
+      //   title: "Company Admins",
+      //   path: "/companymanage/companyadmins" ,
+      //   permission:"companyadmins"    
+      // },
+      // {
+      //   title: "Company Machines",
+      //   path: "/companymanage/companymachines" ,
+      //   permission:"companymachines"    
+      // }
     ]
   },
 
@@ -118,11 +107,11 @@ export const SidebarData = [
         path: "/employeemanage/addandeditemployee",
         permission:"addnewmachine" 
       },
-      {
-        title: "Employee Credits",
-        path: "/employeemanage/employeecredit",
-        permission:"addnewmachine"
-      },
+      // {
+      //   title: "Employee Credits",
+      //   path: "/employeemanage/employeecredit",
+      //   permission:"addnewmachine"
+      // },
      
     ]
   },
@@ -214,27 +203,27 @@ export const SidebarData = [
     cName: "nav-text",
     permission:"products", 
     submenu:[
-      {
-        title:"Product List",
-        path:"/products/productlist",
-        permission:"productlist"
+      // {
+      //   title:"Product List",
+      //   path:"/products/productlist",
+      //   permission:"productlist"
     
-      },
-      {
-        title:"Bulk Product Upload",
-        path:"/products/bulkproductupload",
-        permission:"bulkproductupload"
-      },
+      // },
+      // {
+      //   title:"Bulk Product Upload",
+      //   path:"/products/bulkproductupload",
+      //   permission:"bulkproductupload"
+      // },
       {
         title:"Single Product Add",
         path:"/products/singleproductadd",
         permission:"singleproductadd" 
       },
-      {
-        title:"Update Bulk Product",
-        path:"/products/updatebulkproduct",
-        permission:"updatebulkproduct"
-      }
+      // {
+      //   title:"Update Bulk Product",
+      //   path:"/products/updatebulkproduct",
+      //   permission:"updatebulkproduct"
+      // }
     ]
   },
   {

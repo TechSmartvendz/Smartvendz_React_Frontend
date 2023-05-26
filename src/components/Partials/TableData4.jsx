@@ -3,7 +3,7 @@ import DataList from "./DataList";
 function TableData4() {
   const stockdetails = [
     {
-      SLNO: "1",
+      id:0,
       SlotCode: "A1",
       MaterialName: "Haldirams Bhujia Sev 40Gm",
       ClosingStock: "6",
@@ -15,7 +15,7 @@ function TableData4() {
     },
     
     {
-      SLNO: "2",
+      id:1,
       SlotCode: "A2",
       MaterialName: "Haldirams Bhujia Sev 40Gm",
       ClosingStock: "6",
@@ -25,8 +25,9 @@ function TableData4() {
       Swap: "",
       ReplaceItem: "",
     },
+
     {
-      SLNO: "3",
+      id:2,
       SlotCode: "A3",
       MaterialName: "Haldirams Bhujia Sev 40Gm",
       ClosingStock: "6",
@@ -36,8 +37,9 @@ function TableData4() {
       Swap: "",
       ReplaceItem: "",
     },
+
     {
-      SLNO: "4",
+      id:3,
       SlotCode: "A4",
       MaterialName: "Haldirams Bhujia Sev 40Gm",
       ClosingStock: "6",
@@ -48,7 +50,7 @@ function TableData4() {
       ReplaceItem: "",
     },
     {
-      SLNO: "5",
+     id:4,
       SlotCode: "A5",
       MaterialName: "Haldirams Bhujia Sev 40Gm",
       ClosingStock: "6",
@@ -62,12 +64,22 @@ function TableData4() {
   const [refilldata, setRefilldata] = useState(stockdetails);
   const [inputs, setInputs] = useState({});
 
+const [tableInputs,setTableInputs]=useState([{}]);
+
   function handleChange(e) {
+
     const name = e.target.name;
     const value = e.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
+    
   }
 
+//   function handleTable(e,inputs)
+//   {
+// const name=e.target.inputs;
+// const value=e.target.value;
+// setTableInputs((values)=>({...values,[name]:value}))
+//   }
   function handleSubmit(e) {
     e.preventDefault();
     console.log(inputs);
@@ -103,6 +115,7 @@ function TableData4() {
         <div className="componet-sub-title">
           <span>Machine Information</span>
         </div>
+
         <form className="flex-row form-2col-ver">
           <div className="flex-row">
             <div className="input-lable-h-div">
@@ -115,6 +128,7 @@ function TableData4() {
               />
             </div>
             <div className="input-lable-h-div">
+             
               <DataList
                 value={inputs.companyid || ""}
                 path={"Company"}
@@ -123,6 +137,7 @@ function TableData4() {
                 option={"companyid"}
                 heading={"Machine Code"}
               />
+              
             </div>
             <div className="input-lable-h-div">
               <label htmlFor="machinename">Date</label>
@@ -158,6 +173,7 @@ function TableData4() {
             <div className="input-lable-v-div">
               <button className="submit-btn">Save</button>
             </div>
+            
             <table>
               <tbody>
                 <tr>
@@ -194,8 +210,8 @@ function TableData4() {
                               );
                             } else {
                               return (
-                                <td key={index}>
-                                  <input
+                                <td key={input.id} >
+                                  <input key={input.id}
                                     style={{
                                       width:
                                         [input] == "SlotCode" ||
@@ -207,7 +223,10 @@ function TableData4() {
                                           : "300px",
                                     }}
                                     name={[input]}
-                                    onChange={handleChange}
+                                    value={item[input]}
+
+                                    onChange={ handleChange }
+
                                   />
                                 </td>
                               );

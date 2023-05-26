@@ -6,6 +6,7 @@ import TableData2 from "../Partials/TableData2";
 import { useParams, useNavigate } from "react-router";
 
 function Addnewmachine() {
+
   const navigate = useNavigate();
   const path = "Machine";
   const ComponentName = "Machine";
@@ -29,6 +30,7 @@ function Addnewmachine() {
         ...values,
         machineid: response.data.machineid,
       }));
+
       setInputs(response.data);
     } else {
       navigate(`../`);
@@ -105,6 +107,7 @@ function Addnewmachine() {
     }
     
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(itemid){
@@ -220,6 +223,7 @@ function Addnewmachine() {
             />
 
           </div>
+
             <div className="input-lable-h-div">
               <label htmlFor="building">Building Name/No </label>
               <input
@@ -229,6 +233,7 @@ function Addnewmachine() {
                 onChange={handleChange}
                 autoComplete="off"
               />
+              
             </div>
 
          
