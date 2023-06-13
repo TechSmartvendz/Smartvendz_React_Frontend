@@ -18,13 +18,14 @@ function Refiller_Refilling_Request() {
   return (
     <React.Fragment>
       <div className="add-user-container">
-        <div className="headingdiv">
+        {/* <div className="headingdiv">
           <span className="componet-title"> Refill Details</span>
           <div>
-            <button onClick={() => navigate(-1)}>Back</button>
+            <button onC
+            lick={() => navigate(-1)}>Back</button>
           </div>
-        </div>
-        <div className="option-btn">
+        </div> */}
+        {/* <div className="option-btn">
           <button onClick={handleSubmit}>Save as draft </button>
           <button
             onClick={() => {
@@ -40,13 +41,13 @@ function Refiller_Refilling_Request() {
           >
             Generate Refill Request{" "}
           </button>
-        </div>
+        </div> */}
 
-        <div className="componet-sub-title">
+        {/* <div className="componet-sub-title">
           <span>Machine Information</span>
-        </div>
+        </div> */}
 
-        <form className="flex-row form-2col-ver">
+        {/* <form className="flex-row form-2col-ver">
           <div className="flex-row">
             <div className="input-lable-h-div">
               <label htmlFor="machinename"> Machine Name</label>
@@ -99,7 +100,7 @@ function Refiller_Refilling_Request() {
         </form>
         <div className="componet-sub-title">
           <span>Machine Stock Details</span>
-        </div>
+        </div> */}
 
         <TableData4 />
       </div>

@@ -282,6 +282,7 @@ font-weight: bold;
 
 
 .sub-route-div{
+
   background-color: rgb(221, 221, 221) !important; 
 
 }
@@ -298,10 +299,13 @@ font-weight: bold;
 }
 /* changed by sharan*/
 .subroute-btn:hover{
+
 background-color: rgb(72, 255, 0);
 transform: scale(1.1);
+
 }
 .submit-btn{
+
   background-color: black;
   color: rgb(255, 255, 255);
   border: 0px;
@@ -314,6 +318,7 @@ transform: scale(1.1);
   max-width: 99px;
   border-radius: 5px;
   cursor: pointer;
+
 }
 /* changed by sharan */
 .submit-btn:hover{
@@ -321,6 +326,7 @@ transform: scale(1.1);
 }
 
 #mySearch {
+
   width:95%;
   margin-left:5px;
   font-size: 18px;
@@ -329,6 +335,7 @@ transform: scale(1.1);
   height:30px;
   border-radius: 10px;
   outline: none;
+   
 }
 /* List user CSS : List USER COMPONENT  */
 .option-btn{
@@ -613,4 +620,12 @@ justify-content: space-between;
   background-color: rgb(40, 87, 226);
   color: rgb(21, 13, 13);
   
+ }
+ 
+ .eyeicon{
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
  }

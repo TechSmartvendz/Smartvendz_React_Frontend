@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import DataList from "./DataList";
+import { format } from 'date-fns';
+
 function TableData4() {
+
   const stockdetails = [
     {
       id:0,
       SlotCode: "A1",
       MaterialName: "Haldirams Bhujia Sev 40Gm",
       ClosingStock: "6",
+      
       CurrentStock: "",
       RefillQuantity: "",
       SaleQuantity: "",
@@ -61,17 +65,24 @@ function TableData4() {
       ReplaceItem: "",
     },
   ];
+  const [date, setDate] = useState('');
   const [refilldata, setRefilldata] = useState(stockdetails);
   const [inputs, setInputs] = useState({});
 
-const [tableInputs,setTableInputs]=useState([{}]);
+  const [tableInputs,setTableInputs]=useState([{}]);
+
+  useEffect(() => {
+    const today = new Date();
+    const formattedDate = format(today, 'dd-MM-yyyy');
+    setDate(formattedDate);
+  }, []);
 
   function handleChange(e) {
 
     const name = e.target.name;
     const value = e.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
-    
+
   }
 
 //   function handleTable(e,inputs)
@@ -130,37 +141,42 @@ const [tableInputs,setTableInputs]=useState([{}]);
             <div className="input-lable-h-div">
              
               <DataList
-                value={inputs.companyid || ""}
-                path={"Company"}
+                value={inputs.machinename || ""}
+                path={"getallmachines"}
                 handleChange={handleChange}
-                name={"companyid"}
-                option={"companyid"}
+                name={"machinename"}
+                option={"machinename"}
+                Options={"machineid"}
                 heading={"Machine Code"}
               />
               
             </div>
             <div className="input-lable-h-div">
               <label htmlFor="machinename">Date</label>
+              
               <input
                 type="text"
                 name="machinename"
-                value={inputs.machinename || ""}
+                value={date}
                 onChange={handleChange}
               />
+
             </div>
 
             <div className="input-lable-h-div">
               <label htmlFor="machinename">Warehouse Name</label>
+              
               <input
                 type="text"
-                name="machinename"
-                value={inputs.machinename || ""}
+                name="warehousename"
+                value={inputs.warehousename || ""}
                 onChange={handleChange}
               />
+
             </div>
 
             <div>
-              <button className="submit-btn">Get Machine</button>
+              <button className="submit-btn"> Get Machine </button>
             </div>
           </div>
         </form>
@@ -170,9 +186,7 @@ const [tableInputs,setTableInputs]=useState([{}]);
 
         <form onSubmit={handleSubmit}>
           <div className="table_containernew-div">
-            <div className="input-lable-v-div">
-              <button className="submit-btn">Save</button>
-            </div>
+           
             
             <table>
               <tbody>
@@ -213,7 +227,9 @@ const [tableInputs,setTableInputs]=useState([{}]);
                                 <td key={input.id} >
                                   <input key={input.id}
                                     style={{
+
                                       width:
+                                        [input]=="id" ||
                                         [input] == "SlotCode" ||
                                         [input] == "ClosingStock" ||
                                         [input] == "CurrentStock" ||
@@ -224,8 +240,7 @@ const [tableInputs,setTableInputs]=useState([{}]);
                                     }}
                                     name={[input]}
                                     value={item[input]}
-
-                                    onChange={ handleChange }
+                                    onChange= {handleChange}
 
                                   />
                                 </td>

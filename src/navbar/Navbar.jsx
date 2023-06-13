@@ -19,7 +19,9 @@ function Navbar() {
   const { sidebar, setSidebar } = useContext(NavContext);
   const [navData, setNavData] = useState();
   const [sideBarData, setSideBarData] = useState(SidebarData);
+  const [searchQuery,setSearchQuery]=useState('')
 
+ 
   const loadDate = async () => {
     // console.log("loadData() start")
     const response = await getReq(`${path}`);
@@ -37,11 +39,15 @@ function Navbar() {
     loadDate();
    }, []);
 
-
-
-  // useEffect(() => {
-  // //  console.log("navData~"+navData)
-  // }, [navData]);
+   function handlesearchFilter(e)
+   {
+     setSearchQuery(e.target.value)
+   }
+ 
+const filtredMenu=sideBarData.filter((menus)=>
+     menus.title[0].toLowerCase().includes(searchQuery.toLowerCase())
+)
+console.log('filtered:',filtredMenu);
 
   return (
     <React.Fragment>
@@ -54,12 +60,13 @@ function Navbar() {
               <AiIcons.AiOutlineClose
                 size={25}
                 onClick={() => setSidebar(!sidebar)}
+
               />
           </Link>*
           </li>
-          <input type="text" id="mySearch" placeholder="Search..."  />
+          <input type="text" id="mySearch" value={searchQuery} onChange={handlesearchFilter} placeholder="Search..."  />
 
-          {navData? <SubMenu key={navData} navData={navData} sideBarData={sideBarData}/>:(()=>{setSidebar(!sidebar)})}
+          {navData? <SubMenu key={navData} navData={navData} sideBarData={filtredMenu}/>:(()=>{setSidebar(!sidebar)})}
           
       
         </ul>
@@ -67,6 +74,7 @@ function Navbar() {
     
     </React.Fragment>
   );
+  
 }
 
 export default Navbar;

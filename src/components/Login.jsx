@@ -3,20 +3,23 @@ import {postReq } from "./middleware/AxiosApisCall";
 import AuthContext from "../Context/AuthContext";
 import { useCookies } from "react-cookie";
 import { SuccessAlert, ErrorAlert } from "./middleware/AlertMsg";
-
+import {FaEyeSlash,FaEye} from 'react-icons/all'
 import Clogo from "../assets/snaxsmart.png";
+
 function Login() {
   const path = "Login";
   const [inputs, setInputs] = useState({});
   const [cookies, setCookie] = useCookies(["user"]);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-
+  const [showPassword, setShowPassword] = useState(false);
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await postReq(path,inputs);
@@ -55,13 +58,16 @@ function Login() {
             <div className="inputdiv">
               <label>Password</label>
               <input
-                type="password"
+                type={showPassword ? 'text' :'password'}
                 name="password"
                 value={inputs.password || ""}
                 onChange={handleChange}
                 placeholder="User password"
                 required
               />
+               <span className="showicon" onClick={handleTogglePassword}>
+        {showPassword ? <FaEyeSlash className="eyeicon"/> : <FaEye className="eyeicon"/>}
+          </span>
             </div>
            
              <input  type="submit" value="Login" />

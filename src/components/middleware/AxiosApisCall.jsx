@@ -4,7 +4,7 @@ import { Cookies } from 'react-cookie';
 const cookies = new Cookies();
 const token = cookies.get('JWTcookie')
 // console.log(token)
-
+// 192.168.1.21
 const instance = axios.create({
     baseURL: 'http://localhost:3000/api',
     timeout: 5000,

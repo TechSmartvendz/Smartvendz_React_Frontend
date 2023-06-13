@@ -96,6 +96,7 @@ margin-left: 10px;
   align-items: center;
 }
 .logout-btn {
+  
   font-size: 20px;
   cursor: pointer;
   width:25px;
@@ -104,12 +105,16 @@ margin-left: 10px;
   border-radius:5px;
   rotate: -90deg
 }
+.logout-btn:hover{
+  background-color: rgb(190, 4, 4);
+}
 .container{
   background-color: rgb(189, 189, 189);
   width: 100%;
   height:inherit;
 }
-.container>div{
+.container>div
+{
 background-color: rgb(255, 255, 255);
 margin:12px;
 margin-bottom: 20px;
