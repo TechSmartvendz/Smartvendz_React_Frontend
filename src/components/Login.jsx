@@ -1,76 +1,86 @@
-import React,{useState, useContext} from 'react'
-import axios from 'axios';
-import AuthContext from '../Context/AuthContext';
-import { useCookies } from 'react-cookie';
+import React, { useState, useContext } from "react";
+import {postReq } from "./middleware/AxiosApisCall";
+import AuthContext from "../Context/AuthContext";
+import { useCookies } from "react-cookie";
+import { SuccessAlert, ErrorAlert } from "./middleware/AlertMsg";
+import {FaEyeSlash,FaEye} from 'react-icons/all'
+import Clogo from "../assets/snaxsmart.png";
 
-import Clogo from '../assets/snaxsmart.png';
 function Login() {
+  const path = "Login";
+  const [inputs, setInputs] = useState({});
+  const [cookies, setCookie] = useCookies(["user"]);
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const response = await postReq(path,inputs);
+      console.log("🚀 ~ file: Login.jsx:24 ~ submitData ~ inputs", inputs)
+      if (response.success) {
+        setCookie("JWTcookie", response.data ,{ path: "/" });
+        setIsLoggedIn(true);
+        SuccessAlert({
+          title: "Login",
+          message: "Login successfully",
+        });
+      } else {
+        ErrorAlert({ title: "Login", message:response.msg });
+      }
 
-//   function handleChange(val) {
-//     // Here, we invoke the callback with the new value
-//     props.ValueChange(val);
-// }
-   const [email,setEmail]=useState("");
-   const [password,setPassword]=useState("");
-  const [cookies, setCookie] = useCookies(['user']);
-  const {isLoggedIn, setIsLoggedIn}=useContext(AuthContext)
+  };
 
-
-  const updateEmail=(e)=>
-  {
-    setEmail(e.target.value)
-  }
-
-  const updatePassword=(e)=>{
-    setPassword(e.target.value);
-  }
-
-  const submitData= async (e)=>{
-    e.preventDefault();
-   await axios.post("http://localhost:3000/login",{
-      email:email,
-      password:password
-     }).then((response)=>{
-      
-     console.log(response.data);
- 
-     setCookie('JWTcookie', response.data.session_token, { path: '/' });
-    //  alert("successfully login");
-    setIsLoggedIn(true)
-     
-     }).catch((error)=>{
-      console.log(error);
-      console.log(error.response);
-      alert("invalid email or password");
-     })
-    
-  }
- 
-   return (
+  return (
     <>
-    <div className='loginbody'>
-    <div className='loginbox'>
-    <img src={Clogo} className="cicon" />
-    <h3>Sign In Here</h3>
-    <form onSubmit={submitData}>
-    
-    <div className='inputdiv'>
-    <label>Email</label>
-    <input type="email" name="email" value={email} onChange={updateEmail}   placeholder=" User email"  required/>
-    </div>
-    <div className='inputdiv'>
-    <label>Password</label>
-    <input type="password" name="password" value={password} onChange={updatePassword} placeholder="User password"  required/>
-    </div>
-     <input type="submit"  value="Login"  />
-    
-    
-    </form>
-    <a href='#' className='forgot'>Forgot Password</a>
-    </div>
-    </div>
+      <div className="loginbody">
+        <div className="loginbox">
+          <img src={Clogo} className="cicon" />
+          <h3>Sign In Here</h3>
+          <form onSubmit={handleSubmit}>
+            <div className="inputdiv">
+              <label>User ID</label>
+              <input
+                type="text"
+                name="user_id"
+                value={inputs.user_id || ""}
+                onChange={handleChange}
+                placeholder="User ID"
+                required
+              />
+            </div>
+            <div className="inputdiv">
+              <label>Password</label>
+              <input
+                type={showPassword ? 'text' :'password'}
+                name="password"
+                value={inputs.password || ""}
+                onChange={handleChange}
+                placeholder="User password"
+                required
+              />
+               <span className="showicon" onClick={handleTogglePassword}>
+        {showPassword ? <FaEyeSlash className="eyeicon"/> : <FaEye className="eyeicon"/>}
+          </span>
+            </div>
+           
+             <input  type="submit" value="Login" />
+          </form>
+          <a href="#" className="forgot">
+            Forgot Password
+          </a>
+        </div>
+      </div>
     </>
   )
 }
+  
 
-export default Login
+export default Login;
+

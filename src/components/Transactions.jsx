@@ -1,11 +1,15 @@
-import React from 'react'
-import SupperAdmin from './SupperAdmin'
-function Transactions() {
-  return (
-    <>
-        <p>Transactions</p>
-    </>
-  )
-}
+// import React,{useState} from 'react'
+// import SubLink from '../Route/SubLink';
+// import {TransactionManageData} from '../Route/SubLinkJSON';
 
-export default Transactions
+// function Transactions() {
+// const [subLinkJSON,setSubLinkJSON]=useState(TransactionManageData);
+//   return (
+//     <div>
+//       <p>Transactions</p>
+//       <SubLink sublinks={subLinkJSON} />
+//     </div>
+//   )
+// }
+
+// export default Transactions
