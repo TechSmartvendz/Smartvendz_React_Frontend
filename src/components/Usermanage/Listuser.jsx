@@ -18,6 +18,7 @@ const[tableRefresh,setTableRefresh]=useState(0)
   }
   
   useEffect(() => {
+    
     loadTableDate()
   }, [])
 

@@ -1,7 +1,7 @@
 import React, { useState ,useEffect} from "react";
 import DataList from "./DataList";
 import { format } from 'date-fns';
-
+import { getReq } from "../middleware/AxiosApisCall";
 function TableData4() {
 
   const stockdetails = [
@@ -65,11 +65,25 @@ function TableData4() {
       ReplaceItem: "",
     },
   ];
+
+
   const [date, setDate] = useState('');
   const [refilldata, setRefilldata] = useState(stockdetails);
   const [inputs, setInputs] = useState({});
 
   const [tableInputs,setTableInputs]=useState([{}]);
+  const[slotData, setSlotData] = useState([]);
+  const path='machine'
+
+  const loadMachineData=async()=>
+  {
+   const response=await getReq(path)
+   setSlotData(response.data);
+  console.log(response.data)
+  }
+useEffect(()=>{
+  loadMachineData()
+},[])
 
   useEffect(() => {
     const today = new Date();
@@ -140,7 +154,7 @@ function TableData4() {
             </div>
             <div className="input-lable-h-div">
              
-              <DataList
+              {/* <DataList
                 value={inputs.machinename || ""}
                 path={"getallmachines"}
                 handleChange={handleChange}
@@ -148,7 +162,7 @@ function TableData4() {
                 option={"machinename"}
                 Options={"machineid"}
                 heading={"Machine Code"}
-              />
+              /> */}
               
             </div>
             <div className="input-lable-h-div">
