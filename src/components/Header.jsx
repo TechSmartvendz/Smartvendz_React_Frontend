@@ -10,14 +10,21 @@ import Navbar from "../navbar/Navbar";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
-import {AiOutlineLogout} from 'react-icons/ai'
-
+import {AiOutlineLogout,AiOutlineSetting,AiOutlineFullscreen} from 'react-icons/ai'
+import {BsQuestionCircle} from 'react-icons/bs'
 function Header() {
  
   const [cookies, setCookie,removeCookie] = useCookies(["user"]);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const { sidebar, setSidebar } = useContext(NavContext);
+const [expand,setExpand]=useState(false);
 
+const expandScreen={
+  width: '100vw',
+  height: '100vh',
+ 
+  transition: 'width 0.5s, height 0.5s',
+}
   function logout() {
 
     setIsLoggedIn(false);
@@ -53,7 +60,7 @@ function Header() {
 
   return (
     <>
-      <div className="header">
+      <div className="header" style={expand ? expandScreen :{}}>
       {/* <NavContext.Provider value={{ sidebar, setSidebar }}>*/}
        
      <div className="navbar-btn">
@@ -81,12 +88,17 @@ function Header() {
       */}
 
         <div className="headercontent">
-          <img src={snaxsmart} alt="snaxsmart" />
+          <img className="logo-img" src={snaxsmart} alt="snaxsmart" />
         </div>
 
         <div className="headercontent">
-        <AiOutlineLogout className='logout-btn'  onClick={logout}/>
-        </div>
+        
+        <div className="icon-div"><AiOutlineSetting className="settings-icon"/></div>
+        <div className="icon-div"><BsQuestionCircle className="settings-icon"/></div>
+        <div className="icon-div"><AiOutlineFullscreen className="settings-icon" onClick={()=>setExpand(!expand)}/></div>
+        <div className="icon-div"><AiOutlineLogout className="logout-icon"  onClick={logout}/></div>
+      </div>
+     
       </div>
     </>
   );

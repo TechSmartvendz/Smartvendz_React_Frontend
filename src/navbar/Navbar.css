@@ -3,6 +3,7 @@
 }
 
 .Fabars1 {
+  
   display: block;
 }
 
@@ -20,7 +21,7 @@
 }
 
 .nav-menu.active {
-  background-color: rgb(22, 22, 22);
+  /* background-color: rgb(22, 22, 22);
   display: block;
   min-height:87vh;
   max-height: 100%;
@@ -28,12 +29,25 @@
   overflow-x:auto;
   width:250px;
   transition: width 0.2s;
+  transition-timing-function: linear; */
+
+  max-height: 100%;
+  min-height:100vh;
+  width:250px;
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x:auto;
+  transition: 0.3s;
   transition-timing-function: linear;
 }
 .nav-menu {
   /* display:none; */
   width:1px;
-  background-color: rgb(22, 22, 22);
+  background-color: rgb(71, 71, 243);
   display: block;
   min-height:87vh;
   max-height: 100%;
@@ -149,6 +163,44 @@
 #visible:hover #hidden {
   display: inline;
 } */
+.line-div{
+border-bottom: 5px solid rgb(2, 65, 94);
+margin-bottom: 15px;
+}
+.space-div{
+  height: 30px;
+  width: auto;
+  background-color: rgb(43, 39, 39);
+  border-bottom:20px;
+}
 
-
-
+@media only screen and(max-width:600px){
+  .nav-menu.active{
+   max-height: 100%;
+  min-height:87vh;
+  width:250px;
+ 
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x:auto;
+  transition: 0.3s;
+  transition-timing-function: linear;
+  } 
+  .nav-menu{
+    
+      /* display:none; */
+      width:1px;
+      background-color: rgb(22, 22, 22);
+      display: block;
+      min-height:87vh;
+      max-height: 100%;
+      display: flex;
+      overflow-x:hidden;
+      transition: width 0.2s;
+      transition-timing-function: linear;
+    }
+  
+}

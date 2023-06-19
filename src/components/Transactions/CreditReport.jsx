@@ -13,13 +13,13 @@ function CreditReport() {
 
         <form className="flex-col">
           <div className="input-lable-v-div">
-            <label htmlFor="start">Start</label>
-            <input type="text" id="start" className="input-lable-v-div"/>
+            <label htmlFor="start">Start Date</label>
+            <input type="date" id="start" className="input-lable-v-div"/>
           </div>
 
           <div className="input-lable-v-div">
-            <label htmlFor="end">End</label>
-            <input type="text" id="end" className="input-lable-v-div" />
+            <label htmlFor="end">End Date</label>
+            <input type="date" id="end" className="input-lable-v-div" />
           </div>
 
           <div className="input-lable-v-div">

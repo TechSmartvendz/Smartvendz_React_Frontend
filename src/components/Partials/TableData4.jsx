@@ -2,69 +2,86 @@ import React, { useState ,useEffect} from "react";
 import DataList from "./DataList";
 import { format } from 'date-fns';
 import { getReq } from "../middleware/AxiosApisCall";
+
 function TableData4() {
 
-  const stockdetails = [
-    {
-      id:0,
-      SlotCode: "A1",
-      MaterialName: "Haldirams Bhujia Sev 40Gm",
-      ClosingStock: "6",
+const [products,setProducts]=useState([]);
+
+  const ProductsData= async ()=>{
+try {
+       const response=await getReq('getallmachineslots/BLR002')
+       setProducts(response.data)
+       console.log(products)
+}
+       catch(error){
+        console.log(error)
+       }
+  }
+ 
+  useEffect(()=>{
+    ProductsData()
+  },[])
+  // const stockdetails = [
+  //   {
+  //     id:0,
+  //     SlotCode: "A1",
+  //     MaterialName: "Haldirams Bhujia Sev 40Gm",
+  //     ClosingStock: "6",
       
-      CurrentStock: "",
-      RefillQuantity: "",
-      SaleQuantity: "",
-      Swap: "",
-      ReplaceItem: "",
-    },
+  //     CurrentStock: "",
+  //     RefillQuantity: "",
+  //     SaleQuantity: "",
+  //     Swap: "",
+  //     ReplaceItem: "",
+  //   },
     
-    {
-      id:1,
-      SlotCode: "A2",
-      MaterialName: "Haldirams Bhujia Sev 40Gm",
-      ClosingStock: "6",
-      CurrentStock: "",
-      RefillQuantity: "",
-      SaleQuantity: "",
-      Swap: "",
-      ReplaceItem: "",
-    },
+  //   {
+  //     id:1,
+  //     SlotCode: "A2",
+  //     MaterialName: "Haldirams Bhujia Sev 40Gm",
+  //     ClosingStock: "6",
+  //     CurrentStock: "",
+  //     RefillQuantity: "",
+  //     SaleQuantity: "",
+  //     Swap: "",
+  //     ReplaceItem: "",
+  //   },
 
-    {
-      id:2,
-      SlotCode: "A3",
-      MaterialName: "Haldirams Bhujia Sev 40Gm",
-      ClosingStock: "6",
-      CurrentStock: "",
-      RefillQuantity: "",
-      SaleQuantity: "",
-      Swap: "",
-      ReplaceItem: "",
-    },
+  //   {
+  //     id:2,
+  //     SlotCode: "A3",
+  //     MaterialName: "Haldirams Bhujia Sev 40Gm",
+  //     ClosingStock: "6",
+  //     CurrentStock: "",
+  //     RefillQuantity: "",
+  //     SaleQuantity: "",
+  //     Swap: "",
+  //     ReplaceItem: "",
+  //   },
 
-    {
-      id:3,
-      SlotCode: "A4",
-      MaterialName: "Haldirams Bhujia Sev 40Gm",
-      ClosingStock: "6",
-      CurrentStock: "",
-      RefillQuantity: "",
-      SaleQuantity: "",
-      Swap: "",
-      ReplaceItem: "",
-    },
-    {
-     id:4,
-      SlotCode: "A5",
-      MaterialName: "Haldirams Bhujia Sev 40Gm",
-      ClosingStock: "6",
-      CurrentStock: "",
-      RefillQuantity: "",
-      SaleQuantity: "",
-      Swap: "",
-      ReplaceItem: "",
-    },
-  ];
+  //   {
+  //     id:3,
+  //     SlotCode: "A4",
+  //     MaterialName: "Haldirams Bhujia Sev 40Gm",
+  //     ClosingStock: "6",
+  //     CurrentStock: "",
+  //     RefillQuantity: "",
+  //     SaleQuantity: "",
+  //     Swap: "",
+  //     ReplaceItem: "",
+  //   },
+  //   {
+  //    id:4,
+  //     SlotCode: "A5",
+  //     MaterialName: "Haldirams Bhujia Sev 40Gm",
+  //     ClosingStock: "6",
+  //     CurrentStock: "",
+  //     RefillQuantity: "",
+  //     SaleQuantity: "",
+  //     Swap: "",
+  //     ReplaceItem: "",
+  //   },
+  // ];
 
 
   const [date, setDate] = useState('');
@@ -99,12 +116,7 @@ useEffect(()=>{
 
   }
 
-//   function handleTable(e,inputs)
-//   {
-// const name=e.target.inputs;
-// const value=e.target.value;
-// setTableInputs((values)=>({...values,[name]:value}))
-//   }
+
   function handleSubmit(e) {
     e.preventDefault();
     console.log(inputs);

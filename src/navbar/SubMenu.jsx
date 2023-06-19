@@ -7,7 +7,8 @@ function SubMenu(props) {
 
   const [navData, setNavData] = useState(props.navData);
   const [sideBarData, setSideBarData] = useState(props.sideBarData);
-
+  const [openSubmenu,setOpenSubmenu]=useState(false);
+console.log(openSubmenu)
   useEffect(() => {
 
   }, []);
@@ -19,16 +20,16 @@ function SubMenu(props) {
       if(navData[item.permission]){
       return (
         <li key={index} className={item.cName} id='visible'>
-          <Link to={item.path}>
+          <Link to={item.path} onClick={()=>setOpenSubmenu(!openSubmenu)}>
             {item.icon}
             <span>{item.title}</span>
           </Link>
           <ul key={index}  id="hidden" className="nav-menu-items ulbg">
-        {item.submenu && item.submenu.map((type, index) => {
+        {openSubmenu ? item.submenu && item.submenu.map((type, index) => {
           if(navData[type.permission]){
           return <li key={index} className={item.cName} ><Link  to={type.path}>{item.icon}<span>{type.title}</span></Link> </li>
           }
-        })}
+        }):''}
        </ul>
        
         </li> 

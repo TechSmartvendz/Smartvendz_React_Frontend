@@ -24,6 +24,7 @@ function Login() {
     event.preventDefault();
     const response = await postReq(path,inputs);
       console.log("🚀 ~ file: Login.jsx:24 ~ submitData ~ inputs", inputs)
+      console.log('Login Data:',response.data);
       if (response.success) {
         setCookie("JWTcookie", response.data ,{ path: "/" });
         setIsLoggedIn(true);
@@ -34,7 +35,7 @@ function Login() {
       } else {
         ErrorAlert({ title: "Login", message:response.msg });
       }
-
+console.log('Logged IN:',isLoggedIn)
   };
 
   return (
@@ -42,10 +43,10 @@ function Login() {
       <div className="loginbody">
         <div className="loginbox">
           <img src={Clogo} className="cicon" />
-          <h3>Sign In Here</h3>
+          <h3 className="signinhere">Sign In Here</h3>
           <form onSubmit={handleSubmit}>
             <div className="inputdiv">
-              <label>User ID</label>
+              
               <input
                 type="text"
                 name="user_id"
@@ -53,10 +54,11 @@ function Login() {
                 onChange={handleChange}
                 placeholder="User ID"
                 required
+                autoComplete="off"
               />
             </div>
             <div className="inputdiv">
-              <label>Password</label>
+              
               <input
                 type={showPassword ? 'text' :'password'}
                 name="password"
@@ -64,6 +66,7 @@ function Login() {
                 onChange={handleChange}
                 placeholder="User password"
                 required
+                autoComplete="off"
               />
                <span className="showicon" onClick={handleTogglePassword}>
         {showPassword ? <FaEyeSlash className="eyeicon"/> : <FaEye className="eyeicon"/>}
