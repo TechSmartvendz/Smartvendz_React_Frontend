@@ -12,32 +12,43 @@ import {
 } from "../components/middleware/AxiosApisCall";
 import SubMenu from "./SubMenu";
 import NavContext from "../Context/NavContext";
+import axios from "axios";
+import { Cookies } from 'react-cookie';
 
 function Navbar() {
   const path = "Permission/LoadMenu/";
-
+  const cookies = new Cookies();
+  const token = cookies.get('JWTcookie')
   const { sidebar, setSidebar } = useContext(NavContext);
   const [navData, setNavData] = useState([]);
   const [sideBarData, setSideBarData] = useState(SidebarData);
-  const [searchQuery,setSearchQuery]=useState('')
+  const [searchQuery, setSearchQuery] = useState('')
 
  console.log('NavaData:',navData)
   const loadDate = async () => {
     // console.log("loadData() start")
-    const response = await getReq(`${path}`);
-    if (response.data) {
-      // console.log(response.data);
-     setNavData(response.data);
-    } else {
-      // console.log(response.data);
-      setNavData();
+    // const response = await getReq(`${path}`);
+    // if (response.data) {
+    //   // console.log(response.data);
+    //  setNavData(response.data);
+    // } else {
+    //   // console.log(response.data);
+    //   setNavData();
+    // }
+    try {
+   const res= await axios.get('http://localhost:3000/api/Permission/LoadMenu', { headers: { 'Authorization': 'Bearer ' + token } })
+      const data=res.data.data
+      setNavData(data);
+    } catch (error) {
+       console.log(error);
     }
    
+      
   };
 
   useEffect(() => {
     loadDate();
-   }, []);
+  }, []);
 
  
  
@@ -56,7 +67,7 @@ console.log('SidebarData:',sideBarData)
   return (
     <React.Fragment>
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-   
+
         <ul className="nav-menu-items">
 
           <li className="nav-li">
@@ -66,7 +77,7 @@ console.log('SidebarData:',sideBarData)
                 onClick={() => setSidebar(!sidebar)}
                  
               />
-          </Link>*
+            </Link>*
           </li>
           {/* <div className="line-div"></div> */}
           <div className="userinfo-container">
@@ -81,10 +92,10 @@ console.log('SidebarData:',sideBarData)
       
         </ul>
       </nav>
-    
+
     </React.Fragment>
   );
-  
+
 }
 
 export default Navbar;

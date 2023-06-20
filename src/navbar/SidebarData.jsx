@@ -137,6 +137,11 @@ export const SidebarData = [
         title: "Credit Transaction Report",
         path: "/transactionreports/credittransactionreport",
         permission:"listcompany" 
+      },
+      {
+        title: "Rejected Transaction Report",
+        path: "/transactionreports/rejectedtransactionreport",
+        permission:"listcompany" 
       }
     ]
   },

@@ -1,0 +1,83 @@
+.selectMachine {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 5.5%;
+}
+
+select {
+    width: max-content;
+    margin-top: 10px;
+    height: 20px;
+    outline: none;
+}
+
+table {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+table th {
+    padding: 5px;
+    background-color: teal;
+    border: 1px solid white;
+}
+
+
+table td {
+    padding: 5px;
+    border: 1px solid #0a0a0a;
+}
+
+input {
+    width: 100%;
+    outline: none;
+    height: 31.5px;
+    text-align: center;
+    background-color: #5756566c;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+table tr:nth-child(even) {
+    background-color: rgba(86, 211, 211, 0.455);
+}
+
+.tbody_td {
+    width: 60px;
+    padding: 0px;
+    border: none;
+    background-color: white;
+}
+
+.tcontainer {
+    gap: 10px;
+    position: relative;
+}
+
+.tcontainer>table:nth-child(1) th {
+    padding: 5px;
+    background-color: rgb(41, 41, 41);
+    border: 1px solid white;
+    color: rgba(255, 255, 255, 0.805);
+}
+
+.td_input:focus {
+    background-color: #eaeaea;
+    border: 1px solid purple;
+}
+
+.actionsBtn{
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
