@@ -1,111 +1,176 @@
-import React, { useState } from "react";
-import TableData4 from "../Partials/TableData4";
-import DataList from "../Partials/DataList";
-function Refiller_Refilling_Request() {
-  const [inputs, setInputs] = useState([{}]);
+import React, { useEffect, useState } from "react";
+import './Refiller.css'
+import { Cookies } from "react-cookie";
+import axios from "axios";
+import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
 
-  function handleChange(e) {
-    const name = e.target.name;
-    const value = e.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+const Refiller_Refilling_Request = () => {
+  const cookies = new Cookies();
+  const token = cookies.get('JWTcookie');
+  const [companies, setCompanies] = useState();
+  const [showTable, setshowTable] = useState(false);
+  const [machine, setMachine] = useState();
+
+  const getCompanies = async () => {
+    try {
+      const res = await axios.get('http://192.168.1.15:3000/api/getallmachines', { headers: { 'Authorization': 'Bearer ' + token } })
+      const data = res.data
+      // console.log('data: ', data);
+      setCompanies(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(inputs);
-
+  const getMachineDetails = async (id) => {
+    try {
+      const res = await axios.get(`http://192.168.1.15:3000/api/getallmachineslots?machineName=${id}`, { headers: { 'Authorization': 'Bearer ' + token } })
+      const data = res.data.data;
+      console.log('data: ', data);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
+
+  const handleMachineId = (e) => {
+    const machineName = e.target.value
+    console.log('machineName: ', machineName);
+    getMachineDetails(machineName)
+      .then(res => {
+        // console.log(res);
+        setMachine(res);
+        setshowTable(true)
+      });
+  }
+
+  useEffect(() => {
+    getCompanies();
+  }, []);
+
+  const handleRefillQty = (id, e) => {
+    const newmachine = machine.slots.map((input) => {
+      if (input._id === id) {
+        return { ...input, refillQty: e.target.value };
+      }
+      return input;
+    });
+    setMachine((prevState) => ({ ...prevState, slots: newmachine }));
+  };
+
+  const handleCurrentStock = (id, e) => {
+    const newmachine = machine.slots.map((input) => {
+      if (input._id === id) {
+        return { ...input, currentStock: e.target.value };
+      }
+      return input;
+    });
+    setMachine((prevState) => ({ ...prevState, slots: newmachine }));
+  };
+
+  const handleSubmit = async () => {
+    const newToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc3MDA5YWRhMmVlMWI0MWIxYzJkNGMiLCJpYXQiOjE2ODU1MjA1Mzh9.W2kKhEgLbH5Ib2JHghm_SxmqQ5fawM35AO7WozH2FGo";
+    try {
+      const res = await axios.post('http://192.168.1.14:3000/api/refillerrequest', machine, { headers: { 'Authorization': 'Bearer ' + newToken } })
+      const data = res.data
+      // console.log('data: ', data);
+      if (data.success) {
+        SuccessAlert({
+          title: "Success",
+          message: "Slots Updated successfully",
+        })
+      }
+      else {
+        ErrorAlert({
+          title: "Fail",
+          message: "Slots not Updated",
+        })
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+ 
   return (
-    <React.Fragment>
-      <div className="add-user-container">
-        {/* <div className="headingdiv">
-          <span className="componet-title"> Refill Details</span>
-          <div>
-            <button onC
-            lick={() => navigate(-1)}>Back</button>
-          </div>
-        </div> */}
-        {/* <div className="option-btn">
-          <button onClick={handleSubmit}>Save as draft </button>
-          <button
-            onClick={() => {
-              navigate("/usermanage/addnewuser");
-            }}
-          >
-            Add New{" "}
-          </button>
-          <button
-            onClick={() => {
-              navigate("/usermanage/addnewuser");
-            }}
-          >
-            Generate Refill Request{" "}
-          </button>
-        </div> */}
+    <div>
+      <div className="selectMachine">
+        <label> Machine ID & Company ID</label>
+        <select
+          onChange={(e) => handleMachineId(e)}
+        >
+          <option value="">Select Machine</option>
+          {companies && companies.map((item, i) => (
+            <option key={item._id} value={item.machineid}>{item.machineid} & {item.companyid}</option>
+          ))}
+        </select>
 
-        {/* <div className="componet-sub-title">
-          <span>Machine Information</span>
-        </div> */}
-
-        {/* <form className="flex-row form-2col-ver">
-          <div className="flex-row">
-            <div className="input-lable-h-div">
-              <label htmlFor="machinename"> Machine Name</label>
-
-              <input
-                type="text"
-                name="machinename"
-                value={inputs.machinename || ""}
-                onChange={handleChange}
-              />
-
-            </div>
-
-            <div className="input-lable-h-div">
-              <DataList
-                value={inputs.companyid || ""}
-                path={"Company"}
-                handleChange={handleChange}
-                name={"companyid"}
-                option={"companyid"}
-                heading={"Machine Code"}
-              />
-            </div>
-
-            <div className="input-lable-h-div">
-              <label htmlFor="date">Date</label>
-              <input
-                type="text"
-                name="date"
-                value={inputs.date || ""}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="input-lable-h-div">
-              <label htmlFor="warehousename">Warehouse Name</label>
-              <input
-                type="text"
-                name="warehousename"
-                value={inputs.warehousename || ""}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <button className="submit-btn">Get Machine</button>
-            </div>
-            
-          </div>
-        </form>
-        <div className="componet-sub-title">
-          <span>Machine Stock Details</span>
-        </div> */}
-
-        <TableData4 />
-        
       </div>
-    </React.Fragment>
+      {showTable &&
+
+        <div>
+          <div className="tcontainer">
+            <table>
+              <thead>
+                <th>Machine Id</th>
+                <th>Machine Name</th>
+                <th>Company Name</th>
+                <th>Admin</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{machine.machineID}</td>
+                  <td>{machine.machineName}</td>
+                  <td>{machine.companyName}</td>
+                  <td>{machine.admin}</td>
+                </tr>
+              </tbody>
+            </table>
+            <table >
+              <thead style={{ position: "sticky", top: 0 }}>
+                <tr>
+                  <th>Slot Name</th>
+                  <th>Product</th>
+                  <th>Closing Stock</th>
+                  <th>Current Stock</th>
+                  <th>Sale Qty</th>
+                  <th>Refill Qty</th>
+                </tr>
+              </thead>
+              <tbody>
+                {machine.slots.map((item, index) => (
+                  <tr key={item._id}>
+                    <td>{item.slot}</td>
+                    <td>{item.product}</td>
+                    <td>{item.closingStock}</td>
+                    <td className="tbody_td">
+                      <input
+                        className="td_input"
+                        type="number"
+                        value={item.currentStock}
+                        onChange={(e) => handleCurrentStock(item._id, e)}
+                      />
+                    </td>
+                    <td>{item.saleQty}</td>
+                    <td className="tbody_td">
+                      <input
+                        className="td_input"
+                        type="number"
+                        value={item.refillQty}
+                        onChange={(e) => handleRefillQty(item._id, e)}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="input-lable-v-div">
+            <button className="submit-btn" onClick={handleSubmit}>Submit</button>
+          </div>
+        </div>
+      }
+    </div>
   );
 }
 

@@ -72,6 +72,8 @@ import Refund1 from "./Subroutes/Refund1"
 import Refund2 from "./Subroutes/Refund2"
 
 import { ReactNotifications } from 'react-notifications-component'
+import { RejectedTransaction } from "./Transactions/RejectedTransaction";
+import { DataTable } from "./RefillerManage/DataTable";
 
 
 
@@ -132,12 +134,14 @@ function Dashboard() {
               <Route exact path="/refillermanager" element={<RefillerManager/>}>
                 <Route index path="managerefillrequest" element={<Manage_Refill_Request />} />
                <Route path="refillerrefillingrequest" element={<Refiller_Refilling_Request />} />
+               <Route path="managerefillrequest/:id" element={<DataTable />} />
               </Route>
               
               <Route exact path="/transactionreports" element={<Transactions />}>
                    <Route index path="transactionreport" element={<TransactionReport />}/>
                    <Route path="creditreport" element={<CreditReport/>}/>
                    <Route path="credittransactionreport" element={<CreditTransactionReport />} />
+                   <Route path="rejectedtransactionreport" element={<RejectedTransaction />} />
               </Route>
               <Route exact path="/generalmanager" element={<Generalmanage />}>
                   <Route index path="countrymanage" element={<Countrymanage />} />

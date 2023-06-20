@@ -1,179 +1,119 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import { useForm } from "react-hook-form";
 
-import { template } from "../Partials/FormFields";
+import { template } from "../Partials/FormFields"; 
+import { Cookies } from "react-cookie";
+import axios from "axios";
 
 
 
-function TransactionReport() {
+const TransactionReport = () => {
+  const cookies = new Cookies();
+  const token = cookies.get('JWTcookie');
+  const [companies, setCompanies] = useState();
+  const [payload, setPayload] = useState({
+    machineid: undefined,
+    startDate: undefined,
+    endDate: undefined,
+  });
+
+
+  const getCompanies = async () => {
+    try {
+      const res = await axios.get('http://192.168.1.14:3000/api/getallmachines', { headers: { 'Authorization': 'Bearer ' + token } })
+      // console.log('res: ', res);
+      const data = res.data
+      setCompanies(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getCompanies()
+  }, [])
+  const { machineid, startDate, endDate, } = payload
+  const downloadReport = async (e) => {
+    e.preventDefault()
+    if(!machineid ||!startDate || !endDate ){
+      return alert("Please Add input fields");
+    }
+    const data = {
+      start: payload.startDate,
+      end: payload.endDate,
+    //  machine_id: payload.machineid
+      machine_id: "SVZBLR0012"
+    }
+    // const data = {
+    const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWJjMTg0NmNkZWVhNjM4Mzk1Y2NkMzMiLCJpYXQiOjE2Mzk3MTY5MzR9.RGFT8fAxiPiTwzbqqW_yB_DWMrqEd97w99SvGNxUA0U`
+    const config = {
+      headers: { 'Authorization': `Bearer ${token}` }
+    }
+    let response = await axios.post("https://smartvendz.com/csvreport", data, config);
+    console.log('response: ', response);
+    if(response.data.error){
+    return alert("Transaction Not Found");
+    }
+    const url = URL.createObjectURL(new Blob([response.data]));
+    // Create a link element
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'file.csv'); // Set the desired file name
+  
+    // Append the link to the document body and trigger the download
+    document.body.appendChild(link);
+    link.click();
+  
+    // Clean up the temporary URL and link
+    URL.revokeObjectURL(url);
+    link.remove();
+    // body: JSON.stringify(himanshu),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     'Authorization': `Bearer ${token}`
+    //   },
+
+  }
+
+  const viewReport = (e) => {
+    e.preventDefault()
+    console.log(payload)
+  }
  
-// const [dynamic,setDynamic]=useState(template);
-
-// const {register,handleSubmit}=useForm();
-
-
-// function handleSubmit(values)
-// {
-//   console.log(values)
-// }
-
-
-// const renderFields=(fields)=>{
-//  return fields.map((field)=>{
-//   let {title,type,name}=field;
-
-
-
   return (
-    
-    <React.Fragment>
-      <div className="add-user-container">
-        <div>
-          <span className="componet-title">Add New User</span>
-        </div>
-        <div className="componet-sub-title">
-          <span>Search Employee</span>
-        </div>
-         
-
-        <form >
-               {/* {
-               template.fields.map(field=>{
-                return (<div className="input-lable-v-div" key={field.name}>
-                <label htmlFor={field.name}>{field.title}</label>
-                <input type={field.type} id={field.id} name={field.name}  />
-                <datalist list={field.id}>{}</datalist>
-              </div>)
-               })
-               } */}
-
+    <div>
+      <h3>Transactions Report</h3>
+      <form>
+        <div className="input-lable-v-div">
+          <label> Machine ID & Company ID</label>
+          <select
+            value={machineid}
+            onChange={(e) => setPayload({ ...payload, machineid: e.target.value })}
+          >
+            <option value="">Select Machine</option>
+            {companies && companies.map((item, i) => (
+              <option key={item._id} value={item.id}>{item.machineid} & {item.companyid}</option>
+            ))}
+          </select>
           <div className="flex-col">
-         
-            {/*<div className="input-lable-v-div">
+            <div className="input-lable-v-div">
               <label>Start Date-Time</label>
-              <input type="date" name="start_date"/>
+              <input type="date" value={startDate} onChange={(e) => setPayload({ ...payload, startDate: e.target.value })} />
             </div>
-
-
             <div className="input-lable-v-div">
               <label>End Date-Time</label>
-              <input type="date" />
-            </div>
-
-            <div className="input-lable-v-div">
-              <label>Product</label>
-              <select>
-                <option>All</option>
-                <option>2</option>
-                <option>3</option>
-              </select>
-            </div>
-
-            <div className="input-lable-v-div">
-              <label> Machine ID</label>
-              <select>
-                <option>SVZLOCK001</option>
-                <option>SVZLOCK001</option>
-                <option>SVZLOCK001</option>
-                <option>SVZLOCK001</option>
-              </select>
-            </div>
-
-            <div className="input-lable-v-div">
-              <label> Company ID</label>
-              <select>
-                <option>SVZLOCK001</option>
-                <option>SVZLOCK001</option>
-                <option>SVZLOCK001</option>
-                <option>SVZLOCK001</option>
-              </select>
-            </div>
-
-            <div className="input-lable-v-div">
-              <label>Employee RFID Card No.</label>
-              <input type="text" />
-            </div>
-
-            <div className="input-lable-v-div">
-              <button className="submit-btn">Transaction</button>
+              <input type="date" value={endDate} onChange={(e) => setPayload({ ...payload, endDate: e.target.value })} />
             </div>
             <div className="input-lable-v-div">
-              <button className="submit-btn">CSV Report</button>
-        </div>*/}
-
-
+              <button onClick={viewReport} className="submit-btn">View Transaction</button>
+            </div>
+            <div className="input-lable-v-div">
+              <button onClick={downloadReport} className="submit-btn">Download CSV Report</button>
+            </div>
           </div>
-        </form>
-      </div>
-
-
-      <div>
-        <div className="componet-sub-title">
-          <span>Employees</span>
         </div>
-        <div className="table_container-div">
-          <table>
-            <tbody>
-              <tr>
-                <th>Card no</th>
-                <th>Machine ID</th>
-                <th>Locker NO.</th>
-                <th>Item </th>
-                <th>Employee ID</th>
-                <th>Employee Email</th>
-                <th>Date-Time</th>
-              </tr>
-
-              <tr>
-                <td>4143</td>
-                <td>SlZV562</td>
-                <td>12</td>
-                <td>HP black i5 500GB</td>
-                <td>14116</td>
-                <td>null</td>
-                <td>7/11/2024 12:47:05</td>
-              </tr>
-              <tr>
-                <td>4143</td>
-                <td>SlZV562</td>
-                <td>12</td>
-                <td>HP black i5 500GB</td>
-                <td>14116</td>
-                <td>null</td>
-                <td>7/11/2024 12:47:05</td>
-              </tr>
-              <tr>
-                <td>4143</td>
-                <td>SlZV562</td>
-                <td>12</td>
-                <td>HP black i5 500GB</td>
-                <td>14116</td>
-                <td>null</td>
-                <td>7/11/2024 12:47:05</td>
-              </tr>
-              <tr>
-                <td>4143</td>
-                <td>SlZV562</td>
-                <td>12</td>
-                <td>HP black i5 500GB</td>
-                <td>14116</td>
-                <td>null</td>
-                <td>7/11/2024 12:47:05</td>
-              </tr>
-              <tr>
-                <td>4143</td>
-                <td>SlZV562</td>
-                <td>12</td>
-                <td>HP black i5 500GB</td>
-                <td>14116</td>
-                <td>null</td>
-                <td>7/11/2024 12:47:05</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </React.Fragment>
+      </form>
+    </div >
   );
 }
 
