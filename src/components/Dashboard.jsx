@@ -1,8 +1,8 @@
 import { Routes, Route, Link, Outlet } from "react-router-dom";
 //FIXME:remove Add order
-import React from "react";
+import React,{useContext} from "react";
 import Addorder from "./Addorder";
-
+import NavContext from "../Context/NavContext";
 
 import Products from "./Products/Products";
 import ProductList from "./Products/ProductList";
@@ -81,16 +81,18 @@ import { DataTable } from "./RefillerManage/DataTable";
 // import 'Usermanage.css'
 
 function Dashboard() {
+
+  const { sidebar, setSidebar } = useContext(NavContext);
   return (
     <React.Fragment>
-      <div className="root">
+      <div className="root" >
         <Header />
         <div className="section">
           <Navbar/>
           <ReactNotifications />
-          <div className="container">
+          <div className="container" >
           {/*FIXME: MAke this Routes a saprate components*/}
-
+            
             <Routes>
               <Route default exact path="/" element={<Home />} />
               <Route exact path="/addorder" element={<Addorder />} >
@@ -120,7 +122,7 @@ function Dashboard() {
                 
               </Route>
 
-              <Route exact path="/usermanage" element={<UserManage />}>
+              <Route exact path="/usermanage" element={<UserManage/>}>
                <Route path="addnewuser" element={<Addnewuser />} />
                 <Route path="addnewuser/:id" element={<Addnewuser />} />
                 <Route  index path="listuser" element={<Listuser />} />

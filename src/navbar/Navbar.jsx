@@ -20,12 +20,11 @@ function Navbar() {
   const cookies = new Cookies();
   const token = cookies.get('JWTcookie')
   const { sidebar, setSidebar } = useContext(NavContext);
-  const [navData, setNavData] = useState();
-
+  const [navData, setNavData] = useState([]);
   const [sideBarData, setSideBarData] = useState(SidebarData);
   const [searchQuery, setSearchQuery] = useState('')
 
-
+ console.log('NavaData:',navData)
   const loadDate = async () => {
     // console.log("loadData() start")
     // const response = await getReq(`${path}`);
@@ -51,14 +50,19 @@ function Navbar() {
     loadDate();
   }, []);
 
-  function handlesearchFilter(e) {
-    setSearchQuery(e.target.value)
+ 
+ 
+const filtredMenu=sideBarData.filter((menus)=>{
+  if( menus.title.toLowerCase().includes(searchQuery.toString().toLowerCase())){
+    return menus;
   }
+})
 
-  const filtredMenu = sideBarData.filter((menus) =>
-    menus.title[0].toLowerCase().includes(searchQuery.toLowerCase())
-  )
+console.log('SidebarData:',sideBarData)
 
+// setNavData(filtredMenu)
+
+// console.log('filtered:',filtredMenu);
 
   return (
     <React.Fragment>
@@ -71,15 +75,21 @@ function Navbar() {
               <AiIcons.AiOutlineClose
                 size={25}
                 onClick={() => setSidebar(!sidebar)}
-
+                 
               />
             </Link>*
           </li>
-          <input type="text" id="mySearch" value={searchQuery} onChange={handlesearchFilter} placeholder="Search..." />
+          {/* <div className="line-div"></div> */}
+          <div className="userinfo-container">
+          <h5>Welcome !</h5>
+          <h3>{navData.role}</h3>
+          </div>
+          <div className="space-div"></div>
+          {/* <input type="text" id="mySearch" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} placeholder="Search..."  /> */}
 
-          {navData && navData ? <SubMenu key={navData} navData={navData} sideBarData={filtredMenu} /> : (() => { setSidebar(!sidebar) })}
-
-
+          {navData? <SubMenu key={navData} navData={navData} sideBarData={sideBarData}/>:(()=>{setSidebar(!sidebar)})}
+          
+      
         </ul>
       </nav>
 

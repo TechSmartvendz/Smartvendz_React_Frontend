@@ -108,7 +108,7 @@ function Addnewuser() {
         </div>
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
-          <div className="componet-sub-title">
+          <div className="componet-sub2-title">
             <span>User Details</span>
           </div>
 

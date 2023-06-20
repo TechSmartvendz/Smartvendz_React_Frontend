@@ -3,6 +3,9 @@
 
 body{
   overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 
@@ -21,7 +24,7 @@ body{
   left: 50%;
   transform: translate(-50%,-50%);
   width:350px;
-  min-height:180px;
+  min-height:65px;
   background:white;
   border-radius: 15px;
   padding:50px;
@@ -46,28 +49,30 @@ h3{
   width:100%;
   padding:5px;
   margin-bottom: 20px;
-  border-radius: 10px;
-  
+  border-radius:2px;
+ 
   
 }
-.loginbox input[type="email"],
+.loginbox input[type="text"],
 .loginbox input[type="password"]
 {
   border: none;
-  border-bottom: 2px solid #262626;
+  border-bottom:1px solid #262626;
   outline: none;
   height: 40px;
   color: #262626;
- 
-  font-size: 16px;
+  background-color: white !important;
+  font-size: 13px;
   padding-left: 0px;
   box-sizing: border-box;
   
 }
-.loginbox input[type="email"]:focus,
+.loginbox input[type="text"]:focus,
 .loginbox input[type="password"]:focus
 {
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(5, 175, 33);
+ 
 }
 .inputdiv{
   position: relative;
@@ -75,17 +80,18 @@ h3{
 .loginbox input[type="submit"]{
   border: none;
   border-radius: 20px;
+
   outline: none;
   height: 40px;
   font-size: 16px;
-  background: rgb(10, 10, 10);
+  background: rgb(51, 153, 255);
   color: rgb(255, 255, 255);
   cursor: pointer;
   
 
 }
 .loginbox input[type="submit"]:hover{
-  background-color: #236723;
+  background-color: rgb(70, 202, 37);
   
 }
 
@@ -120,11 +126,12 @@ font-weight: bold;
 .componet-sub-title{
   color: black;
   font-size: 1.2em;
-  font-weight: bold;
+  font-weight: bold;           
   border-bottom: 1px solid black;
   border-top: 1px solid black;
   padding:5px;
   margin-top: 10px;
+ 
   }
   .componet-sub2-title{
     color: black;
@@ -139,12 +146,12 @@ font-weight: bold;
 .flex-row{
   display: flex;
   flex-flow:column;
-  flex-wrap: wrap;
+ 
 }
 
 .flex-col{
   display: flex;
-  flex-flow:row;
+ flex-flow:row;
   flex-wrap: wrap;
 
 }
@@ -598,6 +605,7 @@ margin-left: 100px ;
     border-radius: 5px;
     margin: 5px;
     cursor: pointer;
+    
   }
 
   /* created by Sharan for Back button */
@@ -605,7 +613,12 @@ margin-left: 100px ;
   display: flex;
 flex-flow: row;
 justify-content: space-between;
+flex-wrap: wrap;
+overflow: hidden;
 
+ }
+ .signinhere{
+  color: gray;
  }
  .headingdiv >div >button{
 
@@ -613,6 +626,7 @@ justify-content: space-between;
   color: white;
   padding: 6px;
   border-radius: 5px;
+  border-style: none;
   cursor: pointer;
  }
  .headingdiv>div>button:hover{
@@ -628,4 +642,69 @@ justify-content: space-between;
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
+ }
+
+ @media only screen and (max-width:600px){
+  body{
+    background-color:rgb(180, 19, 19);
+    width: 100%;
+  }
+  .container{
+    width: 100%;
+  }
+  .add-user-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .flex-row{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .flex-col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .input-lable-h-div{
+    display: flex;
+    flex-direction:column;
+   flex-wrap: wrap;
+  }
+ }
+
+ .headercontent {
+  /* background-color: rgb(250, 247, 247); */
+  color: white;
+
+  width: 180px;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  visibility: visible;
+  margin: 10px;
+}
+ .icon-div{
+  width:30px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: rgb(27, 27, 27);
+ }
+ .settings-icon{
+color: white;
+  width: 20px;
+cursor: pointer;
+  height: 30px;
+ margin-left: 5px;
+ }
+ .logout-icon{
+  color: rgb(240, 4, 4);
+  width: 20px;
+  transform: rotate(-90deg);
+  height: 30px;
+  margin-left: 5px;
+  cursor: pointer;
  }
