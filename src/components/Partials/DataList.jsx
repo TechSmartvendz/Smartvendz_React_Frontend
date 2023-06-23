@@ -35,7 +35,7 @@ return (
 { dataList !=null ?
 (dataList.map((e,i)=> {
   
-  return <option key={i} value={e.id}>{e[option]}{`[${e[Options]}]`}</option>
+  return <option key={i} value={e.id}>{e[option]}</option>
 })
 ):
 

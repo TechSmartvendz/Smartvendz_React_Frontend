@@ -52,11 +52,11 @@ function Navbar() {
 
  
  
-const filtredMenu=sideBarData.filter((menus)=>{
-  if( menus.title.toLowerCase().includes(searchQuery.toString().toLowerCase())){
-    return menus;
-  }
-})
+// const filtredMenu=sideBarData.filter((menus)=>{
+//   if( menus.title.toLowerCase().includes(searchQuery.toString().toLowerCase())){
+//     return menus;
+//   }
+// })
 
 console.log('SidebarData:',sideBarData)
 
@@ -71,18 +71,14 @@ console.log('SidebarData:',sideBarData)
         <ul className="nav-menu-items">
 
           <li className="nav-li">
-            <Link to="#" className="navbar-icon crossbutton">
-              <AiIcons.AiOutlineClose
-                size={25}
-                onClick={() => setSidebar(!sidebar)}
-                 
-              />
-            </Link>*
+           
           </li>
           {/* <div className="line-div"></div> */}
           <div className="userinfo-container">
           <h5>Welcome !</h5>
           <h3>{navData.role}</h3>
+          <h5>{navData.user_name}</h5>
+          <h5>{}</h5>
           </div>
           <div className="space-div"></div>
           {/* <input type="text" id="mySearch" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} placeholder="Search..."  /> */}
