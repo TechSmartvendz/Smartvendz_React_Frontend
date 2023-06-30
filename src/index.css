@@ -11,7 +11,7 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
   /* min-width: 700px; */
-
+   width: auto;
 }
 
 /*for hidding scroll bar but keep functionality  for Chrome, Safari and Opera*/

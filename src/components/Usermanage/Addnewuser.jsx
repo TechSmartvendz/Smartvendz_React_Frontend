@@ -67,28 +67,28 @@ function Addnewuser() {
     }
   };
 
-  function dataslist(user1) {
+  // function dataslist(user1) {
 
-    console.log("user Name:", user1.name);
+  //   console.log("user Name:", user1.name);
 
-    if (user1.type === "datalist") {
-      return (
-        <div className="input-lable-h-div">
-          <DataList
+  //   if (user1.type === "datalist") {
+  //     return (
+  //       <div className="input-lable-h-div">
+  //         <DataList
 
-            value={inputs[user1.name] || null}
-            path={user1.name}
-            option={user1.name}
-            name={user1.name}
-            heading={user1.title}
+  //           value={inputs[user1.name] || null}
+  //           path={user1.name}
+  //           option={user1.name}
+  //           name={user1.name }
+  //           heading={user1.title}
 
-          />
-        </div>
-      );
-    } else {
-      return null;
-    }
-  }
+  //         />
+  //       </div>
+  //     );
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
   return (
     <React.Fragment>
@@ -135,7 +135,17 @@ function Addnewuser() {
               {template.addnewuser1.map((adduser1) => {
 
                 return adduser1.type === "datalist" ? (
-                  dataslist(adduser1)
+                  <div className="input-lable-h-div">
+             <DataList
+
+            value={inputs[adduser1.name] || null}
+            path={adduser1.name}
+            option={adduser1.name}
+            name={adduser1.name }
+            heading={adduser1.title}
+
+          />
+        </div>
                 ) : (
                   <div className="input-lable-h-div">
                     <label htmlFor={adduser1.name}>{adduser1.title}</label>
@@ -187,6 +197,9 @@ function Addnewuser() {
               </div>
             </div>
           </div>
+
+
+          
         </form>
       </div>
     </React.Fragment>

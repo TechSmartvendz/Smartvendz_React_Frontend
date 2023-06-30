@@ -261,13 +261,13 @@ export const SidebarData = [
     submenu:[
    
       {
-        title: "Add new user",
-        path: "/warehouse/addnewuser", 
+        title: "Add Ware house",
+        path: "/warehouse/addwarehouse", 
         permission:"listcompany"    
       },
       {
-          title: "User permission",
-          path: "/warehouse/userpermission", 
+          title: "Ware house List",
+          path: "/warehouse/warehouselist", 
           permission:"listcompany" 
       }
     ]
