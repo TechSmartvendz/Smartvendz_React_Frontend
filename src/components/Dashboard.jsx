@@ -58,6 +58,9 @@ import Manage_Refill_Request from "./RefillerManage/Manage_Refill_Request";
 import Refiller_Refilling_Request from "./RefillerManage/Refiller_Refilling_Request";
 
 
+ import Warehouse from "./Warehouse/Warehouse";
+ import AddWarehouse from "./Warehouse/AddWarehouse";
+ import ListWarehouse from "./Warehouse/ListWarehouse";
 
 import PageError from "./Error";
 import Header from "./Header";
@@ -83,14 +86,22 @@ import { DataTable } from "./RefillerManage/DataTable";
 function Dashboard() {
 
   const { sidebar, setSidebar } = useContext(NavContext);
+
+
+   function handleClick(e)
+   {
+
+   e.stopPropagation()
+setSidebar(false)
+   }
   return (
     <React.Fragment>
-      <div className="root" >
+      <div className="root"  >
         <Header />
-        <div className="section">
-          <Navbar/>
-          <ReactNotifications />
-          <div className="container" >
+        <div className="section" onClick={(e)=>e.stopPropagation()} >
+          <Navbar />
+          <ReactNotifications/>
+          <div className="container" onClick={handleClick}>
           {/*FIXME: MAke this Routes a saprate components*/}
             
             <Routes>
@@ -161,6 +172,12 @@ function Dashboard() {
                   <Route path="singleproductadd" element={<SingleProductAdd />} />
                   <Route path="updatebulkproduct" element={<UpdateBulkProduct />} />
               </Route>
+
+              <Route exact path="/warehouse" element={<Warehouse/>}>
+                  <Route index path="addwarehouse" element={<AddWarehouse/>} />
+                  <Route index path="warehouselist" element={<ListWarehouse/>} />
+              </Route>
+              
               <Route exact path="/refundandsupport" element={<Refund />}>
                   <Route index path="1" element={<Refund1 />} />
                   <Route path="2" element={<Refund2 />} />

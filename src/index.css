@@ -10,8 +10,8 @@
 body {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  min-width: 700px;
-
+  /* min-width: 700px; */
+   width: auto;
 }
 
 /*for hidding scroll bar but keep functionality  for Chrome, Safari and Opera*/
@@ -20,18 +20,20 @@ body::-webkit-scrollbar {
 }
 
 .root {
-  width: 100vw;
+  
   min-height: 100vh;
   max-height: fit-content;
   display: flex;
+
+  
   flex-flow: column;
 
 }
 
 .header {
   height: 10vh;
-  width: inherit;
-  background-color: rgb(71, 71, 243);
+   width: 100%;
+  background-color: rgb(52, 52, 179);
   display: flex;
   justify-content: space-between;
   padding-top: 5px;
@@ -59,6 +61,7 @@ body::-webkit-scrollbar {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top:10px;
   width: 43%;
   height:9%;
   margin-left:45px;
@@ -90,6 +93,7 @@ body::-webkit-scrollbar {
   color: rgb(255, 255, 255);
   background-color: rgba(0, 0, 0, 0);
   padding: 9px;
+  margin-left:100px;
   border-radius: 4px;
   margin-bottom: 23px;
 }
@@ -97,7 +101,7 @@ body::-webkit-scrollbar {
 .nav-li {
 
   display: flex;
-
+ 
   justify-content: center;
 }
 
@@ -177,3 +181,9 @@ datalist option:hover, datalist option:focus {
   background-color: #036;
   outline: 0 none;
 } */
+
+@media only screen and (max-width:600px){
+  .navbar-icon{
+    margin-left:0;
+  }
+}

@@ -157,13 +157,14 @@ export const UserManagerData = [
 export const WareHouseData = [
    
   {
-    title: "Add new user",
-    path: "/warehouse/addnewuser",    
+    title: "Add Ware house",
+    path: "/warehouse/addwarehouse",    
   },
   {
-      title: "User permission",
-      path: "/warehouse/userpermission",    
+    title: "Ware house List",
+    path: "/warehouse/warehouselist",    
   }
+  
 ];
 
 export const ProductsData = [

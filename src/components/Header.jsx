@@ -17,14 +17,9 @@ function Header() {
   const [cookies, setCookie,removeCookie] = useCookies(["user"]);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const { sidebar, setSidebar } = useContext(NavContext);
-const [expand,setExpand]=useState(false);
 
-const expandScreen={
-  width: '100vw',
-  height: '100vh',
- 
-  transition: 'width 0.5s, height 0.5s',
-}
+
+
   function logout() {
 
     setIsLoggedIn(false);
@@ -60,22 +55,22 @@ const expandScreen={
 
   return (
     <>
-      <div className="header" style={expand ? expandScreen :{}}>
+      <div className="header" >
       {/* <NavContext.Provider value={{ sidebar, setSidebar }}>*/}
        
      <div className="navbar-btn">
         {/* <Link to='#' className='menu-bars'> */}
-         {!sidebar &&
-        //? (
+         {sidebar ?
+        (
          
-        //   <Link to='#' className='navbar-icon'>
-        //   <AiIcons.AiOutlineClose size={20}  onClick={() => setSidebar(false)}/>
-        //   </Link>
-        // ) : (
+         <Link to='#' className='navbar-icon'>
+        <AiIcons.AiOutlineClose size={26}  onClick={() => setSidebar(false)}/>
+           </Link>
+         ) : (
           <Link to='#' className='navbar-icon'>
-          <FaIcons.FaBars size={30} onClick={() => setSidebar(true)}/>
+          <FaIcons.FaBars size={26} onClick={() => setSidebar(true)}/>
           </Link>
-       // )
+        )
       }
         {/* </Link> */}
       </div>
@@ -95,7 +90,7 @@ const expandScreen={
         
         <div className="icon-div"><AiOutlineSetting className="settings-icon"/></div>
         <div className="icon-div"><BsQuestionCircle className="settings-icon"/></div>
-        <div className="icon-div"><AiOutlineFullscreen className="settings-icon" onClick={()=>setExpand(!expand)}/></div>
+        <div className="icon-div"><AiOutlineFullscreen className="settings-icon" /></div>
         <div className="icon-div"><AiOutlineLogout className="logout-icon"  onClick={logout}/></div>
       </div>
      

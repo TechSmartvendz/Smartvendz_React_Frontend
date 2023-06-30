@@ -59,8 +59,8 @@ export const template = {
 addnewuser1:[
 {
 title:'Role',
-name:'role',
-type:'role',
+name:'User',
+type:'datalist',
 require:true
 },
 {
@@ -295,5 +295,28 @@ required:true
         },
       ],
     },
-  ],
+    {
+      title: "Ware House Manage",
+      type: "checkbox",
+      name: "warehouse",
+      value: "warehouse",
+
+      sections: [
+        {
+          title: "Add WareHouse",
+          type: "checkbox",
+          name: "addWareWouse",
+          value: "addWareWouse",
+        },
+        {
+          title: "WareHouse List",
+          type: "checkbox",
+          name: "listWarehouse",
+          value: "bulkproductupload",
+        }
+      ]
+
+    }
+    
+  ]
 };
