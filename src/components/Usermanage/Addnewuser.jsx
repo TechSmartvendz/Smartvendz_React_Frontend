@@ -4,7 +4,7 @@ import { template } from "../Partials/FormFields";
 import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
 import { useParams, useNavigate } from "react-router";
 import DataList from "../Partials/DataList";
-// import DataList from "../Partials/DataList";
+
 function Addnewuser() {
   
   const { id } = useParams();
@@ -41,6 +41,7 @@ function Addnewuser() {
   };
 
   const handleSubmit = async (event) => {
+    
     event.preventDefault();
     console.log(inputs);
     if (itemid) {
@@ -57,6 +58,7 @@ function Addnewuser() {
       }
     } else {
       const response = await postReq(path, inputs);
+      
       if (response.success) {
         setTableRefresh(tableRefresh + 1);
         setInputs({});

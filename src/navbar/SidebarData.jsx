@@ -263,12 +263,12 @@ export const SidebarData = [
       {
         title: "Add Ware house",
         path: "/warehouse/addwarehouse", 
-        permission:"listcompany"    
+        permission:"addWareHouse"    
       },
       {
           title: "Ware house List",
           path: "/warehouse/warehouselist", 
-          permission:"listcompany" 
+          permission:"listWarehouse" 
       }
     ]
   },

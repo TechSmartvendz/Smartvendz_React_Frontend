@@ -176,6 +176,9 @@ setSidebar(false)
               <Route exact path="/warehouse" element={<Warehouse/>}>
                   <Route index path="addwarehouse" element={<AddWarehouse/>} />
                   <Route index path="warehouselist" element={<ListWarehouse/>} />
+                  
+                  <Route path="addwarehouse/:_id" element={<AddWarehouse/>} />
+
               </Route>
               
               <Route exact path="/refundandsupport" element={<Refund />}>

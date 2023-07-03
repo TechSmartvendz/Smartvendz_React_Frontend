@@ -11,7 +11,7 @@ const path="User"
 const [tableData,setTableData]=useState();
 const[tableRefresh,setTableRefresh]=useState(0)
 
-  const loadTableDate=async()=>{
+    const loadTableDate=async()=>{
     const response=await getReq(path);
     setTableData(response.data)
     console.log(tableData)
@@ -23,7 +23,7 @@ const[tableRefresh,setTableRefresh]=useState(0)
   }, [])
 
   
-const navigate=useNavigate()
+const navigate=useNavigate();
 
 
 const editClick=(item)=>{

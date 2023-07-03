@@ -35,6 +35,7 @@ function Addnewcompany() {
     }
   };
   const loadDateUsertable = async () => {
+
     const response = await getReq(`${companyUsersPath}/${itemid}`);
     if (response.data.length) {
       console.log(
@@ -46,6 +47,7 @@ function Addnewcompany() {
     } else {
       setcompanyusertable(null);
     }
+
   };
   const loadCompanyUserData = async (assignid) => {
     const response = await getReq(`${companyUsersPath}/${itemid}/${assignid}`);
@@ -68,6 +70,7 @@ function Addnewcompany() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   }
+
   function handleChange2(event) {
     const name = event.target.name;
     const checked = event.target.checked;
@@ -109,8 +112,12 @@ function Addnewcompany() {
     }
     
   };
+
+
   const handleSubmit = async (event) => {
+
     event.preventDefault();
+    
     if(itemid){
       const response = await putReq(path, inputs,itemid);
       if (response.success) {
@@ -131,6 +138,7 @@ function Addnewcompany() {
     else{
       const response = await postReq(path, inputs);
       if (response.success) {
+        console.log(response.data)
         SuccessAlert({
           title: "Add Company",
           message: "Company Added successfully",
@@ -150,6 +158,7 @@ function Addnewcompany() {
   };
 
   const editClick = (pid) => {
+    
     loadCompanyUserData(pid._id);
     setPar(pid._id);
 

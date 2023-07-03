@@ -7,10 +7,12 @@ function TableData(props) {
   
   const [tableData, setTableData] = useState();
   const [path, setPath] = useState(props.path);
+  const [deletePath,setDeletePath]=useState(props.deletePath)
   const [par, setpar] = useState(props.par);
      console.log('this is par:',par);
 
   const loadTableDate = async () => {
+    
     const response = await getReq(path);
     if(response.data.length){
       console.log(response.data)
@@ -22,22 +24,30 @@ function TableData(props) {
     
   };
 const editClick=((item)=>{
+
     props.editClick(item);
+
   })
+
   useEffect(() => {
+
     loadTableDate();
+    
   }, []);
 
   const deleteState = async (event) => {
     console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", event);
     // props.parentFunction();
-    const response = await delReq(path, event);
+    const response = await delReq(path || deletePath, event);
+
     if (response.success) {
+
       loadTableDate();
       SuccessAlert({
         title: "Data Deleted",
         message: `${path} : Delete Succesfully `,
       });
+
     } else {
       ErrorAlert({
         title: `${path} Delete: Error`,
@@ -83,6 +93,7 @@ return (
                 // console.log("🚀 ~ file: TableData.jsx:111 ~ TableData ~ item", item)
                 return (
                   <tr key={item._id}>
+
                     {Object.keys(item)
                    
                       .filter((i) => i !== "_id")

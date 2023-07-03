@@ -305,7 +305,7 @@ required:true
         {
           title: "Add WareHouse",
           type: "checkbox",
-          name: "addWareWouse",
+          name: "addWareHouse",
           value: "addWareWouse",
         },
         {
