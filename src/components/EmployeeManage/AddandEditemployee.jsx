@@ -113,6 +113,7 @@ function AddandEditemployee() {
           ErrorAlert({ title: `Update ${ComponentName}`, message: response.msg });
         }
       } else {
+        
         const response = await postReq(path, data);
         if (response.success) {
           SuccessAlert({
@@ -125,6 +126,7 @@ function AddandEditemployee() {
         } else {
           ErrorAlert({ title: `Add ${ComponentName}`, message: response.msg });
         }
+
       }
     }else{
       ErrorAlert({ title: `Add ${ComponentName}`, message:"Product Id/PRoduct Name Required" });

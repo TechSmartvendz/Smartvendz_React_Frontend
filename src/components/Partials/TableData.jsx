@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getReq, delReq } from "../middleware/AxiosApisCall";
+import { getReq, delReq, putReq } from "../middleware/AxiosApisCall";
 
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg" ;
 
@@ -7,10 +7,12 @@ function TableData(props) {
   
   const [tableData, setTableData] = useState();
   const [path, setPath] = useState(props.path);
+  const [deletePath,setDeletePath]=useState(props.deletePath)
   const [par, setpar] = useState(props.par);
      console.log('this is par:',par);
 
   const loadTableDate = async () => {
+    
     const response = await getReq(path);
     if(response.data.length){
       console.log(response.data)
@@ -21,31 +23,64 @@ function TableData(props) {
     }
     
   };
+
 const editClick=((item)=>{
+
     props.editClick(item);
+
   })
+
   useEffect(() => {
+
     loadTableDate();
+    
   }, []);
 
-  const deleteState = async (event) => {
-    console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", event);
-    // props.parentFunction();
-    const response = await delReq(path, event);
+
+// This function is used to delete 'Warehouse' when its path is true also its used to delete user from the table
+
+  const deleteState = async (id) => {
+    console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", id);
+   
+    if(deletePath) {
+     
+    const response = await putReq(deletePath,"", id);
+
+     console.log('DeleteData:',response.data)
     if (response.success) {
+
       loadTableDate();
       SuccessAlert({
         title: "Data Deleted",
         message: `${path} : Delete Succesfully `,
       });
+
     } else {
       ErrorAlert({
         title: `${path} Delete: Error`,
         message: response.msg,
       });
     }
-  };
-  
+
+  }else {
+    const response = await delReq( path , id);
+     console.log('DeleteData:',response.data)
+    if (response.success) {
+
+      loadTableDate();
+      SuccessAlert({
+        title: "Data Deleted",
+        message: `${path} : Delete Succesfully `,
+      });
+
+    } else {
+      ErrorAlert({
+        title: `${path} Delete: Error`,
+        message: response.msg,
+      });
+    }
+  }
+}
 
 return (
     <React.Fragment>
@@ -83,6 +118,7 @@ return (
                 // console.log("🚀 ~ file: TableData.jsx:111 ~ TableData ~ item", item)
                 return (
                   <tr key={item._id}>
+
                     {Object.keys(item)
                    
                       .filter((i) => i !== "_id")

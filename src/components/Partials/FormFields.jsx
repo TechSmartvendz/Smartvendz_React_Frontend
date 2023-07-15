@@ -1,114 +1,112 @@
 import DataList from "./DataList";
 export const template = {
-
   addnewuser: [
-   
     {
       title: "First Name",
       name: "first_name",
       type: "text",
-      
-      required: true
+
+      required: true,
     },
 
     {
       title: "Middle Name",
       name: "middle_name",
       type: "text",
-      required: true
+      required: true,
     },
-    
-    {
-      title:"Last Name",
-      name:"last_name",
-      type:"text",
-      required:true
-      },
-      {
-        title:"Mobile",
-        name:"mobile",
-        type:"text",
-        required:true
-        },
-        {
-          title:"Alternate Mobile",
-          name:"alter_mobile",
-          type:"text",
-          required:true
-          },
-          {
-            title:"User Email",
-            name:"email",
-            type:"text",
-            required:true
-            },
-            {
-              title:"Current Addresss",
-              name:"current_address",
-              type:"text",
-              required:true
-              },
-              {
-                title:"Permanent Address",
-                name:"per_address",
-                type:"text",
-                required:true
-                },
-             
-],
-addnewuser1:[
-{
-title:'Role',
-name:'User',
-type:'datalist',
-require:true
-},
-{
-title:"Display Name",
-name:'display_name',
-type:'text',
-require:true
 
-},
-{
-  title:"City",
-  name:'city',
-  type:'datalist',
-  require:true
-  },
-  {
-    title:"State",
-    name:'state',
-    type:'datalist',
-    require:true
-  },
-  {
-    title:'Country',
-    name:'country',
-    type:'datalist',
-    required:true
-  }
-],
-loginInfo:[
-  {
-title:'User ID',
-name:'user_id',
-type:'text',
-required:true
-  },
-  {
-    title:'Password',
-    name:'password',
-    type:'password',
-    required:true
-   },
-   {
-    title:'Confirm Password',
-    name:'cpassword',
-    type:'password',
-    required:true
-   }
-],
+    {
+      title: "Last Name",
+      name: "last_name",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "Mobile",
+      name: "mobile",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "Alternate Mobile",
+      name: "alter_mobile",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "User Email",
+      name: "email",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "Current Addresss",
+      name: "current_address",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "Permanent Address",
+      name: "per_address",
+      type: "text",
+      required: true,
+    },
+  ],
+
+  addnewuser1: [
+    {
+      title: "Role",
+      name: "User",
+      type: "datalist",
+      require: true,
+    },
+    {
+      title: "Display Name",
+      name: "display_name",
+      type: "text",
+      require: true,
+    },
+    {
+      title: "City",
+      name: "city",
+      type: "datalist",
+      require: true,
+    },
+    {
+      title: "State",
+      name: "state",
+      type: "datalist",
+      require: true,
+    },
+    {
+      title: "Country",
+      name: "country",
+      type: "datalist",
+      required: true,
+    },
+  ],
+  loginInfo: [
+    {
+      title: "User ID",
+      name: "user_id",
+      type: "text",
+      required: true,
+    },
+    {
+      title: "Password",
+      name: "password",
+      type: "password",
+      required: true,
+    },
+    {
+      title: "Confirm Password",
+      name: "cpassword",
+      type: "password",
+      required: true,
+    },
+  ],
+
   mains: [
     {
       title: "User Manage",
@@ -305,18 +303,69 @@ required:true
         {
           title: "Add WareHouse",
           type: "checkbox",
-          name: "addWareWouse",
-          value: "addWareWouse",
+          name: "addWareHouse",
+          value: "addWareHouse",
         },
         {
           title: "WareHouse List",
           type: "checkbox",
           name: "listWarehouse",
-          value: "bulkproductupload",
-        }
-      ]
+          value: "listWarehouse",
+        },
+      ],
+    },
+    {
+      title: "Stock Manage",
+      type: "checkbox",
+      name: "warehouse",
+      value: "warehouse",
+      sections: [
+        {
+          title: "Add Stock",
+          type: "checkbox",
+          name: "addStock",
+          value: "addStock",
+        },
+        {
+          title: " List Stock",
+          type: "checkbox",
+          name: " listStock",
+          value: " listStock",
+        },
+        {
+          title: "Purchase Stock",
+          type: "checkbox",
+          name: " purchaseStock",
+          value: " purchaseStock",
+        },
+        {
+          title: "Purchase Stock List",
+          type: "checkbox",
+          name: " purchaseStockList",
+          value: " purchaseStockList",
+        },
+      ],
+    },
+    {
+      title: "Supplie Manage",
+      type: "checkbox",
+      name: "supplierManage",
+      value: "supplierManage",
 
-    }
-    
-  ]
+      sections: [
+        {
+          title: "Add Supplier",
+          type: "checkbox",
+          name: "addSupplier",
+          value: "addSupplier",
+        },
+        {
+          title: "List Supplier",
+          type: "checkbox",
+          name: "listSupplier",
+          value: "listSupplier",
+        },
+      ],
+    },
+  ],
 };

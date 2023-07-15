@@ -263,12 +263,34 @@ export const SidebarData = [
       {
         title: "Add Ware house",
         path: "/warehouse/addwarehouse", 
-        permission:"listcompany"    
+        permission:"addWareHouse"    
       },
       {
           title: "Ware house List",
           path: "/warehouse/warehouselist", 
-          permission:"listcompany" 
+          permission:"listWarehouse" 
+      }
+    ]
+  },
+
+  // Supplier path data
+  {
+    title: "Supplier Manage",
+    path: "/suppliemanage",
+    icon: <IoIcons.IoMdHelpCircle />,
+    cName: "nav-text",
+    permission:"supplierManage", 
+    submenu:[
+   
+      {
+        title: "Add Supplier",
+        path: "/suppliemanage/addsupplier", 
+        permission:"addSupplier"    
+      },
+      {
+          title: "List Supplier",
+          path: "/suppliemanage/listsupplier", 
+          permission:"listSupplier" 
       }
     ]
   },

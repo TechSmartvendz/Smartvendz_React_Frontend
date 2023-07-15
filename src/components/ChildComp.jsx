@@ -5,8 +5,10 @@ import SubLink from '../Route/SubLink';
 
 
 function ParentComp(props) {
+
 const [subLinkJSON,setLinkJSON]=useState(props.sublinks);
 const [title,setTitle]=useState(props.title);
+
   return (
     <div>
       

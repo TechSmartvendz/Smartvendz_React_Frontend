@@ -1,6 +1,7 @@
 export const HomeData = [
  
 ];
+
 export const CompanyManagerData = [
   {
     title: "Add new company",
@@ -163,9 +164,21 @@ export const WareHouseData = [
   {
     title: "Ware house List",
     path: "/warehouse/warehouselist",    
-  }
+  },
+  
   
 ];
+
+export const SupplierData=[
+  {
+    title: "Add Supplier ",
+    path: "/suppliemanage/addsupplier",    
+  },
+  {
+    title: " List Supplier",
+    path: "/suppliemanage/listsupplier",    
+  }
+]
 
 export const ProductsData = [
   {
