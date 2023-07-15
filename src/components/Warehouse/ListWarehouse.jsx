@@ -8,11 +8,12 @@ import { useParams } from "react-router";
 
 function ListWarehouse() {
 
-  const path="getAllWarehouses"
-  const deletePath='deleteWareHouse'
+  // This path is used to get All Warehouse 
+  const path="getAllWarehouses/Datalist"
+  const deletePath="deleteWareHouse" 
   const navigate=useNavigate()
   const [tableData,setTableData]=useState();
-  const[tableRefresh,setTableRefresh]=useState(0)
+  const [tableRefresh,setTableRefresh]=useState(0)
   
   // const [par,setPar]=useState(props.par)
   
@@ -22,6 +23,7 @@ function ListWarehouse() {
       const response=await getReq(path);
       setTableData(response.data)
       console.log(tableData)
+
     }
 
     useEffect(() => {
@@ -61,6 +63,7 @@ function ListWarehouse() {
 
     </div>
   </React.Fragment>
+  
   )
 }
 

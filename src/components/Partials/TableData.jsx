@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getReq, delReq } from "../middleware/AxiosApisCall";
+import { getReq, delReq, putReq } from "../middleware/AxiosApisCall";
 
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg" ;
 
@@ -23,6 +23,7 @@ function TableData(props) {
     }
     
   };
+
 const editClick=((item)=>{
 
     props.editClick(item);
@@ -35,11 +36,17 @@ const editClick=((item)=>{
     
   }, []);
 
-  const deleteState = async (event) => {
-    console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", event);
-    // props.parentFunction();
-    const response = await delReq(path || deletePath, event);
 
+// This function is used to delete 'Warehouse' when its path is true also its used to delete user from the table
+
+  const deleteState = async (id) => {
+    console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", id);
+   
+    if(deletePath) {
+     
+    const response = await putReq(deletePath,"", id);
+
+     console.log('DeleteData:',response.data)
     if (response.success) {
 
       loadTableDate();
@@ -54,8 +61,26 @@ const editClick=((item)=>{
         message: response.msg,
       });
     }
-  };
-  
+
+  }else {
+    const response = await delReq( path , id);
+     console.log('DeleteData:',response.data)
+    if (response.success) {
+
+      loadTableDate();
+      SuccessAlert({
+        title: "Data Deleted",
+        message: `${path} : Delete Succesfully `,
+      });
+
+    } else {
+      ErrorAlert({
+        title: `${path} Delete: Error`,
+        message: response.msg,
+      });
+    }
+  }
+}
 
 return (
     <React.Fragment>

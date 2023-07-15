@@ -67,7 +67,7 @@ export const putReq=async (path,body,id)=>{
 
   try{
 const response= await instance.put(`/${path}/${id}`,body)
-const data=response.data
+const data=response.data 
 return data
   }
 

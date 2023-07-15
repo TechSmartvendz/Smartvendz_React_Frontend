@@ -272,6 +272,28 @@ export const SidebarData = [
       }
     ]
   },
+
+  // Supplier path data
+  {
+    title: "Supplier Manage",
+    path: "/suppliemanage",
+    icon: <IoIcons.IoMdHelpCircle />,
+    cName: "nav-text",
+    permission:"supplierManage", 
+    submenu:[
+   
+      {
+        title: "Add Supplier",
+        path: "/suppliemanage/addsupplier", 
+        permission:"addSupplier"    
+      },
+      {
+          title: "List Supplier",
+          path: "/suppliemanage/listsupplier", 
+          permission:"listSupplier" 
+      }
+    ]
+  },
   {
     title: "RefundSupport",
     path: "/refundandsupport",

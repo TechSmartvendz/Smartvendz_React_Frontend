@@ -6,8 +6,7 @@ function Warehouse() {
 const [subLinkJSON,setSubLinkJSON]=useState(WareHouseData);
   return (
     <div>
-      <p>Refiller</p>
-      <SubLink sublinks={subLinkJSON} />
+     <SubLink sublinks={subLinkJSON} />
     </div>
   );
 }

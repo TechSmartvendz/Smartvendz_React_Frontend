@@ -5,6 +5,7 @@ import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
 import { useParams, useNavigate } from "react-router";
 import DataList from "../Partials/DataList";
 
+// To Add new User.
 function Addnewuser() {
   
   const { id } = useParams();
@@ -13,12 +14,12 @@ function Addnewuser() {
   const [inputs, setInputs] = useState({});
   const [tableRefresh, setTableRefresh] = useState(0);
   const [par, setPar] = useState();
-
   const navigate = useNavigate();
 
+  // To get userdata by user id
   const loadDate = async () => {
-    
     const response = await getReq(`${path}/${itemid}`);
+    console.log("LoadData:", response.data);
     if (response.data) {
       setPar(response.data._id);
       setInputs(response.data);
@@ -28,12 +29,14 @@ function Addnewuser() {
     }
   };
 
+  // When we are fetching data from user ID useEffect is calling that time.
   useEffect(() => {
     if (itemid) {
       loadDate();
     }
   }, [itemid]);
 
+  //To set user input Fields 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -41,10 +44,10 @@ function Addnewuser() {
   };
 
   const handleSubmit = async (event) => {
-    
     event.preventDefault();
     console.log(inputs);
     if (itemid) {
+      // To Update User Data when id is true
       const response = await putReq(path, inputs, itemid);
       if (response.success) {
         setTableRefresh(tableRefresh + 1);
@@ -57,8 +60,9 @@ function Addnewuser() {
         ErrorAlert({ title: "Edit User", message: response.msg });
       }
     } else {
+      // To Submit UserData 
       const response = await postReq(path, inputs);
-      
+
       if (response.success) {
         setTableRefresh(tableRefresh + 1);
         setInputs({});
@@ -69,29 +73,6 @@ function Addnewuser() {
     }
   };
 
-  // function dataslist(user1) {
-
-  //   console.log("user Name:", user1.name);
-
-  //   if (user1.type === "datalist") {
-  //     return (
-  //       <div className="input-lable-h-div">
-  //         <DataList
-
-  //           value={inputs[user1.name] || null}
-  //           path={user1.name}
-  //           option={user1.name}
-  //           name={user1.name }
-  //           heading={user1.title}
-
-  //         />
-  //       </div>
-  //     );
-  //   } else {
-  //     return null;
-  //   }
-  // }
-
   return (
     <React.Fragment>
       <div className="add-user-container">
@@ -99,7 +80,9 @@ function Addnewuser() {
           <span className="componet-title">Add New User</span>
 
           <div>
+          {/* navigate is used to get back onestep (back button) */}
             <button
+
               onClick={() => {
                 navigate(-1);
               }}
@@ -116,6 +99,8 @@ function Addnewuser() {
 
           <div className="flex-col ">
             <div className="flex-row">
+              {/* Template data getting from this path : {../Partials/FormFields} */}
+              {/* This map is only  for left side user fields */}
               {template.addnewuser.map((adduser) => {
                 return (
                   <div className="input-lable-h-div">
@@ -131,27 +116,28 @@ function Addnewuser() {
                   </div>
                 );
               })}
-            </div>
-            {/* next map start form here */}
-            <div className="flex-row">
-              {template.addnewuser1.map((adduser1) => {
 
+            </div>
+
+            {/* next map start form here */}
+
+            <div className="flex-row">
+      {/* This map is only  for Right side user fields */}
+              {template.addnewuser1.map((adduser1) => {
                 return adduser1.type === "datalist" ? (
                   <div className="input-lable-h-div">
-             <DataList
-
-            value={inputs[adduser1.name] || null}
-            path={adduser1.name}
-            option={adduser1.name}
-            name={adduser1.name }
-            heading={adduser1.title}
-
-          />
-        </div>
+                    <DataList
+                      value={inputs[adduser1.name] || null}
+                      path={adduser1.name}
+                      option={adduser1.name}
+                      name={adduser1.name}
+                      heading={adduser1.title}
+                    />
+                  </div>
                 ) : (
                   <div className="input-lable-h-div">
                     <label htmlFor={adduser1.name}>{adduser1.title}</label>
-                  
+
                     <input
                       name={adduser1.name}
                       type={adduser1.type}
@@ -173,8 +159,9 @@ function Addnewuser() {
           </div>
 
           <div>
-          
             <div className="flex-col">
+
+            {/* This template for login Form fields */}
               {template.loginInfo.map((log) => {
                 return (
                   <div className="input-lable-v-div">
@@ -199,9 +186,6 @@ function Addnewuser() {
               </div>
             </div>
           </div>
-
-
-          
         </form>
       </div>
     </React.Fragment>
