@@ -328,6 +328,18 @@ function Addnewmachine() {
                   autoComplete="off"
                 />
               </div>
+
+              <div className="input-lable-h-div">
+                <DataList
+                name={"product"}
+                value={inputs2.product || " "}
+                path={"Product"}
+                option={"productname"}
+                handleChange={handleChange2}
+                heading={"Product"}
+              />
+              </div>
+
               <div className="input-lable-v-div">
                 <label htmlFor="active_status">Activate</label>
                 <input

@@ -257,7 +257,7 @@ export const SidebarData = [
     path: "/warehouse",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
-    permission:"listcompany", 
+    permission:"warehouseManage", 
     submenu:[
    
       {
@@ -270,6 +270,7 @@ export const SidebarData = [
           path: "/warehouse/warehouselist", 
           permission:"listWarehouse" 
       }
+     
     ]
   },
 
@@ -294,6 +295,32 @@ export const SidebarData = [
       }
     ]
   },
+  {
+    title: "Stock Manage",
+    path: "/stockmanage",
+    icon: <IoIcons.IoMdHelpCircle />,
+    cName: "nav-text",
+    permission:"stockManage", 
+    submenu:[
+   
+      {
+        title: "Purchase Stock",
+        path: "/stockmanage/purchasestock", 
+        permission:"purchaseStock"    
+      },
+      {
+          title: "Purchase Stock List",
+          path: "/stockmanage/purchasestocklist", 
+          permission:"purchaseStockList" 
+      } ,
+      {
+        title: "Transfer Stock",
+        path: "/stockmanage/transferstock", 
+        permission:"transferStock" 
+    }
+    ]
+  },
+  
   {
     title: "RefundSupport",
     path: "/refundandsupport",

@@ -72,6 +72,10 @@ import { RejectedTransaction } from "./Transactions/RejectedTransaction";
 import { DataTable } from "./RefillerManage/DataTable";
 import AddSupplier from "./SupplierManage/AddSupplier";
 import ListSupplier from "./SupplierManage/ListSupplier";
+import StockManager from "./StockManage/StockManager";
+import PurchaseStock from "./StockManage/PurchaseStock";
+import PurchaseStockList from "./StockManage/PurchaseStockList";
+import TransferStock from "./StockManage/TransferStock";
 
 //TODO: GET info about this Usermanahe.css
 // import 'Usermanage.css'
@@ -201,12 +205,21 @@ function Dashboard() {
                 <Route index path="addwarehouse" element={<AddWarehouse />} />
                 <Route index path="warehouselist" element={<ListWarehouse />} />
                 <Route path="addwarehouse/:_id" element={<AddWarehouse />} />
+                
               </Route>
 
               <Route exact path="/suppliemanage" element={<Warehouse />}>
                 <Route index path="addsupplier" element={<AddSupplier/>} />
                 <Route index path="listSupplier" element={<ListSupplier/>} />
                 <Route index path="addsupplier/:_id" element={<AddSupplier/>}/>
+                {/* <Route path="addwarehouse/:_id" element={<AddWarehouse />} /> */}
+              </Route>
+                
+              <Route exact path="/stockmanage" element={<StockManager/>}>
+                <Route index path="purchasestock" element={<PurchaseStock/>} />
+                <Route index path="purchasestocklist" element={<PurchaseStockList/>} />
+                <Route index path="transferstock" element={<TransferStock/>} />
+                {/* <Route index path="addsupplier/:_id" element={<AddSupplier/>}/> */}
                 {/* <Route path="addwarehouse/:_id" element={<AddWarehouse />} /> */}
               </Route>
                 

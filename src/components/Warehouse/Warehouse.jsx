@@ -4,8 +4,11 @@ import {WareHouseData} from '../../Route/SubLinkJSON';
 
 function Warehouse() {
 const [subLinkJSON,setSubLinkJSON]=useState(WareHouseData);
+
+
   return (
     <div>
+    
      <SubLink sublinks={subLinkJSON} />
     </div>
   );

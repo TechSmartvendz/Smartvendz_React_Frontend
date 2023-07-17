@@ -167,6 +167,7 @@ export const WareHouseData = [
   },
   
   
+  
 ];
 
 export const SupplierData=[
@@ -178,6 +179,22 @@ export const SupplierData=[
     title: " List Supplier",
     path: "/suppliemanage/listsupplier",    
   }
+]
+export const StockData=[
+  {
+    title: "Purchase Stock",
+    path: "/stockmanage/purchasestock",    
+  },
+  {
+    title: " List Stock",
+    path: "/stockmanage/purchasestocklist",    
+  },
+  {
+    title: "Transfer Stock",
+    path: "/stockmanage/transferstock",    
+  },
+  
+  
 ]
 
 export const ProductsData = [
