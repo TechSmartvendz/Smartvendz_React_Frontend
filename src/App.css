@@ -439,6 +439,7 @@ margin-top: 20px;
 .table_container-div>table{
   border: 1px solid black;
   width: 100%;
+ 
   
 }
 .table_container-div>table>tbody>tr:nth-child(even){
@@ -451,7 +452,7 @@ margin-top: 20px;
 
 .table_container-div>table>tbody>tr>td
 { 
-
+ 
   text-align:center;
   }
   /* changed by sharan */

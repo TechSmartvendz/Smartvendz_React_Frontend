@@ -2,25 +2,22 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TableData from "../Partials/TableData";
 import { getReq } from "../middleware/AxiosApisCall";
-const ListSupplier = () => {
-  const [tableData, setTableData] = useState();
-  const [tableRefresh, setTableRefresh] = useState(0);
 
-  const path = "listSupplier/Datalist";
-  const deletePath='deleteSupplier'
+function PurchaseStockList() {
+  const [tableRefresh, setTableRefresh] = useState(0);
+ const path = 'purchasestocklist'
   const navigate = useNavigate();
 
-  // editClick is used to get id and navigate to addsupplier
-  
   const editClick = async (item) => {
     navigate(`../addsupplier/${item._id}`);
   };
+
 
   return (
     <React.Fragment>
       <div className="add-user-container">
         <div className="headingdiv">
-          <span className="componet-title">Warehouse List</span>
+          <span className="componet-title">Purchase Stock List</span>
           <div>
             <button onClick={() => navigate(-1)}>Back</button>
           </div>
@@ -28,17 +25,17 @@ const ListSupplier = () => {
         <div className="option-btn">
           <button
             onClick={() => {
-              navigate("../addsupplier");
+              navigate("../purchasestock");
             }}
           >
-            Add New Supplier
+           Purchase New Stock
           </button>
         </div>
-     
-        <TableData path={path} key={tableRefresh} deletePath={deletePath}  editClick={editClick} />
+     {/* deletePath={deletePath} */}
+        <TableData path={path} key={tableRefresh}   editClick={editClick} />
       </div>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default ListSupplier;
+export default PurchaseStockList

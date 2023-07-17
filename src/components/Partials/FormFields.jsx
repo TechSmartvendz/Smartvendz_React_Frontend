@@ -296,8 +296,8 @@ export const template = {
     {
       title: "Ware House Manage",
       type: "checkbox",
-      name: "warehouse",
-      value: "warehouse",
+      name: "warehouseManage",
+      value: "warehouseManage",
 
       sections: [
         {
@@ -317,35 +317,31 @@ export const template = {
     {
       title: "Stock Manage",
       type: "checkbox",
-      name: "warehouse",
-      value: "warehouse",
+      name: "stockManage",
+      value: "stockManage",
       sections: [
-        {
-          title: "Add Stock",
-          type: "checkbox",
-          name: "addStock",
-          value: "addStock",
-        },
-        {
-          title: " List Stock",
-          type: "checkbox",
-          name: " listStock",
-          value: " listStock",
-        },
         {
           title: "Purchase Stock",
           type: "checkbox",
-          name: " purchaseStock",
-          value: " purchaseStock",
+          name: "purchaseStock",
+          value: "purchaseStock",
         },
         {
           title: "Purchase Stock List",
           type: "checkbox",
-          name: " purchaseStockList",
-          value: " purchaseStockList",
+          name: "purchaseStockList",
+          value: "purchaseStockList",
         },
+        {
+          title: "Transfer Stock",
+          type: "checkbox",
+          name: "transferStock",
+          value: "transferStock",
+        },
+       
       ],
     },
+    
     {
       title: "Supplie Manage",
       type: "checkbox",

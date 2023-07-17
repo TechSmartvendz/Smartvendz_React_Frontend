@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
 import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
 import DataList from "../Partials/DataList";
-import { useParams ,useNavigate} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 const AddSupplier = () => {
   const path = "addSupplier";
   // This path is used to get Supplier by ID
   const getpath = "listSupplier";
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const ComponentName = "Supplier";
   const { _id } = useParams();
@@ -17,7 +17,22 @@ const AddSupplier = () => {
   const [tableRefresh, setTableRefresh] = useState(0);
   const [par, setPar] = useState();
 
-  // This function And Api is used to get particular Supplier details on input field for edit 
+  const [selectedValue, setSelectedValue] = useState();
+  const [wareHouse, setWareHouse] = useState();
+
+  const WarehouseList = async () => {
+    const response = await getReq(`getAllWarehouses/Datalist`);
+    setWareHouse(response.data[0]);
+  };
+  // console.log("WAREHOSE:", wareHouse);
+
+  useEffect(() => {
+    WarehouseList();
+  }, []);
+
+ 
+
+  // This function And Api is used to get particular Supplier details on input field for edit
   const loadDate = async () => {
     const response = await getReq(`${getpath}/${itemid}`);
     console.log("Supplierss Data:", response.data);
@@ -37,10 +52,8 @@ const AddSupplier = () => {
     }
   }, [itemid]);
 
-
-   //TODO:Handle Form Data Add Form
+  //TODO:Handle Form Data Add Form
   function handleChange(event) {
-   
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
@@ -58,7 +71,7 @@ const AddSupplier = () => {
       });
       setPar();
       setInputs({});
-      navigate("../listSupplier")
+      navigate("../listSupplier");
       //   setaddproductformstate(false);
     } else {
       ErrorAlert({ title: `Add ${ComponentName}`, message: response.msg });
