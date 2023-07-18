@@ -76,6 +76,8 @@ import StockManager from "./StockManage/StockManager";
 import PurchaseStock from "./StockManage/PurchaseStock";
 import PurchaseStockList from "./StockManage/PurchaseStockList";
 import TransferStock from "./StockManage/TransferStock";
+import GstMaster from "./GeneralManage/GstMaster";
+import AcceptStockRequest from "./StockManage/AcceptStockRequest";
 
 //TODO: GET info about this Usermanahe.css
 // import 'Usermanage.css'
@@ -177,11 +179,13 @@ function Dashboard() {
               <Route exact path="/generalmanager" element={<Generalmanage />}>
                 <Route index path="countrymanage" element={<Countrymanage />} />
                 <Route path="statemanage" element={<Statemanage />}>
-                  <Route path=":stateId" element={<Statemanage />} />
+                <Route path=":stateId" element={<Statemanage />} />
                 </Route>
                 <Route path="citymanage" element={<Citymanage />} />
                 <Route path="unitmanage" element={<Unitmanage />} />
                 <Route path="areamanage" element={<Areamanage />} />
+                <Route index path="gst" element={<GstMaster/>}/>
+                <Route path="gst/:_id" element={<GstMaster/>}/>
               </Route>
               <Route exact path="/products" element={<Products />}>
                 <Route path="productlist" element={<ProductList />} />
@@ -219,8 +223,10 @@ function Dashboard() {
                 <Route index path="purchasestock" element={<PurchaseStock/>} />
                 <Route index path="purchasestocklist" element={<PurchaseStockList/>} />
                 <Route index path="transferstock" element={<TransferStock/>} />
+                <Route index path="acceptstock" element={<AcceptStockRequest/>} />
                 {/* <Route index path="addsupplier/:_id" element={<AddSupplier/>}/> */}
                 {/* <Route path="addwarehouse/:_id" element={<AddWarehouse />} /> */}
+
               </Route>
                 
               <Route exact path="/refundandsupport" element={<Refund />}>

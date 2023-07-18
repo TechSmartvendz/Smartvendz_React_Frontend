@@ -114,14 +114,15 @@ function AddNewRole() {
           </div>
         </div>
 
-        <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
+        <form className="flex-row form-2col-ver"  onSubmit={handleSubmit}>
           <div className="componet-sub-title">
             <span>Role Details</span>
           </div>
 
           <div>
             <label htmlFor="role_name">Role Name :</label>
-            <input
+            <input 
+           
               type="text"
               name="role"
               value={inputs.role || ""}
@@ -129,12 +130,12 @@ function AddNewRole() {
             />
           </div>
 
-          <div>
+          <div >
             {/*template.mains is imported from ../Partials/FormFields for permissions */}
             {/* And This Mains is only to render name of permission input field  */}
             {template.mains.map((data, key) => {
               return (
-                <div key={key}>
+                <div key={key} >
                   <label htmlFor={data.name}>{data.title}</label>
                   <input
                     type={data.type}

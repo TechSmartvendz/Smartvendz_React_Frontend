@@ -57,7 +57,7 @@ export const template = {
   addnewuser1: [
     {
       title: "Role",
-      name: "User",
+      name: "role",
       type: "datalist",
       require: true,
     },
@@ -319,6 +319,7 @@ export const template = {
       type: "checkbox",
       name: "stockManage",
       value: "stockManage",
+
       sections: [
         {
           title: "Purchase Stock",
@@ -337,6 +338,12 @@ export const template = {
           type: "checkbox",
           name: "transferStock",
           value: "transferStock",
+        },
+        {
+          title: "Accept Stock Request",
+          type: "checkbox",
+          name: "acceptStockTransferRequest",
+          value: "acceptStockTransferRequest",
         },
        
       ],

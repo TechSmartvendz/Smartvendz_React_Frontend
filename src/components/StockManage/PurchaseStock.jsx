@@ -136,12 +136,22 @@ function PurchaseStock() {
             </div>
 
             <div className="input-lable-v-div">
-              <label htmlFor="contactPerson">DRN Number</label>
+              <label htmlFor="contactPerson">GRN Number</label>
               <input
                 type="number"
                 name="GRN_Number"
                 value={inputs.GRN_Number || ""}
                 onChange={handleChange}
+              />
+            </div>
+            <div className="input-lable-v-div">
+              <DataList
+                name={"gstName"}
+                value={inputs.gstName || " "}
+                path={"AllTax"}
+                option={"gstName"}
+                handleChange={handleChange}
+                heading={"GST"}
               />
             </div>
 
