@@ -145,6 +145,7 @@ export const SidebarData = [
       }
     ]
   },
+  // fix me right it is rendering because we have selected permission as listcompany it needs to be change.
   {
     title: "General Manager",
     path: "/generalmanager",
@@ -176,6 +177,11 @@ export const SidebarData = [
       {
         title: "Unit manage",
         path: "/generalmanager/unitmanage",
+        permission:"listcompany"    
+      },
+      {
+        title: "GST Master",
+        path: "/generalmanager/gst",
         permission:"listcompany"    
       },
      
@@ -317,10 +323,15 @@ export const SidebarData = [
         title: "Transfer Stock",
         path: "/stockmanage/transferstock", 
         permission:"transferStock" 
-    }
+       }
+       ,{
+        title: "Accept Stock Request",
+        path: "/stockmanage/acceptstock", 
+        permission:"acceptStockTransferRequest" 
+       }
     ]
   },
-  
+   // fix me right it is rendering because we have selected permission as listcompany it needs to be change.
   {
     title: "RefundSupport",
     path: "/refundandsupport",

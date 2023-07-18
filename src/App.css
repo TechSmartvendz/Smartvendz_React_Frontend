@@ -646,13 +646,7 @@ overflow: hidden;
  }
 
  @media only screen and (max-width:600px){
-  /* body{
-    background-color:rgb(180, 19, 19);
-    width: 100%;
-  } */
-  /* .container{
-    width: 100%;
-  } */
+ 
   .add-user-container{
     display: flex;
     align-items: center;

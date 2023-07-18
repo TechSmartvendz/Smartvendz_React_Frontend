@@ -53,6 +53,10 @@ export const GeneralManagerData = [
     title: "Unit manage",
     path: "/generalmanager/unitmanage",    
   },
+  {
+    title: "GST Master",
+    path: "/generalmanager/gst",    
+  },
  
 ];
 export const InventoryManagerData = [
@@ -140,18 +144,9 @@ export const UserManagerData = [
     title: "User permission",
     path: "/usermanage/userpermission",    
     cName:""
-},
+  },
 
-{
-  title: "Add New User P",
-  path: "/usermanage/addnewuserp",    
-  cName:""
-},
-{
-  title:"List UserP",
-  path:"/usermanage/listuserp",
-  cName:""
-}
+
 
 
 ];
@@ -192,6 +187,10 @@ export const StockData=[
   {
     title: "Transfer Stock",
     path: "/stockmanage/transferstock",    
+  },
+  {
+    title: "Accept Stock Request",
+    path: "/stockmanage/acceptstock",    
   },
   
   
