@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function AlltransferRequest() {
   const [tableData, setTableData] = useState();
-
+  const [tableRefresh, setTableRefresh] = useState(0);
   const path = "alltransferRequest/Datalist";
 
   const navigate = useNavigate();
@@ -13,6 +13,7 @@ function AlltransferRequest() {
     if (response.data.length) {
       console.log("TableData:", response.data);
       setTableData(response.data);
+      setTableRefresh(tableRefresh + 1);
     } else {
       console.log(response.data);
       setTableData(null);

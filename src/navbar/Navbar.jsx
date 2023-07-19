@@ -13,18 +13,18 @@ import {
 import SubMenu from "./SubMenu";
 import NavContext from "../Context/NavContext";
 import axios from "axios";
-import { Cookies } from 'react-cookie';
+import { Cookies } from "react-cookie";
 
 function Navbar() {
   const path = "Permission/LoadMenu/";
   const cookies = new Cookies();
-  const token = cookies.get('JWTcookie')
+  const token = cookies.get("JWTcookie");
   const { sidebar, setSidebar } = useContext(NavContext);
   const [navData, setNavData] = useState([]);
   const [sideBarData, setSideBarData] = useState(SidebarData);
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = useState("");
 
- console.log('NavaData:',navData)
+  console.log("NavaData:", navData);
   const loadDate = async () => {
     // console.log("loadData() start")
     // const response = await getReq(`${path}`);
@@ -36,62 +36,63 @@ function Navbar() {
     //   setNavData();
     // }
     try {
-   const res= await axios.get('http://localhost:3000/api/Permission/LoadMenu', { headers: { 'Authorization': 'Bearer ' + token } })
-      const data=res.data.data
+      const res = await axios.get(
+        "http://localhost:3000/api/Permission/LoadMenu",
+        { headers: { Authorization: "Bearer " + token } }
+      );
+      const data = res.data.data;
       setNavData(data);
     } catch (error) {
-       console.log(error);
+      console.log(error);
     }
-   
-      
   };
 
   useEffect(() => {
     loadDate();
   }, []);
 
- 
- 
-// const filtredMenu=sideBarData.filter((menus)=>{
-//   if( menus.title.toLowerCase().includes(searchQuery.toString().toLowerCase())){
-//     return menus;
-//   }
-// })
+  // const filtredMenu=sideBarData.filter((menus)=>{
+  //   if( menus.title.toLowerCase().includes(searchQuery.toString().toLowerCase())){
+  //     return menus;
+  //   }
+  // })
 
-console.log('SidebarData:',sideBarData)
+  console.log("SidebarData:", sideBarData);
 
-// setNavData(filtredMenu)
+  // setNavData(filtredMenu)
 
-// console.log('filtered:',filtredMenu);
+  // console.log('filtered:',filtredMenu);
 
   return (
     <React.Fragment>
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-
         <ul className="nav-menu-items">
-
-          <li className="nav-li">
-           
-          </li>
+          <li className="nav-li"></li>
           {/* <div className="line-div"></div> */}
           <div className="userinfo-container">
-          <h5>Welcome !</h5>
-          <h3>{navData.role}</h3>
-          <h5>{navData.user_name}</h5>
-          <h5>{}</h5>
+            <h5>Welcome !</h5>
+            <h3>{navData.role}</h3>
+            <h5>{navData.user_name}</h5>
+            <h5>{}</h5>
           </div>
           <div className="space-div"></div>
           {/* <input type="text" id="mySearch" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} placeholder="Search..."  /> */}
 
-          {navData? <SubMenu key={navData} navData={navData} sideBarData={sideBarData}/>:(()=>{setSidebar(!sidebar)})}
-          
-      
+          {navData ? (
+            <SubMenu
+              key={navData}
+              navData={navData}
+              sideBarData={sideBarData}
+            />
+          ) : (
+            () => {
+              setSidebar(!sidebar);
+            }
+          )}
         </ul>
       </nav>
-
     </React.Fragment>
   );
-
 }
 
 export default Navbar;
