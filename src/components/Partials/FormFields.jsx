@@ -312,6 +312,15 @@ export const template = {
           name: "listWarehouse",
           value: "listWarehouse",
         },
+
+        // We need to add its permission and its details
+        // {
+        //   title: "WareHouse List",
+        //   type: "checkbox",
+        //   name: "listWarehouse",
+        //   value: "listWarehouse",
+        // },
+        
       ],
     },
     {

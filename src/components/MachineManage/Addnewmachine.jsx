@@ -39,6 +39,8 @@ function Addnewmachine() {
     const response = await getReq(`${subPath}/${itemid}`);
     if (response.data.length) {
       console.log(
+        
+        
         "🚀 ~ file: Addnewmachine.jsx:41 ~ loadDateUsertable ~ response.data",
         response.data
       );
@@ -331,13 +333,13 @@ function Addnewmachine() {
 
               <div className="input-lable-h-div">
                 <DataList
-                name={"product"}
-                value={inputs2.product || " "}
-                path={"Product"}
-                option={"productname"}
-                handleChange={handleChange2}
-                heading={"Product"}
-              />
+                  name={"product"}
+                  value={inputs2.product || " "}
+                  path={"Product"}
+                  option={"productname"}
+                  handleChange={handleChange2}
+                  heading={"Product"}
+                />
               </div>
 
               <div className="input-lable-v-div">

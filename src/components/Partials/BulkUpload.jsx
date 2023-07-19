@@ -23,10 +23,10 @@ const onChange = (e) => {
 };
 
 
-const sampleCSVFile = async (event) => { //TODO:Submit Search Form
+const sampleCSVFile = async (event) => { 
   const response = await csvGetReq(`${path}/SampleCSV`);
     if (response) {
-    console.log("🚀 ~ file: SingleProductAdd.jsx:151 ~ sampleCSVFile ~ response:", response)
+    // console.log("🚀 ~ file: SingleProductAdd.jsx:151 ~ sampleCSVFile ~ response:", response)
     fileDownload(response, "csvreport.csv");
       SuccessAlert({
         title: "Sample Upload File",
@@ -42,7 +42,7 @@ const sampleCSVFile = async (event) => { //TODO:Submit Search Form
 const bulkUpload = async (event) => { //TODO:Submit Search Form
   event.preventDefault();
   const formData = new FormData();
-  console.log(formData);
+  // console.log(formData);
   formData.append("file", file);
     const response = await importCSV(`${path}`, formData);
     if (response.success) {

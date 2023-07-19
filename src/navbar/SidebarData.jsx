@@ -275,6 +275,11 @@ export const SidebarData = [
           title: "Ware house List",
           path: "/warehouse/warehouselist", 
           permission:"listWarehouse" 
+      },
+      {
+        title: "Ware house Stocks",
+        path: "/warehouse/warehousestock", 
+        permission:"listWarehouse" 
       }
      
     ]

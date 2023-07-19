@@ -48,13 +48,13 @@ function Unitmanage() {
     }
    };
 const editClick=(pid)=>{
- console.log(pid)
+//  console.log(pid)
   setPar(pid._id)
   setInputs(pid)
 }
-useEffect(() => {
-console.log(par)
-}, [par])
+// useEffect(() => {
+// // console.log(par)
+// }, [par])
   return (
     <React.Fragment>
       <div className="add-user-container">

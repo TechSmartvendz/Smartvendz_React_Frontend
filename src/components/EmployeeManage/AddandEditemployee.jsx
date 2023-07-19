@@ -36,26 +36,27 @@ function AddandEditemployee() {
     setbulkformstate(false)
   };
 
-  const loadDate = async () => { //TODO://Using to load edit form Data 
+//TODO://Using to load edit form Data 
+  const loadDate = async () => { 
     const response = await getReq(`${path}/${par}`);
     if (response.data) {
-      console.log(
-        "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response:",
-        response.data
-      );
-      console.log(
-        "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response.data:",
-        response.data
-      );
+      // console.log(
+      //   "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response:",
+      //   response.data
+      // );
+      // console.log(
+      //   "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response.data:",
+      //   response.data
+      // );
       setInputs(response.data);
     } else {
       setPar();
       setItemid();
-      console.log(response.data);
+      // console.log(response.data);
     }
   };
-
-  function handleChange(event) { //TODO:Handle Form Data Add Form 
+//TODO:Handle Form Data Add Form 
+  function handleChange(event) { 
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
@@ -70,7 +71,7 @@ function AddandEditemployee() {
     }
   }
   const handleSubmit2 = async (event) => { //TODO:Submit Search Form
-    console.log("🚀 ~ file: SingleProductAdd.jsx:73 ~ handleSubmit2 ~ inputs2:", inputs2)
+    // console.log("🚀 ~ file: SingleProductAdd.jsx:73 ~ handleSubmit2 ~ inputs2:", inputs2)
     event.preventDefault();
      let clean =await CleanData(inputs2)
         if(Object.keys(clean).length){
@@ -84,7 +85,7 @@ function AddandEditemployee() {
     let clean =await CleanData(inputs2)
       const response = await postReq(`${path}/ExportCSV`, clean);
       if (response) {
-        console.log("🚀 ~ file: SingleProductAdd.jsx:151 ~ sampleCSVFile ~ response:", response)
+        // console.log("🚀 ~ file: SingleProductAdd.jsx:151 ~ sampleCSVFile ~ response:", response)
         fileDownload(response, `${ComponentName}${Date.now()}.csv`);
           SuccessAlert({
             title: `Export ${ComponentName} File`,
@@ -135,7 +136,7 @@ function AddandEditemployee() {
    
   };
  const rejectdata = (data) => {//TODO:Handle Edit request from  Table Componenet
-    console.log("🚀 ~ file: SingleProductAdd.jsx:141 ~ rejectdata ~ data:", data)
+    // console.log("🚀 ~ file: SingleProductAdd.jsx:141 ~ rejectdata ~ data:", data)
     setReject(true)
     setSearchData(data)
   };
@@ -172,7 +173,7 @@ function AddandEditemployee() {
   }, [par]);
 
   useEffect(() => {//TODO:Handle Edit State for MAke Add Form in Update form
-   console.log(searchData)
+  //  console.log(searchData)
   }, [searchData]);
   return (
 
