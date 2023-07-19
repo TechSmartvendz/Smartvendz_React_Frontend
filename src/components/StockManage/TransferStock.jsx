@@ -32,7 +32,7 @@ function TransferStock() {
         message: "Ware House Added successfully",
       });
       setInputs("");
-      navigate("../warehouselist");
+    
     } else {
       ErrorAlert({ title: "Ware House", message: response.msg });
     }
@@ -47,6 +47,9 @@ function TransferStock() {
     loadList();
   }, []);
 
+
+
+  
   return (
     <React.Fragment>
       <div className="add-user-container">

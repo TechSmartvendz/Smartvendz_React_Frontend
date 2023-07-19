@@ -77,7 +77,8 @@ import PurchaseStock from "./StockManage/PurchaseStock";
 import PurchaseStockList from "./StockManage/PurchaseStockList";
 import TransferStock from "./StockManage/TransferStock";
 import GstMaster from "./GeneralManage/GstMaster";
-import AcceptStockRequest from "./StockManage/AcceptStockRequest";
+
+import AlltransferRequest from "./StockManage/AllTransferRequest";
 
 //TODO: GET info about this Usermanahe.css
 // import 'Usermanage.css'
@@ -223,7 +224,7 @@ function Dashboard() {
                 <Route index path="purchasestock" element={<PurchaseStock/>} />
                 <Route index path="purchasestocklist" element={<PurchaseStockList/>} />
                 <Route index path="transferstock" element={<TransferStock/>} />
-                <Route index path="acceptstock" element={<AcceptStockRequest/>} />
+                <Route index path="acceptstock" element={<AlltransferRequest/>} />
                 {/* <Route index path="addsupplier/:_id" element={<AddSupplier/>}/> */}
                 {/* <Route path="addwarehouse/:_id" element={<AddWarehouse />} /> */}
 
