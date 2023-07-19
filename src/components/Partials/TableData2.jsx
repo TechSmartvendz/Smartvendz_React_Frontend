@@ -26,7 +26,7 @@ const editClick=((item)=>{
   })
 
   const deleteState = async (event) => {
-    console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", event);
+    // console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", event);
     // props.parentFunction();
     const response = await delReq(path, event);
     if (response.success) {

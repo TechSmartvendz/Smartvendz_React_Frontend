@@ -8,17 +8,17 @@ function TableData(props) {
   const [path, setPath] = useState(props.path);
   const [deletePath, setDeletePath] = useState(props.deletePath);
   const [par, setpar] = useState(props.par);
-  console.log("this is par:", par);
+  // console.log("this is par:", par);
 
   // This function is used to get data this function is reusable it using where ever it required
   const loadTableDate = async () => {
     
     const response = await getReq(path);
     if (response.data.length) {
-      console.log("TableData:", response.data);
+      // console.log("TableData:", response.data);
       setTableData(response.data);
     } else {
-      console.log(response.data);
+      // console.log(response.data);
       setTableData(null);
     }
   };
@@ -34,12 +34,12 @@ function TableData(props) {
   // This function is used to delete 'Warehouse' when its path is true also its used to delete user from the table
 
   const deleteState = async (id) => {
-    console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", id);
+    // console.log("🚀 ~ file: TableData.jsx:19 ~ deleteState ~ event", id);
 
     if (deletePath) {
       const response = await putReq(deletePath, "", id);
 
-      console.log("DeleteData:", response.data);
+      // console.log("DeleteData:", response.data);
       if (response.success) {
         loadTableDate();
         SuccessAlert({
@@ -54,7 +54,7 @@ function TableData(props) {
       }
     } else {
       const response = await delReq(path, id);
-      console.log("DeleteData:", response.data);
+      // console.log("DeleteData:", response.data);
       if (response.success) {
         loadTableDate();
         SuccessAlert({

@@ -48,19 +48,19 @@ import { useParams, useNavigate } from "react-router";
   const loadDate = async () => { //TODO://Using to load edit form Data 
     const response = await getReq(`${path}/${par}`);
     if (response.data) {
-      console.log(
-        "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response:",
-        response.data
-      );
-      console.log(
-        "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response.data:",
-        response.data
-      );
+      // console.log(
+      //   "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response:",
+      //   response.data
+      // );
+      // console.log(
+      //   "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response.data:",
+      //   response.data
+      // );
       setInputs(response.data);
     } else {
       setPar();
       setItemid();
-      console.log(response.data);
+      // console.log(response.data);
     }
     
   };
@@ -79,7 +79,7 @@ import { useParams, useNavigate } from "react-router";
     }
   }
   const handleSubmit2 = async (event) => { //TODO:Submit Search Form
-    console.log("🚀 ~ file: SingleProductAdd.jsx:73 ~ handleSubmit2 ~ inputs2:", inputs2)
+    // console.log("🚀 ~ file: SingleProductAdd.jsx:73 ~ handleSubmit2 ~ inputs2:", inputs2)
     event.preventDefault();
      let clean =await CleanData(inputs2)
         if(Object.keys(clean).length){
@@ -142,7 +142,7 @@ import { useParams, useNavigate } from "react-router";
    
   };
  const rejectdata = (data) => {//TODO:Handle Edit request from  Table Componenet
-    console.log("🚀 ~ file: SingleProductAdd.jsx:141 ~ rejectdata ~ data:", data)
+    // console.log("🚀 ~ file: SingleProductAdd.jsx:141 ~ rejectdata ~ data:", data)
     setReject(true)
     setSearchData(data)
   };
@@ -179,7 +179,7 @@ import { useParams, useNavigate } from "react-router";
   }, [par]);
 
   useEffect(() => {//TODO:Handle Edit State for MAke Add Form in Update form
-   console.log(searchData)
+  //  console.log(searchData)
   }, [searchData]);
 
   return (

@@ -19,12 +19,12 @@ function Addnewuser() {
   // To get userdata by user id
   const loadDate = async () => {
     const response = await getReq(`${path}/${itemid}`);
-    console.log("LoadData:", response.data);
+    // console.log("LoadData:", response.data);
     if (response.data) {
       setPar(response.data._id);
       setInputs(response.data);
     } else {
-      console.log(response.data);
+      // console.log(response.data);
       setInputs(null);
     }
   };

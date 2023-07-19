@@ -11,7 +11,7 @@ const AddSupplier = () => {
 
   const ComponentName = "Supplier";
   const { _id } = useParams();
-  console.log(_id);
+  // console.log(_id);
   const [inputs, setInputs] = useState({});
   const [itemid, setItemid] = useState(_id);
   const [tableRefresh, setTableRefresh] = useState(0);
@@ -35,11 +35,11 @@ const AddSupplier = () => {
   // This function And Api is used to get particular Supplier details on input field for edit
   const loadDate = async () => {
     const response = await getReq(`${getpath}/${itemid}`);
-    console.log("Supplierss Data:", response.data);
+    // console.log("Supplierss Data:", response.data);
     if (response.data) {
       //   setPar(response.data._id);
       setInputs(response.data[0]);
-      console.log("GetOnInput:", inputs);
+      // console.log("GetOnInput:", inputs);
     } else {
       setInputs(null);
     }
@@ -63,7 +63,7 @@ const AddSupplier = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await postReq(path, inputs);
-    console.log("SupplierData:", response.data);
+    // console.log("SupplierData:", response.data);
     if (response.success) {
       SuccessAlert({
         title: `Add ${ComponentName}`,
@@ -77,7 +77,7 @@ const AddSupplier = () => {
       ErrorAlert({ title: `Add ${ComponentName}`, message: response.msg });
     }
   };
-  console.log("InputSupplier:", inputs);
+  // console.log("InputSupplier:", inputs);
   return (
     <React.Fragment>
       <div className="add-user-container">

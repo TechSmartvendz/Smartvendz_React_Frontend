@@ -23,7 +23,7 @@ function MachineForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(inputs);
+    // console.log(inputs);
   };
 
   return (

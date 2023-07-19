@@ -32,18 +32,19 @@ function Addnewmachine() {
       setInputs(response.data);
     } else {
       navigate(`../`);
-      console.log(response.data);
+      // console.log(response.data);
+      
     }
   };
   const loadDateUsertable = async () => {
     const response = await getReq(`${subPath}/${itemid}`);
     if (response.data.length) {
-      console.log(
+      // console.log(
         
         
-        "🚀 ~ file: Addnewmachine.jsx:41 ~ loadDateUsertable ~ response.data",
-        response.data
-      );
+      //   "🚀 ~ file: Addnewmachine.jsx:41 ~ loadDateUsertable ~ response.data",
+      //   response.data
+      // );
       console.log(response.data);
       setcompanyusertable(response.data);
     } else {
@@ -53,15 +54,15 @@ function Addnewmachine() {
   const loadSubFormData = async (assignid) => {
     const response = await getReq(`${subPath}/${itemid}/${assignid}`);
     if (response.data.length) {
-      console.log(
-        "🚀 ~ file: Addnewmachine.jsx:52 ~ loadSubFormData ~ response.data",
-        response.data
-      );
+      // console.log(
+      //   "🚀 ~ file: Addnewmachine.jsx:52 ~ loadSubFormData ~ response.data",
+      //   response.data
+      // );
 
-      console.log(response.data);
+      // console.log(response.data);
       setInputs2(response.data[0]);
     } else {
-      console.log(response.data);
+      // console.log(response.data);
       setcompanyusertable(null);
     }
   };

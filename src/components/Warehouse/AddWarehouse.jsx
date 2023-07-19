@@ -25,13 +25,13 @@ function AddWarehouse() {
    const loadDate = async () => {
     
     const response = await getReq(`${getpath}/${itemid}`);
-    console.log('WareHouse Data:',response.data)
+    // console.log('WareHouse Data:',response.data)
     if (response.data) {
 
       setPar(response.data._id);
       setInputs(response.data);
     } else {
-      console.log(response.data);
+      // console.log(response.data);
       setInputs(null);
     }
   };
@@ -51,7 +51,7 @@ function AddWarehouse() {
 
   };
 
-  console.log("Inputs:", inputs);
+  // console.log("Inputs:", inputs);
 
   const handleSubmit = async(event) => {
     
@@ -82,7 +82,7 @@ function AddWarehouse() {
     } else {
       ErrorAlert({ title: "Ware House", message: response.msg });
     }
-    console.log("Submitted:", inputs);
+    // console.log("Submitted:", inputs);
   }
   };
 

@@ -14,7 +14,7 @@ const[tableRefresh,setTableRefresh]=useState(0)
   const loadTableDate=async()=>{
     const response=await getReq(path);
     setTableData(response.data)
-    console.log(tableData)
+    // console.log(tableData)
   }
   useEffect(() => {
     loadTableDate()
@@ -22,7 +22,7 @@ const[tableRefresh,setTableRefresh]=useState(0)
 const navigate=useNavigate()
 const editClick=(item)=>{
 navigate(`../addnewmachine/${item._id}`);
-console.log(item._id)
+// console.log(item._id)
 
 }
 

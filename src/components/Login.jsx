@@ -23,8 +23,8 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await postReq(path,inputs);
-      console.log("🚀 ~ file: Login.jsx:24 ~ submitData ~ inputs", inputs)
-      console.log('Login Data:',response.data);
+      // console.log("🚀 ~ file: Login.jsx:24 ~ submitData ~ inputs", inputs)
+      // console.log('Login Data:',response.data);
       if (response.success) {
         setCookie("JWTcookie", response.data ,{ path: "/" });
         setIsLoggedIn(true);
@@ -35,7 +35,7 @@ function Login() {
       } else {
         ErrorAlert({ title: "Login", message:response.msg });
       }
-console.log('Logged IN:',isLoggedIn)
+// console.log('Logged IN:',isLoggedIn)
   };
 
   return (

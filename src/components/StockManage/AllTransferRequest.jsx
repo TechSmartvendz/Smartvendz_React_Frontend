@@ -11,11 +11,11 @@ function AlltransferRequest() {
   const loadTableDate = async () => {
     const response = await getReq(path);
     if (response.data.length) {
-      console.log("TableData:", response.data);
+      // console.log("TableData:", response.data);
       setTableData(response.data);
       setTableRefresh(tableRefresh + 1);
     } else {
-      console.log(response.data);
+      // console.log(response.data);
       setTableData(null);
     }
   };
@@ -27,7 +27,7 @@ function AlltransferRequest() {
   const acceptProducts = async (id) => {
     const response = await postReq(`acceptStockTransferRequest/${id}`);
     if (response.data) {
-      console.log("AcceptedData:", response.data);
+      // console.log("AcceptedData:", response.data);
       // setStatus("accepted");
       // setTableData(response.data);
     } else {
