@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { postReq, patchReq, putReq } from "../middleware/AxiosApisCall";
@@ -12,41 +12,35 @@ function GstMaster() {
 
   const navigate = useNavigate();
   const { _id } = useParams();
- console.log('EditID:',_id)
+  // console.log("EditID:", _id);
   const [itemid, setItemid] = useState(_id);
 
-console.log('itemid:',itemid)
+  // console.log("itemid:", itemid);
   const path = "addtax";
-  const taxlist="AllTax";
-  const edittax="tax";
+  const taxlist = "AllTax/Datalist";
+  const edittax = "tax";
 
+  // loadDate is used to get GST detail based on its ID
   const loadDate = async () => {
-    
     const response = await getReq(`${edittax}/${itemid}`);
-    console.log('WareHouse Data:',response.data)
+    // console.log("WareHouse Data:", response.data);
     if (response.data) {
-
       setPar(response.data._id);
       setInputs(response.data);
     } else {
-      console.log(response.data);
+      // console.log(response.data);
       setInputs(null);
     }
   };
 
+  // in this Use Effect callng loadDate()function when itemid id true
   useEffect(() => {
-
     if (itemid) {
       loadDate();
     }
   }, [itemid]);
 
-
-
-
-
-
-
+  // This function is used to set Input field Data
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -55,10 +49,10 @@ console.log('itemid:',itemid)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    // When itemid is true Then only putReq Api Will call else post Request API will call
     if (itemid) {
-      console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", itemid);
-      const response = await putReq(edittax, inputs,itemid);
+      // console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", itemid);
+      const response = await putReq(edittax, inputs, itemid);
       if (response.success) {
         setPar();
         setTableRefresh(tableRefresh + 1); //4
@@ -74,9 +68,10 @@ console.log('itemid:',itemid)
         ErrorAlert({ title: "Edit State", message: response.msg });
       }
     } else {
+      // This API is used to post the Data.
       const response = await postReq(path, inputs);
       if (response.success) {
-        console.log(response.data);
+        // console.log(response.data);
         setTableRefresh(tableRefresh + 1);
         setInputs({}); //5
         SuccessAlert({ title: "GST", message: "GST Added successfully" });
@@ -86,11 +81,10 @@ console.log('itemid:',itemid)
     }
   };
 
-  const editClick=async(item)=> {
-
-    navigate(`../addwarehouse/${item._id}`);
-  
-    }
+  // This function is used to get ID of the tax for edit purpose
+  const editClick = async (item) => {
+    navigate(`../gst/${item._id}`);
+  };
 
   return (
     <React.Fragment>
@@ -125,11 +119,11 @@ console.log('itemid:',itemid)
             />
 
             <button className="submit-btn">
-            {par?(<span>Update </span>):(<span>Add </span>)}
+              {par ? <span>Update </span> : <span>Add </span>}
             </button>
           </div>
         </form>
-        <TableData path={taxlist} key={tableRefresh} editClick={editClick}/>
+        <TableData path={taxlist} key={tableRefresh} editClick={editClick} />
       </div>
     </React.Fragment>
   );

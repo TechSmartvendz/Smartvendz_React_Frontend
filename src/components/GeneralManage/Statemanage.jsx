@@ -15,17 +15,18 @@ function Statemanage() {
  
   const[par, setPar] = useState()
   
+  // This function is used to set Input fields
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
+  // In this function  used to add and edit the State details
   const handleSubmit = async (event) => {
-    
-    event.preventDefault();
+     event.preventDefault();
    if(par){
-      console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
+      // console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
       const response = await patchReq(path, inputs,par);
       if (response.success) {
         setPar()
@@ -40,10 +41,10 @@ function Statemanage() {
       }
 
     }else{
-      console.log("🚀 ~ file: Statemanage.jsx:38 ~ handleSubmit ~ par", par)
+      // console.log("🚀 ~ file: Statemanage.jsx:38 ~ handleSubmit ~ par", par)
       const response = await postReq(path, inputs);
       if (response.success) {
-        console.log(response.data)
+        // console.log(response.data)
         setTableRefresh(tableRefresh+1);//4
         setInputs({});//5
         SuccessAlert({title: "Add State", message: "State Added successfully" });
@@ -53,9 +54,10 @@ function Statemanage() {
     }
   }
 
+  // This function is used to get ID of the tax for edit purpose
   const editClick=(pid)=>{
 
-    console.log('this is ', pid)
+    // console.log('this is ', pid)
     setPar(pid._id)
     setInputs(pid) 
 

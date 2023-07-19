@@ -12,17 +12,15 @@ function Addnewcompany() {
   const [inputs, setInputs] = useState({});
   const [inputs2, setInputs2] = useState({});
 
-
-  const [par, setPar] = useState();//var to show company user form state for edit or add new req
+  const [par, setPar] = useState(); //var to show company user form state for edit or add new req
   const { id } = useParams();
-  const [itemid, setItemid] = useState(id);//var to show company  form state for edit or add new req
+  const [itemid, setItemid] = useState(id); //var to show company  form state for edit or add new req
   const [companyusertable, setcompanyusertable] = useState();
 
-//TODO: Load Data on Render and on Stage changes 
+  //TODO: Load Data on Render and on Stage changes
   const loadDate = async () => {
     const response = await getReq(`${path}/${itemid}`);
     if (response.data) {
-
       setInputs2((values) => ({
         ...values,
         companyid: response.data.companyid,
@@ -30,47 +28,47 @@ function Addnewcompany() {
       setInputs(response.data);
     } else {
       navigate(`../`);
-      console.log(response.data);
-      
+      // console.log(response.data);
     }
   };
+  // loadDateUsertable() This function is used to get company data based on ID
   const loadDateUsertable = async () => {
-
     const response = await getReq(`${companyUsersPath}/${itemid}`);
     if (response.data.length) {
-      console.log(
-        "🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data",
-        response.data
-      );
-      console.log(response.data);
+      // console.log(
+      //   "🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data",
+      //   response.data
+      // );
+      // console.log(response.data);
       setcompanyusertable(response.data);
     } else {
       setcompanyusertable(null);
     }
-
   };
+  // This API is use to get Table assigned user details
   const loadCompanyUserData = async (assignid) => {
     const response = await getReq(`${companyUsersPath}/${itemid}/${assignid}`);
     if (response.data.length) {
-      console.log(
-        "🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data",
-        response.data
-      );
-      console.log(response.data);
+      // console.log(
+      //   "🚀 ~ file: Addnewcompany.jsx:26 ~ loadDate ~ response.data",
+      //   response.data
+      // );
+      // console.log(response.data);
       setInputs2(response.data[0]);
     } else {
-      console.log(response.data);
+      // console.log(response.data);
       setcompanyusertable(null);
     }
   };
 
-  //TODO:Handle Form Data  SHange and Submit
+  //TODO:This handleChange is used to set the add company form fields
   function handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   }
 
+  // This handleChange2 is used to set the assign user company form fields
   function handleChange2(event) {
     const name = event.target.name;
     const checked = event.target.checked;
@@ -80,23 +78,24 @@ function Addnewcompany() {
       setInputs2((values) => ({ ...values, [name]: event.target.value }));
     }
   }
+  // handleSubmit2 function is used post and edit the assign user to company form Data
   const handleSubmit2 = async (event) => {
     event.preventDefault();
-    if(par){
-      const response = await putReq(companyUsersPath,inputs2,par);
+    if (par) {
+      const response = await putReq(companyUsersPath, inputs2, par);
       if (response.success) {
         SuccessAlert({
           title: " Update Assign User ",
           message: "Assign User Updated successfully",
         });
-        setPar()
+        setPar();
         loadDateUsertable();
         setInputs2({});
         loadDate();
       } else {
         ErrorAlert({ title: " Update Assign User ", message: response.msg });
       }
-    }else{
+    } else {
       const response = await postReq(companyUsersPath, inputs2);
       if (response.success) {
         SuccessAlert({
@@ -110,16 +109,14 @@ function Addnewcompany() {
         ErrorAlert({ title: "Assign User ", message: response.msg });
       }
     }
-    
   };
 
-
+  // This handleSubmit function is used to submit and edit  comapny details
   const handleSubmit = async (event) => {
-
     event.preventDefault();
-    
-    if(itemid){
-      const response = await putReq(path, inputs,itemid);
+
+    if (itemid) {
+      const response = await putReq(path, inputs, itemid);
       if (response.success) {
         SuccessAlert({
           title: "Update Company",
@@ -134,11 +131,10 @@ function Addnewcompany() {
       } else {
         ErrorAlert({ title: "Update Company", message: response.msg });
       }
-    } 
-    else{
+    } else {
       const response = await postReq(path, inputs);
       if (response.success) {
-        console.log(response.data)
+        // console.log(response.data);
         SuccessAlert({
           title: "Add Company",
           message: "Company Added successfully",
@@ -154,32 +150,29 @@ function Addnewcompany() {
         ErrorAlert({ title: "Add Company", message: response.msg });
       }
     }
-   
   };
 
   const editClick = (pid) => {
-    
     loadCompanyUserData(pid._id);
     setPar(pid._id);
-
   };
-//TODO: State Handle on Edit Company and After Added Company to Load Form Fields byusing useState "itemid"
-  useEffect(() => { 
+  //TODO: State Handle on Edit Company and After Added Company to Load Form Fields byusing useState "itemid"
+  useEffect(() => {
     if (itemid) {
       loadDate();
       loadDateUsertable();
     }
   }, [itemid]);
-//TODO: State Handle on Edit Company and After Added Company to Load Form Fields by using route paramsuseState "id"
+  //TODO: State Handle on Edit Company and After Added Company to Load Form Fields by using route paramsuseState "id"
   useEffect(() => {
-    if(id){
-    setItemid(id)}
-    else{
-      setcompanyusertable()
-      setInputs2({})
-      setInputs({})
-      setItemid()
-      setPar()
+    if (id) {
+      setItemid(id);
+    } else {
+      setcompanyusertable();
+      setInputs2({});
+      setInputs({});
+      setItemid();
+      setPar();
     }
   }, [id]);
 
@@ -187,14 +180,22 @@ function Addnewcompany() {
     <React.Fragment>
       <div className="add-user-container">
         <div className="headingdiv">
-          <span className="componet-title">{itemid ? 'Edit Company' :'Add Company Details'} </span>
+          <span className="componet-title">
+            {itemid ? "Edit Company" : "Add Company Details"}{" "}
+          </span>
           <div>
             <button onClick={() => navigate(-1)}>Back</button>
           </div>
         </div>
         <div className="option-btn">
-        <button onClick={()=>{navigate("/companymanage/listcompany")}}>Company List</button>
-         </div>
+          <button
+            onClick={() => {
+              navigate("/companymanage/listcompany");
+            }}
+          >
+            Company List
+          </button>
+        </div>
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
@@ -282,7 +283,7 @@ function Addnewcompany() {
 
             <div className="input-lable-h-div">
               <button className="submit-btn" type="submit">
-              {itemid  ? 'Update' :'Save'}  
+                {itemid ? "Update" : "Save"}
               </button>
             </div>
           </div>
@@ -291,87 +292,80 @@ function Addnewcompany() {
 
       {/* second form */}
 
-      {itemid && <React.Fragment>
-        <div className="add-user-container">
-        <div className="componet-sub-title">
-          <span>{par ? 'Update Assigned User':'Assign User'}</span>
-        </div>
+      {itemid && (
+        <React.Fragment>
+          <div className="add-user-container">
+            <div className="componet-sub-title">
+              <span>{par ? "Update Assigned User" : "Assign User"}</span>
+            </div>
 
-        <form className="flex-col" onSubmit={handleSubmit2}>
-          <div className="input-lable-v-div">
-           
-            <DataList
-              value={inputs2.companyid || ""}
-              path={"Company"}
-              handleChange={handleChange2}
-              name={"companyid"}
-              option={"companyid"}
-              heading={"Company"}
+            <form className="flex-col" onSubmit={handleSubmit2}>
+              <div className="input-lable-v-div">
+                <DataList
+                  value={inputs2.companyid || ""}
+                  path={"Company"}
+                  handleChange={handleChange2}
+                  name={"companyid"}
+                  option={"companyid"}
+                  heading={"Company"}
+                />
+              </div>
+
+              <div className="input-lable-v-div">
+                <DataList
+                  value={inputs2.role || ""}
+                  path={"Permission"}
+                  handleChange={handleChange2}
+                  name={"role"}
+                  option={"role"}
+                  heading={"User Type"}
+                />
+              </div>
+
+              <div className="input-lable-v-div">
+                <DataList
+                  value={inputs2.assign_user || ""}
+                  path={"User"}
+                  handleChange={handleChange2}
+                  name={"assign_user"}
+                  option={"user_id"}
+                  heading={"Assign User"}
+                />
+              </div>
+
+              <div className="input-lable-v-div">
+                <label htmlFor="active_status">Activate</label>
+                <input
+                  type="checkbox"
+                  name="active_status"
+                  value={inputs2.active_status || false}
+                  checked={inputs2.active_status || false}
+                  onChange={handleChange2}
+                  autoComplete="off"
+                />
+              </div>
+
+              <div className="input-lable-h-div">
+                <button className="submit-btn" type="submit">
+                  {par ? "Update" : "Save"}
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div className="table_container-div">
+            <TableData2
+              path={companyUsersPath}
+              key={companyusertable}
+              data={companyusertable}
+              name={"Assign Users"}
+              editClick={editClick}
+              editbutton={false}
+              loadDateUsertable={loadDateUsertable}
             />
-
           </div>
-
-          <div className="input-lable-v-div">
-            <DataList
-              value={inputs2.role || ""}
-              path={"Permission"}
-              handleChange={handleChange2}
-              name={"role"}
-              option={"role"}
-              heading={"User Type"}
-            />
-          </div>
-
-          <div className="input-lable-v-div">
-            <DataList
-              value={inputs2.assign_user || ""}
-              path={"User"}
-              handleChange={handleChange2}
-              name={"assign_user"}
-              option={"user_id"}
-              heading={"Assign User"}
-            />
-          </div>
-
-          <div className="input-lable-v-div">
-            <label htmlFor="active_status">Activate</label>
-            <input
-              type="checkbox"
-              name="active_status"
-              value={inputs2.active_status || false}
-              checked={inputs2.active_status || false}
-              onChange={handleChange2}
-              autoComplete="off"
-            />
-          </div>
-
-          <div className="input-lable-h-div">
-            <button className="submit-btn" type="submit">
-              {par ? 'Update' : 'Save'}
-            </button>
-          </div>
-
-        </form>
-      </div>
-
-      <div className="table_container-div">
-        <TableData2
-          path={companyUsersPath}
-          key={companyusertable}
-          data={companyusertable}
-          name={"Assign Users"}
-          editClick={editClick}
-          editbutton={false}
-          loadDateUsertable={loadDateUsertable}
-
-        />
-      </div>
-      
-      </React.Fragment>
-      }
-      
-
-
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 }

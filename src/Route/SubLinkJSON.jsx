@@ -160,6 +160,10 @@ export const WareHouseData = [
     title: "Ware house List",
     path: "/warehouse/warehouselist",    
   },
+  {
+    title: "Ware house Stock",
+    path: "/warehouse/warehousestock",    
+  },
   
   
   

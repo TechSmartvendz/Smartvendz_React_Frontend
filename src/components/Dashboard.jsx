@@ -19,8 +19,6 @@ import AddNewRole from "./Usermanage/AddNewRole";
 import Companymanage from "./Company_Manage/Companymanage";
 import Addnewcompany from "./Company_Manage/Addnewcompany";
 import Listcompany from "./Company_Manage/Listcompany";
-import CompanyAdmins from "./Company_Manage/CompanyAdmins";
-import CompanyMachines from "./Company_Manage/CompanyMachines";
 
 import Addnewmachine from "./MachineManage/Addnewmachine";
 import Listmachine from "./MachineManage/Listmachine";
@@ -30,7 +28,7 @@ import MachineManage from "./MachineManage/MachineManage";
 
 import Employeemanage from "../components/EmployeeManage/Employeemanage";
 import AddandEditemployee from "../components/EmployeeManage/AddandEditemployee";
-import Employeecredit from "../components/EmployeeManage/Employeecredit";
+// import Employeecredit from "../components/EmployeeManage/Employeecredit";
 
 import Transactions from "./Transactions/Transactions";
 import TransactionReport from "./Transactions/TransactionReport";
@@ -79,6 +77,7 @@ import TransferStock from "./StockManage/TransferStock";
 import GstMaster from "./GeneralManage/GstMaster";
 
 import AlltransferRequest from "./StockManage/AllTransferRequest";
+import WarehouseStock from "./Warehouse/WarehouseStock";
 
 //TODO: GET info about this Usermanahe.css
 // import 'Usermanage.css'
@@ -119,8 +118,8 @@ function Dashboard() {
                 <Route path="addnewcompany" element={<Addnewcompany />} />
                 <Route path="addnewcompany/:id" element={<Addnewcompany />} />
                 <Route index path="listcompany" element={<Listcompany />} />
-                <Route path="companyadmins" element={<CompanyAdmins />} />
-                <Route path="companymachines" element={<CompanyMachines />} />
+                {/* <Route path="companyadmins" element={<CompanyAdmins />} /> */}
+                {/* <Route path="companymachines" element={<CompanyMachines />} /> */}
               </Route>
 
               <Route exact path="/employeemanage" element={<Employeemanage />}>
@@ -128,7 +127,7 @@ function Dashboard() {
                   path="addandeditemployee"
                   element={<AddandEditemployee />}
                 />
-                <Route path="employeecredit" element={<Employeecredit />} />
+                {/* <Route path="employeecredit" element={<Employeecredit />} /> */}
               </Route>
 
               <Route exact path="/usermanage" element={<UserManage />}>
@@ -210,6 +209,7 @@ function Dashboard() {
                 <Route index path="addwarehouse" element={<AddWarehouse />} />
                 <Route index path="warehouselist" element={<ListWarehouse />} />
                 <Route path="addwarehouse/:_id" element={<AddWarehouse />} />
+                <Route path="warehousestock" element={<WarehouseStock/>}/>
                 
               </Route>
 
