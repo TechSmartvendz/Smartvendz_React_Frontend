@@ -1,4 +1,4 @@
-import DataList from "./DataList";
+
 export const template = {
   addnewuser: [
     {
@@ -233,33 +233,33 @@ export const template = {
       ],
     },
 
-    {
-      title: "Refiller Manage",
-      type: "checkbox",
-      name: "refillermanager",
-      value: "refillermanager",
+    // {
+    //   title: "Refiller Manage",
+    //   type: "checkbox",
+    //   name: "refillermanager",
+    //   value: "refillermanager",
 
-      sections: [
-        {
-          title: "Manage DC",
-          type: "checkbox",
-          name: "managedc",
-          value: "managedc",
-        },
-        {
-          title: "Manage Accept DC",
-          type: "checkbox",
-          name: "managedcaccept",
-          value: "managedcaccept",
-        },
-        {
-          title: "Manage Completed Refill Request",
-          type: "checkbox",
-          name: "managecompletedrefillrequest",
-          value: "managecompletedrefillrequest",
-        },
-      ],
-    },
+    //   sections: [
+    //     {
+    //       title: "Manage DC",
+    //       type: "checkbox",
+    //       name: "managedc",
+    //       value: "managedc",
+    //     },
+    //     {
+    //       title: "Manage Accept DC",
+    //       type: "checkbox",
+    //       name: "managedcaccept",
+    //       value: "managedcaccept",
+    //     },
+    //     {
+    //       title: "Manage Completed Refill Request",
+    //       type: "checkbox",
+    //       name: "managecompletedrefillrequest",
+    //       value: "managecompletedrefillrequest",
+    //     },
+    //   ],
+    // },
     {
       title: "Product Manage",
       type: "checkbox",

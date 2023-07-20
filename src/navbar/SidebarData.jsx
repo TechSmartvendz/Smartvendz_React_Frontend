@@ -57,16 +57,7 @@ export const SidebarData = [
         path: "/companymanage/listcompany" ,
         permission:"listcompany"    
       },
-      // {
-      //   title: "Company Admins",
-      //   path: "/companymanage/companyadmins" ,
-      //   permission:"companyadmins"    
-      // },
-      // {
-      //   title: "Company Machines",
-      //   path: "/companymanage/companymachines" ,
-      //   permission:"companymachines"    
-      // }
+     
     ]
   },
 
@@ -107,11 +98,7 @@ export const SidebarData = [
         path: "/employeemanage/addandeditemployee",
         permission:"addnewmachine" 
       },
-      // {
-      //   title: "Employee Credits",
-      //   path: "/employeemanage/employeecredit",
-      //   permission:"addnewmachine"
-      // },
+      
      
     ]
   },
@@ -128,16 +115,16 @@ export const SidebarData = [
         path: "/transactionreports/transactionreport",
         permission:"listcompany"
       },
-      {
-        title: "Credit Report",
-        path: "/transactionreports/creditreport",
-        permission:"listcompany"
-      },
-      {
-        title: "Credit Transaction Report",
-        path: "/transactionreports/credittransactionreport",
-        permission:"listcompany" 
-      },
+      // {
+      //   title: "Credit Report",
+      //   path: "/transactionreports/creditreport",
+      //   permission:"listcompany"
+      // },
+      // {
+      //   title: "Credit Transaction Report",
+      //   path: "/transactionreports/credittransactionreport",
+      //   permission:"listcompany" 
+      // },
       {
         title: "Rejected Transaction Report",
         path: "/transactionreports/rejectedtransactionreport",
@@ -214,50 +201,16 @@ export const SidebarData = [
     cName: "nav-text",
     permission:"products", 
     submenu:[
-      // {
-      //   title:"Product List",
-      //   path:"/products/productlist",
-      //   permission:"productlist"
-    
-      // },
-      // {
-      //   title:"Bulk Product Upload",
-      //   path:"/products/bulkproductupload",
-      //   permission:"bulkproductupload"
-      // },
+     
       {
         title:"Single Product Add",
         path:"/products/singleproductadd",
         permission:"singleproductadd" 
       },
-      // {
-      //   title:"Update Bulk Product",
-      //   path:"/products/updatebulkproduct",
-      //   permission:"updatebulkproduct"
-      // }
+      
     ]
   },
-  {
-    title: "Inventory Manager",
-    path: "/inventorymanager",
-    icon: <IoIcons.IoMdHelpCircle />,
-    cName: "nav-text",
-    permission:"listcompany",
-    submenu:[
-    
-      {
-        title: "1",
-        path: "/inventorymanager/1",
-        permission:"listcompany"    
-      },
-      {
-        title: "2",
-        path: "/inventorymanager/2",
-        permission:"listcompany",     
-      }
-     
-    ]
-  },
+  
   {
     title: "warehouse",
     path: "/warehouse",
@@ -337,35 +290,35 @@ export const SidebarData = [
     ]
   },
    // fix me right it is rendering because we have selected permission as listcompany it needs to be change.
-  {
-    title: "RefundSupport",
-    path: "/refundandsupport",
-    icon: <IoIcons.IoMdHelpCircle />,
-    cName: "nav-text",
-    permission:"listcompany",
-    submenu:[
-      {
-        title: "Manage Refill Request",
-        path: "/refundandsupport/managerefillrequest",
-        permission:"listcompany"
-      },
-      {
-        title: "Manage DC",
-        path: "/refundandsupport/managedc",
-        permission:"listcompany"
-      },
-      {
-        title: "ManageDC Accept",
-        path: "/refundandsupport/managedcaccept",
-        permission:"listcompany"
-      },
-      {
-        title: "Manage Completed Request",
-        path: "/refundandsupport/managecompletedrefillrequest",
-        permission:"listcompany"
-      }
-    ]
-  },
+  // {
+  //   title: "RefundSupport",
+  //   path: "/refundandsupport",
+  //   icon: <IoIcons.IoMdHelpCircle />,
+  //   cName: "nav-text",
+  //   permission:"listcompany",
+  //   submenu:[
+  //     {
+  //       title: "Manage Refill Request",
+  //       path: "/refundandsupport/managerefillrequest",
+  //       permission:"listcompany"
+  //     },
+  //     {
+  //       title: "Manage DC",
+  //       path: "/refundandsupport/managedc",
+  //       permission:"listcompany"
+  //     },
+  //     {
+  //       title: "ManageDC Accept",
+  //       path: "/refundandsupport/managedcaccept",
+  //       permission:"listcompany"
+  //     },
+  //     {
+  //       title: "Manage Completed Request",
+  //       path: "/refundandsupport/managecompletedrefillrequest",
+  //       permission:"listcompany"
+  //     }
+  //   ]
+  // },
   {
     title: "*",
     path: "/*",
@@ -376,18 +329,4 @@ export const SidebarData = [
   }
 ];
 
-/*
-User Manage
-Company Manage
-Machine Manage
-Employee Manage
- Transaction Reports
-General Manager
-Refiller Manager
-Inventory Manager
-Warehouse 
-Refund & Support
 
-
-
-*/
