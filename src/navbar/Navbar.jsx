@@ -16,32 +16,29 @@ import axios from "axios";
 import { Cookies } from "react-cookie";
 
 function Navbar() {
+
   const path = "Permission/LoadMenu/";
   const cookies = new Cookies();
   const token = cookies.get("JWTcookie");
   const { sidebar, setSidebar } = useContext(NavContext);
-  const [navData, setNavData] = useState([]);
+  const [navData, setNavData] = useState({});
+  const [userRole,setUserRole]=useState('')
   const [sideBarData, setSideBarData] = useState(SidebarData);
   const [searchQuery, setSearchQuery] = useState("");
 
   // console.log("NavaData:", navData);
   const loadDate = async () => {
-    // console.log("loadData() start")
-    // const response = await getReq(`${path}`);
-    // if (response.data) {
-    //   // console.log(response.data);
-    //  setNavData(response.data);
-    // } else {
-    //   // console.log(response.data);
-    //   setNavData();
-    // }
+    
     try {
-      const res = await axios.get(
+      const response = await axios.get(
         "http://localhost:3000/api/Permission/LoadMenu",
         { headers: { Authorization: "Bearer " + token } }
       );
-      const data = res.data.data;
-      setNavData(data);
+    //  console.log('Permission Data:',response.data.data);
+    //  console.log('User Name:',response.data.data.username);
+      const roleName=response.data.data.data.role;
+      setUserRole(roleName)
+      setNavData(response.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -71,17 +68,15 @@ function Navbar() {
           {/* <div className="line-div"></div> */}
           <div className="userinfo-container">
             <h5>Welcome !</h5>
-            <h3>{navData.role}</h3>
-            <h5>{navData.user_name}</h5>
-            <h5>{}</h5>
+            <h3>{userRole} <h5 style={{color:'yellow'}}>{`[${navData.username}]`}</h5></h3>
           </div>
-          <div className="space-div"></div>
+          <hr style={{borderColor:'grey'}}></hr>
           {/* <input type="text" id="mySearch" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} placeholder="Search..."  /> */}
 
-          {navData ? (
+          {navData.data ? (
             <SubMenu
-              key={navData}
-              navData={navData}
+              key={navData.data}
+              navData={navData.data}
               sideBarData={sideBarData}
             />
           ) : (

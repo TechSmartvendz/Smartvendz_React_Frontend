@@ -19,17 +19,17 @@ function SubMenu(props) {
        sideBarData.map((item, index) => {
       if(navData[item.permission]){
       return (
-        <li key={index} className={item.cName} id='visible'>
-          <Link to={item.path} onClick={()=>setOpenSubmenu(!openSubmenu)}>
+        <li key={index} className={item.cName} id='visible' onClick={()=>setOpenSubmenu(!openSubmenu)}>
+          <Link to={item.path} >
             {item.icon}
             <span>{item.title}</span>
           </Link>
-          <ul key={index}  id="hidden" className="nav-menu-items ulbg">
-        {openSubmenu ? item.submenu && item.submenu.map((type, index) => {
+          <ul key={index}  className="nav-menu-items ulbg" >
+        {openSubmenu && item.submenu.map((type, index) => {
           if(navData[type.permission]){
           return <li key={index} className={item.cName} ><Link  to={type.path}>{item.icon}<span>{type.title}</span></Link> </li>
           }
-        }):''}
+        })}
        </ul>
        
         </li> 
