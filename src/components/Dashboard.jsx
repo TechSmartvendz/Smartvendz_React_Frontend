@@ -1,14 +1,12 @@
 import { Routes, Route, Link, Outlet } from "react-router-dom";
 //FIXME:remove Add order
 import React, { useContext } from "react";
-import Addorder from "./Addorder";
+// import Addorder from "./Addorder";
 import NavContext from "../Context/NavContext";
 
 import Products from "./Products/Products";
-import ProductList from "./Products/ProductList";
-import BulkProductUpload from "./Products/BulkProductUpload";
+
 import SingleProductAdd from "./Products/SingleProductAdd";
-import UpdateBulkProduct from "./Products/UpdateBulkProduct";
 
 import UserManage from "./UserManage/UserManage";
 import Addnewuser from "./Usermanage/Addnewuser";
@@ -32,8 +30,8 @@ import AddandEditemployee from "../components/EmployeeManage/AddandEditemployee"
 
 import Transactions from "./Transactions/Transactions";
 import TransactionReport from "./Transactions/TransactionReport";
-import CreditReport from "./Transactions/CreditReport";
-import CreditTransactionReport from "./Transactions/CreditTransactionReport";
+// import CreditReport from "./Transactions/CreditReport";
+// import CreditTransactionReport from "./Transactions/CreditTransactionReport";
 
 import Generalmanage from "./Generalmanage/Generalmanage";
 import Countrymanage from "./GeneralManage/Countrymanage";
@@ -41,10 +39,6 @@ import Citymanage from "./GeneralManage/Citymanage";
 import Unitmanage from "./GeneralManage/Unitmanage";
 import Statemanage from "./GeneralManage/Statemanage";
 import Areamanage from "./GeneralManage/Areamanage";
-
-import InventoryManager from "./InventoryManager";
-import InventoryManager1 from "./Subroutes/InventoryManager1";
-import InventoryManager2 from "./Subroutes/InventoryManager2";
 
 import RefillerManager from "./RefillerManage/RefillerManager";
 import Manage_Refill_Request from "./RefillerManage/Manage_Refill_Request";
@@ -61,9 +55,6 @@ import Home from "./Home";
 
 import Navbar from "../navbar/Navbar";
 
-import Refund from "./Refund";
-import Refund1 from "./Subroutes/Refund1";
-import Refund2 from "./Subroutes/Refund2";
 
 import { ReactNotifications } from "react-notifications-component";
 import { RejectedTransaction } from "./Transactions/RejectedTransaction";
@@ -101,7 +92,7 @@ function Dashboard() {
 
             <Routes>
               <Route default exact path="/" element={<Home />} />
-              <Route exact path="/addorder" element={<Addorder />}></Route>
+              {/* <Route exact path="/addorder" element={<Addorder />}></Route> */}
               <Route exact path="/products" element={<Products />}></Route>
 
               <Route exact path="/managemachine" element={<MachineManage />}>
@@ -118,8 +109,6 @@ function Dashboard() {
                 <Route path="addnewcompany" element={<Addnewcompany />} />
                 <Route path="addnewcompany/:id" element={<Addnewcompany />} />
                 <Route index path="listcompany" element={<Listcompany />} />
-                {/* <Route path="companyadmins" element={<CompanyAdmins />} /> */}
-                {/* <Route path="companymachines" element={<CompanyMachines />} /> */}
               </Route>
 
               <Route exact path="/employeemanage" element={<Employeemanage />}>
@@ -166,11 +155,11 @@ function Dashboard() {
                   path="transactionreport"
                   element={<TransactionReport />}
                 />
-                <Route path="creditreport" element={<CreditReport />} />
-                <Route
+                {/* <Route path="creditreport" element={<CreditReport />} /> */}
+                {/* <Route
                   path="credittransactionreport"
                   element={<CreditTransactionReport />}
-                />
+                /> */}
                 <Route
                   path="rejectedtransactionreport"
                   element={<RejectedTransaction />}
@@ -179,69 +168,58 @@ function Dashboard() {
               <Route exact path="/generalmanager" element={<Generalmanage />}>
                 <Route index path="countrymanage" element={<Countrymanage />} />
                 <Route path="statemanage" element={<Statemanage />}>
-                <Route path=":stateId" element={<Statemanage />} />
+                  <Route path=":stateId" element={<Statemanage />} />
                 </Route>
                 <Route path="citymanage" element={<Citymanage />} />
                 <Route path="unitmanage" element={<Unitmanage />} />
                 <Route path="areamanage" element={<Areamanage />} />
-                <Route index path="gst" element={<GstMaster/>}/>
-                <Route path="gst/:_id" element={<GstMaster/>}/>
+                <Route index path="gst" element={<GstMaster />} />
+                <Route path="gst/:_id" element={<GstMaster />} />
               </Route>
               <Route exact path="/products" element={<Products />}>
-                <Route path="productlist" element={<ProductList />} />
-                <Route
-                  index
-                  path="bulkproductupload"
-                  element={<BulkProductUpload />}
-                />
                 <Route
                   path="singleproductadd/:id"
                   element={<SingleProductAdd />}
                 />
                 <Route path="singleproductadd" element={<SingleProductAdd />} />
-                <Route
-                  path="updatebulkproduct"
-                  element={<UpdateBulkProduct />}
-                />
               </Route>
 
               <Route exact path="/warehouse" element={<Warehouse />}>
                 <Route index path="addwarehouse" element={<AddWarehouse />} />
                 <Route index path="warehouselist" element={<ListWarehouse />} />
                 <Route path="addwarehouse/:_id" element={<AddWarehouse />} />
-                <Route path="warehousestock" element={<WarehouseStock/>}/>
-                
+                <Route path="warehousestock" element={<WarehouseStock />} />
               </Route>
 
               <Route exact path="/suppliemanage" element={<Warehouse />}>
-                <Route index path="addsupplier" element={<AddSupplier/>} />
-                <Route index path="listSupplier" element={<ListSupplier/>} />
-                <Route index path="addsupplier/:_id" element={<AddSupplier/>}/>
+                <Route index path="addsupplier" element={<AddSupplier />} />
+                <Route index path="listSupplier" element={<ListSupplier />} />
+                <Route
+                  index
+                  path="addsupplier/:_id"
+                  element={<AddSupplier />}
+                />
                 {/* <Route path="addwarehouse/:_id" element={<AddWarehouse />} /> */}
               </Route>
-                
-              <Route exact path="/stockmanage" element={<StockManager/>}>
-                <Route index path="purchasestock" element={<PurchaseStock/>} />
-                <Route index path="purchasestocklist" element={<PurchaseStockList/>} />
-                <Route index path="transferstock" element={<TransferStock/>} />
-                <Route index path="acceptstock" element={<AlltransferRequest/>} />
+
+              <Route exact path="/stockmanage" element={<StockManager />}>
+                <Route index path="purchasestock" element={<PurchaseStock />} />
+                <Route
+                  index
+                  path="purchasestocklist"
+                  element={<PurchaseStockList />}
+                />
+                <Route index path="transferstock" element={<TransferStock />} />
+                <Route
+                  index
+                  path="acceptstock"
+                  element={<AlltransferRequest />}
+                />
                 {/* <Route index path="addsupplier/:_id" element={<AddSupplier/>}/> */}
                 {/* <Route path="addwarehouse/:_id" element={<AddWarehouse />} /> */}
+              </Route>
 
-              </Route>
-                
-              <Route exact path="/refundandsupport" element={<Refund />}>
-                <Route index path="1" element={<Refund1 />} />
-                <Route path="2" element={<Refund2 />} />
-              </Route>
-              <Route
-                exact
-                path="/inventorymanager"
-                element={<InventoryManager />}
-              >
-                <Route index path="1" element={<InventoryManager1 />} />
-                <Route path="2" element={<InventoryManager2 />} />
-              </Route>
+             
 
               <Route path="/*" element={<PageError />} />
             </Routes>

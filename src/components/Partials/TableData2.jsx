@@ -22,6 +22,7 @@ function TableData2(props) {
     
   // };
 const editClick=((item)=>{
+  
     props.editClick(item);
   })
 

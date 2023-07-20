@@ -59,18 +59,18 @@ export const GeneralManagerData = [
   },
  
 ];
-export const InventoryManagerData = [
+// export const InventoryManagerData = [
     
-  {
-    title: "1",
-    path: "/inventorymanager/1",    
-  },
-  {
-    title: "2",
-    path: "/inventorymanager/2",    
-  }
+//   {
+//     title: "1",
+//     path: "/inventorymanager/1",    
+//   },
+//   {
+//     title: "2",
+//     path: "/inventorymanager/2",    
+//   }
  
-];
+// ];
 export const MachineManageData = [
  
   {
@@ -99,17 +99,17 @@ export const RefillersManager = [
  
 ];
 
-export const RefundandSupportData = [
+// export const RefundandSupportData = [
    
-  {
-    title: "1",
-    path: "/refundandsupport/1",
-  },
-  {
-    title: "2",
-    path: "/refundandsupport/2"
-  }
-];
+//   {
+//     title: "1",
+//     path: "/refundandsupport/1",
+//   },
+//   {
+//     title: "2",
+//     path: "/refundandsupport/2"
+//   }
+// ];
 
 export const TransactionManageData = [
 
@@ -117,14 +117,14 @@ export const TransactionManageData = [
     title: "Transaction Report",
     path: "/transactionreports/transaction_report",
   },
-  {
-    title: "Credit Report",
-    path: "/transactionreports/credit_report"
-  },
-  {
-    title: "Credit Transaction Report",
-    path: "/transactionreports/credit_transaction_report"
-  }
+  // {
+  //   title: "Credit Report",
+  //   path: "/transactionreports/credit_report"
+  // },
+  // {
+  //   title: "Credit Transaction Report",
+  //   path: "/transactionreports/credit_transaction_report"
+  // }
 ];
 export const UserManagerData = [
   
