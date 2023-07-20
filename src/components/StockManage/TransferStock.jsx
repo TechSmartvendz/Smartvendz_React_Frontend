@@ -21,7 +21,7 @@ function TransferStock() {
   //   const value = event.target.value;
   //   setInputs2((values) => ({ ...values, [name]: value }));
   // };
-  console.log("setInputs", inputs);
+  // console.log("setInputs", inputs);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await postReq(path, inputs);
@@ -40,7 +40,7 @@ function TransferStock() {
   const loadList = async () => {
     const response = await getReq(`getAllWarehouses/Datalist`);
     setWarehouseList(response.data);
-    console.log(response);
+    // console.log(response);
   };
 
   useEffect(() => {

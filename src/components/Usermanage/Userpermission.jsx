@@ -19,7 +19,7 @@ function Userpermission() {
     const loadTableDate=async()=>{
       const response=await getReq(path);
       setTableData(response.data)
-      console.log(tableData)
+      // console.log(tableData)
     }
     useEffect(() => {
       loadTableDate()

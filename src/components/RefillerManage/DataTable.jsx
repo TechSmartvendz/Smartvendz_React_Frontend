@@ -30,7 +30,7 @@ export const DataTable = () => {
         try {
             const res = await axios.post(`http://192.168.1.15:3000/api/approverefillrequest?refillRequestNumber=${requestNumber}`,{}, { headers: { 'Authorization': `Bearer ${Token}` } })
             const data = res.data
-            console.log('data: ', data);
+            // console.log('data: ', data);
             return data;
         } catch (error) {
             console.log(error);

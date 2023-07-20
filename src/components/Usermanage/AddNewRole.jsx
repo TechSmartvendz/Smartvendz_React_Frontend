@@ -11,9 +11,9 @@ function AddNewRole() {
   const navigate = useNavigate();
 
   const { id } = useParams();
-  console.log("🚀 ~ file: AddNewRole.jsx:9 ~ AddNewRole ~ id", id);
+  // console.log("🚀 ~ file: AddNewRole.jsx:9 ~ AddNewRole ~ id", id);
   //id passed
-  console.log("🚀 ~ file: AddNewRole.jsx:9 ~ AddNewRole ~ id", id);
+  // console.log("🚀 ~ file: AddNewRole.jsx:9 ~ AddNewRole ~ id", id);
   const [itemid, setItemid] = useState(id); //id passed
   const path = "Permission";
   const [inputs, setInputs] = useState({});
@@ -26,12 +26,12 @@ function AddNewRole() {
   const loadDate = async () => {
     const response = await getReq(`${path}/${itemid}`);
     if (response.data) {
-      console.log("loadDatach:", response.data);
+      // console.log("loadDatach:", response.data);
       setPar(itemid);
       setInputs(response.data);
     } else {
-      console.log(response.data);
-      console.log(response.data);
+      // console.log(response.data);
+      // console.log(response.data);
       setPar();
       setInputs();
     }
@@ -45,7 +45,7 @@ function AddNewRole() {
   }, []);
 
   useEffect(() => {
-    console.log("🚀 ~ file: AddNewRole.jsx:13 ~ AddNewRole ~ inputs", inputs);
+    // console.log("🚀 ~ file: AddNewRole.jsx:13 ~ AddNewRole ~ inputs", inputs);
   }, [inputs]);
 
   // This is used To set User Permission CheckBox value
@@ -64,7 +64,7 @@ function AddNewRole() {
     event.preventDefault();
     // Put Request API call when par is true
     if (par) {
-      console.log("this is ", par);
+      // console.log("this is ", par);
 
       const response = await putReq(path, inputs, par);
       if (response.success) {

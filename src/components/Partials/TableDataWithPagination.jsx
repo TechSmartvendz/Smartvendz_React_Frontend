@@ -21,7 +21,7 @@ function TableDataWithPagination(props) {
       setTableData(response.data.data);
       setMetaData(response.data.metadata);
     } else {
-      console.log(response.data);
+      // console.log(response.data);
       setTableData(null);
       setMetaData(null);
     }
@@ -38,7 +38,7 @@ function TableDataWithPagination(props) {
         }
         setMetaData(metadat2)
     }else{
-      console.log("RUN Search Load")
+      // console.log("RUN Search Load")
       const response = await postReq(`${path}/Search/${page}/${dataPerPage}`, searchData);
       if (response.data) {
         setTableData(response.data.data);
@@ -48,9 +48,8 @@ function TableDataWithPagination(props) {
        
       }
     }
-      console.log("🚀 ~ file: TableDataWithPagination.jsx:54 ~ loadSearchData ~ searchData:", searchData)
-      console.log("🚀 ~ file: TableDataWithPagination.jsx:54 ~ loadSearchData ~ searchData:", searchData)
-      console.log("🚀 ~ file: TableDataWithPagination.jsx:54 ~ loadSearchData ~ searchData:", searchData)
+      // console.log("🚀 ~ file: TableDataWithPagination.jsx:54 ~ loadSearchData ~ searchData:", searchData)
+      
     
   
   };

@@ -11,7 +11,7 @@ const [products,setProducts]=useState([]);
 try {
        const response=await getReq('getallmachineslots/BLR002')
        setProducts(response.data)
-       console.log(products)
+      //  console.log(products)
 }
        catch(error){
         console.log(error)
@@ -96,7 +96,7 @@ try {
   {
    const response=await getReq(path)
    setSlotData(response.data);
-  console.log(response.data)
+  // console.log(response.data)
   }
 useEffect(()=>{
   loadMachineData()
@@ -119,7 +119,7 @@ useEffect(()=>{
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(inputs);
+    // console.log(inputs);
   }
 
   return (

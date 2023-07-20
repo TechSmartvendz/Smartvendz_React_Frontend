@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DataList from "../Partials/DataList";
 
 function CompanyForm(props) {
-console.log("🚀 ~ file: CompanyForm.jsx:5 ~ CompanyForm ~ props", props.input)
+// console.log("🚀 ~ file: CompanyForm.jsx:5 ~ CompanyForm ~ props", props.input)
 
 
   return (

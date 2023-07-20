@@ -12,7 +12,7 @@ function DataList(props) {
   // console.log('option:',option)
   const loadList = async () => {
     const response = await getReq(`${path}/Datalist`);
-    console.log(response);
+    // console.log(response);
     setDataList(response.data);
   };
 
@@ -20,7 +20,7 @@ function DataList(props) {
     loadList();
   }, []);
 
-  console.log("DataListss:", dataList);
+  // console.log("DataListss:", dataList);
   return (
     <React.Fragment>
       <label htmlFor={name}>{props.heading}:</label>

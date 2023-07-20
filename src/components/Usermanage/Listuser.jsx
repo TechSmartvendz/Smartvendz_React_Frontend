@@ -14,9 +14,9 @@ const[tableRefresh,setTableRefresh]=useState(0)
 
     const loadTableDate=async()=>{
     const response=await getReq(path);
-    console.log('loadTableDate::',response.data)
+    // console.log('loadTableDate::',response.data)
     setTableData(response.data)
-    console.log(tableData)
+    // console.log(tableData)
   }
   
   useEffect(() => {
@@ -33,7 +33,7 @@ const editClick=(item)=>{
 
 navigate(`../addnewuser/${item._id}`);
 
-console.log(item._id)
+// console.log(item._id)
 
 }
 

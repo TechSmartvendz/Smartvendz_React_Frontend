@@ -21,7 +21,7 @@ function PurchaseStock() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await postReq(path, inputs);
-    console.log("SupplierData:", response.data);
+    // console.log("SupplierData:", response.data);
     if (response.success) {
       SuccessAlert({
         title: `Add ${ComponentName}`,

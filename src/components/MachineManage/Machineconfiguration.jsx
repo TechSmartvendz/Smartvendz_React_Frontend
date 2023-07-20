@@ -40,19 +40,19 @@ function Machineconfiguration() {
    
     const response = await getReq(`${path}/${par}`);
     if (response.data) {
-      console.log(
-        "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response:",
-        response.data
-      );
-      console.log(
-        "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response.data:",
-        response.data
-      );
+      // console.log(
+      //   "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response:",
+      //   response.data
+      // );
+      // console.log(
+      //   "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response.data:",
+      //   response.data
+      // );
       setInputs(response.data);
     } else {
       setPar();
       setItemid();
-      console.log(response.data);
+      // console.log(response.data);
     }
   };
   
@@ -94,7 +94,7 @@ function Machineconfiguration() {
     let clean =await CleanData(inputs2)
       const response = await postReq(`${path}/ExportCSV`, clean);
       if (response) {
-        console.log("🚀 ~ file: SingleProductAdd.jsx:151 ~ sampleCSVFile ~ response:", response)
+        // console.log("🚀 ~ file: SingleProductAdd.jsx:151 ~ sampleCSVFile ~ response:", response)
         fileDownload(response, `${ComponentName}${Date.now()}.csv`);
           SuccessAlert({
             
@@ -126,7 +126,7 @@ function Machineconfiguration() {
         }
       } else {
         const response = await postReq(path, data);
-        console.log("response DATA:",response.data);
+        // console.log("response DATA:",response.data);
         if (response.success) {
           SuccessAlert({
             title: `Add ${ComponentName}`,
@@ -184,7 +184,7 @@ function Machineconfiguration() {
   }, [par]);
 
   useEffect(() => {//TODO:Handle Edit State for MAke Add Form in Update form
-   console.log(searchData)
+  //  console.log(searchData)
   }, [searchData]);
 
   return (
