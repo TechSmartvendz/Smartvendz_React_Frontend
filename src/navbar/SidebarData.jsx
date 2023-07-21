@@ -13,27 +13,27 @@ export const SidebarData = [
   },
   {
     title: "User Manage",
-    path: "/usermanage",
+    path: "/",
     icon: <IoIcons.IoMdPeople />,
     cName: "nav-text",
     permission:"usermanage",
     submenu:[
       {
         title: "Add new user",
-        path: "/usermanage/addnewuser",  
+        path: "/addnewuser",  
         cName: "abc",
         permission:"addnewuser"
       },
       {
           title: "List User",
-          path: "/usermanage/listuser",  
+          path: "/listuser",  
           cName:"" ,
           permission:"listuser"
      
       },
       {
         title: "User permission",
-        path: "/usermanage/userpermission",    
+        path: "/userpermission",    
         cName:"",
         permission:"userpermission"
       },
@@ -42,19 +42,19 @@ export const SidebarData = [
   },
   {
     title: "Company Manage",
-    path: "/companymanage",
+    path: "/",
     icon: <IoIcons.IoMdPeople />,
     cName: "nav-text",
     permission:"companymanage",
     submenu:[
       {
         title: "Add new company",
-        path: "/companymanage/addnewcompany",
+        path: "/addnewcompany",
         permission:"addnewcompany"  
       },
       {
         title: "List Company",
-        path: "/companymanage/listcompany" ,
+        path: "/listcompany" ,
         permission:"listcompany"    
       },
      

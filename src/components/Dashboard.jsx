@@ -105,7 +105,7 @@ function Dashboard() {
                 />
               </Route>
 
-              <Route exact path="/companymanage" element={<Companymanage />}>
+              <Route exact path="/" element={<Companymanage />}>
                 <Route path="addnewcompany" element={<Addnewcompany />} />
                 <Route path="addnewcompany/:id" element={<Addnewcompany />} />
                 <Route index path="listcompany" element={<Listcompany />} />
@@ -119,7 +119,7 @@ function Dashboard() {
                 {/* <Route path="employeecredit" element={<Employeecredit />} /> */}
               </Route>
 
-              <Route exact path="/usermanage" element={<UserManage />}>
+              <Route exact path="/" element={<UserManage />}>
                 <Route path="addnewuser" element={<Addnewuser />} />
                 <Route path="addnewuser/:id" element={<Addnewuser />} />
                 <Route index path="listuser" element={<Listuser />} />

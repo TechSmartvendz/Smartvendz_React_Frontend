@@ -36,9 +36,10 @@ function Navbar() {
       );
     //  console.log('Permission Data:',response.data.data);
     //  console.log('User Name:',response.data.data.username);
-      const roleName=response.data.data.data.role;
-      setUserRole(roleName)
-      setNavData(response.data.data);
+      // const roleName=response.data.data.data.role;
+      setUserRole(response.data.data.role)
+      setNavData(response.data);
+      
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +48,8 @@ function Navbar() {
   useEffect(() => {
     loadDate();
   }, []);
-
+  const userName=localStorage.getItem('username')
+ 
   // const filtredMenu=sideBarData.filter((menus)=>{
   //   if( menus.title.toLowerCase().includes(searchQuery.toString().toLowerCase())){
   //     return menus;
@@ -68,7 +70,8 @@ function Navbar() {
           {/* <div className="line-div"></div> */}
           <div className="userinfo-container">
             <h5>Welcome !</h5>
-            <h3>{userRole} <h5 style={{color:'yellow'}}>{`[${navData.username}]`}</h5></h3>
+            
+            <h3>{userRole}<h5 style={{color:'grey'}}>{`(${userName})`}</h5></h3>
           </div>
           <hr style={{borderColor:'grey'}}></hr>
           {/* <input type="text" id="mySearch" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} placeholder="Search..."  /> */}
