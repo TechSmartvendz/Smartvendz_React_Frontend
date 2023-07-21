@@ -23,9 +23,9 @@ function Header() {
   const navigate=useNavigate();
 
   function logout() {
-
     setIsLoggedIn(false);
-   
+    localStorage.clear();
+    
     removeCookie('JWTcookie',{path:"/"});
     if(isLoggedIn){
       navigate('../')
