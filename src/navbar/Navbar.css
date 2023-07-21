@@ -37,7 +37,7 @@
   display: flex;
   position: fixed;
   display: block;
-  margin-top:65px;
+  margin-top:62px;
   z-index: 1;
   top: 0;
   left: 0;
@@ -123,10 +123,11 @@
 .ulbg>li>a{
   margin: 0px 5px 0px 25px;
 }
+
 .nav-text:hover .ulbg {
   display: inline;
   background-color: rgb(2, 59, 76);
-  transition:  background-color 15s;
+  transition:background-color 15s;
   transition-timing-function: ease-in;
 }
 .nav-text >ul {
@@ -171,7 +172,7 @@ border-bottom: 5px solid rgb(2, 65, 94);
 margin-bottom: 15px;
 }
 .space-div{
-  height: 30px;
+  height:2px;
   width: auto;
   background-color: rgb(43, 39, 39);
   border-bottom:20px;

@@ -2,6 +2,8 @@ import React from "react";
 import snaxsmart from "../assets/snaxsmart.png";
 //import { Cookies } from 'react-cookie';
 import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useContext } from "react";
 import AuthContext from "../Context/AuthContext";
@@ -18,14 +20,16 @@ function Header() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const { sidebar, setSidebar } = useContext(NavContext);
 
-
+  const navigate=useNavigate();
 
   function logout() {
 
     setIsLoggedIn(false);
    
     removeCookie('JWTcookie',{path:"/"});
-  
+    if(isLoggedIn){
+      navigate('../')
+    }
   //   (function () {
   //     var cookies = document.cookie.split("; ");
   //     for (var c = 0; c < cookies.length; c++) {
@@ -49,9 +53,9 @@ function Header() {
   // const showSidebar = () => setSidebar(!sidebar);
   // style={{display: sidebar ?'block':'none'}}
 
-  function showSidebar() {
-    setSidebar(!sidebar);
-  }
+  // function showSidebar() {
+  //   setSidebar(!sidebar);
+  // }
 
   return (
     <>

@@ -319,14 +319,14 @@ export const SidebarData = [
   //     }
   //   ]
   // },
-  {
-    title: "*",
-    path: "/*",
-    icon: <IoIcons.IoMdHelpCircle />,
-    cName: "nav-text",
-    permission:"listcompany"
+  // {
+  //   title: "*",
+  //   path: "/*",
+  //   icon: <IoIcons.IoMdHelpCircle />,
+  //   cName: "nav-text",
+  //   permission:"listcompany"
     
-  }
+  // }
 ];
 
 
