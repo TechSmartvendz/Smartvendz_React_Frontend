@@ -16,6 +16,7 @@ function TransferStock() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
+  // console.log('Inputs:',inputs)
   // const handleChange2 = (event) => {
   //   const name = event.target.name;
   //   const value = event.target.value;
@@ -79,9 +80,13 @@ function TransferStock() {
                 value={inputs.fromWarehouse}
                 onChange={handleChange}
               >
+                <option value="Select Warehouse">Select Warehouse</option>
                 {warehouseList != null ? (
-                  warehouseList.map((warehouse) => {
-                    return <option>{warehouse.wareHouseName}</option>;
+                  warehouseList.map((warehouse,i) => {
+                    return <option key={i}>
+                   
+                    {warehouse.wareHouseName}
+                    </option>;
                   })
                 ) : (
                   <option>warehouse not found</option>

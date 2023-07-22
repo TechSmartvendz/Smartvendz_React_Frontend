@@ -26,6 +26,7 @@ function Areamanage() {
     event.preventDefault();
     if(par){
       // console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
+      // This API request is used to edit the particular AREA.
       const response = await patchReq(path, inputs,par);
       if (response.success) {
         setPar()
@@ -40,7 +41,7 @@ function Areamanage() {
       }
 
     }else {
-
+    // This API is used to Post new AREA into data base.
       const response = await postReq(path, inputs);
       if (response.success) {
         setTableRefresh(tableRefresh + 1); //4

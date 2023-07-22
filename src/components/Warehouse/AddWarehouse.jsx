@@ -103,7 +103,9 @@ function AddWarehouse() {
             <button onClick={() => navigate(-1)}>Back</button>
           </div>
         </div>
-
+        <div className="option-btn">
+      <button onClick={()=>{navigate("../warehouselist")}}>Warehouse List</button>
+       </div>
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub2-title">
             <span>Warehouse Details</span>

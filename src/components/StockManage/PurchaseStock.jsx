@@ -1,4 +1,4 @@
-import React ,{ useState, useEffect }from "react";
+import React, { useState, useEffect } from "react";
 
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
 import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
@@ -6,31 +6,39 @@ import DataList from "../Partials/DataList";
 import { useParams, useNavigate } from "react-router-dom";
 function PurchaseStock() {
   const [inputs, setInputs] = useState({});
-
-  const path='purchaseStock'
-  const ComponentName='Purchase'
-   const navigate=useNavigate()
-//   handleChange is used to set the field data
+  const [data, setData] = useState();
+  const path = "purchaseStock";
+  const ComponentName = "Purchase";
+  const navigate = useNavigate();
+  //   handleChange is used to set the field data
   function handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   }
-
-//   Handle Submit i used to Purchase the Stock
+  console.log("Inputs:", inputs);
+  // console.log("After Submited Data:",data)
+  //   Handle Submit i used to Purchase the Stock
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await postReq(path, inputs);
-    // console.log("SupplierData:", response.data);
+    setData(inputs);
+    setInputs({});
+    console.log("After Submited Data:", inputs);
+  };
+  let responsedata = [];
+  responsedata.push(data);
+  console.log("R:", responsedata);
+  const handleSubmitData = async (event) => {
+    event.preventDefault();
+    const response = await postReq(path, data);
+    console.log(response);
     if (response.success) {
       SuccessAlert({
         title: `Add ${ComponentName}`,
         message: `${ComponentName} successfully`,
       });
-    //   setPar();
-      setInputs({});
-      navigate("../purchasestocklist");
-      //   setaddproductformstate(false);
+
+      // navigate("../purchasestocklist");
     } else {
       ErrorAlert({ title: `Add ${ComponentName}`, message: response.msg });
     }
@@ -51,7 +59,7 @@ function PurchaseStock() {
               navigate("../purchasestocklist");
             }}
           >
-        Purchased  Stock List
+            Purchased Stock List
           </button>
         </div>
         <div className="add-user-container">
@@ -63,7 +71,7 @@ function PurchaseStock() {
               Purchase Stock
             </span>
           </div>
-         
+
           <form className="flex-col" onSubmit={handleSubmit}>
             {/*  */}
             <div className="input-lable-v-div">
@@ -98,7 +106,7 @@ function PurchaseStock() {
               />
             </div>
             <div className="input-lable-v-div">
-              <label htmlFor="supplierAddress">Product Qty</label>
+              <label htmlFor="supplierAddress">Product quantity</label>
               <input
                 type="number"
                 name="productQuantity"
@@ -154,14 +162,70 @@ function PurchaseStock() {
                 heading={"GST"}
               />
             </div>
+            <div className="input-lable-v-div">
+              <label htmlFor="contactPerson">Date</label>
+              <input
+                type="date"
+                name="date"
+                value={inputs.date || ""}
+                onChange={handleChange}
+              />
+            </div>
 
             <div className="input-lable-h-div">
               <button className="submit-btn" type="submit">
-                Purchase
+                Save
               </button>
             </div>
           </form>
         </div>
+      </div>
+
+      <div className="componet-sub2-title">
+        <span>Total: {data != null ? data.length : 0}</span>
+      </div>
+      <div className="table_container-div">
+        <button className="submit-btn" type="submit" onClick={handleSubmitData}>
+          Purchase
+        </button>
+        <table>
+          <tbody>
+            <tr>
+              <th>Supplier</th>
+              <th>WareHouse</th>
+              <th>Product</th>
+              <th>Product quantity</th>
+              <th>Selling Price</th>
+              <th>Total Price</th>
+              <th>Invoice Number</th>
+              <th>GRN Number</th>
+              <th>GST</th>
+            </tr>
+            {responsedata != "" ? (
+              responsedata.map((purchaseData, i) => {
+                return (
+                  <tr key={i}>
+                    <td>{purchaseData.supplier}</td>
+                    <td>{purchaseData.warehouse}</td>
+                    <td>{purchaseData.product}</td>
+                    <td>{purchaseData.productQuantity}</td>
+                    <td>{purchaseData.sellingPrice}</td>
+                    <td>{purchaseData.totalPrice}</td>
+                    <td>{purchaseData.invoiceNumber}</td>
+                    <td>{purchaseData.GRN_Number}</td>
+                    <td>{purchaseData.gstName}</td>
+                  </tr>
+                );
+              })
+            ) : (
+              <tr>
+                <td> Data Not Found </td>
+              </tr>
+            )}
+
+            
+          </tbody>
+        </table>
       </div>
     </React.Fragment>
   );

@@ -703,3 +703,16 @@ cursor: pointer;
   margin-left: 5px;
   cursor: pointer;
  }
+ /* .style={{color:'blue',cursor:'pointer',width:'35px',height:'20px'}} */
+ .Edit-icon{
+  color: blue;
+  cursor: pointer;
+  width:35px ;
+  height:20px;
+ }
+ .Delete-icon{
+  color: red;
+  cursor: pointer;
+  width:35px ;
+  height:20px;
+ }

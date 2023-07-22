@@ -81,14 +81,18 @@ const AddSupplier = () => {
   return (
     <React.Fragment>
       <div className="add-user-container">
+      
         <div className="headingdiv">
-          <span className="componet-title"></span>
+          <span className="componet-title">Add Supplier</span>
           <div>
             <button onClick={() => navigate(-1)}>Back</button>
           </div>
         </div>
 
         <div className="add-user-container">
+        <div className="option-btn">
+      <button onClick={()=>{navigate("../listsupplier")}}>Supplier List</button>
+       </div>
           <div className="componet-sub-title">
             <span>
               {/* {par
@@ -97,6 +101,7 @@ const AddSupplier = () => {
               Add Supplier Details
             </span>
           </div>
+
           <form className="flex-col" onSubmit={handleSubmit}>
             {/*  */}
             <div className="input-lable-v-div">

@@ -4,12 +4,7 @@ import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData.jsx";
 import "./Navbar.css";
-import { IconContext } from "react-icons";
-import {
-  postReq,
-  putReq,
-  getReq,
-} from "../components/middleware/AxiosApisCall";
+
 import SubMenu from "./SubMenu";
 import NavContext from "../Context/NavContext";
 import axios from "axios";
@@ -17,7 +12,7 @@ import { Cookies } from "react-cookie";
 
 function Navbar() {
 
-  const path = "Permission/LoadMenu/";
+  
   const cookies = new Cookies();
   const token = cookies.get("JWTcookie");
   const { sidebar, setSidebar } = useContext(NavContext);
@@ -34,9 +29,7 @@ function Navbar() {
         "http://localhost:3000/api/Permission/LoadMenu",
         { headers: { Authorization: "Bearer " + token } }
       );
-    //  console.log('Permission Data:',response.data.data);
-    //  console.log('User Name:',response.data.data.username);
-      // const roleName=response.data.data.data.role;
+   
       setUserRole(response.data.data.role)
       setNavData(response.data);
       

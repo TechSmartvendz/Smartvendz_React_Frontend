@@ -55,7 +55,7 @@ function Machineconfiguration() {
       // console.log(response.data);
     }
   };
-  
+  console.log('inputs:',inputs)
   function handleChange(event) { //TODO:Handle Form Data Add Form 
     const name = event.target.name;
     const value = event.target.value;
@@ -293,7 +293,7 @@ function Machineconfiguration() {
               {/* <input type="checkbox" name="accumulate" checked={inputs.accumulate || false } onChange={handleChange} /> */}
               <label htmlFor="accumulate" >Credit Type</label>
               <select name="credittype" value={inputs.credittype|| ""} onChange={handleChange}>
-                <option></option>
+                <option>Select Credit type</option>
                 <option>accumulate</option>
                 <option>forfeit</option>
 

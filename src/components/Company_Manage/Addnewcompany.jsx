@@ -190,7 +190,7 @@ function Addnewcompany() {
         <div className="option-btn">
           <button
             onClick={() => {
-              navigate("/companymanage/listcompany");
+              navigate("/listcompany");
             }}
           >
             Company List

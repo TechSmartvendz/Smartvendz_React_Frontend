@@ -4,10 +4,10 @@ import React, { useContext } from "react";
 // import Addorder from "./Addorder";
 import NavContext from "../Context/NavContext";
 
-import Products from "./Products/Products";
+// import Products from "./Products/ProductsManage";
 
 import SingleProductAdd from "./Products/SingleProductAdd";
-
+import ProductsManage from "./Products/ProductsManage";
 import UserManage from "./UserManage/UserManage";
 import Addnewuser from "./Usermanage/Addnewuser";
 import Listuser from "./Usermanage/Listuser";
@@ -70,6 +70,7 @@ import GstMaster from "./GeneralManage/GstMaster";
 import AlltransferRequest from "./StockManage/AllTransferRequest";
 import WarehouseStock from "./Warehouse/WarehouseStock";
 
+
 //TODO: GET info about this Usermanahe.css
 // import 'Usermanage.css'
 
@@ -93,9 +94,11 @@ function Dashboard() {
             <Routes>
               <Route default exact path="/" element={<Home />} />
               {/* <Route exact path="/addorder" element={<Addorder />}></Route> */}
-              <Route exact path="/products" element={<Products />}></Route>
+              {/* <Route exact path="/" element={<ProductsManage/>}>
+              <Route path="singleproductadd" element={<SingleProductAdd/>} />
+              </Route> */}
 
-              <Route exact path="/managemachine" element={<MachineManage />}>
+              <Route exact path="/" element={<MachineManage />}>
                 <Route path="addnewmachine" element={<Addnewmachine />} />
                 <Route path="addnewmachine/:id" element={<Addnewmachine />} />
                 <Route index path="listmachine" element={<Listmachine />} />
@@ -111,7 +114,7 @@ function Dashboard() {
                 <Route index path="listcompany" element={<Listcompany />} />
               </Route>
 
-              <Route exact path="/employeemanage" element={<Employeemanage />}>
+              <Route exact path="/" element={<Employeemanage />}>
                 <Route
                   path="addandeditemployee"
                   element={<AddandEditemployee />}
@@ -130,7 +133,7 @@ function Dashboard() {
 
               <Route
                 exact
-                path="/refillermanager"
+                path="/"
                 element={<RefillerManager />}
               >
                 <Route
@@ -147,7 +150,7 @@ function Dashboard() {
 
               <Route
                 exact
-                path="/transactionreports"
+                path="/"
                 element={<Transactions />}
               >
                 <Route
@@ -165,7 +168,7 @@ function Dashboard() {
                   element={<RejectedTransaction />}
                 />
               </Route>
-              <Route exact path="/generalmanager" element={<Generalmanage />}>
+              <Route exact path="/" element={<Generalmanage />}>
                 <Route index path="countrymanage" element={<Countrymanage />} />
                 <Route path="statemanage" element={<Statemanage />}>
                   <Route path=":stateId" element={<Statemanage />} />
@@ -176,22 +179,24 @@ function Dashboard() {
                 <Route index path="gst" element={<GstMaster />} />
                 <Route path="gst/:_id" element={<GstMaster />} />
               </Route>
-              <Route exact path="/products" element={<Products />}>
+
+              <Route exact path="/" element={<ProductsManage />}>
+              <Route path="singleproductadd" element={<SingleProductAdd/>} />
                 <Route
                   path="singleproductadd/:id"
                   element={<SingleProductAdd />}
                 />
-                <Route path="singleproductadd" element={<SingleProductAdd />} />
+                
               </Route>
 
-              <Route exact path="/warehouse" element={<Warehouse />}>
+              <Route exact path="/" element={<Warehouse />}>
                 <Route index path="addwarehouse" element={<AddWarehouse />} />
                 <Route index path="warehouselist" element={<ListWarehouse />} />
                 <Route path="addwarehouse/:_id" element={<AddWarehouse />} />
                 <Route path="warehousestock" element={<WarehouseStock />} />
               </Route>
 
-              <Route exact path="/suppliemanage" element={<Warehouse />}>
+              <Route exact path="/" element={<Warehouse />}>
                 <Route index path="addsupplier" element={<AddSupplier />} />
                 <Route index path="listSupplier" element={<ListSupplier />} />
                 <Route
@@ -202,7 +207,7 @@ function Dashboard() {
                 {/* <Route path="addwarehouse/:_id" element={<AddWarehouse />} /> */}
               </Route>
 
-              <Route exact path="/stockmanage" element={<StockManager />}>
+              <Route exact path="/" element={<StockManager />}>
                 <Route index path="purchasestock" element={<PurchaseStock />} />
                 <Route
                   index

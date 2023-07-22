@@ -26,6 +26,7 @@ function TableDataWithPagination(props) {
       setMetaData(null);
     }
   };
+  console.log('tableData:',tableData)
   const loadSearchData = async (event) => { //TODO:Submit Search Form
     if(props.reject){
       console.log(searchData.length)

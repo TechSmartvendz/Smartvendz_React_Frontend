@@ -22,6 +22,8 @@ table {
 
 table th {
     padding: 5px;
+    font-size:large;
+    
     background-color: teal;
     border: 1px solid white;
 }

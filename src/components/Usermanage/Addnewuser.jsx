@@ -67,6 +67,7 @@ function Addnewuser() {
       if (response.success) {
         setTableRefresh(tableRefresh + 1);
         setInputs({});
+        navigate('../listuser');
         SuccessAlert({ title: "Add User", message: "User Added successfully" });
       } else {
         ErrorAlert({ title: "Add User", message: response.msg });
@@ -94,7 +95,7 @@ function Addnewuser() {
         <div className="option-btn">
           <button
             onClick={() => {
-              navigate("/usermanage/listuser");
+              navigate("/listuser");
             }}
           >
             {" "}

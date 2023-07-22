@@ -31,13 +31,14 @@ function DataList(props) {
         value={props.value}
         placeholder="Search..."
         autoComplete={"off"}
+        style={{textAlign:'left'}}
       />
 
       <datalist id={name}>
         {dataList != null ? (
           dataList.map((e, i) => {
             return (
-              <option key={i} value={e.id}>
+              <option  key={i} value={e.id}>
                 {e[option]}
               </option>
             );

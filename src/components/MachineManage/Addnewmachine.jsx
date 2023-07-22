@@ -5,13 +5,16 @@ import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableData2 from "../Partials/TableData2";
 import { useParams, useNavigate } from "react-router";
 import NavContext from "../../Context/NavContext";
+import BulkUpload from "../Partials/BulkUpload";
+import TableDataWithPagination from "../Partials/TableDataWithPagination";
 function Addnewmachine() {
   const { sidebar, setSidebar } = useContext(NavContext);
   const navigate = useNavigate();
   const path = "Machine";
+  const SampleCSVfile='SampleCSVfile';
   const ComponentName = "Machine";
   const subPath = "Machine/Slot";
-  const listPath = "/managemachine/listmachine";
+  const listPath = "/listmachine";
   const [inputs, setInputs] = useState({});
   const [inputs2, setInputs2] = useState({});
 
@@ -19,8 +22,27 @@ function Addnewmachine() {
   const { id } = useParams();
   const [itemid, setItemid] = useState(id); //var to show company  form state for edit or add new req
   const [companyusertable, setcompanyusertable] = useState();
-
+  const [addproductformstate, setaddproductformstate] = useState(); //Add form state use to show or hide add product form
+  const [bulkformstate, setbulkformstate] = useState(false);
   //TODO: Load Data on Render and on Stage changes
+  const [reject,setReject] = useState(false);
+  const [importsuccess,setImportSuccess] = useState(0);
+
+  const bulkupload = () => {
+    //TODO:Handle Hide and Show of Add Product From
+    if(reject){
+      
+      setReject(false)
+    }
+    setbulkformstate(!bulkformstate);
+
+    // setaddproductformstate(false);
+  };
+const rejectdata = (data) => {//TODO:Handle Edit request from  Table Componenet
+    // console.log("🚀 ~ file: SingleProductAdd.jsx:141 ~ rejectdata ~ data:", data)
+    setReject(true)
+   
+  };
   const loadDate = async () => {
     const response = await getReq(`${path}/${itemid}`);
     if (response.data) {
@@ -33,15 +55,13 @@ function Addnewmachine() {
     } else {
       navigate(`../`);
       // console.log(response.data);
-      
     }
   };
   const loadDateUsertable = async () => {
     const response = await getReq(`${subPath}/${itemid}`);
     if (response.data.length) {
       // console.log(
-        
-        
+
       //   "🚀 ~ file: Addnewmachine.jsx:41 ~ loadDateUsertable ~ response.data",
       //   response.data
       // );
@@ -130,6 +150,7 @@ function Addnewmachine() {
           ...values,
           machineid: inputs.machineid,
         }));
+        setaddproductformstate(false);
       } else {
         ErrorAlert({ title: "Update Machine", message: response.msg });
       }
@@ -141,6 +162,7 @@ function Addnewmachine() {
           title: "Add Machine",
           message: "Machine Added successfully",
         });
+        setPar(true);
         navigate(`${response.data._id}`);
         setItemid(response.data._id);
         setInputs2();
@@ -200,6 +222,10 @@ function Addnewmachine() {
           >
             {ComponentName} List
           </button>
+
+          {(par || itemid) && (
+            <button onClick={bulkupload}>Bulk Slot Upload</button>
+          )}
         </div>
 
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
@@ -290,89 +316,108 @@ function Addnewmachine() {
       </div>
 
       {/* second form */}
+      {/* (!addproductformstate&&!bulkformstate) */}
+
 
       {itemid && (
         <React.Fragment>
           <div className="add-user-container">
-            <div className="componet-sub-title">
-              <span>{par ? "Update Planogram" : "Make Planogram"}</span>
-            </div>
+            {bulkformstate ? (
+              <BulkUpload  path={'MachineSlot'}  rejectdata={rejectdata}/>
+            ) : (
+              <>
+                <div className="componet-sub-title">
+                  <span>{par ? "Update Planogram" : "Make Planogram"}</span>
+                </div>
 
-            <form className="flex-col" onSubmit={handleSubmit2}>
-              <div className="input-lable-h-div">
-                <DataList
-                  value={inputs2.machineid || ""}
-                  path={path}
-                  handleChange={handleChange2}
-                  name={"machineid"}
-                  option={"machineid"}
-                  heading={"Machine ID"}
-                />
-              </div>
+                <form className="flex-col" onSubmit={handleSubmit2}>
+                  <div className="input-lable-h-div">
+                    <DataList
+                      value={inputs2.machineid || ""}
+                      path={path}
+                      handleChange={handleChange2}
+                      name={"machineid"}
+                      option={"machineid"}
+                      heading={"Machine ID"}
+                    />
+                  </div>
 
-              <div className="input-lable-h-div">
-                <label htmlFor="slot">Slot Name/No.</label>
-                <input
-                  type="text"
-                  name="slot"
-                  value={inputs2.slot || ""}
-                  onChange={handleChange2}
-                  autoComplete="off"
-                />
-              </div>
+                  <div className="input-lable-h-div">
+                    <label htmlFor="slot">Slot Name/No.</label>
+                    <input
+                      type="text"
+                      name="slot"
+                      value={inputs2.slot || ""}
+                      onChange={handleChange2}
+                      autoComplete="off"
+                    />
+                  </div>
 
-              <div className="input-lable-h-div">
-                <label htmlFor="maxquantity">MAX Quantity</label>
-                <input
-                  type="number"
-                  name="maxquantity"
-                  value={inputs2.maxquantity || ""}
-                  onChange={handleChange2}
-                  autoComplete="off"
-                />
-              </div>
+                  <div className="input-lable-h-div">
+                    <label htmlFor="maxquantity">MAX Quantity</label>
+                    <input
+                      type="number"
+                      name="maxquantity"
+                      value={inputs2.maxquantity || ""}
+                      onChange={handleChange2}
+                      autoComplete="off"
+                    />
+                  </div>
 
-              <div className="input-lable-h-div">
-                <DataList
-                  name={"product"}
-                  value={inputs2.product || " "}
-                  path={"Product"}
-                  option={"productname"}
-                  handleChange={handleChange2}
-                  heading={"Product"}
-                />
-              </div>
+                  <div className="input-lable-h-div">
+                    <DataList
+                      name={"product"}
+                      value={inputs2.product || " "}
+                      path={"Product"}
+                      option={"productname"}
+                      handleChange={handleChange2}
+                      heading={"Product"}
+                    />
+                  </div>
 
-              <div className="input-lable-v-div">
-                <label htmlFor="active_status">Activate</label>
-                <input
-                  type="checkbox"
-                  name="active_status"
-                  value={inputs2.active_status || false}
-                  checked={inputs2.active_status || false}
-                  onChange={handleChange2}
-                  autoComplete="off"
-                />
-              </div>
+                  <div className="input-lable-v-div">
+                    <label htmlFor="active_status">Activate</label>
+                    <input
+                      type="checkbox"
+                      name="active_status"
+                      value={inputs2.active_status || false}
+                      checked={inputs2.active_status || false}
+                      onChange={handleChange2}
+                      autoComplete="off"
+                    />
+                  </div>
 
-              <div className="input-lable-h-div">
-                <button className="submit-btn" type="submit">
-                  {par ? "Update" : "Save"}
-                </button>
-              </div>
-            </form>
+                  <div className="input-lable-h-div">
+                    <button className="submit-btn" type="submit">
+                      {par ? "Update" : "Save"}
+                    </button>
+                  </div>
+                </form>
+              </>
+             
+            )}
           </div>
-
-          <div className="table_container-div">
-            <TableData2
-              path={subPath}
+            {/*  path={subPath}
               key={subPath}
               data={companyusertable}
               name={"Planogram"}
               editClick={editClick}
               editbutton={false}
+              loadDateUsertable={loadDateUsertable} */}
+
+              <div className="table_container-div">
+            <TableDataWithPagination
+              path={path}
+              // key={subPath}
+             
+              data={companyusertable}
+              name={"Planogram"}
+              editClick={editClick}
+              // clear={clearform}
+              reject={reject}
               loadDateUsertable={loadDateUsertable}
             />
+          
           </div>
         </React.Fragment>
       )}

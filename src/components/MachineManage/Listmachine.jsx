@@ -41,7 +41,7 @@ navigate(`../addnewmachine/${item._id}`);
       </div>
 
         <div className="option-btn">
-        <button onClick={()=>{navigate("/managemachine/addnewmachine")}}>Add New Machine</button>
+        <button onClick={()=>{navigate("/addnewmachine")}}>Add New Machine</button>
          </div>
       
         <TableData path={path}  key={tableRefresh} editClick={editClick}/>
