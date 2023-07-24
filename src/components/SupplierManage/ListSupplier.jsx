@@ -35,7 +35,7 @@ const ListSupplier = () => {
           </button>
         </div>
      
-        <TableData path={path} key={tableRefresh} deletePath={deletePath}  editClick={editClick} />
+        <TableData  path={path} key={tableRefresh} deletePath={deletePath}  editClick={editClick} />
       </div>
     </React.Fragment>
   );

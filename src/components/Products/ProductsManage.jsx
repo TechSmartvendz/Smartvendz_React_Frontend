@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import SubLink from '../../Route/SubLink';
 import {ProductsData} from '../../Route/SubLinkJSON';
 
-function Products() {
+function ProductsManage() {
 const [subLinkJSON,setSubLinkJSON]=useState(ProductsData);
   return (
     <>
@@ -11,4 +11,4 @@ const [subLinkJSON,setSubLinkJSON]=useState(ProductsData);
   )
 }
 
-export default Products
+export default ProductsManage;

@@ -14,7 +14,7 @@ const[tableRefresh,setTableRefresh]=useState(0)
   const loadTableDate=async()=>{
     const response=await getReq(path);
     setTableData(response.data)
-    // console.log(tableData)
+    console.log(':TABLEDATA:',tableData)
   }
   useEffect(() => {
     loadTableDate()
@@ -41,7 +41,7 @@ navigate(`../addnewmachine/${item._id}`);
       </div>
 
         <div className="option-btn">
-        <button onClick={()=>{navigate("/managemachine/addnewmachine")}}>Add New Machine</button>
+        <button onClick={()=>{navigate("/addnewmachine")}}>Add New Machine</button>
          </div>
       
         <TableData path={path}  key={tableRefresh} editClick={editClick}/>

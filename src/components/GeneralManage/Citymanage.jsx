@@ -24,6 +24,7 @@ function Citymanage() {
     event.preventDefault();
     if(par){
       // console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
+      // This API request is used to edit the particular CITY.
       const response = await patchReq(path, inputs,par);
       if (response.success) {
         setPar()
@@ -38,6 +39,7 @@ function Citymanage() {
       }
     
     }else {
+      // This API is used to Post new CITY into data base.
     const response = await postReq(path, inputs);
     if (response.success) {
       setPar();
@@ -49,7 +51,7 @@ function Citymanage() {
     }
   }
   }
-
+  // This function is used to get Id on click
     const editClick=(pid)=>{
       setPar(pid._id)
       setInputs(pid) 

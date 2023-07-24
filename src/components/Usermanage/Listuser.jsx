@@ -52,7 +52,7 @@ navigate(`../addnewuser/${item._id}`);
       </div>
 
         <div className="option-btn">
-        <button onClick={()=>{navigate("/usermanage/addnewuser")}}>Add New User</button>
+        <button onClick={()=>{navigate("/addnewuser")}}>Add New User</button>
          </div>
       
       {/* This component is for list of user Table */}

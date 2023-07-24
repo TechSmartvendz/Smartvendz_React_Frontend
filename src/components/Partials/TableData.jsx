@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { getReq, delReq, putReq } from "../middleware/AxiosApisCall";
-
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
-
+import {AiFillDelete}  from 'react-icons/ai'
+import {MdModeEditOutline} from 'react-icons/md'
 function TableData(props) {
   const [tableData, setTableData] = useState();
   const [path, setPath] = useState(props.path);
+  const [totalSupplier,setTotalSupplier]=useState(props.totalSupplier)
   const [deletePath, setDeletePath] = useState(props.deletePath);
   const [par, setpar] = useState(props.par);
   // console.log("this is par:", par);
-
+ 
   // This function is used to get data this function is reusable it using where ever it required
   const loadTableDate = async () => {
     
@@ -112,20 +113,11 @@ function TableData(props) {
 
                     {par != item._id ? (
                       <td>
-                        <button
-                          className="btn_edit"
-                          onClick={() => editClick(item)}
-                        >
-                          Edit
-                        </button>
-
-                        <button
-                          className="btn_delete"
+                       <MdModeEditOutline className="Edit-icon"  onClick={() => editClick(item)}/>
+                       <AiFillDelete className="Delete-icon"  
                           value={item._id}
-                          onClick={() => deleteState(item._id)}
-                        >
-                          Delete
-                        </button>
+                          onClick={() => deleteState(item._id)}/>
+                       
                       </td>
                     ) : (
                       <td></td>

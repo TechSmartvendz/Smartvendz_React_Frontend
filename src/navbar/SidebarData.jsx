@@ -63,7 +63,7 @@ export const SidebarData = [
 
   {
     title: "Machine Manage",
-    path: "/managemachine",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
     permission:"managemachine", 
@@ -71,31 +71,31 @@ export const SidebarData = [
  
       {
         title: "Add new machine",
-        path: "/managemachine/addnewmachine",
+        path: "/addnewmachine",
         permission:"addnewmachine" 
       },
       {
         title: "List Machine",
-        path: "/managemachine/listmachine",
+        path: "/listmachine",
         permission:"listmachine" 
       },
       {
         title: "Machine Configuration",
-        path: "/managemachine/machineconfiguration",
+        path: "/machineconfiguration",
         permission:"machineconfiguration" 
       }
     ]
   },
   {
     title: " Employee Manage",
-    path: "/employeemanage",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
     permission:"managemachine", 
     submenu:[  
       {
         title: "Add And Edit Employee",
-        path: "/employeemanage/addandeditemployee",
+        path: "/addandeditemployee",
         permission:"addnewmachine" 
       },
       
@@ -104,7 +104,7 @@ export const SidebarData = [
   },
   {
     title: "Transaction Reports",
-    path: "/transactionreports",
+    path: "/",
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: "nav-text",
     permission:"listcompany", 
@@ -112,7 +112,7 @@ export const SidebarData = [
 
       {
         title: "Transaction Report",
-        path: "/transactionreports/transactionreport",
+        path: "/transactionreport",
         permission:"listcompany"
       },
       // {
@@ -127,7 +127,7 @@ export const SidebarData = [
       // },
       {
         title: "Rejected Transaction Report",
-        path: "/transactionreports/rejectedtransactionreport",
+        path: "/rejectedtransactionreport",
         permission:"listcompany" 
       }
     ]
@@ -135,7 +135,7 @@ export const SidebarData = [
   // fix me right it is rendering because we have selected permission as listcompany it needs to be change.
   {
     title: "General Manager",
-    path: "/generalmanager",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
     permission:"listcompany",
@@ -143,32 +143,32 @@ export const SidebarData = [
   
       {
         title: "Country manage",
-        path: "/generalmanager/countrymanage", 
+        path: "/countrymanage", 
         permission:"listcompany"   
       },
       {
         title: "State manage",
-        path: "/generalmanager/statemanage",
+        path: "/statemanage",
         permission:"listcompany"     
       },
       {
         title: "City manage",
-        path: "/generalmanager/citymanage",
+        path: "/citymanage",
         permission:"listcompany"     
       },
       {
         title:"Area manage",
-        path:"/generalmanager/areamanage",
+        path:"/areamanage",
         permission:"listcompany" 
       },
       {
         title: "Unit manage",
-        path: "/generalmanager/unitmanage",
+        path: "/unitmanage",
         permission:"listcompany"    
       },
       {
         title: "GST Master",
-        path: "/generalmanager/gst",
+        path: "/gst",
         permission:"listcompany"    
       },
      
@@ -176,27 +176,27 @@ export const SidebarData = [
   },
   {
     title: "Refiller Manager",
-    path: "/refillermanager",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
     permission:"refillermanager",
     submenu:[
       {
         title: "Manage Refill Request",
-        path: "/refillermanager/managerefillrequest",
+        path: "/managerefillrequest",
         permission:"managedc"
       },
       {
         title: "Refiller Refilling Request",
-        path: "/refillermanager/refillerrefillingrequest",
+        path: "/refillerrefillingrequest",
         permission:"managedc" 
       },
      
     ]
   },
   {
-    title: "Products",
-    path: "/products",
+    title: "Products Manage",
+    path: "/",
     icon: <FaIcons.FaCartPlus />,
     cName: "nav-text",
     permission:"products", 
@@ -204,7 +204,7 @@ export const SidebarData = [
      
       {
         title:"Single Product Add",
-        path:"/products/singleproductadd",
+        path:"/singleproductadd",
         permission:"singleproductadd" 
       },
       
@@ -213,7 +213,7 @@ export const SidebarData = [
   
   {
     title: "warehouse",
-    path: "/warehouse",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
     permission:"warehouseManage", 
@@ -221,17 +221,17 @@ export const SidebarData = [
    
       {
         title: "Add Ware house",
-        path: "/warehouse/addwarehouse", 
+        path: "/addwarehouse", 
         permission:"addWareHouse"    
       },
       {
           title: "Ware house List",
-          path: "/warehouse/warehouselist", 
+          path: "/warehouselist", 
           permission:"listWarehouse" 
       },
       {
         title: "Ware house Stocks",
-        path: "/warehouse/warehousestock", 
+        path: "/warehousestock", 
         permission:"listWarehouse" 
       }
      
@@ -241,7 +241,7 @@ export const SidebarData = [
   // Supplier path data
   {
     title: "Supplier Manage",
-    path: "/suppliemanage",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
     permission:"supplierManage", 
@@ -249,19 +249,19 @@ export const SidebarData = [
    
       {
         title: "Add Supplier",
-        path: "/suppliemanage/addsupplier", 
+        path: "/addsupplier", 
         permission:"addSupplier"    
       },
       {
           title: "List Supplier",
-          path: "/suppliemanage/listsupplier", 
+          path: "/listsupplier", 
           permission:"listSupplier" 
       }
     ]
   },
   {
     title: "Stock Manage",
-    path: "/stockmanage",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text",
     permission:"stockManage", 
@@ -269,22 +269,22 @@ export const SidebarData = [
    
       {
         title: "Purchase Stock",
-        path: "/stockmanage/purchasestock", 
+        path: "/purchasestock", 
         permission:"purchaseStock"    
       },
       {
           title: "Purchase Stock List",
-          path: "/stockmanage/purchasestocklist", 
+          path: "/purchasestocklist", 
           permission:"purchaseStockList" 
       } ,
       {
         title: "Transfer Stock",
-        path: "/stockmanage/transferstock", 
+        path: "/transferstock", 
         permission:"transferStock" 
        }
        ,{
         title: "Accept Stock Request",
-        path: "/stockmanage/acceptstock", 
+        path: "/acceptstock", 
         permission:"acceptStockTransferRequest" 
        }
     ]

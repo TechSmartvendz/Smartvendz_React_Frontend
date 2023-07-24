@@ -11,7 +11,7 @@ import { useParams, useNavigate } from "react-router";
 
 // import { CleanDatalist } from "../Partials/ClearDatalist";
 
- function Addnewmachine() {
+ function SingleProductAdd() {
   const navigate = useNavigate();
   const path = "Product";
   const ComponentName = "Product";
@@ -36,26 +36,11 @@ import { useParams, useNavigate } from "react-router";
     setSearchData()
     setbulkformstate(false)
   };
-  // const loadDateUsertable = async () => { //FIXME://not using right now it will use in search product
-  //   const response = await getReq(`${Product}/${itemid}`);
-  //   if (response.data.length) {
-  //     console.log(response.data);
-  //     setcompanyusertable(response.data);
-  //   } else {
-  //     setcompanyusertable(null);
-  //   }
-  // };
+ 
   const loadDate = async () => { //TODO://Using to load edit form Data 
     const response = await getReq(`${path}/${par}`);
     if (response.data) {
-      // console.log(
-      //   "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response:",
-      //   response.data
-      // );
-      // console.log(
-      //   "🚀 ~ file: SingleProductAdd.jsx:34 ~ loadDate ~ response.data:",
-      //   response.data
-      // );
+     
       setInputs(response.data);
     } else {
       setPar();
@@ -186,7 +171,7 @@ import { useParams, useNavigate } from "react-router";
     <React.Fragment>
       <div className="add-user-container">
         <div className="headingdiv">
-          <span className="componet-title"> {ComponentName}</span>
+          <span className="componet-title">{ComponentName}</span>
           <div>
             <button onClick={() => navigate(-1)}>Back</button>
             <button onClick={clearform}>Clear </button>
@@ -380,4 +365,4 @@ import { useParams, useNavigate } from "react-router";
   );
 }
 
-export default Addnewmachine;
+export default SingleProductAdd;
