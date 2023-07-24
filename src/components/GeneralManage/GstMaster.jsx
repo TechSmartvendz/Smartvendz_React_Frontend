@@ -101,19 +101,51 @@ function GstMaster() {
             <span>GST Manage</span>
           </div>
           <div className="general-manage-div">
-            <label htmlFor="gstName">GST Name:</label>
+            <label htmlFor="HSN_code">HSN Code:</label>
             <input
-              name="gstName"
-              type="text"
-              value={inputs.gstName || ""}
+              name="hsn_Code"
+              type="number"
+              value={inputs.hsn_Code || ""}
               onChange={handleChange}
               required
             />
-            <label htmlFor="gstRate">GST Rate:</label>
+            <label htmlFor="gstName">HSN description:</label>
             <input
-              name="gstRate"
+              name="hsn_description"
               type="text"
-              value={inputs.gstRate || ""}
+              value={inputs.hsn_description || ""}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="CGST">CGST:</label>
+            <input
+              name="cgst"
+              type="number"
+              value={inputs.cgst || ""}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="SGST">SGST:</label>
+            <input
+              name="sgst"
+              type="number"
+              value={inputs.sgst || ""}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="IGST">IGST:</label>
+            <input
+              name="igst"
+              type="number"
+              value={inputs.igst || ""}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="CESS">CESS:</label>
+            <input
+              name="cess"
+              type="number"
+              value={inputs.cess || ""}
               onChange={handleChange}
               required
             />
