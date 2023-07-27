@@ -12,7 +12,7 @@ const Refiller_Refilling_Request = () => {
   const [showTable, setshowTable] = useState(false);
   const [machine, setMachine] = useState();
 
-  const getCompanies = async () => {
+  const getMachines = async () => {
     try {
       const res = await axios.get('http://localhost:3000/api/getallmachines', { headers: { 'Authorization': 'Bearer ' + token } })
       const data = res.data.data;
@@ -27,7 +27,7 @@ const Refiller_Refilling_Request = () => {
     try {
       const res = await axios.get(`http://localhost:3000/api/getallmachineslots?machineName=${id}`, { headers: { 'Authorization': 'Bearer ' + token } })
       const data = res.data.data;
-      // console.log('data: ', data);
+      console.log('data: ', data);
       return data;
     } catch (error) {
       console.log(error);
@@ -39,22 +39,33 @@ const Refiller_Refilling_Request = () => {
     // console.log('machineName: ', machineName);
     getMachineDetails(machineName)
       .then(res => {
-        console.log(res);
-        setMachine(res);
-        setshowTable(true)
+        if (res !== "") {
+          setMachine(res);
+          setshowTable(true)
+        }
+        else {
+          setMachine();
+          setshowTable(false);
+        }
       });
   }
 
   useEffect(() => {
-    getCompanies();
+    getMachines();
   }, []);
 
   const handleRefillQty = (id, e) => {
     const newmachine = machine.machineSlot.map((input) => {
       if (input._id === id) {
-        return { ...input, refillQuantity: e.target.value, saleQuantity: 10 - Number(e.target.value) };
+        const refillValue = e.target.value <= (input.maxquantity - input.currentStock) ? e.target.value : 0;
+        if (e.target.value > (input.maxquantity - input.currentStock)) {
+          alert("Sharan");
+        }
+        return {
+          ...input,
+          refillQuantity: refillValue
+        };
       }
-      // console.log('input: ', input);
       return input;
     });
     setMachine((prevState) => ({ ...prevState, machineSlot: newmachine }));
@@ -62,19 +73,19 @@ const Refiller_Refilling_Request = () => {
 
   const handleCurrentStock = (id, e) => {
     const newmachine = machine.machineSlot.map((input) => {
-      if (input._id === id) {
-        return { ...input, currentStock: e.target.value };
+      if (input._id == id) {
+        return { ...input, currentStock: e.target.value, saleQuantity: input.closingStock - Number(e.target.value) };
       }
       return input;
     });
-    setMachine((prevState) => ({ ...prevState, slots: newmachine }));
+    setMachine((prevState) => ({ ...prevState, machineSlot: newmachine }));
   };
 
   const handleSubmit = async () => {
     // need a Refiller token to refill request
-    const newToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDk1M2ZjMjFjZWU0YWVkOGYwOWZmZDUiLCJpYXQiOjE2ODc1MDI3ODZ9.SqB2RVmzEMlmDtZl1KE7fhg7qmSA0_aLuiUGEEkPTIE";
+    const newToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyMjI4YTNiMmRmM2Y5ZmNjODRjYjUiLCJpYXQiOjE2OTA0NDQ0MjZ9.j9xy7VTfj74LDo7yyg0DOyG4YSVNIRMK9CEMXiKqXVE";
     try {
-      const res = await axios.post('http://localhost:3000/api/refillerrequest', machine, { headers: { 'Authorization': 'Bearer ' + newToken } })
+      const res = await axios.post('http://localhost:3000/api/refill/request', machine, { headers: { 'Authorization': 'Bearer ' + newToken } })
       const data = res.data
       console.log('data: ', data);
       if (data.success) {
@@ -118,17 +129,11 @@ const Refiller_Refilling_Request = () => {
           <div className="tcontainer">
             <table>
               <thead>
-                <th>Machine Id</th>
                 <th>Machine Name</th>
-                <th>Company Name</th>
-                <th>Admin</th>
               </thead>
               <tbody>
                 <tr>
-                  <td>{machine.machineID}</td>
                   <td>{machine.machineName}</td>
-                  <td>{machine.companyName}</td>
-                  <td>{machine.admin}</td>
                 </tr>
               </tbody>
             </table>
