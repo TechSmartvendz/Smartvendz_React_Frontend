@@ -2,12 +2,14 @@ import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
-
+import * as RiIcons from 'react-icons/ri';
 export const SidebarData = [
   {
     title: "Home",
     path: "/",
     icon: <AiIcons.AiFillHome />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"home"
   },
@@ -15,6 +17,8 @@ export const SidebarData = [
     title: "User Manage",
     path: "/",
     icon: <IoIcons.IoMdPeople />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"usermanage",
     submenu:[
@@ -44,6 +48,8 @@ export const SidebarData = [
     title: "Company Manage",
     path: "/",
     icon: <IoIcons.IoMdPeople />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"companymanage",
     submenu:[
@@ -65,6 +71,8 @@ export const SidebarData = [
     title: "Machine Manage",
     path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"managemachine", 
     submenu:[
@@ -90,6 +98,8 @@ export const SidebarData = [
     title: " Employee Manage",
     path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"managemachine", 
     submenu:[  
@@ -106,6 +116,8 @@ export const SidebarData = [
     title: "Transaction Reports",
     path: "/",
     icon: <FaIcons.FaEnvelopeOpenText />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"listcompany", 
     submenu:[
@@ -137,6 +149,8 @@ export const SidebarData = [
     title: "General Manager",
     path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"listcompany",
     submenu:[
@@ -178,6 +192,8 @@ export const SidebarData = [
     title: "Refiller Manager",
     path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"refillermanager",
     submenu:[
@@ -198,6 +214,8 @@ export const SidebarData = [
     title: "Products Manage",
     path: "/",
     icon: <FaIcons.FaCartPlus />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"products", 
     submenu:[
@@ -215,6 +233,8 @@ export const SidebarData = [
     title: "warehouse",
     path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"warehouseManage", 
     submenu:[
@@ -243,6 +263,8 @@ export const SidebarData = [
     title: "Supplier Manage",
     path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"supplierManage", 
     submenu:[
@@ -263,6 +285,8 @@ export const SidebarData = [
     title: "Stock Manage",
     path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"stockManage", 
     submenu:[

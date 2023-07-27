@@ -3,11 +3,16 @@ import React, { useState, useEffect } from "react";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
 import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
 import DataList from "../Partials/DataList";
+import BulkUpload from "../Partials/BulkUpload";
+import TableData from "../Partials/TableData";
 import { useParams, useNavigate } from "react-router-dom";
+import TableDataWithPagination from "../Partials/TableDataWithPagination";
 function PurchaseStock() {
   const [inputs, setInputs] = useState({});
   const [data, setData] = useState();
+  const [bulk,setBulk]=useState(false);
   const path = "purchaseStock";
+  const purchaselist="purchasestocklist"
   const ComponentName = "Purchase";
   const navigate = useNavigate();
   //   handleChange is used to set the field data
@@ -19,16 +24,9 @@ function PurchaseStock() {
   console.log("Inputs:", inputs);
   // console.log("After Submited Data:",data)
   //   Handle Submit i used to Purchase the Stock
+ 
+
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    setData(inputs);
-    setInputs({});
-    console.log("After Submited Data:", inputs);
-  };
-  let responsedata = [];
-  responsedata.push(data);
-  console.log("R:", responsedata);
-  const handleSubmitData = async (event) => {
     event.preventDefault();
     const response = await postReq(path, data);
     console.log(response);
@@ -37,7 +35,7 @@ function PurchaseStock() {
         title: `Add ${ComponentName}`,
         message: `${ComponentName} successfully`,
       });
-
+      setInputs({});
       // navigate("../purchasestocklist");
     } else {
       ErrorAlert({ title: `Add ${ComponentName}`, message: response.msg });
@@ -61,8 +59,19 @@ function PurchaseStock() {
           >
             Purchased Stock List
           </button>
+          <button
+       onClick={()=>{
+        setBulk(!bulk)
+       }}
+          >
+          {bulk ? 'Add Single purchase' :'Upload Bulk Purchase'}
+          </button>
         </div>
-        <div className="add-user-container">
+
+        {
+         bulk ? (<BulkUpload path={"PurchaseStock"}  />):
+        
+        (<div className="add-user-container">
           <div className="componet-sub-title">
             <span>
               {/* {par
@@ -156,8 +165,8 @@ function PurchaseStock() {
               <DataList
                 name={"gstName"}
                 value={inputs.gstName || " "}
-                path={"AllTax"}
-                option={"gstName"}
+                path={"tax"}
+                option={"hsn_Code"}
                 handleChange={handleChange}
                 heading={"GST"}
               />
@@ -178,54 +187,16 @@ function PurchaseStock() {
               </button>
             </div>
           </form>
-        </div>
+        </div>)
+        }
       </div>
 
-      <div className="componet-sub2-title">
-        <span>Total: {data != null ? data.length : 0}</span>
-      </div>
+     
       <div className="table_container-div">
-        <button className="submit-btn" type="submit" onClick={handleSubmitData}>
-          Purchase
-        </button>
-        <table>
-          <tbody>
-            <tr>
-              <th>Supplier</th>
-              <th>WareHouse</th>
-              <th>Product</th>
-              <th>Product quantity</th>
-              <th>Selling Price</th>
-              <th>Total Price</th>
-              <th>Invoice Number</th>
-              <th>GRN Number</th>
-              <th>GST</th>
-            </tr>
-            {responsedata != "" ? (
-              responsedata.map((purchaseData, i) => {
-                return (
-                  <tr key={i}>
-                    <td>{purchaseData.supplier}</td>
-                    <td>{purchaseData.warehouse}</td>
-                    <td>{purchaseData.product}</td>
-                    <td>{purchaseData.productQuantity}</td>
-                    <td>{purchaseData.sellingPrice}</td>
-                    <td>{purchaseData.totalPrice}</td>
-                    <td>{purchaseData.invoiceNumber}</td>
-                    <td>{purchaseData.GRN_Number}</td>
-                    <td>{purchaseData.gstName}</td>
-                  </tr>
-                );
-              })
-            ) : (
-              <tr>
-                <td> Data Not Found </td>
-              </tr>
-            )}
+       
+       <TableData path={purchaselist}/>
 
-            
-          </tbody>
-        </table>
+
       </div>
     </React.Fragment>
   );

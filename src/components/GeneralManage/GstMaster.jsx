@@ -12,17 +12,20 @@ function GstMaster() {
 
   const navigate = useNavigate();
   const { _id } = useParams();
-  // console.log("EditID:", _id);
-  const [itemid, setItemid] = useState(_id);
 
+  console.log("EditID:", _id);
+  const [itemid, setItemid] = useState(_id);
+console.log('itemid',itemid)
   // console.log("itemid:", itemid);
-  const path = "addtax";
-  const taxlist = "AllTax/Datalist";
-  const edittax = "tax";
+  const path = "tax";
+  const getTax = "tax/Datalist";
+
+  
+  
 
   // loadDate is used to get GST detail based on its ID
   const loadDate = async () => {
-    const response = await getReq(`${edittax}/${itemid}`);
+    const response = await getReq(`${tax}/${itemid._id}`);
     // console.log("WareHouse Data:", response.data);
     if (response.data) {
       setPar(response.data._id);
@@ -50,9 +53,9 @@ function GstMaster() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // When itemid is true Then only putReq Api Will call else post Request API will call
-    if (itemid) {
+    if (par) {
       // console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", itemid);
-      const response = await putReq(edittax, inputs, itemid);
+      const response = await putReq(path, inputs, par);
       if (response.success) {
         setPar();
         setTableRefresh(tableRefresh + 1); //4
@@ -82,9 +85,13 @@ function GstMaster() {
   };
 
   // This function is used to get ID of the tax for edit purpose
-  const editClick = async (item) => {
-    navigate(`../gst/${item._id}`);
-  };
+  const editClick=(pid)=>{
+
+    // console.log('this is ', pid)
+    setPar(pid._id)
+    setInputs(pid) 
+
+  }
 
   return (
     <React.Fragment>
@@ -100,7 +107,10 @@ function GstMaster() {
           <div className="componet-sub-title">
             <span>GST Manage</span>
           </div>
-          <div className="general-manage-div">
+          <div className="flex-col">
+
+          <div className="flex-row">
+          <div className="input-lable-h-div">
             <label htmlFor="HSN_code">HSN Code:</label>
             <input
               name="hsn_Code"
@@ -109,6 +119,9 @@ function GstMaster() {
               onChange={handleChange}
               required
             />
+            </div>
+
+            <div className="input-lable-h-div">
             <label htmlFor="gstName">HSN description:</label>
             <input
               name="hsn_description"
@@ -117,6 +130,9 @@ function GstMaster() {
               onChange={handleChange}
               required
             />
+            </div>
+
+            <div className="input-lable-h-div">
             <label htmlFor="CGST">CGST:</label>
             <input
               name="cgst"
@@ -125,6 +141,11 @@ function GstMaster() {
               onChange={handleChange}
               required
             />
+            </div>
+             </div>
+
+             <div className="flex-row">
+             <div className="input-lable-h-div">
             <label htmlFor="SGST">SGST:</label>
             <input
               name="sgst"
@@ -133,6 +154,8 @@ function GstMaster() {
               onChange={handleChange}
               required
             />
+            </div>
+            <div className="input-lable-h-div">
             <label htmlFor="IGST">IGST:</label>
             <input
               name="igst"
@@ -141,6 +164,9 @@ function GstMaster() {
               onChange={handleChange}
               required
             />
+            </div>
+
+            <div className="input-lable-h-div">
             <label htmlFor="CESS">CESS:</label>
             <input
               name="cess"
@@ -149,13 +175,17 @@ function GstMaster() {
               onChange={handleChange}
               required
             />
-
-            <button className="submit-btn">
+              </div>
+              </div>
+           
+            
+          </div>
+          <button style={{marginRight:'190px'}} className="submit-btn">
               {par ? <span>Update </span> : <span>Add </span>}
             </button>
-          </div>
         </form>
-        <TableData path={taxlist} key={tableRefresh} editClick={editClick} />
+        
+        <TableData path={path} getTax={getTax} tableRefresh={tableRefresh} editClick={editClick} />
       </div>
     </React.Fragment>
   );
