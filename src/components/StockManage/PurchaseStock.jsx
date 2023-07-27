@@ -13,6 +13,7 @@ function PurchaseStock() {
   const [bulk,setBulk]=useState(false);
   const path = "purchaseStock";
   const purchaselist="purchasestocklist"
+  console.log("🚀 ~ file: PurchaseStock.jsx:16 ~ PurchaseStock ~ purchasestocklist:", purchasestocklist)
   const ComponentName = "Purchase";
   const navigate = useNavigate();
   //   handleChange is used to set the field data
@@ -28,7 +29,7 @@ function PurchaseStock() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await postReq(path, data);
+    const response = await postReq(path, inputs);
     console.log(response);
     if (response.success) {
       SuccessAlert({
@@ -69,7 +70,7 @@ function PurchaseStock() {
         </div>
 
         {
-         bulk ? (<BulkUpload path={"PurchaseStock"}  />):
+         bulk ? (<BulkUpload path={"PurchaseStock"} ComponentName={"Purchase"} />):
         
         (<div className="add-user-container">
           <div className="componet-sub-title">
@@ -176,7 +177,7 @@ function PurchaseStock() {
               <input
                 type="date"
                 name="date"
-                value={inputs.date || ""}
+                value={inputs.date || " " }
                 onChange={handleChange}
               />
             </div>
@@ -193,8 +194,8 @@ function PurchaseStock() {
 
      
       <div className="table_container-div">
-       
-       <TableData path={purchaselist}/>
+    
+       <TableDataWithPagination path={purchaselist}/>
 
 
       </div>

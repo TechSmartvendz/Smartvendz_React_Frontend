@@ -36,6 +36,7 @@ body::-webkit-scrollbar {
    width: 100%;
   background-color: rgb(52, 52, 179);
   display: flex;
+  z-index: 999;
   justify-content: space-between;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -53,6 +54,7 @@ body::-webkit-scrollbar {
 .section {
   max-height: fit-content;
   min-height: 87vh;
+ 
   width: auto;
   display: flex;
   margin-top: 10vh;
