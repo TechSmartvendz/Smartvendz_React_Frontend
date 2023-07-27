@@ -20,7 +20,7 @@ const TransactionReport = () => {
 
   const getCompanies = async () => {
     try {
-      const res = await axios.get('http://192.168.1.14:3000/api/getallmachines', { headers: { 'Authorization': 'Bearer ' + token } })
+      const res = await axios.get('http://localhost:3000/api/getallmachines', { headers: { 'Authorization': 'Bearer ' + token } })
       // console.log('res: ', res);
       const data = res.data
       setCompanies(data);

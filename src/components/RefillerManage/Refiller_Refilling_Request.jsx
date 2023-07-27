@@ -3,6 +3,7 @@ import './Refiller.css'
 import { Cookies } from "react-cookie";
 import axios from "axios";
 import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
+import { FaTrash } from "react-icons/fa";
 
 const Refiller_Refilling_Request = () => {
   const cookies = new Cookies();
@@ -13,9 +14,9 @@ const Refiller_Refilling_Request = () => {
 
   const getCompanies = async () => {
     try {
-      const res = await axios.get('http://192.168.1.15:3000/api/getallmachines', { headers: { 'Authorization': 'Bearer ' + token } })
-      const data = res.data
-      // console.log('data: ', data);
+      const res = await axios.get('http://localhost:3000/api/getallmachines', { headers: { 'Authorization': 'Bearer ' + token } })
+      const data = res.data.data;
+      console.log('data: ', data);
       setCompanies(data);
     } catch (error) {
       console.log(error);
@@ -24,9 +25,9 @@ const Refiller_Refilling_Request = () => {
 
   const getMachineDetails = async (id) => {
     try {
-      const res = await axios.get(`http://192.168.1.15:3000/api/getallmachineslots?machineName=${id}`, { headers: { 'Authorization': 'Bearer ' + token } })
+      const res = await axios.get(`http://localhost:3000/api/getallmachineslots?machineName=${id}`, { headers: { 'Authorization': 'Bearer ' + token } })
       const data = res.data.data;
-      console.log('data: ', data);
+      // console.log('data: ', data);
       return data;
     } catch (error) {
       console.log(error);
@@ -35,10 +36,10 @@ const Refiller_Refilling_Request = () => {
 
   const handleMachineId = (e) => {
     const machineName = e.target.value
-    console.log('machineName: ', machineName);
+    // console.log('machineName: ', machineName);
     getMachineDetails(machineName)
       .then(res => {
-        // console.log(res);
+        console.log(res);
         setMachine(res);
         setshowTable(true)
       });
@@ -49,17 +50,18 @@ const Refiller_Refilling_Request = () => {
   }, []);
 
   const handleRefillQty = (id, e) => {
-    const newmachine = machine.slots.map((input) => {
+    const newmachine = machine.machineSlot.map((input) => {
       if (input._id === id) {
-        return { ...input, refillQty: e.target.value };
+        return { ...input, refillQuantity: e.target.value, saleQuantity: 10 - Number(e.target.value) };
       }
+      // console.log('input: ', input);
       return input;
     });
-    setMachine((prevState) => ({ ...prevState, slots: newmachine }));
+    setMachine((prevState) => ({ ...prevState, machineSlot: newmachine }));
   };
 
   const handleCurrentStock = (id, e) => {
-    const newmachine = machine.slots.map((input) => {
+    const newmachine = machine.machineSlot.map((input) => {
       if (input._id === id) {
         return { ...input, currentStock: e.target.value };
       }
@@ -69,11 +71,12 @@ const Refiller_Refilling_Request = () => {
   };
 
   const handleSubmit = async () => {
-    const newToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc3MDA5YWRhMmVlMWI0MWIxYzJkNGMiLCJpYXQiOjE2ODU1MjA1Mzh9.W2kKhEgLbH5Ib2JHghm_SxmqQ5fawM35AO7WozH2FGo";
+    // need a Refiller token to refill request
+    const newToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDk1M2ZjMjFjZWU0YWVkOGYwOWZmZDUiLCJpYXQiOjE2ODc1MDI3ODZ9.SqB2RVmzEMlmDtZl1KE7fhg7qmSA0_aLuiUGEEkPTIE";
     try {
-      const res = await axios.post('http://192.168.1.14:3000/api/refillerrequest', machine, { headers: { 'Authorization': 'Bearer ' + newToken } })
+      const res = await axios.post('http://localhost:3000/api/refillerrequest', machine, { headers: { 'Authorization': 'Bearer ' + newToken } })
       const data = res.data
-      // console.log('data: ', data);
+      console.log('data: ', data);
       if (data.success) {
         SuccessAlert({
           title: "Success",
@@ -90,8 +93,11 @@ const Refiller_Refilling_Request = () => {
       console.log(error);
     }
   };
+  const handleDelete = (id) => {
+    console.log(`Deleting item with id`);
+  };
 
- 
+
   return (
     <div>
       <div className="selectMachine">
@@ -135,10 +141,11 @@ const Refiller_Refilling_Request = () => {
                   <th>Current Stock</th>
                   <th>Sale Qty</th>
                   <th>Refill Qty</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {machine.slots.map((item, index) => (
+                {machine.machineSlot.map((item, index) => (
                   <tr key={item._id}>
                     <td>{item.slot}</td>
                     <td>{item.product}</td>
@@ -151,14 +158,22 @@ const Refiller_Refilling_Request = () => {
                         onChange={(e) => handleCurrentStock(item._id, e)}
                       />
                     </td>
-                    <td>{item.saleQty}</td>
+                    <td>{item.saleQuantity}</td>
                     <td className="tbody_td">
                       <input
                         className="td_input"
                         type="number"
-                        value={item.refillQty}
+                        value={item.refillQuantity}
                         onChange={(e) => handleRefillQty(item._id, e)}
                       />
+                    </td>
+                    <td >
+                      <div className="actionsBtn">
+                        <
+                          FaTrash
+                          onClick={() => handleDelete()}
+                        />
+                      </div>
                     </td>
                   </tr>
                 ))}

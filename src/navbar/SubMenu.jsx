@@ -8,7 +8,7 @@ function SubMenu(props) {
   const [navData, setNavData] = useState(props.navData);
   const [sideBarData, setSideBarData] = useState(props.sideBarData);
   const [openSubmenu,setOpenSubmenu]=useState(false);
-console.log(openSubmenu)
+// console.log(openSubmenu)
   useEffect(() => {
 
   }, []);

@@ -14,8 +14,8 @@ const Manage_Refill_Request = () => {
   const getRequests = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://192.168.1.15:3000/api/allrefillingrequest', { headers: { 'Authorization': 'Bearer ' + token } })
-      const data = res.data
+      const res = await axios.get('http://localhost:3000/api/allrefillingrequest', { headers: { 'Authorization': 'Bearer ' + token } })
+      const data = res.data.data;
       console.log('data: ', data);
       setRequest(data);
       setLoading(false)
@@ -71,7 +71,7 @@ const Manage_Refill_Request = () => {
             </tr>
           </thead>
           {
-            !loading && request.map((item, i) => (
+            !loading && request?.map((item, i) => (
               <tbody>
                 <tr>
                   <td>

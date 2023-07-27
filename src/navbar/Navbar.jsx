@@ -24,7 +24,7 @@ function Navbar() {
   const [sideBarData, setSideBarData] = useState(SidebarData);
   const [searchQuery, setSearchQuery] = useState('')
 
- console.log('NavaData:',navData)
+//  console.log('NavaData:',navData)
   const loadDate = async () => {
     // console.log("loadData() start")
     // const response = await getReq(`${path}`);
@@ -58,7 +58,7 @@ const filtredMenu=sideBarData.filter((menus)=>{
   }
 })
 
-console.log('SidebarData:',sideBarData)
+// console.log('SidebarData:',sideBarData)
 
 // setNavData(filtredMenu)
 
