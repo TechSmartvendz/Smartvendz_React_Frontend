@@ -2,38 +2,42 @@ import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
-
+import * as RiIcons from 'react-icons/ri';
 export const SidebarData = [
   {
     title: "Home",
     path: "/",
     icon: <AiIcons.AiFillHome />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"home"
   },
   {
     title: "User Manage",
-    path: "/usermanage",
+    path: "/",
     icon: <IoIcons.IoMdPeople />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"usermanage",
     submenu:[
       {
         title: "Add new user",
-        path: "/usermanage/addnewuser",  
+        path: "/addnewuser",  
         cName: "abc",
         permission:"addnewuser"
       },
       {
           title: "List User",
-          path: "/usermanage/listuser",  
+          path: "/listuser",  
           cName:"" ,
           permission:"listuser"
      
       },
       {
         title: "User permission",
-        path: "/usermanage/userpermission",    
+        path: "/userpermission",    
         cName:"",
         permission:"userpermission"
       },
@@ -42,140 +46,143 @@ export const SidebarData = [
   },
   {
     title: "Company Manage",
-    path: "/companymanage",
+    path: "/",
     icon: <IoIcons.IoMdPeople />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"companymanage",
     submenu:[
       {
         title: "Add new company",
-        path: "/companymanage/addnewcompany",
+        path: "/addnewcompany",
         permission:"addnewcompany"  
       },
       {
         title: "List Company",
-        path: "/companymanage/listcompany" ,
+        path: "/listcompany" ,
         permission:"listcompany"    
       },
-      // {
-      //   title: "Company Admins",
-      //   path: "/companymanage/companyadmins" ,
-      //   permission:"companyadmins"    
-      // },
-      // {
-      //   title: "Company Machines",
-      //   path: "/companymanage/companymachines" ,
-      //   permission:"companymachines"    
-      // }
+     
     ]
   },
 
   {
     title: "Machine Manage",
-    path: "/managemachine",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"managemachine", 
     submenu:[
  
       {
         title: "Add new machine",
-        path: "/managemachine/addnewmachine",
+        path: "/addnewmachine",
         permission:"addnewmachine" 
       },
       {
         title: "List Machine",
-        path: "/managemachine/listmachine",
+        path: "/listmachine",
         permission:"listmachine" 
       },
       {
         title: "Machine Configuration",
-        path: "/managemachine/machineconfiguration",
+        path: "/machineconfiguration",
         permission:"machineconfiguration" 
       }
     ]
   },
   {
     title: " Employee Manage",
-    path: "/employeemanage",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"managemachine", 
     submenu:[  
       {
         title: "Add And Edit Employee",
-        path: "/employeemanage/addandeditemployee",
+        path: "/addandeditemployee",
         permission:"addnewmachine" 
       },
-      // {
-      //   title: "Employee Credits",
-      //   path: "/employeemanage/employeecredit",
-      //   permission:"addnewmachine"
-      // },
+      
      
     ]
   },
   {
     title: "Transaction Reports",
-    path: "/transactionreports",
+    path: "/",
     icon: <FaIcons.FaEnvelopeOpenText />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"listcompany", 
     submenu:[
 
       {
         title: "Transaction Report",
-        path: "/transactionreports/transactionreport",
+        path: "/transactionreport",
         permission:"listcompany"
       },
-      {
-        title: "Credit Report",
-        path: "/transactionreports/creditreport",
-        permission:"listcompany"
-      },
-      {
-        title: "Credit Transaction Report",
-        path: "/transactionreports/credittransactionreport",
-        permission:"listcompany" 
-      },
+      // {
+      //   title: "Credit Report",
+      //   path: "/transactionreports/creditreport",
+      //   permission:"listcompany"
+      // },
+      // {
+      //   title: "Credit Transaction Report",
+      //   path: "/transactionreports/credittransactionreport",
+      //   permission:"listcompany" 
+      // },
       {
         title: "Rejected Transaction Report",
-        path: "/transactionreports/rejectedtransactionreport",
+        path: "/rejectedtransactionreport",
         permission:"listcompany" 
       }
     ]
   },
+  // fix me right it is rendering because we have selected permission as listcompany it needs to be change.
   {
     title: "General Manager",
-    path: "/generalmanager",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"listcompany",
     submenu:[
   
       {
         title: "Country manage",
-        path: "/generalmanager/countrymanage", 
+        path: "/countrymanage", 
         permission:"listcompany"   
       },
       {
         title: "State manage",
-        path: "/generalmanager/statemanage",
+        path: "/statemanage",
         permission:"listcompany"     
       },
       {
         title: "City manage",
-        path: "/generalmanager/citymanage",
+        path: "/citymanage",
         permission:"listcompany"     
       },
       {
         title:"Area manage",
-        path:"/generalmanager/areamanage",
+        path:"/areamanage",
         permission:"listcompany" 
       },
       {
         title: "Unit manage",
-        path: "/generalmanager/unitmanage",
+        path: "/unitmanage",
+        permission:"listcompany"    
+      },
+      {
+        title: "GST Master",
+        path: "/gst",
         permission:"listcompany"    
       },
      
@@ -183,146 +190,167 @@ export const SidebarData = [
   },
   {
     title: "Refiller Manager",
-    path: "/refillermanager",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"refillermanager",
     submenu:[
       {
         title: "Manage Refill Request",
-        path: "/refillermanager/managerefillrequest",
+        path: "/managerefillrequest",
         permission:"managedc"
       },
       {
         title: "Refiller Refilling Request",
-        path: "/refillermanager/refillerrefillingrequest",
+        path: "/refillerrefillingrequest",
         permission:"managedc" 
       },
      
     ]
   },
   {
-    title: "Products",
-    path: "/products",
+    title: "Products Manage",
+    path: "/",
     icon: <FaIcons.FaCartPlus />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
     permission:"products", 
     submenu:[
-      // {
-      //   title:"Product List",
-      //   path:"/products/productlist",
-      //   permission:"productlist"
-    
-      // },
-      // {
-      //   title:"Bulk Product Upload",
-      //   path:"/products/bulkproductupload",
-      //   permission:"bulkproductupload"
-      // },
+     
       {
         title:"Single Product Add",
-        path:"/products/singleproductadd",
+        path:"/singleproductadd",
         permission:"singleproductadd" 
       },
-      // {
-      //   title:"Update Bulk Product",
-      //   path:"/products/updatebulkproduct",
-      //   permission:"updatebulkproduct"
-      // }
+      
     ]
   },
+  
   {
-    title: "Inventory Manager",
-    path: "/inventorymanager",
+    title: "warehouse",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
-    permission:"listcompany",
+    permission:"warehouseManage", 
     submenu:[
-    
+   
       {
-        title: "1",
-        path: "/inventorymanager/1",
-        permission:"listcompany"    
+        title: "Add Ware house",
+        path: "/addwarehouse", 
+        permission:"addWareHouse"    
       },
       {
-        title: "2",
-        path: "/inventorymanager/2",
-        permission:"listcompany",     
+          title: "Ware house List",
+          path: "/warehouselist", 
+          permission:"listWarehouse" 
+      },
+      {
+        title: "Ware house Stocks",
+        path: "/warehousestock", 
+        permission:"listWarehouse" 
       }
      
     ]
   },
+
+  // Supplier path data
   {
-    title: "warehouse",
-    path: "/warehouse",
+    title: "Supplier Manage",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
-    permission:"listcompany", 
+    permission:"supplierManage", 
     submenu:[
    
       {
-        title: "Add new user",
-        path: "/warehouse/addnewuser", 
-        permission:"listcompany"    
+        title: "Add Supplier",
+        path: "/addsupplier", 
+        permission:"addSupplier"    
       },
       {
-          title: "User permission",
-          path: "/warehouse/userpermission", 
-          permission:"listcompany" 
+          title: "List Supplier",
+          path: "/listsupplier", 
+          permission:"listSupplier" 
       }
     ]
   },
   {
-    title: "RefundSupport",
-    path: "/refundandsupport",
+    title: "Stock Manage",
+    path: "/",
     icon: <IoIcons.IoMdHelpCircle />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
-    permission:"listcompany",
+    permission:"stockManage", 
     submenu:[
+   
       {
-        title: "Manage Refill Request",
-        path: "/refundandsupport/managerefillrequest",
-        permission:"listcompany"
+        title: "Purchase Stock",
+        path: "/purchasestock", 
+        permission:"purchaseStock"    
       },
       {
-        title: "Manage DC",
-        path: "/refundandsupport/managedc",
-        permission:"listcompany"
-      },
+          title: "Purchase Stock List",
+          path: "/purchasestocklist", 
+          permission:"purchaseStockList" 
+      } ,
       {
-        title: "ManageDC Accept",
-        path: "/refundandsupport/managedcaccept",
-        permission:"listcompany"
-      },
-      {
-        title: "Manage Completed Request",
-        path: "/refundandsupport/managecompletedrefillrequest",
-        permission:"listcompany"
-      }
+        title: "Transfer Stock",
+        path: "/transferstock", 
+        permission:"transferStock" 
+       }
+       ,{
+        title: "Accept Stock Request",
+        path: "/acceptstock", 
+        permission:"acceptStockTransferRequest" 
+       }
     ]
   },
-  {
-    title: "*",
-    path: "/*",
-    icon: <IoIcons.IoMdHelpCircle />,
-    cName: "nav-text",
-    permission:"listcompany"
+   // fix me right it is rendering because we have selected permission as listcompany it needs to be change.
+  // {
+  //   title: "RefundSupport",
+  //   path: "/refundandsupport",
+  //   icon: <IoIcons.IoMdHelpCircle />,
+  //   cName: "nav-text",
+  //   permission:"listcompany",
+  //   submenu:[
+  //     {
+  //       title: "Manage Refill Request",
+  //       path: "/refundandsupport/managerefillrequest",
+  //       permission:"listcompany"
+  //     },
+  //     {
+  //       title: "Manage DC",
+  //       path: "/refundandsupport/managedc",
+  //       permission:"listcompany"
+  //     },
+  //     {
+  //       title: "ManageDC Accept",
+  //       path: "/refundandsupport/managedcaccept",
+  //       permission:"listcompany"
+  //     },
+  //     {
+  //       title: "Manage Completed Request",
+  //       path: "/refundandsupport/managecompletedrefillrequest",
+  //       permission:"listcompany"
+  //     }
+  //   ]
+  // },
+  // {
+  //   title: "*",
+  //   path: "/*",
+  //   icon: <IoIcons.IoMdHelpCircle />,
+  //   cName: "nav-text",
+  //   permission:"listcompany"
     
-  }
+  // }
 ];
 
-/*
-User Manage
-Company Manage
-Machine Manage
-Employee Manage
- Transaction Reports
-General Manager
-Refiller Manager
-Inventory Manager
-Warehouse 
-Refund & Support
 
-
-
-*/

@@ -46,7 +46,7 @@ h3{
 }
 
 .loginbox input{
-  width:100%;
+  width:100% !important;
   padding:5px;
   margin-bottom: 20px;
   border-radius:2px;
@@ -439,6 +439,7 @@ margin-top: 20px;
 .table_container-div>table{
   border: 1px solid black;
   width: 100%;
+ 
   
 }
 .table_container-div>table>tbody>tr:nth-child(even){
@@ -451,7 +452,7 @@ margin-top: 20px;
 
 .table_container-div>table>tbody>tr>td
 { 
-
+ 
   text-align:center;
   }
   /* changed by sharan */
@@ -645,13 +646,7 @@ overflow: hidden;
  }
 
  @media only screen and (max-width:600px){
-  body{
-    background-color:rgb(180, 19, 19);
-    width: 100%;
-  }
-  .container{
-    width: 100%;
-  }
+ 
   .add-user-container{
     display: flex;
     align-items: center;
@@ -707,4 +702,17 @@ cursor: pointer;
   height: 30px;
   margin-left: 5px;
   cursor: pointer;
+ }
+ /* .style={{color:'blue',cursor:'pointer',width:'35px',height:'20px'}} */
+ .Edit-icon{
+  color: blue;
+  cursor: pointer;
+  width:35px ;
+  height:20px;
+ }
+ .Delete-icon{
+  color: red;
+  cursor: pointer;
+  width:35px ;
+  height:20px;
  }

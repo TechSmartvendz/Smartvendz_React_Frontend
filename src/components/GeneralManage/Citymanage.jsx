@@ -12,16 +12,19 @@ function Citymanage() {
   const [tableRefresh, setTableRefresh] = useState(0); //3
   const [par,setPar]=useState();
 
+  // This function is used to set Input fields
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
+  // In this function  used to add and edit the City details
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(par){
-      console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
+      // console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
+      // This API request is used to edit the particular CITY.
       const response = await patchReq(path, inputs,par);
       if (response.success) {
         setPar()
@@ -36,6 +39,7 @@ function Citymanage() {
       }
     
     }else {
+      // This API is used to Post new CITY into data base.
     const response = await postReq(path, inputs);
     if (response.success) {
       setPar();
@@ -47,7 +51,7 @@ function Citymanage() {
     }
   }
   }
-
+  // This function is used to get Id on click
     const editClick=(pid)=>{
       setPar(pid._id)
       setInputs(pid) 

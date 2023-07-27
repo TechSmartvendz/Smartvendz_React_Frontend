@@ -12,6 +12,7 @@ const pathd="User/:id"
 const [tableData,setTableData]=useState();
 const[tableRefresh,setTableRefresh]=useState(0)
 
+// This function is used to specify for APi for getting ALL the Company list
   const loadTableDate=async()=>{
     const response=await getReq(path);
     setTableData(response.data)
@@ -25,7 +26,7 @@ const[tableRefresh,setTableRefresh]=useState(0)
   
 const navigate=useNavigate()
 
-
+// This API is used to get ID of particular company detail when click on button
 const editClick=(item)=>{
 navigate(`../addnewcompany/${item._id}`);
 console.log(item._id)
@@ -47,7 +48,7 @@ console.log(item._id)
       </div>
 
         <div className="option-btn">
-        <button onClick={()=>{navigate("/companymanage/addnewcompany")}}>Add New Company</button>
+        <button onClick={()=>{navigate("/addnewcompany")}}>Add New Company</button>
          </div>
       
         <TableData path={path}  key={tableRefresh} editClick={editClick}/>

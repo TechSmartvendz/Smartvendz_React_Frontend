@@ -10,17 +10,20 @@ function Countrymanage() {
   const [tableRefresh, setTableRefresh] = useState(0); //3
   const[par, setPar] = useState()
   
+  // This function is used to set Input fields
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
+
+  //  this function  used to add and edit the Country details
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(par) {
-      console.log('this id par'    +par)
+      // console.log('this id par'    +par)
       const response = await patchReq(path, inputs,par);
-      console.log("🚀 ~ file: Countrymanage.jsx:20 ~ handleSubmit ~ response", response);
+      // console.log("🚀 ~ file: Countrymanage.jsx:20 ~ handleSubmit ~ response", response);
       if (response.success) {
         setPar()
         setTableRefresh(tableRefresh+1);//4
@@ -36,6 +39,7 @@ function Countrymanage() {
     } 
     
     else {
+      // This API is used to Post new Country into data base.
       const response = await postReq(path, inputs);
       if (response.success) {
         setTableRefresh(tableRefresh + 1); //4
@@ -50,11 +54,11 @@ function Countrymanage() {
       }
     }
   };
-  
-  const editClick=(pid)=>{
+  // This Function is used to get id of particula item when click
+   const editClick=(pid)=>{
     setPar(pid._id)
     setInputs(pid) 
-    console.log('this is input ' ,inputs);
+    // console.log('this is input ' ,inputs);
   }
 
 

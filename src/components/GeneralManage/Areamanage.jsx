@@ -13,16 +13,20 @@ function Areamanage() {
 
   const[par, setPar] = useState()
 
+  // This function is used to set Input fields
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
+
+  // In this function  used to add and edit the Area details
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(par){
-      console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
+      // console.log("🚀 ~ file: Statemanage.jsx:26 ~ handleSubmit ~ par", par)
+      // This API request is used to edit the particular AREA.
       const response = await patchReq(path, inputs,par);
       if (response.success) {
         setPar()
@@ -37,7 +41,7 @@ function Areamanage() {
       }
 
     }else {
-
+    // This API is used to Post new AREA into data base.
       const response = await postReq(path, inputs);
       if (response.success) {
         setTableRefresh(tableRefresh + 1); //4
@@ -51,11 +55,12 @@ function Areamanage() {
     }
 
   }
+
+  // This function is used to get Id on click
   const editClick=(pid)=>{
     setPar(pid._id)
     setInputs(pid) 
-
-  }
+}
 
   return (
     <React.Fragment>

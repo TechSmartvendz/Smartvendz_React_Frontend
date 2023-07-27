@@ -1,6 +1,7 @@
 export const HomeData = [
  
 ];
+
 export const CompanyManagerData = [
   {
     title: "Add new company",
@@ -52,20 +53,24 @@ export const GeneralManagerData = [
     title: "Unit manage",
     path: "/generalmanager/unitmanage",    
   },
- 
-];
-export const InventoryManagerData = [
-    
   {
-    title: "1",
-    path: "/inventorymanager/1",    
+    title: "GST Master",
+    path: "/generalmanager/gst",    
   },
-  {
-    title: "2",
-    path: "/inventorymanager/2",    
-  }
  
 ];
+// export const InventoryManagerData = [
+    
+//   {
+//     title: "1",
+//     path: "/inventorymanager/1",    
+//   },
+//   {
+//     title: "2",
+//     path: "/inventorymanager/2",    
+//   }
+ 
+// ];
 export const MachineManageData = [
  
   {
@@ -94,17 +99,17 @@ export const RefillersManager = [
  
 ];
 
-export const RefundandSupportData = [
+// export const RefundandSupportData = [
    
-  {
-    title: "1",
-    path: "/refundandsupport/1",
-  },
-  {
-    title: "2",
-    path: "/refundandsupport/2"
-  }
-];
+//   {
+//     title: "1",
+//     path: "/refundandsupport/1",
+//   },
+//   {
+//     title: "2",
+//     path: "/refundandsupport/2"
+//   }
+// ];
 
 export const TransactionManageData = [
 
@@ -112,14 +117,14 @@ export const TransactionManageData = [
     title: "Transaction Report",
     path: "/transactionreports/transaction_report",
   },
-  {
-    title: "Credit Report",
-    path: "/transactionreports/credit_report"
-  },
-  {
-    title: "Credit Transaction Report",
-    path: "/transactionreports/credit_transaction_report"
-  }
+  // {
+  //   title: "Credit Report",
+  //   path: "/transactionreports/credit_report"
+  // },
+  // {
+  //   title: "Credit Transaction Report",
+  //   path: "/transactionreports/credit_transaction_report"
+  // }
 ];
 export const UserManagerData = [
   
@@ -139,32 +144,61 @@ export const UserManagerData = [
     title: "User permission",
     path: "/usermanage/userpermission",    
     cName:""
-},
+  },
 
-{
-  title: "Add New User P",
-  path: "/usermanage/addnewuserp",    
-  cName:""
-},
-{
-  title:"List UserP",
-  path:"/usermanage/listuserp",
-  cName:""
-}
+
 
 
 ];
 export const WareHouseData = [
    
   {
-    title: "Add new user",
-    path: "/warehouse/addnewuser",    
+    title: "Add Ware house",
+    path: "/warehouse/addwarehouse",    
   },
   {
-      title: "User permission",
-      path: "/warehouse/userpermission",    
-  }
+    title: "Ware house List",
+    path: "/warehouse/warehouselist",    
+  },
+  {
+    title: "Ware house Stock",
+    path: "/warehouse/warehousestock",    
+  },
+  
+  
+  
 ];
+
+export const SupplierData=[
+  {
+    title: "Add Supplier ",
+    path: "/suppliemanage/addsupplier",    
+  },
+  {
+    title: " List Supplier",
+    path: "/suppliemanage/listsupplier",    
+  }
+]
+export const StockData=[
+  {
+    title: "Purchase Stock",
+    path: "/stockmanage/purchasestock",    
+  },
+  {
+    title: " List Stock",
+    path: "/stockmanage/purchasestocklist",    
+  },
+  {
+    title: "Transfer Stock",
+    path: "/stockmanage/transferstock",    
+  },
+  {
+    title: "Accept Stock Request",
+    path: "/stockmanage/acceptstock",    
+  },
+  
+  
+]
 
 export const ProductsData = [
   {

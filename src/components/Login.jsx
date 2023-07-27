@@ -23,10 +23,12 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await postReq(path,inputs);
-      console.log("🚀 ~ file: Login.jsx:24 ~ submitData ~ inputs", inputs)
+      // console.log("🚀 ~ file: Login.jsx:24 ~ submitData ~ inputs", inputs)
+      console.log('response',response)
       console.log('Login Data:',response.data);
       if (response.success) {
-        setCookie("JWTcookie", response.data ,{ path: "/" });
+        localStorage.setItem('username',response.data.username);
+        setCookie("JWTcookie", response.data.token ,{ path: "/" });
         setIsLoggedIn(true);
         SuccessAlert({
           title: "Login",
@@ -35,7 +37,7 @@ function Login() {
       } else {
         ErrorAlert({ title: "Login", message:response.msg });
       }
-console.log('Logged IN:',isLoggedIn)
+// console.log('Logged IN:',isLoggedIn)
   };
 
   return (
