@@ -4,11 +4,15 @@ import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
 import {AiFillDelete}  from 'react-icons/ai'
 import {MdModeEditOutline} from 'react-icons/md'
 function TableData(props) {
+
   const [tableData, setTableData] = useState();
   const [path, setPath] = useState(props.path);
+  const [getTax,setGetTax]=useState(props.getTax);
+  
   const [totalSupplier,setTotalSupplier]=useState(props.totalSupplier)
   const [deletePath, setDeletePath] = useState(props.deletePath);
   const [par, setpar] = useState(props.par);
+  const [tableRefresh,setTableRefresh]=useState(0)
   // console.log("this is par:", par);
  
   // This function is used to get data this function is reusable it using where ever it required
@@ -23,15 +27,18 @@ function TableData(props) {
       setTableData(null);
     }
   };
-
+ 
   const editClick = (item) => {
     props.editClick(item);
   };
 
   useEffect(() => {
-    loadTableDate();
-  }, []);
-
+    loadTableDate()
+   
+    },[]);
+  
+   
+    
   // This function is used to delete 'Warehouse' when its path is true also its used to delete user from the table
 
   const deleteState = async (id) => {
@@ -54,6 +61,9 @@ function TableData(props) {
         });
       }
     } else {
+      //  if(!path=='gst'){
+
+       
       const response = await delReq(path, id);
       // console.log("DeleteData:", response.data);
       if (response.success) {
@@ -68,9 +78,27 @@ function TableData(props) {
           message: response.msg,
         });
       }
-    }
+    // }
+    // else{
+    //   const response = await delReq(gst, id);
+    //   // console.log("DeleteData:", response.data);
+    //   if (response.success) {
+    //     loadTableDate();
+    //     SuccessAlert({
+    //       title: "Data Deleted",
+    //       message: `${gst} : Delete Succesfully `,
+    //     });
+    //   } else {
+    //     ErrorAlert({
+    //       title: `${gst} Delete: Error`,
+    //       message: response.msg,
+    //     });
+    //   }
+    // }
+    
   };
-
+  
+  }
   return (
     <React.Fragment>
       <div className="componet-sub2-title">

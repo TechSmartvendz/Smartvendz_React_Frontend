@@ -2,47 +2,64 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-
 function SubMenu(props) {
-
   const [navData, setNavData] = useState(props.navData);
   const [sideBarData, setSideBarData] = useState(props.sideBarData);
-  const [openSubmenu,setOpenSubmenu]=useState(false);
-// console.log(openSubmenu)
-  useEffect(() => {
+  const [item, setItem] = useState(props.item);
+  const [key, setKey] = useState(props.key);
+  // console.log("item:", item);
+  const [subnav, setSubnav] = useState(false);
+//  console.log('navDataITEm:',navData)
+  const showSubnav = () => setSubnav(!subnav);
 
-  }, []);
-  
+  useEffect(() => {}, []);
+
   return (
     <React.Fragment>
-    {
-       sideBarData.map((item, index) => {
-      if(navData[item.permission]){
-      return (
-        <li key={index} className={item.cName} id='visible' onClick={()=>setOpenSubmenu(!openSubmenu)}>
-          <Link to={item.path} >
-            {item.icon}
-            <span>{item.title}</span>
+      {
+        <li
+          key={key}
+          className={item.cName}
+          id="visible"
+          onClick={item.submenu && showSubnav}
+        >
+          <Link to={item.path}>
+            <div>
+              {" "}
+              {item.icon}
+              <span>{item.title}</span>
+            </div>
+            <div>
+              {item.submenu && subnav
+                ? item.iconOpened
+                : item.submenu
+                ? item.iconClosed
+                : null}
+            </div>
           </Link>
-          <ul key={index}  className="nav-menu-items ulbg" >
-        {openSubmenu && item.submenu.map((type, index) => {
-          if(navData[type.permission]){
-          return <li key={index} className={item.cName} ><Link  to={type.path}>{item.icon}<span>{type.title}</span></Link> </li>
-          }
-        })}
-       </ul>
-       
-        </li> 
-      );
-    }})
-  
-  }
+          <ul key={key} className="nav-menu-items ulbg">
+            {subnav &&
+              item.submenu.map((type, index) => {
+               if(type.permission){
+
+               return (
+                    <li key={index} className={type.cName}>
+                      <Link to={type.path}>
+                        {type.icon}
+                        <span>{type.title}</span>
+                      </Link>{" "}
+                    </li>
+                  );
+                }
+              })}
+          </ul>
+        </li>
+      }
     </React.Fragment>
   );
 }
 
 export default SubMenu;
-
 
 // <React.Fragment>
 // <li key={index} className={item.cName}>
@@ -52,4 +69,3 @@ export default SubMenu;
 // </Link>{" "}
 // </li>
 // </React.Fragment>
-
