@@ -86,7 +86,10 @@ function Dashboard() {
       <div className="root">
         <Header />
         <div className="section" onClick={(e) => e.stopPropagation()}>
-          <Navbar />
+         {
+          sidebar && <Navbar />
+         }
+        
           <ReactNotifications />
           <div className="container" onClick={handleClick}>
             {/*FIXME: MAke this Routes a saprate components*/}

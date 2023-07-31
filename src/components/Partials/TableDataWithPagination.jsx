@@ -18,13 +18,14 @@ function TableDataWithPagination(props) {
   const [dataPerPage, setDataPerPage] = useState(10);
   const [metadata, setMetaData] = useState();
   const [maxpagelimit, setMaxPageLimit] = useState();
-  let IDd;
+ 
   useEffect(() => {
-    IDd = props.machineidd;
+ 
   }, [par]);
+
   const loadTableDate = async () => {
     const response = await getReq(
-      `${path}/Table/${IDd}/${page}/${dataPerPage}`
+      `${path}/Table/${page}/${dataPerPage}`
     );
     // console.log("machineid", machineid);
     // console.log("response", response);

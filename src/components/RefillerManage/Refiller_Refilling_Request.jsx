@@ -61,7 +61,7 @@ const Refiller_Refilling_Request = () => {
       if (input._id === id) {
         const refillValue = e.target.value <= (input.maxquantity - input.currentStock) ? e.target.value : 0;
         if (e.target.value > (input.maxquantity - input.currentStock)) {
-          alert("Sharan");
+          alert("Refilling product Quantity is not maching");
         }
         return {
           ...input,
@@ -132,6 +132,7 @@ const Refiller_Refilling_Request = () => {
         <label> Machine ID & Company ID</label>
         <select
           onChange={(e) => handleMachineId(e)}
+          
         >
           <option value="">Select Machine</option>
           {companies && companies.map((item, i) => (
@@ -139,6 +140,66 @@ const Refiller_Refilling_Request = () => {
           ))}
         </select>
       </div>
+
+      {showTable &&
+
+        <div>
+          <div className="tcontainer">
+            <table>
+              <thead>
+                <th>Machine Name</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{machine.machineName}</td>
+                </tr>
+              </tbody>
+            </table>
+            <table >
+              <thead style={{ position: "sticky", top: 0 }}>
+                <tr>
+                  <th>Slot Name</th>
+                  <th>Product</th>
+                  <th>Closing Stock</th>
+                  <th>Current Stock</th>
+                  <th>Sale Qty</th>
+                  <th>Refill Qty</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {machine.machineSlot.map((item, index) => (
+                  <tr key={item._id}>
+                    <td>{item.slot}</td>
+                    <td>{item.product}</td>
+                    <td>{item.closingStock}</td>
+                    <td className="tbody_td">
+                      <input
+                        className="td_input"
+                        type="number"
+                        value={item.currentStock}
+                        onChange={(e) => handleCurrentStock(item._id, e)}
+                      />
+                    </td>
+                    <td>{item.saleQuantity}</td>
+                    <td className="tbody_td">
+                      <input
+                        className="td_input"
+                        // placeholder="0"
+                        type="number"
+                        value={item.refillQuantity}
+                        onChange={(e) => handleRefillQty(item._id, e)}
+                      />
+                    </td>
+                    <td >
+                      <div className="actionsBtn">
+                        <
+                          FaTrash
+                          onClick={() => handleDelete()}
+                        />
+                      </div>
+                    </td>
+
       <div>
         {showTable &&
           <div>
@@ -147,6 +208,7 @@ const Refiller_Refilling_Request = () => {
                 <thead>
                   <tr>
                     <th>Machine Name</th>
+
                   </tr>
                 </thead>
                 <tbody>

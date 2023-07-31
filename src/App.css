@@ -250,6 +250,7 @@ margin-left:5px;
   {
     font-size: 14px;
     line-height: 1.5;
+    text-align: left;
     padding: 5px 10px;
     transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
     border: 2px solid #dee1e2;
