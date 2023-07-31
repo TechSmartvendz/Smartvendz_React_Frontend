@@ -46,17 +46,18 @@ function Navbar() {
 // console.log(':navData',navData);
   return (
     <React.Fragment>
-      <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+      <nav className={sidebar && "nav-menu active" }>
 
-      <li onClick={showSidebar}>
+     
         <ul className="nav-menu-items" >
+        <li onClick={showSidebar} >
           {/* <li className="nav-li"></li> */}
           {/* <div className="line-div"></div> */}
           <div className="userinfo-container">
-            <h5>Welcome !</h5>
+            <h4>Welcome</h4>
 
             <h3>
-              {userRole}
+              {userRole.toUpperCase()}
               
               <h5 style={{ color: "grey" }}>{`(${userName})`}</h5>
             </h3>
@@ -85,8 +86,9 @@ function Navbar() {
             : () => {
                 setSidebar(false);
               }}
-        </ul>
+        
         </li>
+        </ul>
       </nav>
     </React.Fragment>
   );

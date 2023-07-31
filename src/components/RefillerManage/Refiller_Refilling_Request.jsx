@@ -59,7 +59,7 @@ const Refiller_Refilling_Request = () => {
       if (input._id === id) {
         const refillValue = e.target.value <= (input.maxquantity - input.currentStock) ? e.target.value : 0;
         if (e.target.value > (input.maxquantity - input.currentStock)) {
-          alert("Sharan");
+          alert("Refilling product Quantity is not maching");
         }
         return {
           ...input,
@@ -115,6 +115,7 @@ const Refiller_Refilling_Request = () => {
         <label> Machine ID & Company ID</label>
         <select
           onChange={(e) => handleMachineId(e)}
+          
         >
           <option value="">Select Machine</option>
           {companies && companies.map((item, i) => (
@@ -167,6 +168,7 @@ const Refiller_Refilling_Request = () => {
                     <td className="tbody_td">
                       <input
                         className="td_input"
+                        // placeholder="0"
                         type="number"
                         value={item.refillQuantity}
                         onChange={(e) => handleRefillQty(item._id, e)}

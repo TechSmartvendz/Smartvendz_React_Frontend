@@ -343,7 +343,7 @@ function Addnewmachine() {
         <React.Fragment>
           <div className="add-user-container">
             {bulkformstate ? (
-              <BulkUpload path={"MachineSlot"} rejectdata={rejectdata} />
+              <BulkUpload path={"MachineSlot"} rejectdata={rejectdata} ComponentName={'Planogram'}/>
             ) : (
               <>
                 <div className="componet-sub-title">
