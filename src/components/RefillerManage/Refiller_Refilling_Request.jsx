@@ -11,12 +11,14 @@ const Refiller_Refilling_Request = () => {
   const [companies, setCompanies] = useState();
   const [showTable, setshowTable] = useState(false);
   const [machine, setMachine] = useState();
+  const [deletedSlots, setDeletedSlots] = useState(null);
+  const [removedArray, setRemovedArray] = useState([])
 
-  const getMachines = async () => {
+  const getCompanies = async () => {
     try {
       const res = await axios.get('http://localhost:3000/api/getallmachines', { headers: { 'Authorization': 'Bearer ' + token } })
       const data = res.data.data;
-      console.log('data: ', data);
+      // console.log('data: ', data);
       setCompanies(data);
     } catch (error) {
       console.log(error);
@@ -27,7 +29,7 @@ const Refiller_Refilling_Request = () => {
     try {
       const res = await axios.get(`http://localhost:3000/api/getallmachineslots?machineName=${id}`, { headers: { 'Authorization': 'Bearer ' + token } })
       const data = res.data.data;
-      console.log('data: ', data);
+      // console.log('data: ', data);
       return data;
     } catch (error) {
       console.log(error);
@@ -51,7 +53,7 @@ const Refiller_Refilling_Request = () => {
   }
 
   useEffect(() => {
-    getMachines();
+    getCompanies();
   }, []);
 
   const handleRefillQty = (id, e) => {
@@ -72,11 +74,12 @@ const Refiller_Refilling_Request = () => {
   };
 
   const handleCurrentStock = (id, e) => {
-    const newmachine = machine.machineSlot.map((input) => {
-      if (input._id == id) {
-        return { ...input, currentStock: e.target.value, saleQuantity: input.closingStock - Number(e.target.value) };
+    const value=e.target.value;
+    const newmachine = machine.machineSlot.map((item) => {
+      if (item._id == id) {
+        return { ...item, currentStock: value, saleQuantity: item.closingStock - Number(value) };
       }
-      return input;
+      return item;
     });
     setMachine((prevState) => ({ ...prevState, machineSlot: newmachine }));
   };
@@ -87,7 +90,7 @@ const Refiller_Refilling_Request = () => {
     try {
       const res = await axios.post('http://localhost:3000/api/refill/request', machine, { headers: { 'Authorization': 'Bearer ' + newToken } })
       const data = res.data
-      console.log('data: ', data);
+      // console.log('data: ', data);
       if (data.success) {
         SuccessAlert({
           title: "Success",
@@ -104,10 +107,24 @@ const Refiller_Refilling_Request = () => {
       console.log(error);
     }
   };
-  const handleDelete = (id) => {
-    console.log(`Deleting item with id`);
-  };
 
+  const handleDelete = (id) => {
+    const removedItem = machine?.machineSlot.find((item) => item._id == id);
+
+    if (removedItem) {
+      // Update the removedArray state by adding the removed item
+      const arr = [...removedArray, removedItem];
+      setRemovedArray(arr);
+      setDeletedSlots({ ...machine, machineSlot: arr });
+    }
+
+    const newData = machine.machineSlot.filter((item, i) =>
+      id !== item._id
+    )
+    setMachine({ ...machine, machineSlot: newData });
+  };
+  // console.log('machine: ', machine);
+  // console.log("deletedSlots", deletedSlots)
 
   return (
     <div>
@@ -122,8 +139,8 @@ const Refiller_Refilling_Request = () => {
             <option key={item._id} value={item.machineid}>{item.machineid} & {item.companyid}</option>
           ))}
         </select>
-
       </div>
+
       {showTable &&
 
         <div>
@@ -182,16 +199,134 @@ const Refiller_Refilling_Request = () => {
                         />
                       </div>
                     </td>
+
+      <div>
+        {showTable &&
+          <div>
+            <div className="tcontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Machine Name</th>
+
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{machine.machineName}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table >
+                <thead style={{ position: "sticky", top: 0 }}>
+                  <tr>
+                    <th>Slot Name</th>
+                    <th>Product</th>
+                    <th>Closing Stock</th>
+                    <th>Current Stock</th>
+                    <th>Sale Qty</th>
+                    <th>Refill Qty</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {machine.machineSlot.map((item, index) => (
+                    <tr key={item._id}>
+                      <td>{item.slot}</td>
+                      <td>{item.product}</td>
+                      <td>{item.closingStock}</td>
+                      <td className="tbody_td">
+                        <input
+                          className="td_input"
+                          type="number"
+                          // value={item.currentStock}
+                          placeholder={item.currentStock}
+                          onChange={(e) => handleCurrentStock(item._id, e)}
+                        />
+                      </td>
+                      <td>{item.saleQuantity}</td>
+                      <td className="tbody_td">
+                        <input
+                          className="td_input"
+                          type="number"
+                          value={item.refillQuantity}
+                          onChange={(e) => handleRefillQty(item._id, e)}
+                        />
+                      </td>
+                      <td >
+                        <div className="actionsBtn">
+                          <
+                            FaTrash
+                            onClick={() => handleDelete(item._id)}
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {
+              deletedSlots?.machineSlot.length > 0 &&
+              <div className="tcontainer">
+                <h3>Update Slots with new Product</h3>
+                <table >
+                  <thead style={{ position: "sticky", top: 0 }}>
+                    <tr>
+                      <th>Slot Name</th>
+                      <th>Product</th>
+                      <th>Closing Stock</th>
+                      <th>Current Stock</th>
+                      <th>Sale Qty</th>
+                      <th>Refill Qty</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {deletedSlots.machineSlot.map((item, index) => (
+                      <tr key={item._id}>
+                        <td>{item.slot}</td>
+                        <td>{item.product}</td>
+                        <td>{item.closingStock}</td>
+                        <td className="tbody_td">
+                          <input
+                            className="td_input"
+                            type="number"
+                            value={item.currentStock}
+                            onChange={(e) => handleCurrentStock(item._id, e)}
+                          />
+                        </td>
+                        <td>{item.saleQuantity}</td>
+                        <td className="tbody_td">
+                          <input
+                            className="td_input"
+                            type="number"
+                            value={item.refillQuantity}
+                            onChange={(e) => handleRefillQty(item._id, e)}
+                          />
+                        </td>
+                        <td >
+                          <div className="actionsBtn">
+                            <
+                              FaTrash
+                              onClick={() => handleDelete(item._id)}
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            }
+            <div className="input-lable-v-div">
+              <button className="submit-btn" onClick={handleSubmit}>Submit</button>
+            </div>
           </div>
-          <div className="input-lable-v-div">
-            <button className="submit-btn" onClick={handleSubmit}>Submit</button>
-          </div>
-        </div>
-      }
+        }
+
+      </div>
     </div>
   );
 }
