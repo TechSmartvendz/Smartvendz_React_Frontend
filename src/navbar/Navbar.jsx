@@ -46,31 +46,35 @@ function Navbar() {
 // console.log(':navData',navData);
   return (
     <React.Fragment>
-      <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-        <ul className="nav-menu-items">
+      <nav className={sidebar && "nav-menu active" }>
+
+     
+        <ul className="nav-menu-items" >
+        <li onClick={showSidebar} >
           {/* <li className="nav-li"></li> */}
           {/* <div className="line-div"></div> */}
           <div className="userinfo-container">
-            <h5>Welcome !</h5>
+            <h4>Welcome</h4>
 
             <h3>
-              {userRole}
+              {userRole.toUpperCase()}
+              
               <h5 style={{ color: "grey" }}>{`(${userName})`}</h5>
             </h3>
           </div>
           <hr style={{ borderColor: "grey" }}></hr>
           {/* <input type="text" id="mySearch" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} placeholder="Search..."  /> */}
-          <div>
+         
+            {/* <Link>
+              <FaIcons.FaBars onClick={showSidebar} />
+              <FaIcons.FaBars onClick={showSidebar} />
+            </Link> */}
+         
+          {/* <div>
             <Link>
               <FaIcons.FaBars onClick={showSidebar} />
-              <FaIcons.FaBars onClick={showSidebar} />
             </Link>
-          </div>
-          <div>
-            <Link>
-              <FaIcons.FaBars onClick={showSidebar} />
-            </Link>
-          </div>
+          </div> */}
           {navData.data
             ? sideBarData.map((item, index) => {
                 if (navData.data[item.permission]) {
@@ -82,6 +86,8 @@ function Navbar() {
             : () => {
                 setSidebar(false);
               }}
+        
+        </li>
         </ul>
       </nav>
     </React.Fragment>

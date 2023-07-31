@@ -9,7 +9,7 @@ function SubMenu(props) {
   const [key, setKey] = useState(props.key);
   // console.log("item:", item);
   const [subnav, setSubnav] = useState(false);
-//  console.log('navDataITEm:',navData)
+  //  console.log('navDataITEm:',navData)
   const showSubnav = () => setSubnav(!subnav);
 
   useEffect(() => {}, []);
@@ -23,26 +23,33 @@ function SubMenu(props) {
           id="visible"
           onClick={item.submenu && showSubnav}
         >
-          <Link to={item.path}>
-            <div>
+        
+          <Link
+            to={item.path}
+            style={{ display: "flex", gap: "10px", alignItems: "center" }}
+          >
+          
+            <div style={{ display: "flex", gap: "23px" ,width:'200px'}}>
               {" "}
               {item.icon}
               <span>{item.title}</span>
+              
             </div>
-            <div>
+            <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
               {item.submenu && subnav
                 ? item.iconOpened
                 : item.submenu
                 ? item.iconClosed
                 : null}
-            </div>
+                </div>
           </Link>
+          
           <ul key={key} className="nav-menu-items ulbg">
+         
             {subnav &&
               item.submenu.map((type, index) => {
-               if(type.permission){
-
-               return (
+                if (type.permission) {
+                  return (
                     <li key={index} className={type.cName}>
                       <Link to={type.path}>
                         {type.icon}

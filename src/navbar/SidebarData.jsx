@@ -3,6 +3,9 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as RiIcons from 'react-icons/ri';
+import * as CgIcons from 'react-icons/cg';
+import * as GiIcons from 'react-icons/gi';
+
 export const SidebarData = [
   {
     title: "Home",
@@ -47,7 +50,7 @@ export const SidebarData = [
   {
     title: "Company Manage",
     path: "/",
-    icon: <IoIcons.IoMdPeople />,
+    icon: <CgIcons.CgSmartHomeBoiler />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
@@ -70,7 +73,7 @@ export const SidebarData = [
   {
     title: "Machine Manage",
     path: "/",
-    icon: <IoIcons.IoMdHelpCircle />,
+    icon: <GiIcons.GiVendingMachine />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
@@ -97,7 +100,7 @@ export const SidebarData = [
   {
     title: " Employee Manage",
     path: "/",
-    icon: <IoIcons.IoMdHelpCircle />,
+    icon: <FaIcons.FaUserTie />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
@@ -148,7 +151,7 @@ export const SidebarData = [
   {
     title: "General Manager",
     path: "/",
-    icon: <IoIcons.IoMdHelpCircle />,
+    icon: <FaIcons.FaCreativeCommonsShare />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
@@ -191,7 +194,7 @@ export const SidebarData = [
   {
     title: "Refiller Manager",
     path: "/",
-    icon: <IoIcons.IoMdHelpCircle />,
+    icon: <RiIcons.RiStoreFill />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
@@ -232,7 +235,7 @@ export const SidebarData = [
   {
     title: "warehouse",
     path: "/",
-    icon: <IoIcons.IoMdHelpCircle />,
+    icon: <FaIcons.FaWarehouse />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
@@ -262,7 +265,7 @@ export const SidebarData = [
   {
     title: "Supplier Manage",
     path: "/",
-    icon: <IoIcons.IoMdHelpCircle />,
+    icon: <RiIcons.RiFileTransferLine />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
@@ -284,7 +287,7 @@ export const SidebarData = [
   {
     title: "Stock Manage",
     path: "/",
-    icon: <IoIcons.IoMdHelpCircle />,
+    icon: <IoIcons.IoMdAppstore />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",
