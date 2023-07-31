@@ -74,7 +74,7 @@ const Refiller_Refilling_Request = () => {
   };
 
   const handleCurrentStock = (id, e) => {
-    const value=e.target.value;
+    const value = e.target.value;
     const newmachine = machine.machineSlot.map((item) => {
       if (item._id == id) {
         return { ...item, currentStock: value, saleQuantity: item.closingStock - Number(value) };
@@ -109,6 +109,11 @@ const Refiller_Refilling_Request = () => {
   };
 
   const handleDelete = (id) => {
+    const shouldDelete = window.confirm("Are you sure you want to delete this item?");
+    console.log('shouldDelete: ', shouldDelete);
+    if (!shouldDelete) {
+      return;
+    }
     const removedItem = machine?.machineSlot.find((item) => item._id == id);
 
     if (removedItem) {
