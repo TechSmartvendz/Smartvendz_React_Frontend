@@ -66,15 +66,29 @@ function Countrymanage() {
     <React.Fragment>
       <div className="add-user-container">
         <div className="headingdiv">
-          <span className="componet-title">Country Manage</span>
+          <span className="componet-title" style={{marginLeft:'12px'}}>Country Manage</span>
+        
           <div>
+
           <button onClick={(()=>navigate(-1))}>Back</button>
           </div>
+          
+        </div>
+        <div className="option-btn">
+          <button
+            onClick={() => {
+              navigate("../statemanage");
+            }}
+          >
+      State Manage
+          </button>
         </div>
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
           <span>{par?(<span>Edit </span>):(<span>Add </span>)}Country </span>
+          
           </div>
+
           <div className="general-manage-div">
             <label htmlFor="name">Country:</label>
             <input

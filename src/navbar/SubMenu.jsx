@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function SubMenu(props) {
-  const [navData, setNavData] = useState(props.navData);
-  const [sideBarData, setSideBarData] = useState(props.sideBarData);
+  
   const [item, setItem] = useState(props.item);
+
   const [key, setKey] = useState(props.key);
   // console.log("item:", item);
   const [subnav, setSubnav] = useState(false);
@@ -23,37 +23,40 @@ function SubMenu(props) {
           id="visible"
           onClick={item.submenu && showSubnav}
         >
-        
           <Link
             to={item.path}
             style={{ display: "flex", gap: "10px", alignItems: "center" }}
           >
-          
-            <div style={{ display: "flex", gap: "23px" ,width:'200px'}}>
+            <div style={{ display: "flex", gap: "23px", width: "200px" }}>
               {" "}
               {item.icon}
               <span>{item.title}</span>
-              
             </div>
-            <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               {item.submenu && subnav
                 ? item.iconOpened
                 : item.submenu
                 ? item.iconClosed
                 : null}
-                </div>
+            </div>
           </Link>
-          
-          <ul key={key} className="nav-menu-items ulbg">
-         
+
+          <ul key={key} className="nav-menu-items ulbg" >
             {subnav &&
               item.submenu.map((type, index) => {
                 if (type.permission) {
                   return (
-                    <li key={index} className={type.cName}>
-                      <Link to={type.path}>
+                    <li key={index} className={type.cName}  >
+                      <Link to={type.path} >
                         {type.icon}
-                        <span>{type.title}</span>
+                        <span >{type.title}</span>
                       </Link>{" "}
                     </li>
                   );

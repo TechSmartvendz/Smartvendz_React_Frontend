@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { getReq, delReq, postReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
-
+// import PropTypes from 'prop-types';
 function TableDataWithPagination(props) {
   const [tableData, setTableData] = useState();
+  const{machineID}=props;
+  const {loadDate}=props;
+  console.log(typeof machineID)
 
+  // TableDataWithPagination.propTypes = {
+  //   machineID: PropTypes.number.isRequired, // Adjust the data type accordingly if not a number
+  // };
   const [path, setPath] = useState(props.path);
   const [machinepagination, setMachinepagination] = useState(
     props.machinepagination
@@ -12,18 +18,37 @@ function TableDataWithPagination(props) {
   const [par, setpar] = useState(props.par);
   const [ComponentName, setComponentName] = useState(props.componentName);
   const [searchData, setSearchData] = useState(props.searchData);
-  // const [machineid,setMachineid]=useState(props.machineid)
-  console.log("IDDD:", props.machineidd);
+  
+   
+   
   const [page, setPage] = useState(1);
   const [dataPerPage, setDataPerPage] = useState(10);
   const [metadata, setMetaData] = useState();
   const [maxpagelimit, setMaxPageLimit] = useState();
- 
+ console.log('metaData:',metadata);
   useEffect(() => {
  
   }, [par]);
-
+// air05299
   const loadTableDate = async () => {
+    if(machineID){
+
+    
+    const response = await getReq(
+      `${path}/Table/${machineID}/${page}/${dataPerPage}`
+    );
+    // console.log("machineid", machineid);
+    // console.log("response", response);
+    if (response.data.metadata) {
+      setTableData(response.data.data);
+      setMetaData(response.data.metadata);
+      loadDate();
+    } else {
+      // console.log(response.data);
+      setTableData(null);
+      setMetaData(null);
+    }
+  }else{
     const response = await getReq(
       `${path}/Table/${page}/${dataPerPage}`
     );
@@ -32,12 +57,15 @@ function TableDataWithPagination(props) {
     if (response.data.metadata) {
       setTableData(response.data.data);
       setMetaData(response.data.metadata);
+      loadDate();
     } else {
       // console.log(response.data);
       setTableData(null);
       setMetaData(null);
     }
+  }
   };
+
   console.log("tableData:", tableData);
   const loadSearchData = async (event) => {
     //TODO:Submit Search Form
@@ -111,7 +139,7 @@ function TableDataWithPagination(props) {
     } else {
       loadTableDate();
     }
-  }, []);
+  }, [machineID]);
   useEffect(() => {
     console.log(props.searchData);
     if (searchData) {
@@ -142,7 +170,7 @@ function TableDataWithPagination(props) {
     } else {
       loadTableDate();
     }
-  }, [page, dataPerPage, searchData]);
+  }, [page, dataPerPage, searchData,machineID]);
 
   return (
     <React.Fragment>
@@ -151,7 +179,8 @@ function TableDataWithPagination(props) {
           <span>
             Total {props.name}: {metadata != null ? metadata.count : 0}
           </span>
-
+          <label>Search</label>
+            <input/>
           <div className="table-page-nav-btn">
             <div className="table-data-per-page">
               <input

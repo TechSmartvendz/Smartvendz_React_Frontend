@@ -74,9 +74,18 @@ function Statemanage() {
           <button onClick={(()=>navigate(-1))}>Back</button>
           </div>
         </div>
+        <div className="option-btn">
+          <button
+            onClick={() => {
+              navigate("../citymanage");
+            }}
+          >
+         City Manage
+          </button>
+        </div>
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
-            <span>State</span>
+            <span>{par?(<span>Edit </span>):(<span>Add </span>)}State </span>
           </div>
           <div className="general-manage-div">
             <label htmlFor="name">State:</label>

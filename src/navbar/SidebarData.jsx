@@ -18,7 +18,7 @@ export const SidebarData = [
   },
   {
     title: "User Manage",
-    path: "/",
+    
     icon: <IoIcons.IoMdPeople />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
