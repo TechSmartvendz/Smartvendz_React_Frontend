@@ -23,7 +23,7 @@ function DataList(props) {
   // console.log("DataListss:", dataList);
   return (
     <React.Fragment>
-      <label htmlFor={name}>{props.heading}:</label>
+      <label htmlFor={name}>{props.heading}</label>
       <input
         list={name}
         name={name}
@@ -44,7 +44,7 @@ function DataList(props) {
             );
           })
         ) : (
-          <option>Country not found</option>
+          <option>{props.error || "Something Went wrong"}</option>
         )}
       </datalist>
     </React.Fragment>

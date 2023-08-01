@@ -4,6 +4,7 @@ import { Cookies } from "react-cookie";
 import axios from "axios";
 import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
 import { FaTrash } from "react-icons/fa";
+import DataList from "../Partials/DataList";
 
 const Refiller_Refilling_Request = () => {
   const cookies = new Cookies();
@@ -123,6 +124,11 @@ const Refiller_Refilling_Request = () => {
   };
 
   const handleDelete = (id) => {
+    const shouldDelete = window.confirm("Are you sure you want to delete this item?");
+    // console.log('shouldDelete: ', shouldDelete);
+    if (!shouldDelete) {
+      return;
+    }
     const removedItem = machine?.machineSlot.find((item) => item._id == id);
 
     if (removedItem) {
@@ -136,7 +142,24 @@ const Refiller_Refilling_Request = () => {
     setMachine({ ...machine, machineSlot: newData });
   };
   // console.log('machine: ', machine);
-  // console.log("deletedSlots", deletedSlots)
+  console.log("deletedSlots", deletedSlots)
+
+  const handleUpdateSlot = (event, id) => {
+    const value = event.target.value;
+    console.log('name: ', value);
+    console.log('id: ', id);
+    const newDeletedSlots = deletedSlots.machineSlot.map((item, i) => {
+      console.log(item)
+      if (id == item._id) {
+        console.log("ok")
+        return {
+          ...item,
+          product: value
+        }
+      }
+    })
+    setDeletedSlots((prevState) => ({ ...prevState, machineSlot: newDeletedSlots }));
+  }
 
   return (
     <div>
@@ -234,7 +257,18 @@ const Refiller_Refilling_Request = () => {
                     {deletedSlots.machineSlot.map((item, index) => (
                       <tr key={item._id}>
                         <td>{item.slot}</td>
-                        <td>{item.product}</td>
+                        <td>
+                          <div className="input-lable-h-div">
+                            <DataList
+                              value={item.product || " "}
+                              handleChange={(e) => handleUpdateSlot(e, item._id)}
+                              name={"product"}
+                              path={"Product"}
+                              option={"productname"}
+                              error={"Product Not Found"}
+                            />
+                          </div>
+                        </td>
                         <td>{item.closingStock}</td>
                         <td className="tbody_td">
                           <input
