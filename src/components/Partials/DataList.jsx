@@ -29,7 +29,7 @@ function DataList(props) {
         name={name}
         onChange={props.handleChange}
         value={props.value}
-        placeholder="Search..."
+        placeholder={"Select..."}
         autoComplete={"off"}
         style={{textAlign:'left'}}
       />

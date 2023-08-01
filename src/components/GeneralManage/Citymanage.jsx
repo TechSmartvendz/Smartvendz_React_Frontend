@@ -67,7 +67,16 @@ function Citymanage() {
           <button onClick={(()=>navigate(-1))}>Back</button>
           </div>
         </div>
-
+        <div className="option-btn">
+          <button
+            onClick={() => {
+              navigate("../areamanage");
+            }}
+          >
+         Area Manage
+          </button>
+        </div>
+        
         <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
           <div className="componet-sub-title">
           <span>{par?(<span>Edit </span>):(<span>Add </span>)}City </span>

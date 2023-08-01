@@ -50,7 +50,7 @@ function Navbar() {
 
      
         <ul className="nav-menu-items" >
-        <li onClick={showSidebar} >
+        <li>
           {/* <li className="nav-li"></li> */}
           {/* <div className="line-div"></div> */}
           <div className="userinfo-container">

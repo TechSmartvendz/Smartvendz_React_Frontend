@@ -34,7 +34,7 @@ table td {
     border: 1px solid #0a0a0a;
 }
 
-input {
+.td_input {
     width: 100%;
     outline: none;
     height: 31.5px;
@@ -42,7 +42,7 @@ input {
     background-color: #5756566c;
     border: 1px solid black;
     border-radius: 3px;
-}
+} 
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

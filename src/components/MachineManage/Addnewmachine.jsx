@@ -10,7 +10,7 @@ import TableDataWithPagination from "../Partials/TableDataWithPagination";
 
 function Addnewmachine() {
   const { sidebar, setSidebar } = useContext(NavContext);
-  const [machineid, setMachineid] = useState()
+  const [machineID, setMachineID] = useState()
   const navigate = useNavigate();
   const path = "Machine";
   // const newpath = "MachineSlot";
@@ -60,13 +60,14 @@ function Addnewmachine() {
       }));
       setInputs(response.data);
       // console.log("inputs",response.data.machineid)
-      setMachineid(response.data.machineid)
+      setMachineID(response.data.machineid)
     } else {
       navigate(`../`);
       // console.log(response.data);
     }
   };
-  console.log('machineId:',machineid)
+  // console.log('machineId:',machineid)
+  
   const loadDateUsertable = async () => {
     const response = await getReq(`${subPath}/${itemid}`);
     if (response.data.length) {
@@ -236,7 +237,7 @@ function Addnewmachine() {
           </button>
 
           {(par || itemid) && (
-            <button onClick={bulkupload}>Bulk Slot Upload</button>
+            <button onClick={bulkupload}>{bulkformstate ? 'Single Slot Upload' :'Bulk Slot Upload'}</button>
           )}
         </div>
 
@@ -351,6 +352,7 @@ function Addnewmachine() {
                 </div>
 
                 <form className="flex-col" onSubmit={handleSubmit2}>
+                
                   <div className="input-lable-h-div">
                     <DataList
                       value={inputs2.machineid || ""}
@@ -393,6 +395,7 @@ function Addnewmachine() {
                       handleChange={handleChange2}
                       heading={"Product"}
                     />
+
                   </div>
 
                   <div className="input-lable-v-div">
@@ -426,9 +429,10 @@ function Addnewmachine() {
 
           <div className="table_container-div">
             <TableDataWithPagination
+            loadDate={loadDate}
               path={subPath}
               // key={subPath}
-              machineidd={machineid}
+              machineID={machineID}
               // data={companyusertable}
               // name={"Planogram"}
               editClick={editClick}

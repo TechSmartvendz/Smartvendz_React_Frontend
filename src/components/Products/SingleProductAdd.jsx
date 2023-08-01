@@ -174,17 +174,17 @@ import { useParams, useNavigate } from "react-router";
           <span className="componet-title">{ComponentName}</span>
           <div>
             <button onClick={() => navigate(-1)}>Back</button>
-            <button onClick={clearform}>Clear </button>
+            <button onClick={clearform} style={{marginLeft:'10px'}}>Clear </button>
           </div>
         </div>
         <div className="option-btn">
           <button onClick={addproduct}>
             {addproductformstate
-              ? `Search ${ComponentName} `
+              ? ` ${ComponentName} List`
               : par?`Update New ${ComponentName}`:`Add New ${ComponentName}`}
           </button>
         <button onClick={bulkupload}>
-        {`Bulk ${ComponentName} Upload`}
+       {bulkformstate ? `Search ${ComponentName}` :`Bulk ${ComponentName} Upload`}
       </button>
         </div>
       </div>
