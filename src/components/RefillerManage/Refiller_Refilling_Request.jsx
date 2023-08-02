@@ -5,15 +5,18 @@ import axios from "axios";
 import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
 import { FaTrash } from "react-icons/fa";
 import DataList from "../Partials/DataList";
+import Loading from "../Loading";
 
 const Refiller_Refilling_Request = () => {
   const cookies = new Cookies();
   const token = cookies.get("JWTcookie");
   const [companies, setCompanies] = useState();
   const [showTable, setshowTable] = useState(false);
+  const [isLoading, setLoading] = useState(false)
   const [machine, setMachine] = useState();
-  const [deletedSlots, setDeletedSlots] = useState(null);
+  const [updatedSlots, setUpdatedSlots] = useState();
   const [removedArray, setRemovedArray] = useState([]);
+  const [machineId, setMachineId] = useState();
 
   const getCompanies = async () => {
     try {
@@ -24,14 +27,20 @@ const Refiller_Refilling_Request = () => {
       // console.log('data: ', data);
       setCompanies(data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      ErrorAlert({
+        title: "Fail",
+        message: "Please refresh the page",
+      });
     }
   };
 
   const getMachineDetails = async (id) => {
+    setLoading(true);
+    setshowTable(true);
     try {
       const res = await axios.get(
-        `http://localhost:3000/api/getallmachineslots?machineName=${id}`,
+        `http://localhost:3000/api/getallmachineslots?machineid=${id}`,
         { headers: { Authorization: "Bearer " + token } }
       );
       const data = res.data.data;
@@ -39,27 +48,52 @@ const Refiller_Refilling_Request = () => {
       return data;
     } catch (error) {
       console.log(error);
+      setLoading(false);
+      ErrorAlert({
+        title: "Fail",
+        message: "Please refresh the page",
+      });
     }
   };
 
   const handleMachineId = (e) => {
-    const machineName = e.target.value;
-    // console.log('machineName: ', machineName);
-    getMachineDetails(machineName).then((res) => {
+    const newMachineId = e.target.value;
+    setMachineId(newMachineId);
+    setRemovedArray([]);
+
+    getMachineDetails(newMachineId).then((res) => {
       if (res !== "") {
         setMachine(res);
         setshowTable(true);
       } else {
         setMachine();
+        setRemovedArray([])
         setshowTable(false);
       }
+      setLoading(false);
     });
   };
 
   useEffect(() => {
     getCompanies();
-  }, []);
+  }, [machineId, removedArray]);
 
+  const handleRefillQtyDeleted = (id, e) => {
+    const newmachine = updatedSlots.machineSlot.map((input) => {
+      if (input._id === id) {
+        const refillValue = e.target.value <= input.maxquantity ? e.target.value : 0;
+        if (e.target.value > input.maxquantity) {
+          alert("Sharan");
+        }
+        return {
+          ...input,
+          refillQuantity: refillValue,
+        };
+      }
+      return input;
+    });
+    setUpdatedSlots((prevState) => ({ ...prevState, machineSlot: newmachine }));
+  };
   const handleRefillQty = (id, e) => {
     const newmachine = machine.machineSlot.map((input) => {
       if (input._id === id) {
@@ -119,7 +153,11 @@ const Refiller_Refilling_Request = () => {
         });
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      ErrorAlert({
+        title: "Fail",
+        message: "Slots not Updated",
+      });
     }
   };
 
@@ -135,30 +173,29 @@ const Refiller_Refilling_Request = () => {
       // Update the removedArray state by adding the removed item
       const arr = [...removedArray, removedItem];
       setRemovedArray(arr);
-      setDeletedSlots({ ...machine, machineSlot: arr });
+      setUpdatedSlots({ ...machine, machineSlot: arr });
     }
-
     const newData = machine.machineSlot.filter((item, i) => id !== item._id);
     setMachine({ ...machine, machineSlot: newData });
   };
   // console.log('machine: ', machine);
-  console.log("deletedSlots", deletedSlots)
+  // console.log("updatedSlots", updatedSlots)
+  // console.log('removedArray: ', removedArray);
 
   const handleUpdateSlot = (event, id) => {
     const value = event.target.value;
-    console.log('name: ', value);
-    console.log('id: ', id);
-    const newDeletedSlots = deletedSlots.machineSlot.map((item, i) => {
-      console.log(item)
+    const newupdatedSlots = updatedSlots.machineSlot.map((item, i) => {
       if (id == item._id) {
-        console.log("ok")
         return {
           ...item,
-          product: value
+          productname: value
         }
       }
+      else{
+        return item
+      }
     })
-    setDeletedSlots((prevState) => ({ ...prevState, machineSlot: newDeletedSlots }));
+    setUpdatedSlots((prevState) => ({ ...prevState, machineSlot: newupdatedSlots }));
   }
 
   return (
@@ -169,14 +206,14 @@ const Refiller_Refilling_Request = () => {
           <option value="">Select Machine</option>
           {companies &&
             companies.map((item, i) => (
-              <option key={item._id} value={item.machineid}>
+              <option key={item._id} value={item._id}>
                 {item.machineid} & {item.companyid}
               </option>
             ))}
         </select>
       </div>
-      <div>
-        {showTable && (
+      {showTable && <div>
+        {!isLoading ?
           <div>
             <div className="tcontainer">
               <table>
@@ -207,7 +244,7 @@ const Refiller_Refilling_Request = () => {
                   {machine.machineSlot.map((item, index) => (
                     <tr key={item._id}>
                       <td>{item.slot}</td>
-                      <td>{item.product}</td>
+                      <td>{item.productname}</td>
                       <td>{item.closingStock}</td>
                       <td className="tbody_td">
                         <input
@@ -238,7 +275,7 @@ const Refiller_Refilling_Request = () => {
               </table>
             </div>
 
-            {deletedSlots?.machineSlot.length > 0 && (
+            {updatedSlots?.machineSlot.length > 0 && (
               <div className="tcontainer">
                 <h3>Update Slots with new Product</h3>
                 <table>
@@ -250,24 +287,24 @@ const Refiller_Refilling_Request = () => {
                       <th>Current Stock</th>
                       <th>Sale Qty</th>
                       <th>Refill Qty</th>
-                      <th>Action</th>
+             
                     </tr>
                   </thead>
                   <tbody>
-                    {deletedSlots.machineSlot.map((item, index) => (
+                    {updatedSlots?.machineSlot.map((item, index) => (
                       <tr key={item._id}>
                         <td>{item.slot}</td>
                         <td>
-                          <div className="input-lable-h-div">
-                            <DataList
-                              value={item.product || " "}
-                              handleChange={(e) => handleUpdateSlot(e, item._id)}
-                              name={"product"}
-                              path={"Product"}
-                              option={"productname"}
-                              error={"Product Not Found"}
-                            />
-                          </div>
+
+                          <DataList
+                            value={item.productname || " "}
+                            handleChange={(e) => handleUpdateSlot(e, item._id)}
+                            name={"product"}
+                            path={"Product"}
+                            option={"productname"}
+                            error={"Product Not Found"}
+                          />
+
                         </td>
                         <td>{item.closingStock}</td>
                         <td className="tbody_td">
@@ -284,14 +321,10 @@ const Refiller_Refilling_Request = () => {
                             className="td_input"
                             type="number"
                             value={item.refillQuantity}
-                            onChange={(e) => handleRefillQty(item._id, e)}
+                            onChange={(e) => handleRefillQtyDeleted(item._id, e)}
                           />
                         </td>
-                        <td>
-                          <div className="actionsBtn">
-                            <FaTrash onClick={() => handleDelete(item._id)} />
-                          </div>
-                        </td>
+                       
                       </tr>
                     ))}
                   </tbody>
@@ -304,8 +337,11 @@ const Refiller_Refilling_Request = () => {
               </button>
             </div>
           </div>
-        )}
+          :
+          <Loading />
+        }
       </div>
+      }
     </div>
   );
 };
