@@ -19,7 +19,7 @@ export const SidebarData = [
   {
     title: "User Manage",
     
-    icon: <IoIcons.IoMdPeople />,
+    icon: <FaIcons.FaUser />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     cName: "nav-text",

@@ -7,7 +7,7 @@ import DataList from "../Partials/DataList";
 function AddWarehouse() {
   const { _id } = useParams();
   
-  console.log('EditID:',_id)
+  // console.log('EditID:',_id)
   const [itemid, setItemid] = useState(_id);
  
   const [inputs, setInputs] = useState({});

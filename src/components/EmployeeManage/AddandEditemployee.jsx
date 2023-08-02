@@ -189,11 +189,11 @@ function AddandEditemployee() {
         <div className="option-btn">
           <button onClick={addproduct}>
             {addproductformstate
-              ? `Search ${ComponentName} `
+              ? ` ${ComponentName} List`
               : par?`Update New ${ComponentName}`:`Add New ${ComponentName}`}
           </button>
         <button onClick={bulkupload}>
-        {`Bulk ${ComponentName} Upload`}
+        { bulkformstate ? `Single ${ComponentName} Upload` :`Bulk ${ComponentName} Upload`}
       </button>
         </div>
         

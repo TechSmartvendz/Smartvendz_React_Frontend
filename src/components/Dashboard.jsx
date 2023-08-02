@@ -84,10 +84,10 @@ function Dashboard() {
   return (
     <React.Fragment>
       <div className="root">
-        <Header />
+        <Header/>
         <div className="section" onClick={(e) => e.stopPropagation()}>
          {
-          sidebar && <Navbar />
+          sidebar && <Navbar/>
          }
         
           <ReactNotifications />

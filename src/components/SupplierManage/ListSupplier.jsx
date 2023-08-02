@@ -20,7 +20,7 @@ const ListSupplier = () => {
     <React.Fragment>
       <div className="add-user-container">
         <div className="headingdiv">
-          <span className="componet-title">Warehouse List</span>
+          <span className="componet-title">Supplier List</span>
           <div>
             <button onClick={() => navigate(-1)}>Back</button>
           </div>

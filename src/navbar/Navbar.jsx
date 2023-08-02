@@ -24,7 +24,7 @@ function Navbar() {
   // console.log("navData:", navData);
   const [navbar, setNavbar] = useState(false);
 
-  const showSidebar = () => setNavbar(!navbar);
+  // const showSidebar = () => setNavbar(!navbar);
   const loadDate = async () => {
     try {
       const response = await axios.get(
@@ -43,51 +43,53 @@ function Navbar() {
     loadDate();
   }, []);
   const userName = localStorage.getItem("username");
-// console.log(':navData',navData);
+  // console.log(':navData',navData);
   return (
     <React.Fragment>
-      <nav className={sidebar && "nav-menu active" }>
+      <nav className={sidebar && "nav-menu active"}>
+        <ul className="nav-menu-items">
+          <li>
+            {/* <li className="nav-li"></li> */}
+            {/* <div className="line-div"></div> */}
+            <div className="userinfo-container">
+              <h4>Welcome</h4>
 
-     
-        <ul className="nav-menu-items" >
-        <li>
-          {/* <li className="nav-li"></li> */}
-          {/* <div className="line-div"></div> */}
-          <div className="userinfo-container">
-            <h4>Welcome</h4>
+              <h3>
+                {userRole.toUpperCase()}
 
-            <h3>
-              {userRole.toUpperCase()}
-              
-              <h5 style={{ color: "grey" }}>{`(${userName})`}</h5>
-            </h3>
-          </div>
-          <hr style={{ borderColor: "grey" }}></hr>
-          {/* <input type="text" id="mySearch" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} placeholder="Search..."  /> */}
-         
+                <p style={{ color: "grey" }}>{`(${userName})`}</p>
+              </h3>
+            </div>
+            <hr style={{ borderColor: "grey" }}></hr>
+            {/* <input type="text" id="mySearch" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} placeholder="Search..."  /> */}
+
             {/* <Link>
               <FaIcons.FaBars onClick={showSidebar} />
               <FaIcons.FaBars onClick={showSidebar} />
             </Link> */}
-         
-          {/* <div>
+
+            {/* <div>
             <Link>
               <FaIcons.FaBars onClick={showSidebar} />
             </Link>
           </div> */}
-          {navData.data
-            ? sideBarData.map((item, index) => {
-                if (navData.data[item.permission]) {
-                  return (
-                    <SubMenu item={item} key={index} navData={navData.data} />
-                  );
-                }
-              })
-            : () => {
-                setSidebar(false);
-              }}
-        
-        </li>
+            {navData.data
+              ? sideBarData.map((item, index) => {
+                  if (navData.data[item.permission]) {
+                    return (
+                      <SubMenu
+                        item={item}
+                        key={index}
+                        indexValue={index}
+                        navData={navData.data}
+                      />
+                    );
+                  }
+                })
+              : () => {
+                  setSidebar(false);
+                }}
+          </li>
         </ul>
       </nav>
     </React.Fragment>

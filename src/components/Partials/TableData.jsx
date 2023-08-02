@@ -13,9 +13,15 @@ function TableData(props) {
   const [deletePath, setDeletePath] = useState(props.deletePath);
   const [par, setpar] = useState(props.par);
   const [tableRefresh,setTableRefresh]=useState(0)
+  const [searchQuery,setSearchQuery]=useState()
   // console.log("this is par:", par);
  
-  // This function is used to get data this function is reusable it using where ever it required
+  // This function is used to get data this function is reusable it using where ever it required4
+
+  const handleSearch=(e)=>{
+    setSearchQuery(e.target.value);
+  }
+  // console.log('Inputs:',searchQuery);
   const loadTableDate = async () => {
     
     const response = await getReq(path);
@@ -27,7 +33,9 @@ function TableData(props) {
       setTableData(null);
     }
   };
- 
+//  const filteredData=tableData.filter((details)=>{
+//   return details.toLowerCase().includes(searchQuery.toLowerCase())
+//  })
   const editClick = (item) => {
     props.editClick(item);
   };
@@ -78,33 +86,23 @@ function TableData(props) {
           message: response.msg,
         });
       }
-    // }
-    // else{
-    //   const response = await delReq(gst, id);
-    //   // console.log("DeleteData:", response.data);
-    //   if (response.success) {
-    //     loadTableDate();
-    //     SuccessAlert({
-    //       title: "Data Deleted",
-    //       message: `${gst} : Delete Succesfully `,
-    //     });
-    //   } else {
-    //     ErrorAlert({
-    //       title: `${gst} Delete: Error`,
-    //       message: response.msg,
-    //     });
-    //   }
-    // }
-    
+   
   };
   
   }
   return (
     <React.Fragment>
       <div className="componet-sub2-title">
+
+      <div className="justi-spacebt">
         <span>
           Total {path}: {tableData != null ? tableData.length : 0}
         </span>
+        <div >
+          <label >Search :</label>
+            <input className="search-field" onChange={handleSearch}/>
+            </div>
+      </div>
       </div>
       <div className="table_container-div">
         <table>

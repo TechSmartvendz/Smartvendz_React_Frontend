@@ -6,7 +6,7 @@ function SubMenu(props) {
   
   const [item, setItem] = useState(props.item);
 
-  const [key, setKey] = useState(props.key);
+  const [indexValue, setIndexValue] = useState(props.indexValue);
   // console.log("item:", item);
   const [subnav, setSubnav] = useState(false);
   //  console.log('navDataITEm:',navData)
@@ -17,8 +17,9 @@ function SubMenu(props) {
   return (
     <React.Fragment>
       {
+        <ul>
         <li
-          key={key}
+          key={indexValue}
           className={item.cName}
           id="visible"
           onClick={item.submenu && showSubnav}
@@ -48,7 +49,7 @@ function SubMenu(props) {
             </div>
           </Link>
 
-          <ul key={key} className="nav-menu-items ulbg" >
+          <ul key={indexValue} className="nav-menu-items ulbg" >
             {subnav &&
               item.submenu.map((type, index) => {
                 if (type.permission) {
@@ -64,6 +65,7 @@ function SubMenu(props) {
               })}
           </ul>
         </li>
+        </ul>
       }
     </React.Fragment>
   );

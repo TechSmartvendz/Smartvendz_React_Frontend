@@ -30,12 +30,12 @@ function TransferStock() {
       // setInputs(response.data)
       SuccessAlert({
         title: "Ware House",
-        message: "Ware House Added successfully",
+        message: " Stock Transfer successfully",
       });
       setInputs("");
     
     } else {
-      ErrorAlert({ title: "Ware House", message: response.msg });
+      ErrorAlert({ title: "Stock Transfer", message: response.msg });
     }
   };
   const loadList = async () => {

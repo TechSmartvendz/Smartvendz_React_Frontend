@@ -111,9 +111,9 @@ function Addnewuser() {
             <div className="flex-row">
               {/* Template data getting from this path : {../Partials/FormFields} */}
               {/* This map is only  for left side user fields */}
-              {template.addnewuser.map((adduser) => {
+              {template.addnewuser.map((adduser,index) => {
                 return (
-                  <div className="input-lable-h-div">
+                  <div className="input-lable-h-div" key={index} >
                     <label htmlFor={adduser.name}>{adduser.title}</label>
                     <input
                       name={adduser.name}
@@ -195,9 +195,9 @@ function Addnewuser() {
           <div>
             <div className="flex-col">
               {/* This template for login Form fields */}
-              {template.loginInfo.map((log) => {
+              {template.loginInfo.map((log,index) => {
                 return (
-                  <div className="input-lable-v-div">
+                  <div className="input-lable-v-div" key={index}>
                     <label htmlFor={log.name}>{log.title}</label>
 
                     <input

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 function AlltransferRequest() {
   const [tableData, setTableData] = useState();
   const [tableRefresh, setTableRefresh] = useState(0);
+  const [status, setStatus] = useState(false);
   const path = "alltransferRequest/Datalist";
 
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ function AlltransferRequest() {
   const acceptProducts = async (id) => {
     const response = await postReq(`acceptStockTransferRequest/${id}`);
     if (response.data) {
+      setStatus(true);
       // console.log("AcceptedData:", response.data);
       // setStatus("accepted");
       // setTableData(response.data);
@@ -85,6 +87,7 @@ function AlltransferRequest() {
                         onClick={() => acceptProducts(item.id)}
                       >
                         Accept
+                        {/* {status ? '' : 'Accept'}   */}
                       </button>
                     </td>
                   </tr>
