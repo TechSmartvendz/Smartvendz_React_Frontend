@@ -14,7 +14,7 @@ const Refiller_Refilling_Request = () => {
   const [showTable, setshowTable] = useState(false);
   const [isLoading, setLoading] = useState(false)
   const [machine, setMachine] = useState();
-  const [updatedSlots, setUpdatedSlots] = useState();
+  const [updatedSlots, setUpdatedSlots] = useState([]);
   const [removedArray, setRemovedArray] = useState([]);
   const [machineId, setMachineId] = useState();
 
@@ -131,12 +131,14 @@ const Refiller_Refilling_Request = () => {
 
   const handleSubmit = async () => {
     // need a Refiller token to refill request
+    const data={...machine,machineSlot:[...machine.machineSlot,...updatedSlots],removedArray }
+    // console.log('data: ', data);
     const newToken =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyMjI4YTNiMmRmM2Y5ZmNjODRjYjUiLCJpYXQiOjE2OTA0NDQ0MjZ9.j9xy7VTfj74LDo7yyg0DOyG4YSVNIRMK9CEMXiKqXVE";
-    try {
+     try {
       const res = await axios.post(
         "http://localhost:3000/api/refill/request",
-        machine,
+        data,
         { headers: { Authorization: "Bearer " + newToken } }
       );
       const data = res.data;
@@ -173,18 +175,19 @@ const Refiller_Refilling_Request = () => {
       // Update the removedArray state by adding the removed item
       const arr = [...removedArray, removedItem];
       setRemovedArray(arr);
-      setUpdatedSlots({ ...machine, machineSlot: arr });
+      // setUpdatedSlots({ ...machine, machineSlot: arr });
+      setUpdatedSlots(arr);
     }
     const newData = machine.machineSlot.filter((item, i) => id !== item._id);
     setMachine({ ...machine, machineSlot: newData });
   };
-  // console.log('machine: ', machine);
-  // console.log("updatedSlots", updatedSlots)
-  // console.log('removedArray: ', removedArray);
+  console.log('machine: ', machine);
+  console.log("updatedSlots", updatedSlots)
+  console.log('removedArray: ', removedArray);
 
   const handleUpdateSlot = (event, id) => {
     const value = event.target.value;
-    const newupdatedSlots = updatedSlots.machineSlot.map((item, i) => {
+    const newupdatedSlots = updatedSlots.map((item, i) => {
       if (id == item._id) {
         return {
           ...item,
@@ -195,7 +198,8 @@ const Refiller_Refilling_Request = () => {
         return item
       }
     })
-    setUpdatedSlots((prevState) => ({ ...prevState, machineSlot: newupdatedSlots }));
+    // setUpdatedSlots((prevState) => ({ ...prevState, machineSlot: newupdatedSlots }));
+    setUpdatedSlots(newupdatedSlots);
   }
 
   return (
@@ -275,7 +279,7 @@ const Refiller_Refilling_Request = () => {
               </table>
             </div>
 
-            {updatedSlots?.machineSlot.length > 0 && (
+            {updatedSlots.length > 0 && (
               <div className="tcontainer">
                 <h3>Update Slots with new Product</h3>
                 <table>
@@ -291,7 +295,7 @@ const Refiller_Refilling_Request = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {updatedSlots?.machineSlot.map((item, index) => (
+                    {updatedSlots?.map((item, index) => (
                       <tr key={item._id}>
                         <td>{item.slot}</td>
                         <td>
