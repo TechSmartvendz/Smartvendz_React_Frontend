@@ -81,8 +81,7 @@ const Manage_Refill_Request = () => {
                     {setFormat(item.createdAt)}
                   </td>
                   <td>
-                    {item.refillerID.first_name
-                    }
+                    {item.refillerID.first_name }
                   </td>
                   <td>
                     {item.machineId}
