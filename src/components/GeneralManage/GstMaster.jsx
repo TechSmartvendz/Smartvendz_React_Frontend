@@ -13,9 +13,9 @@ function GstMaster() {
   const navigate = useNavigate();
   const { _id } = useParams();
 
-  console.log("EditID:", _id);
+  // console.log("EditID:", _id);
   const [itemid, setItemid] = useState(_id);
-console.log('itemid',itemid)
+// console.log('itemid',itemid)
   // console.log("itemid:", itemid);
   const path = "tax";
   const getTax = "tax/Datalist";
@@ -185,7 +185,7 @@ console.log('itemid',itemid)
             </button>
         </form>
         
-        <TableData path={path} getTax={getTax} tableRefresh={tableRefresh} editClick={editClick} />
+        <TableData path={path} getTax={getTax} key={tableRefresh} editClick={editClick} />
       </div>
     </React.Fragment>
   );

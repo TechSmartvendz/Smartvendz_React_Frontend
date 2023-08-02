@@ -5,8 +5,8 @@ import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
 function TableDataWithPagination(props) {
   const [tableData, setTableData] = useState();
   const{machineID}=props;
-  const {loadDate}=props;
-  console.log(typeof machineID)
+  // const {loadDate}=props;
+  // console.log(typeof machineID)
 
   // TableDataWithPagination.propTypes = {
   //   machineID: PropTypes.number.isRequired, // Adjust the data type accordingly if not a number
@@ -25,7 +25,7 @@ function TableDataWithPagination(props) {
   const [dataPerPage, setDataPerPage] = useState(10);
   const [metadata, setMetaData] = useState();
   const [maxpagelimit, setMaxPageLimit] = useState();
- console.log('metaData:',metadata);
+//  console.log('metaData:',metadata);
   useEffect(() => {
  
   }, [par]);
@@ -42,7 +42,7 @@ function TableDataWithPagination(props) {
     if (response.data.metadata) {
       setTableData(response.data.data);
       setMetaData(response.data.metadata);
-      loadDate();
+      // loadDate();
     } else {
       // console.log(response.data);
       setTableData(null);
@@ -57,7 +57,7 @@ function TableDataWithPagination(props) {
     if (response.data.metadata) {
       setTableData(response.data.data);
       setMetaData(response.data.metadata);
-      loadDate();
+      // loadDate();
     } else {
       // console.log(response.data);
       setTableData(null);
@@ -66,11 +66,11 @@ function TableDataWithPagination(props) {
   }
   };
 
-  console.log("tableData:", tableData);
+  // console.log("tableData:", tableData);
   const loadSearchData = async (event) => {
     //TODO:Submit Search Form
     if (props.reject) {
-      console.log(searchData.length);
+      // console.log(searchData.length);
       setTableData(searchData);
       let metadat2 = {
         count: searchData.length,
@@ -141,12 +141,12 @@ function TableDataWithPagination(props) {
     }
   }, [machineID]);
   useEffect(() => {
-    console.log(props.searchData);
+    // console.log(props.searchData);
     if (searchData) {
-      console.log(
-        "🚀 ~ file: TableDataWithPagination.jsx:98 ~ useEffect ~ searchData:",
-        searchData
-      );
+      // console.log(
+      //   "🚀 ~ file: TableDataWithPagination.jsx:98 ~ useEffect ~ searchData:",
+      //   searchData
+      // );
       setSearchData(props.searchData);
     } else setSearchData();
   }, [props.searchData]);
@@ -170,7 +170,7 @@ function TableDataWithPagination(props) {
     } else {
       loadTableDate();
     }
-  }, [page, dataPerPage, searchData,machineID]);
+  }, [page, dataPerPage, searchData]);
 
   return (
     <React.Fragment>
@@ -179,8 +179,10 @@ function TableDataWithPagination(props) {
           <span>
             Total {props.name}: {metadata != null ? metadata.count : 0}
           </span>
-          <label>Search</label>
-            <input/>
+          <div>
+          {/* <label >Search</label> */}
+            <input className="search-field" placeholder="Search..."/>
+            </div>
           <div className="table-page-nav-btn">
             <div className="table-data-per-page">
               <input

@@ -2,7 +2,7 @@
 
 
 body{
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -173,7 +173,7 @@ margin-bottom: 30px;
 .sub-div,
 .form-2col-ver>div{
   max-width:95%;
-  min-width:713px;
+  /* min-width:713px; */
 /* background-color: aqua; */
 justify-content: space-around;
 margin-top:20px;
@@ -435,7 +435,7 @@ justify-content: flex-start;
 .table_container-div{
 
 margin-top: 20px;
-
+overflow-x: scroll;
 }
 .table_container-div>table{
   border: 1px solid black;
@@ -578,6 +578,7 @@ margin-left: 100px ;
   border-radius: 4px; 
   background: #dee1e2;
   border:2px solid #dee1e2 ;
+  padding:6px;
   font-size: 14px;
   line-height: 1.5;
    margin-left:45px;
@@ -645,7 +646,19 @@ overflow: hidden;
   right: 10px;
   transform: translateY(-50%);
  }
-
+ .search-field{
+  width: 300px;
+  padding: 5px;
+  border-style: none;
+  background-color: lightgrey;
+  margin-left: 10px;
+  border-radius: 2px;
+ }
+ .search-field:focus{
+ background-color: white;
+ border:green;
+ }
+ 
  @media only screen and (max-width:600px){
  
   .add-user-container{

@@ -11,6 +11,7 @@ import TableDataWithPagination from "../Partials/TableDataWithPagination";
 function Addnewmachine() {
   const { sidebar, setSidebar } = useContext(NavContext);
   const [machineID, setMachineID] = useState()
+  const [tableRefresh, setTableRefresh] = useState(0);
   const navigate = useNavigate();
   const path = "Machine";
   // const newpath = "MachineSlot";
@@ -27,6 +28,7 @@ function Addnewmachine() {
   // console.log('inputs2:',inputs2)
   const [par, setPar] = useState(); //var to show company user form state for edit or add new req
   const { id } = useParams();
+  
   const [itemid, setItemid] = useState(id); //var to show company  form state for edit or add new req
   const [companyusertable, setcompanyusertable] = useState();
   const [addproductformstate, setaddproductformstate] = useState(); //Add form state use to show or hide add product form
@@ -34,8 +36,9 @@ function Addnewmachine() {
   //TODO: Load Data on Render and on Stage changes
   const [reject, setReject] = useState(false);
   const [importsuccess, setImportSuccess] = useState(0);
-  
+ 
 
+ 
   // console.log("inputs",inputs.machineid)
   const bulkupload = () => {
     //TODO:Handle Hide and Show of Add Product From
@@ -83,6 +86,7 @@ function Addnewmachine() {
     }
   };
   const loadSubFormData = async (assignid) => {
+
     const response = await getReq(`${subPath}/${itemid}/${assignid}`);
     if (response.data.length) {
       // console.log(
@@ -104,6 +108,7 @@ function Addnewmachine() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   }
+
   function handleChange2(event) {
     const name = event.target.name;
     const checked = event.target.checked;
@@ -113,6 +118,7 @@ function Addnewmachine() {
       setInputs2((values) => ({ ...values, [name]: event.target.value }));
     }
   }
+  
   const handleSubmit2 = async (event) => {
     event.preventDefault();
     if (par) {
@@ -126,6 +132,7 @@ function Addnewmachine() {
         loadDateUsertable();
 
         setInputs2({});
+        setTableRefresh(tableRefresh + 1);
         loadDate();
       } else {
         ErrorAlert({ title: "Update Slot", message: response.msg });
@@ -139,6 +146,7 @@ function Addnewmachine() {
         });
         loadDateUsertable();
         setInputs2({});
+        setTableRefresh(tableRefresh + 1);
         loadDate();
       } else {
         ErrorAlert({ title: "Create Slot", message: response.msg });
@@ -429,9 +437,9 @@ function Addnewmachine() {
 
           <div className="table_container-div">
             <TableDataWithPagination
-            loadDate={loadDate}
+              loadDate={loadDate}
               path={subPath}
-              // key={subPath}
+              key={tableRefresh}
               machineID={machineID}
               // data={companyusertable}
               // name={"Planogram"}

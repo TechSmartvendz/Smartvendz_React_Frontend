@@ -57,6 +57,7 @@ function ListWarehouse() {
       </div>
       <div className="option-btn">
       <button onClick={()=>{navigate("../addwarehouse")}}>Add New Warehouse</button>
+      <button onClick={()=>{navigate("../warehousestock")}}>Warehouse Stock</button>
        </div>
     
       <TableData path={path} deletePath={deletePath} key={tableRefresh} editClick={editClick}/>

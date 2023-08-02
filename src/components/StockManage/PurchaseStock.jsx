@@ -22,7 +22,7 @@ function PurchaseStock() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   }
-  console.log("Inputs:", inputs);
+  // console.log("Inputs:", inputs);
   // console.log("After Submited Data:",data)
   //   Handle Submit i used to Purchase the Stock
  
@@ -58,7 +58,7 @@ function PurchaseStock() {
               navigate("../purchasestocklist");
             }}
           >
-            Purchased Stock List
+            Purchase Stock List
           </button>
           <button
        onClick={()=>{
