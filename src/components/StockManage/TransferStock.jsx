@@ -83,7 +83,7 @@ function TransferStock() {
         {/* onSubmit={handleSubmit} */}
 
         {bulk ? (
-          <BulkUpload ComponentName={"Transfer"} />
+          <BulkUpload path={"warehouseStock"} ComponentName={"Transfer"} />
         ) : (
           <form className="flex-row form-2col-ver" onSubmit={handleSubmit}>
             <div className="componet-sub-title">

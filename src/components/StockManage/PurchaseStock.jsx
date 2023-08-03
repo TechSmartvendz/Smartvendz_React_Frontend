@@ -11,6 +11,7 @@ function PurchaseStock() {
   const [inputs, setInputs] = useState({});
   const [data, setData] = useState();
   const [bulk,setBulk]=useState(false);
+  const [tableRefresh,setTableRefresh]=useState(0)
   const path = "purchaseStock";
   const purchaselist="purchasestocklist"
   // console.log("🚀 ~ file: PurchaseStock.jsx:16 ~ PurchaseStock ~ purchasestocklist:", purchasestocklist)
@@ -36,6 +37,7 @@ function PurchaseStock() {
         title: `Add ${ComponentName}`,
         message: `${ComponentName} successfully`,
       });
+      setTableRefresh(tableRefresh+1);
       setInputs({});
       // navigate("../purchasestocklist");
     } else {
@@ -195,7 +197,7 @@ function PurchaseStock() {
      
       <div className="table_container-div">
     
-       <TableDataWithPagination path={purchaselist}/>
+       <TableDataWithPagination path={purchaselist} key={tableRefresh}/>
 
 
       </div>
