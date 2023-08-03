@@ -29,7 +29,7 @@
     border-top: 10px solid #0054ef;
     /* Blue */
     border-radius: 50%;
-    animation: spinner 1.5s linear infinite;
+    animation: spinner 1.1s linear infinite;
 }
 
 .spinner-container {
