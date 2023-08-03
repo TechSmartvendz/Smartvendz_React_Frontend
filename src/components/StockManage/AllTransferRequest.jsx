@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getReq, postReq } from "../middleware/AxiosApisCall";
 import { useNavigate } from "react-router-dom";
-
+import { SuccessAlert } from "../middleware/AlertMsg";
+import { ErrorAlert } from "../middleware/AlertMsg";
 function AlltransferRequest() {
   const [tableData, setTableData] = useState();
   const [tableRefresh, setTableRefresh] = useState(0);
@@ -9,6 +10,7 @@ function AlltransferRequest() {
   const path = "alltransferRequest/Datalist";
 
   const navigate = useNavigate();
+
   const loadTableDate = async () => {
     const response = await getReq(path);
     if (response.data.length) {
@@ -27,12 +29,16 @@ function AlltransferRequest() {
 
   const acceptProducts = async (id) => {
     const response = await postReq(`acceptStockTransferRequest/${id}`);
-    if (response.data) {
-      setStatus(true);
-      // console.log("AcceptedData:", response.data);
-      // setStatus("accepted");
-      // setTableData(response.data);
+    if (response.success) {
+     
+        SuccessAlert({
+          title: 'Stock ',
+          message: 'Stock Accepted successfully'
+        });
+      
+      loadTableDate()
     } else {
+      ErrorAlert({ title: "Stock Transfer", message: response.msg });
       // setStatus("pending");
     }
   };
@@ -87,7 +93,7 @@ function AlltransferRequest() {
                         onClick={() => acceptProducts(item.id)}
                       >
                         Accept
-                        {/* {status ? '' : 'Accept'}   */}
+                        {/* {status ? 'Accepteted' : 'Accept'}   */}
                       </button>
                     </td>
                   </tr>
