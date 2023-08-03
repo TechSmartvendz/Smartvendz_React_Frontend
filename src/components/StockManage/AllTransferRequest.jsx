@@ -6,7 +6,7 @@ import { ErrorAlert } from "../middleware/AlertMsg";
 function AlltransferRequest() {
   const [tableData, setTableData] = useState();
   const [tableRefresh, setTableRefresh] = useState(0);
-  const [status, setStatus] = useState(false);
+const [filterd,setFiltered]=useState();
   const path = "alltransferRequest/Datalist";
 
   const navigate = useNavigate();
@@ -16,6 +16,7 @@ function AlltransferRequest() {
     if (response.data.length) {
       // console.log("TableData:", response.data);
       setTableData(response.data);
+     
       setTableRefresh(tableRefresh + 1);
     } else {
       // console.log(response.data);
@@ -42,6 +43,13 @@ function AlltransferRequest() {
       // setStatus("pending");
     }
   };
+const handleSearchChange=(e)=>{
+
+  setFiltered(e.target.value);
+}
+console.log(filterd)
+
+
 
   return (
     <React.Fragment>
@@ -52,8 +60,15 @@ function AlltransferRequest() {
         </div>
       </div>
       <div className="componet-sub2-title">
+      <div className="justi-spacebt">
         <span>Total: {tableData != null ? tableData.length : 0}</span>
+        <div>
+          <label >Search :</label>
+            <input className="search-field" onChange={handleSearchChange}/>
+            </div>
+        </div>
       </div>
+     
       <div className="table_container-div">
         <table>
           <tbody>
