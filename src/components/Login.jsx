@@ -24,8 +24,8 @@ function Login() {
     event.preventDefault();
     const response = await postReq(path,inputs);
       // console.log("🚀 ~ file: Login.jsx:24 ~ submitData ~ inputs", inputs)
-      console.log('response',response)
-      console.log('Login Data:',response.data);
+      // console.log('response',response)
+      // console.log('Login Data:',response.data);
       if (response.success) {
         localStorage.setItem('username',response.data.username);
         setCookie("JWTcookie", response.data.token ,{ path: "/" });
