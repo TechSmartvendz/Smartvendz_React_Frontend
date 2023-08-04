@@ -16,10 +16,8 @@ const Manage_Refill_Request = () => {
       setLoading(true);
       const res = await axios.get('http://localhost:3000/api/allrefillingrequest', { headers: { 'Authorization': 'Bearer ' + token } })
       const data = res.data.data;
-      console.log('data: ', data);
       setRequest(data);
       setLoading(false)
-
     } catch (error) {
       console.log(error);
     }
@@ -32,12 +30,12 @@ const Manage_Refill_Request = () => {
   const setFormat = (dateString) => {
     const date = new Date(dateString);
     const formattedDate = date.toLocaleString();
-    // console.log(formattedDate);
     return formattedDate;
   }
+  // console.log("request", request)
 
   const handleDelete = (id) => {
-    console.log(`Deleting item with id`);
+    // console.log('id: ', id);
   };
 
   return (
@@ -50,43 +48,27 @@ const Manage_Refill_Request = () => {
         <table>
           <thead>
             <tr>
-              <th>
-                Reguest No
-              </th>
-              <th>
-                Date
-              </th>
-              <th>
-                Refiller Name
-              </th>
-              <th>
-                Machine ID
-              </th>
-              <th>
-                Status
-              </th>
-              <th>
-                Actions
-              </th>
+              <th>Sr.No</th>
+              <th>Date</th>
+              <th>Reguest No</th>
+              <th>Refiller Name</th>
+              <th>Machine Name</th>
+              <th>WareHouse</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
           </thead>
           {
             !loading && request?.map((item, i) => (
               <tbody>
                 <tr>
+                  <td>{i + 1}</td>
+                  <td>{setFormat(item.date)}</td>
+                  <td>{item.refillingRequestNumber}</td>
+                  <td>{item.refillerName}</td>
+                  <td>{item.machineName}</td>
+                  <td>{item.warehouseName}</td>
                   <td>
-                    {item.refillRequestNumber}
-                  </td>
-                  <td>
-                    {setFormat(item.createdAt)}
-                  </td>
-                  <td>
-                    {item.refillerID.first_name }
-                  </td>
-                  <td>
-                    {item.machineId}
-                  </td>
-                  <td style={{}}>
                     <div
                       style={{ display: 'flex', justifyContent: 'center' }}
                     >
@@ -100,20 +82,16 @@ const Manage_Refill_Request = () => {
 
                         }}
                       >
-
                       </div>
                     </div>
                   </td>
                   <td >
                     <div className="actionsBtn">
-
-                      <Link to={`/refillermanager/managerefillrequest/${item._id}`}><
-                        FaEdit
-                        // onClick={() => handleEdit()}
-                      /></Link>
-                      <
-                        FaTrash
-                        onClick={() => handleDelete()}
+                      <Link to={`/refillermanager/managerefillrequest/${item._id}`}>
+                        <FaEdit />
+                      </Link>
+                      <FaTrash
+                        onClick={() => handleDelete(item._id)}
                       />
                     </div>
                   </td>

@@ -58,7 +58,7 @@ import Navbar from "../navbar/Navbar";
 
 import { ReactNotifications } from "react-notifications-component";
 import { RejectedTransaction } from "./Transactions/RejectedTransaction";
-import { DataTable } from "./RefillerManage/DataTable";
+import { ApproveRefillRequest } from "./RefillerManage/ApproveRefillRequest";
 import AddSupplier from "./SupplierManage/AddSupplier";
 import ListSupplier from "./SupplierManage/ListSupplier";
 import StockManager from "./StockManage/StockManager";
@@ -148,7 +148,7 @@ function Dashboard() {
                   path="refillerrefillingrequest"
                   element={<Refiller_Refilling_Request />}
                 />
-                <Route path="managerefillrequest/:id" element={<DataTable />} />
+                <Route path="refillermanager/managerefillrequest/:id" element={<ApproveRefillRequest />} />
               </Route>
 
               <Route
