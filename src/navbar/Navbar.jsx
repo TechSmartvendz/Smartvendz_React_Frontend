@@ -47,11 +47,13 @@ function Navbar() {
   return (
     <React.Fragment>
       <nav className={sidebar && "nav-menu active"}>
+
         <ul className="nav-menu-items">
           <li>
             {/* <li className="nav-li"></li> */}
             {/* <div className="line-div"></div> */}
-            <div className="userinfo-container">
+         
+            <div className="userinfo-container" >
               <h4>Welcome</h4>
 
               <h3>
@@ -60,6 +62,7 @@ function Navbar() {
                 <p style={{ color: "grey" }}>{`(${userName})`}</p>
               </h3>
             </div>
+        
             <hr style={{ borderColor: "grey" }}></hr>
             {/* <input type="text" id="mySearch" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} placeholder="Search..."  /> */}
 

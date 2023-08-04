@@ -75,13 +75,14 @@ const Manage_Refill_Request = () => {
               <tbody>
                 <tr>
                   <td>
-                    {item.refillRequestNumber}
+                  <input style={{padding:'6px',width:'inherit'}} value={item.refillRequestNumber}></input>
+                   
                   </td>
                   <td>
                     {setFormat(item.createdAt)}
                   </td>
                   <td>
-                    {item.refillerID.first_name }
+                    {/* {item.refillerID.firstName } */}
                   </td>
                   <td>
                     {item.machineId}

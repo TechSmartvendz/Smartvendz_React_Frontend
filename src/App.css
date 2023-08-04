@@ -554,6 +554,7 @@ overflow-x: scroll;
     }
     .input-lable-checkbox-div>input{
       margin-left:10px;
+     
     }
     .input-lable-checkbox-div>div>label{
       color: black;
@@ -563,6 +564,7 @@ overflow-x: scroll;
      }
 .input-lable-checkbox-div>div{
 margin-left: 100px ;
+padding: 7px;
 }
 
 /* List user CSS : List USER COMPONENT  */
