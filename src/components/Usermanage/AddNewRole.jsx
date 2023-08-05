@@ -120,11 +120,12 @@ function AddNewRole() {
           </div>
 
           <div>
-            <label htmlFor="role_name">Role Name :</label>
+            <label htmlFor="role_name" style={{fontSize:'20px'}}>Role Name :</label>
             <input 
            
               type="text"
               name="role"
+              className="roleName"
               value={inputs.role || ""}
               onChange={handleChange}
             />

@@ -59,6 +59,10 @@ body::-webkit-scrollbar {
   display: flex;
   margin-top: 10vh;
 }
+/* .userinfo-maincontainer{
+  background-color: rgb(252, 123, 91);
+ 
+} */
 .userinfo-container{
   display: flex;
   flex-direction: column;
@@ -68,12 +72,12 @@ body::-webkit-scrollbar {
   width: 43%;
   height:9%;
   margin-left:45px;
-  color: antiquewhite;
+  color: white;
+   
 
-  
 }
 .userinfo-container>h3{
-  color: blue;
+  color: rgb(255, 166, 0);
 }
 .navbar-btn {
 

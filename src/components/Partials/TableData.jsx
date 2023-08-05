@@ -139,7 +139,7 @@ function TableData(props) {
 
                     {par != item._id ? (
                       <td>
-                       <MdModeEditOutline className="Edit-icon"  onClick={() => editClick(item)}/>
+                       <MdModeEditOutline className="Edit-icon"  onClick={() =>editClick(item)}/>
                        <AiFillDelete className="Delete-icon"  
                           value={item._id}
                           onClick={() => deleteState(item._id)}/>

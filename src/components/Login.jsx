@@ -14,6 +14,7 @@ function Login() {
   const [cookies, setCookie] = useCookies(["user"]);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+  const [wrong,setWrong]=useState(false);
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -24,19 +25,31 @@ function Login() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
+<<<<<<< HEAD
+    const response = await postReq(path,inputs);
+     
+=======
     try {
       const response = await postReq(path, inputs);
       // console.log("🚀 ~ file: Login.jsx:24 ~ submitData ~ inputs", inputs)
       console.log('response', response)
       // console.log('Login Data:',response.data);
+>>>>>>> 3991da9e6f1fdedb17caaf3375210b0c6839de7e
       if (response.success) {
         localStorage.setItem('username', response.data.username);
         setCookie("JWTcookie", response.data.token, { path: "/" });
         setIsLoggedIn(true);
+<<<<<<< HEAD
+        
+      } else {
+        setWrong(true)
+       
+=======
         SuccessAlert({
           title: "Login",
           message: "Login successfully",
         });
+>>>>>>> 3991da9e6f1fdedb17caaf3375210b0c6839de7e
       }
       else {
         console.log("ok")
@@ -58,6 +71,8 @@ function Login() {
         <div className="loginbox">
           <img src={Clogo} className="cicon" />
           <h3 className="signinhere">Sign In Here</h3>
+          {  wrong ? (<div style={{color:'white',padding:'3px' ,marginBottom:'13px',backgroundColor:'red'}} >Wrong User-ID or Password </div>):''}
+        
           <form onSubmit={handleSubmit}>
             <div className="inputdiv">
 

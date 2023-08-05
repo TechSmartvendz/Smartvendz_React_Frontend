@@ -9,6 +9,8 @@ function Countrymanage() {
   const [inputs, setInputs] = useState({});
   const [tableRefresh, setTableRefresh] = useState(0); //3
   const[par, setPar] = useState()
+  const [showAlert,setShowAlert]=useState(false);
+  const [errorAlert,setErrorAlert]=useState(false);
   
   // This function is used to set Input fields
   const handleChange = (event) => {
@@ -28,11 +30,13 @@ function Countrymanage() {
         setPar()
         setTableRefresh(tableRefresh+1);//4
         setInputs({});//5
+        
         SuccessAlert({title: "Edit Country", message: "Country Update successfully" });
       } else {
         setPar();
         setTableRefresh(tableRefresh + 1); //4
         setInputs({});
+        
         ErrorAlert({title: "Edit Country",message: response.msg});
       }
 
@@ -44,13 +48,21 @@ function Countrymanage() {
       if (response.success) {
         setTableRefresh(tableRefresh + 1); //4
         setInputs({}); //5
-        SuccessAlert({
+        setShowAlert(true)
+        setTimeout(()=>{
+          setShowAlert(false)
+        },1500)
+        // SuccessAlert({
          
-          title: "Add Country",
-          message: "Country Added successfully",
-        });
+        //   title: "Add Country",
+        //   message: "Country Added successfully",
+        // });
       } else {
-        ErrorAlert({ title: "Add Country", message: response.msg });
+        setErrorAlert(true)
+        setTimeout(()=>{
+          setErrorAlert(false)
+        },1500)
+        // ErrorAlert({ title: "Add Country", message: response.msg });
       }
     }
   };
@@ -65,7 +77,13 @@ function Countrymanage() {
   return (
     <React.Fragment>
       <div className="add-user-container">
-        <div className="headingdiv">
+      {showAlert ? (<div className="alert-msg" >
+       Country Added successfully
+      </div>):''}
+      {errorAlert ? (<div className="alert-errormsg"> 
+         Country  Added Already
+      </div>):''}
+        <div className="headingdiv" >
           <span className="componet-title" style={{marginLeft:'12px'}}>Country Manage</span>
         
           <div>

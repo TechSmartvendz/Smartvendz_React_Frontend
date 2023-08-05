@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { getReq, delReq, postReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
+import { AiFillDelete } from "react-icons/ai";
+import { MdModeEditOutline } from "react-icons/md";
 // import PropTypes from 'prop-types';
 function TableDataWithPagination(props) {
-  const [tableData, setTableData] = useState();
-  const{machineID}=props;
+  const [tableData, setTableData] = useState([]);
+  const { machineID } = props;
   // const {loadDate}=props;
   // console.log(typeof machineID)
 
@@ -18,52 +20,44 @@ function TableDataWithPagination(props) {
   const [par, setpar] = useState(props.par);
   const [ComponentName, setComponentName] = useState(props.componentName);
   const [searchData, setSearchData] = useState(props.searchData);
-  
-   
-   
+
   const [page, setPage] = useState(1);
   const [dataPerPage, setDataPerPage] = useState(10);
   const [metadata, setMetaData] = useState();
   const [maxpagelimit, setMaxPageLimit] = useState();
-//  console.log('metaData:',metadata);
-  useEffect(() => {
- 
-  }, [par]);
-// air05299
+  //  console.log('metaData:',metadata);
+  useEffect(() => {}, [par]);
+  // air05299
   const loadTableDate = async () => {
-    if(machineID){
-
-    
-    const response = await getReq(
-      `${path}/Table/${machineID}/${page}/${dataPerPage}`
-    );
-    // console.log("machineid", machineid);
-    // console.log("response", response);
-    if (response.data.metadata) {
-      setTableData(response.data.data);
-      setMetaData(response.data.metadata);
-      // loadDate();
+    if (machineID) {
+      const response = await getReq(
+        `${path}/Table/${machineID}/${page}/${dataPerPage}`
+      );
+      // console.log("machineid", machineid);
+      // console.log("response", response);
+      if (response.data.metadata) {
+        setTableData(response.data.data);
+        setMetaData(response.data.metadata);
+        // loadDate();
+      } else {
+        // console.log(response.data);
+        setTableData([]);
+        setMetaData(null);
+      }
     } else {
-      // console.log(response.data);
-      setTableData(null);
-      setMetaData(null);
+      const response = await getReq(`${path}/Table/${page}/${dataPerPage}`);
+      // console.log("machineid", machineid);
+      // console.log("response", response);
+      if (response.data.metadata) {
+        setTableData(response.data.data);
+        setMetaData(response.data.metadata);
+        // loadDate();
+      } else {
+        // console.log(response.data);
+        setTableData([]);
+        setMetaData(null);
+      }
     }
-  }else{
-    const response = await getReq(
-      `${path}/Table/${page}/${dataPerPage}`
-    );
-    // console.log("machineid", machineid);
-    // console.log("response", response);
-    if (response.data.metadata) {
-      setTableData(response.data.data);
-      setMetaData(response.data.metadata);
-      // loadDate();
-    } else {
-      // console.log(response.data);
-      setTableData(null);
-      setMetaData(null);
-    }
-  }
   };
 
   // console.log("tableData:", tableData);
@@ -180,9 +174,9 @@ function TableDataWithPagination(props) {
             Total {props.name}: {metadata != null ? metadata.count : 0}
           </span>
           <div>
-          {/* <label >Search</label> */}
-            <input className="search-field" placeholder="Search..."/>
-            </div>
+            {/* <label >Search</label> */}
+            <input className="search-field" placeholder="Search..." />
+          </div>
           <div className="table-page-nav-btn">
             <div className="table-data-per-page">
               <input
@@ -216,7 +210,7 @@ function TableDataWithPagination(props) {
         <table>
           <tbody>
             <tr>
-              {tableData != null ? (
+              {tableData.length>0 ? (
                 Object.keys(tableData[0]).map(
                   (key) =>
                     key != ("_id" || null) && (
@@ -230,12 +224,12 @@ function TableDataWithPagination(props) {
               ) : (
                 <td></td>
               )}
-              {tableData != null && !("error" in tableData[0]) && (
+              {tableData.length>0  && !("error" in tableData[0]) && (
                 <th>Actions</th>
               )}
             </tr>
 
-            {tableData != null ? (
+            {tableData.length>0 ? (
               tableData.map((item, index) => {
                 // console.log("🚀 ~ file: tableData.jsx:111 ~ tableData ~ item", item)
                 return (
@@ -255,18 +249,15 @@ function TableDataWithPagination(props) {
 
                     {par != item._id ? (
                       <td>
-                        <button
-                          className="btn_edit"
+                        <MdModeEditOutline
+                          className="Edit-icon"
+                          
                           onClick={() => editClick(item)}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="btn_delete"
+                        />
+                        <AiFillDelete
+                          className="Delete-icon"
                           onClick={() => deleteState(item._id)}
-                        >
-                          Delete
-                        </button>
+                        />
                       </td>
                     ) : (
                       <td></td>

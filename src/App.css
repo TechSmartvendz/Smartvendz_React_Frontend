@@ -554,6 +554,7 @@ overflow-x: scroll;
     }
     .input-lable-checkbox-div>input{
       margin-left:10px;
+     
     }
     .input-lable-checkbox-div>div>label{
       color: black;
@@ -563,6 +564,7 @@ overflow-x: scroll;
      }
 .input-lable-checkbox-div>div{
 margin-left: 100px ;
+padding: 7px;
 }
 
 /* List user CSS : List USER COMPONENT  */
@@ -719,7 +721,7 @@ cursor: pointer;
  }
  /* .style={{color:'blue',cursor:'pointer',width:'35px',height:'20px'}} */
  .Edit-icon{
-  color: blue;
+  color:#6d18ee;
   cursor: pointer;
   width:35px ;
   height:20px;
@@ -729,4 +731,25 @@ cursor: pointer;
   cursor: pointer;
   width:35px ;
   height:20px;
+ }
+ .alert-msg{
+  display: flex;
+  width: 70%;
+  height: 45px;
+  background-color: #38ee44;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  margin-left:300px;
+
+ }
+ .alert-errormsg{
+  display: flex;
+  width: 70%;
+  height: 45px;
+  background-color: #f83425;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  margin-left:300px;
  }

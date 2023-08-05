@@ -146,6 +146,7 @@ function AddandEditemployee() {
 
   const editClick = (pid) => {//TODO:Handle Edit request from  Table Componenet
     setPar(pid._id);
+    setbulkformstate(!bulkformstate);
   };
   const addproduct = () => {//TODO:Handle Hide and Show of Add Product From
     setaddproductformstate(!addproductformstate);
