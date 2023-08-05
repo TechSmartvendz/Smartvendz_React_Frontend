@@ -98,7 +98,7 @@ function TableData(props) {
         <span>
           Total {path}: {tableData != null ? tableData.length : 0}
         </span>
-        <div >
+        <div>
           <label >Search :</label>
             <input className="search-field" onChange={handleSearch}/>
             </div>

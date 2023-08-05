@@ -8,6 +8,7 @@ import BulkUpload from "../Partials/BulkUpload";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
 import TableDataWithPagination from "../Partials/TableDataWithPagination";
 import { useParams, useNavigate } from "react-router";
+import Loading from "../Loading";
 
 // import { CleanDatalist } from "../Partials/ClearDatalist";
 
@@ -24,6 +25,7 @@ import { useParams, useNavigate } from "react-router";
   const [searchData,setSearchData] = useState();
   const [reject,setReject] = useState(false);
   const [importsuccess,setImportSuccess] = useState(0);
+  const [isLoading, setLoading] = useState(false);
 
 
 
@@ -91,6 +93,7 @@ import { useParams, useNavigate } from "react-router";
   };
   const handleSubmit = async (event) => {//TODO:Handle Add and Update Form
     event.preventDefault();
+   
     let data =await CleanData(inputs)
     if(Object.keys(data).length){
       if (par) {
@@ -103,11 +106,14 @@ import { useParams, useNavigate } from "react-router";
           setPar();
           setInputs({});
           setaddproductformstate(false);
+         
         } else {
+
           ErrorAlert({ title: `Update ${ComponentName}`, message: response.msg });
         }
       } else {
         const response = await postReq(path, data);
+        setLoading(true)
         if (response.success) {
           SuccessAlert({
             title: `Add ${ComponentName}`,
@@ -116,7 +122,9 @@ import { useParams, useNavigate } from "react-router";
           setPar();
           setInputs({});
           setaddproductformstate(false);
+          setLoading(false);
         } else {
+
           ErrorAlert({ title: `Add ${ComponentName}`, message: response.msg });
         }
       }
@@ -139,8 +147,11 @@ import { useParams, useNavigate } from "react-router";
     setPar(pid._id);
   };
   const addproduct = () => {//TODO:Handle Hide and Show of Add Product From
-    setaddproductformstate(!addproductformstate);
-    setbulkformstate(false);
+   
+      setaddproductformstate(!addproductformstate);
+      setbulkformstate(false);
+   
+    
   };
   const bulkupload = () => {//TODO:Handle Hide and Show of Add Product From
     if(reject){
@@ -166,6 +177,8 @@ import { useParams, useNavigate } from "react-router";
   useEffect(() => {//TODO:Handle Edit State for MAke Add Form in Update form
   //  console.log(searchData)
   }, [searchData]);
+
+
 
   return (
     <React.Fragment>
@@ -295,9 +308,11 @@ import { useParams, useNavigate } from "react-router";
         </React.Fragment>
       )}
 
-      {(!addproductformstate&&!bulkformstate)&& (
+      {(!addproductformstate&&!bulkformstate)  && (
         <React.Fragment>
+           {!isLoading ?(
           <div className="add-user-container">
+        
             <div className="componet-sub-title">
               <span>{`Search and Edit ${ComponentName}`}</span>
             </div>
@@ -339,12 +354,16 @@ import { useParams, useNavigate } from "react-router";
                 </button>
               </div>
             </form>
-          </div>
+           
+          </div>):(<Loading/>)
+           }
+        
         </React.Fragment>
       )}
 
       {!addproductformstate && (
         <React.Fragment>
+       
           <div className="table_container-div">
             <TableDataWithPagination
               path={path}
@@ -358,7 +377,7 @@ import { useParams, useNavigate } from "react-router";
               // loadDateUsertable={loadDateUsertable}
             />
           
-          </div>
+          </div>)
         </React.Fragment>
       )}
     </React.Fragment>
