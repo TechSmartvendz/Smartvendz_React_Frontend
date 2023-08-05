@@ -67,12 +67,12 @@ function Header() {
           {sidebar ?
             (
 
-              <Link to='#' className='navbar-icon'>
-                <AiIcons.AiOutlineClose size={26} onClick={() => setSidebar(false)} />
+              <Link to='#' className='navbar-icon' onClick={() => setSidebar(false)}>
+                <AiIcons.AiOutlineClose size={26}  />
               </Link>
             ) : (
-              <Link to='#' className='navbar-icon'>
-                <FaIcons.FaBars size={26} onClick={() => setSidebar(true)} />
+              <Link to='#' className='navbar-icon' onClick={() => setSidebar(true)}>
+                <FaIcons.FaBars size={26}  />
               </Link>
             )
           }
