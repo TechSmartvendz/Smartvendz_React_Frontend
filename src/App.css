@@ -721,13 +721,13 @@ cursor: pointer;
  }
  /* .style={{color:'blue',cursor:'pointer',width:'35px',height:'20px'}} */
  .Edit-icon{
-  color:#6d18ee;
+  color:black;
   cursor: pointer;
   width:35px ;
   height:20px;
  }
  .Delete-icon{
-  color: red;
+  color:black;
   cursor: pointer;
   width:35px ;
   height:20px;

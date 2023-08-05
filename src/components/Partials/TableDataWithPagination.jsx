@@ -4,6 +4,7 @@ import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
 import { AiFillDelete } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 // import PropTypes from 'prop-types';
+import Loading from "../Loading";
 function TableDataWithPagination(props) {
   const [tableData, setTableData] = useState([]);
   const { machineID } = props;
@@ -20,7 +21,7 @@ function TableDataWithPagination(props) {
   const [par, setpar] = useState(props.par);
   const [ComponentName, setComponentName] = useState(props.componentName);
   const [searchData, setSearchData] = useState(props.searchData);
-
+  const [load,setLoad]=useState(false)
   const [page, setPage] = useState(1);
   const [dataPerPage, setDataPerPage] = useState(10);
   const [metadata, setMetaData] = useState();
@@ -35,6 +36,7 @@ function TableDataWithPagination(props) {
       );
       // console.log("machineid", machineid);
       // console.log("response", response);
+        setLoad(true)
       if (response.data.metadata) {
         setTableData(response.data.data);
         setMetaData(response.data.metadata);
@@ -48,6 +50,7 @@ function TableDataWithPagination(props) {
       const response = await getReq(`${path}/Table/${page}/${dataPerPage}`);
       // console.log("machineid", machineid);
       // console.log("response", response);
+         setLoad(true)
       if (response.data.metadata) {
         setTableData(response.data.data);
         setMetaData(response.data.metadata);
@@ -206,7 +209,7 @@ function TableDataWithPagination(props) {
           </div>
         </div>
       </div>
-      <div className="table_container-div">
+     {load ? (<div className="table_container-div">
         <table>
           <tbody>
             <tr>
@@ -272,7 +275,7 @@ function TableDataWithPagination(props) {
             )}
           </tbody>
         </table>
-      </div>
+      </div>):(<Loading/>)}
     </React.Fragment>
   );
 }

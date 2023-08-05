@@ -3,12 +3,13 @@ import { getReq, delReq, putReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";
 import {AiFillDelete}  from 'react-icons/ai'
 import {MdModeEditOutline} from 'react-icons/md'
+import Loading from "../Loading";
 function TableData(props) {
 
   const [tableData, setTableData] = useState();
   const [path, setPath] = useState(props.path);
   const [getTax,setGetTax]=useState(props.getTax);
-  
+  const [load,setLoad]=useState(false)
   const [totalSupplier,setTotalSupplier]=useState(props.totalSupplier)
   const [deletePath, setDeletePath] = useState(props.deletePath);
   const [par, setpar] = useState(props.par);
@@ -25,7 +26,10 @@ function TableData(props) {
   const loadTableDate = async () => {
     
     const response = await getReq(path);
+    console.log(response);
+    setLoad(true)
     if (response.data.length) {
+
       // console.log("TableData:", response.data);
       setTableData(response.data);
     } else {
@@ -33,9 +37,11 @@ function TableData(props) {
       setTableData(null);
     }
   };
+
 //  const filteredData=tableData.filter((details)=>{
 //   return details.toLowerCase().includes(searchQuery.toLowerCase())
 //  })
+
   const editClick = (item) => {
     props.editClick(item);
   };
@@ -104,7 +110,8 @@ function TableData(props) {
             </div>
       </div>
       </div>
-      <div className="table_container-div">
+
+     {  load ? (<div className="table_container-div">
         <table>
           <tbody>
             <tr>
@@ -158,7 +165,7 @@ function TableData(props) {
             )}
           </tbody>
         </table>
-      </div>
+      </div>):(<Loading />)}
     </React.Fragment>
   );
 }
