@@ -4,8 +4,9 @@ import "./App.css";
 import 'react-notifications-component/dist/theme.css'
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
-import AuthContext  from './Context/AuthContext';
+import AuthContext from './Context/AuthContext';
 import NavContext from './Context/NavContext';
+import { ReactNotifications } from 'react-notifications-component'
 
 
 function App() {
@@ -16,8 +17,8 @@ function App() {
 
   return (
     <React.Fragment>
-    
       <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+        <ReactNotifications />
         {isLoggedIn ? (
           <NavContext.Provider value={{ sidebar, setSidebar }}>
             <Dashboard />
@@ -26,7 +27,7 @@ function App() {
           <Login />
         )}
       </AuthContext.Provider>
-      </React.Fragment>
+    </React.Fragment>
   );
 }
 

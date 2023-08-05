@@ -103,12 +103,19 @@ const Refiller_Refilling_Request = () => {
 
   const handleCurrentStock = (id, e) => {
     const value = e.target.value;
+    console.log('value: ', value);
     const newmachine = machine.machineSlot.map((item) => {
       if (item._id == id) {
+        const CurrentStockValue = value <= item.maxquantity ? value : 0;
+        if (value > item.maxquantity) {
+          alert("Current Stock is not greater than Slot Capacity");
+          e.target.value = CurrentStockValue
+        }
         return {
           ...item,
-          currentStock: value,
-          saleQuantity: item.closingStock - Number(value),
+          currentStock: CurrentStockValue,
+          // saleQuantity: value <= item.maxquantity && value !== "" && CurrentStockValue !== 0 ? item.closingStock - Number(value) : 0,
+          saleQuantity: Number(value) <= item.maxquantity && value !== ""? item.closingStock - Number(value) : 0,
         };
       }
       return item;
@@ -338,7 +345,7 @@ const Refiller_Refilling_Request = () => {
             </div>
           </div>
           :
-          <Loading/>
+          <Loading />
         }
       </div>
       }

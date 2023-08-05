@@ -21,7 +21,7 @@ const[tableRefresh,setTableRefresh]=useState(0)
   }, []) 
 const navigate=useNavigate()
 const editClick=(item)=>{
-navigate(`../addnewmachine/${item._id}`);
+navigate(`../addnewmachine/${item.machine_id}`);
 // console.log(item._id)
 
 }
