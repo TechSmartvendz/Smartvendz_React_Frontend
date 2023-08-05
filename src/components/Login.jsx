@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
-import {postReq } from "./middleware/AxiosApisCall";
+import { postReq } from "./middleware/AxiosApisCall";
 import AuthContext from "../Context/AuthContext";
+import { SuccessAlert } from "./middleware/AlertMsg";
+import { ErrorAlert } from "./middleware/AlertMsg";
 import { useCookies } from "react-cookie";
-import { SuccessAlert, ErrorAlert } from "./middleware/AlertMsg";
-import {FaEyeSlash,FaEye} from 'react-icons/all'
+
+import { FaEyeSlash, FaEye } from 'react-icons/all'
 import Clogo from "../assets/snaxsmart.png";
 
 function Login() {
@@ -22,22 +24,32 @@ function Login() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await postReq(path,inputs);
+    try {
+      const response = await postReq(path, inputs);
       // console.log("🚀 ~ file: Login.jsx:24 ~ submitData ~ inputs", inputs)
-      // console.log('response',response)
+      console.log('response', response)
       // console.log('Login Data:',response.data);
       if (response.success) {
-        localStorage.setItem('username',response.data.username);
-        setCookie("JWTcookie", response.data.token ,{ path: "/" });
+        localStorage.setItem('username', response.data.username);
+        setCookie("JWTcookie", response.data.token, { path: "/" });
         setIsLoggedIn(true);
         SuccessAlert({
           title: "Login",
           message: "Login successfully",
         });
-      } else {
-        ErrorAlert({ title: "Login", message:response.msg });
       }
-// console.log('Logged IN:',isLoggedIn)
+      else {
+        console.log("ok")
+    ErrorAlert({
+      title:'Login',
+      message:response.msg
+    })
+      }
+    } catch (error) {
+      console.log('error: ', error);
+     
+    }
+    // console.log('Logged IN:',isLoggedIn)
   };
 
   return (
@@ -48,7 +60,7 @@ function Login() {
           <h3 className="signinhere">Sign In Here</h3>
           <form onSubmit={handleSubmit}>
             <div className="inputdiv">
-              
+
               <input
                 type="text"
                 name="user_id"
@@ -60,9 +72,9 @@ function Login() {
               />
             </div>
             <div className="inputdiv">
-              
+
               <input
-                type={showPassword ? 'text' :'password'}
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 value={inputs.password || ""}
                 onChange={handleChange}
@@ -70,12 +82,12 @@ function Login() {
                 required
                 autoComplete="off"
               />
-               <span className="showicon" onClick={handleTogglePassword}>
-        {showPassword ? <FaEyeSlash className="eyeicon"/> : <FaEye className="eyeicon"/>}
-          </span>
+              <span className="showicon" onClick={handleTogglePassword}>
+                {showPassword ? <FaEyeSlash className="eyeicon" /> : <FaEye className="eyeicon" />}
+              </span>
             </div>
-           
-             <input  type="submit" value="Login" />
+
+            <input type="submit" value="Login" />
           </form>
           <a href="#" className="forgot">
             Forgot Password
@@ -85,7 +97,7 @@ function Login() {
     </>
   )
 }
-  
+
 
 export default Login;
 

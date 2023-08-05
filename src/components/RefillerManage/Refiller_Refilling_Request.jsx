@@ -40,9 +40,9 @@ const Refiller_Refilling_Request = () => {
   const getMachineDetails = async (id) => {
     setLoading(true);
     setshowTable(true);
-    try { 
+    try {
       const res = await axios.get(
-        `http://localhost:3000/api/getallmachineslots?id=${id}`,
+        `http://localhost:3000/api/getallmachineslots?machineid=${id}`,
         { headers: { Authorization: "Bearer " + token } }
       );
       const data = res.data.data;
@@ -89,6 +89,7 @@ const Refiller_Refilling_Request = () => {
             : 0;
         if (e.target.value > input.maxquantity - input.currentStock) {
           alert("Refill Quantity not greater than Slot capacity");
+          e.target.value = refillValue
         }
         return {
           ...input,
