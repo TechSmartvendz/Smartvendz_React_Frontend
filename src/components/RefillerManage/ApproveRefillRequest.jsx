@@ -16,7 +16,7 @@ export const ApproveRefillRequest = () => {
             setLoading(true);
             const res = await axios.get(`http://localhost:3000/api/refillRequest/${id}`, { headers: { 'Authorization': 'Bearer ' + token } })
             const data = res.data.data
-            // console.log('data: ', data);
+            console.log('data: ', data);
             setRequest(data);
             setLoading(false)
         } catch (error) {
@@ -31,7 +31,7 @@ export const ApproveRefillRequest = () => {
     // to approve the refill request 
     const handleApprove = async (requestNumber) => {
         try {
-            const res = await axios.post(`http://localhost:3000/api/approverefillrequest/refillRequestNumber=${requestNumber}`,
+            const res = await axios.post(`http://localhost:3000/api/approverefillrequest/${requestNumber}`,
                 {}, { headers: { 'Authorization': `Bearer ${token}` } })
             const data = res.data
             // console.log('data: ', data);
@@ -61,7 +61,7 @@ export const ApproveRefillRequest = () => {
                         <p>Status:</p>
                         <div
                             style={{
-                                backgroundColor: !request?.machineSlots.pendingstatus ? "red" : "green",
+                                backgroundColor: request?.status == "Pending" ? "red" : "green",
                                 padding: '5px',
                                 width: '15px',
                                 height: "15px",
@@ -75,7 +75,7 @@ export const ApproveRefillRequest = () => {
                         <thead style={{ position: "sticky", top: 0 }}>
                             <tr>
                                 {fields.map((item, i) => (
-                                    <th>{item}</th>
+                                    <th key={i}>{item}</th>
                                 ))}
                             </tr>
                         </thead>

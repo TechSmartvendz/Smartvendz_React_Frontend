@@ -9,6 +9,7 @@ import "./Navbar.css";
 import NavContext from "../Context/NavContext";
 import axios from "axios";
 import { Cookies } from "react-cookie";
+import Loading from "../components/Loading.jsx";
 
 function Navbar() {
   const cookies = new Cookies();
@@ -74,21 +75,17 @@ function Navbar() {
             </Link>
           </div> */}
             {navData.data
-              ? sideBarData.map((item, index) => {
-                  if (navData.data[item.permission]) {
-                    return (
-                      <SubMenu
-                        item={item}
-                        key={index}
-                        indexValue={index}
-                        navData={navData.data}
-                      />
-                    );
-                  }
-                })
-              : () => {
-                  setSidebar(false);
-                }}
+              ? sideBarData?.map((item, index) => (
+                navData.data[item.permission] ?
+                  <SubMenu
+                    item={item}
+                    key={index}
+                    indexValue={index}
+                    navData={navData.data}
+                  /> : ""
+              ))
+              : <div style={{ top:"70px", margin:"auto",display: "flex", position: "relative" }}> <Loading /> </div>
+            }
           </li>
         </ul>
       </nav>

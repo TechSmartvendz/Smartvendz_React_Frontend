@@ -2,17 +2,14 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-function SubMenu(props) {
+const SubMenu=(props)=> {
   
   const [item, setItem] = useState(props.item);
-
   const [indexValue, setIndexValue] = useState(props.indexValue);
   // console.log("item:", item);
   const [subnav, setSubnav] = useState(false);
   //  console.log('navDataITEm:',navData)
   const showSubnav = () => setSubnav(!subnav);
-
-  useEffect(() => {}, []);
 
   return (
     <React.Fragment>
