@@ -173,7 +173,24 @@ margin-bottom: 15px;
   background-color: rgb(43, 39, 39);
   border-bottom:20px;
 }
-
+.roleName{
+  padding: 8px;
+  background-color: rgb(236, 235, 235);
+  width: 250px;
+  border-style: none;
+  margin-left: 10px;
+  border-radius: 3px;
+  font-size: large;
+  font-weight: 600;
+  
+}
+.roleName:focus{
+  background-color: white;
+  color: #189108;
+ 
+  
+  
+}
 @media (max-width:700px) {
   .nav-menu.active{
     max-height: 100%;

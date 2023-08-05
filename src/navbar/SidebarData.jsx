@@ -49,7 +49,7 @@ export const SidebarData = [
   },
   {
     title: "Company Manage",
-    path: "/",
+    // path: "/",
     icon: <CgIcons.CgSmartHomeBoiler />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -72,7 +72,7 @@ export const SidebarData = [
 
   {
     title: "Machine Manage",
-    path: "/",
+    // path: "/",
     icon: <GiIcons.GiVendingMachine />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -99,7 +99,7 @@ export const SidebarData = [
   },
   {
     title: " Employee Manage",
-    path: "/",
+    // path: "/",
     icon: <FaIcons.FaUserTie />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -117,7 +117,7 @@ export const SidebarData = [
   },
   {
     title: "Transaction Reports",
-    path: "/",
+    // path: "/",
     icon: <FaIcons.FaEnvelopeOpenText />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -150,7 +150,7 @@ export const SidebarData = [
   // fix me right it is rendering because we have selected permission as listcompany it needs to be change.
   {
     title: "General Manager",
-    path: "/",
+    // path: "/",
     icon: <FaIcons.FaCreativeCommonsShare />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -193,7 +193,7 @@ export const SidebarData = [
   },
   {
     title: "Refiller Manager",
-    path: "/",
+    // path: "/",
     icon: <RiIcons.RiStoreFill />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -215,7 +215,7 @@ export const SidebarData = [
   },
   {
     title: "Products Manage",
-    path: "/",
+    // path: "/",
     icon: <FaIcons.FaCartPlus />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -234,7 +234,7 @@ export const SidebarData = [
   
   {
     title: "warehouse",
-    path: "/",
+    // path: "/",
     icon: <FaIcons.FaWarehouse />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -264,7 +264,7 @@ export const SidebarData = [
   // Supplier path data
   {
     title: "Supplier Manage",
-    path: "/",
+    // path: "/",
     icon: <RiIcons.RiFileTransferLine />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -286,7 +286,7 @@ export const SidebarData = [
   },
   {
     title: "Stock Manage",
-    path: "/",
+    // path: "/",
     icon: <IoIcons.IoMdAppstore />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,

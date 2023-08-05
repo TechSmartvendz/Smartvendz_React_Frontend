@@ -42,7 +42,7 @@ const Refiller_Refilling_Request = () => {
     setshowTable(true);
     try { 
       const res = await axios.get(
-        `http://localhost:3000/api/getallmachineslots?id=${id}`,
+        `http://localhost:3000/api/getallmachineslots?machineid=${id}`,
         { headers: { Authorization: "Bearer " + token } }
       );
       const data = res.data.data;
