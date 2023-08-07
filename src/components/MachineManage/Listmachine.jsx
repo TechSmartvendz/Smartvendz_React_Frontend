@@ -10,7 +10,8 @@ function Listmachine() {
   const path = "Machine";
   const [tableData, setTableData] = useState();
   const [tableRefresh, setTableRefresh] = useState(0);
-
+  const navigate = useNavigate();
+  
   const loadTableDate = async () => {
     const response = await getReq(path);
     setTableData(response.data);
@@ -20,7 +21,6 @@ function Listmachine() {
     loadTableDate();
   }, []);
 
-  const navigate = useNavigate();
   const editClick = (item) => {
     navigate(`../addnewmachine/${item.machine_id}`);
     // console.log(item._id)

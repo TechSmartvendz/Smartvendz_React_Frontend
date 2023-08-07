@@ -25,18 +25,15 @@ function Login() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const response = await postReq(path, inputs);
       // console.log("🚀 ~ file: Login.jsx:24 ~ submitData ~ inputs", inputs)
-      console.log("response", response);
+      // console.log('response', response.success)
       // console.log('Login Data:',response.data);
-
       if (response.success) {
         localStorage.setItem("username", response.data.username);
         setCookie("JWTcookie", response.data.token, { path: "/" });
         setIsLoggedIn(true);
-
         SuccessAlert({
           title: "Login",
           message: "Login successfully",
@@ -50,6 +47,11 @@ function Login() {
       }
     } catch (error) {
       console.log("error: ", error);
+        return  ErrorAlert({
+          title: 'Login',
+          message: response.msg
+        })
+      }
     }
   };
 
@@ -59,21 +61,7 @@ function Login() {
         <div className="loginbox">
           <img src={Clogo} className="cicon" />
           <h3 className="signinhere">Sign In Here</h3>
-          {wrong ? (
-            <div
-              style={{
-                color: "white",
-                padding: "3px",
-                marginBottom: "13px",
-                backgroundColor: "red",
-              }}
-            >
-              Wrong User-ID or Password{" "}
-            </div>
-          ) : (
-            ""
-          )}
-
+          {wrong ? (<div style={{ color: 'white', padding: '3px', marginBottom: '13px', backgroundColor: 'red' }} >Wrong User-ID or Password </div>) : ''}
           <form onSubmit={handleSubmit}>
             <div className="inputdiv">
               <input

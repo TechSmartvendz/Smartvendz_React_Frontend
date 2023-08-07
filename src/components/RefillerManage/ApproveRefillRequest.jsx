@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Cookies } from 'react-cookie';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Loading from '../Loading';
+import { ErrorAlert, SuccessAlert } from '../middleware/AlertMsg';
 
 export const ApproveRefillRequest = () => {
     const { id } = useParams();
@@ -10,13 +11,14 @@ export const ApproveRefillRequest = () => {
     const [request, setRequest] = useState();
     const cookies = new Cookies();
     const token = cookies.get('JWTcookie');
+    const navigate = useNavigate();
     // console.log('token: ', token);
     const getRequests = async (id) => {
         try {
             setLoading(true);
             const res = await axios.get(`http://localhost:3000/api/refillRequest/${id}`, { headers: { 'Authorization': 'Bearer ' + token } })
             const data = res.data.data
-            console.log('data: ', data);
+            // console.log('data: ', data);
             setRequest(data);
             setLoading(false)
         } catch (error) {
@@ -34,10 +36,24 @@ export const ApproveRefillRequest = () => {
             const res = await axios.post(`http://localhost:3000/api/approverefillrequest/${requestNumber}`,
                 {}, { headers: { 'Authorization': `Bearer ${token}` } })
             const data = res.data
-            // console.log('data: ', data);
-            return data;
+            console.log('data: ', data);
+            if (data.success) {
+                SuccessAlert({
+                    title: "Success",
+                    message: "Approved successfully",
+                });
+                navigate("/managerefillrequest")
+            } else {
+                ErrorAlert({
+                    title: "Fail",
+                    message: "Not Approved,Please try again",
+                });
+            }
         } catch (error) {
-            console.log(error);
+            ErrorAlert({
+                title: "Fail",
+                message: error.message,
+            });
         }
     }
 
