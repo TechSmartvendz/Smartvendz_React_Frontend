@@ -3,7 +3,9 @@ import {  postReq, patchReq } from "../middleware/AxiosApisCall";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg";//1
 import TableData from "../Partials/TableData";//2
 import DataList from "../Partials/DataList";
+import Loading from "../Loading";
 import { useNavigate } from "react-router-dom";
+
 // import CleanDatalist from "../Partials/ClearDatalist";
 
 
@@ -12,7 +14,7 @@ function Statemanage() {
   const path = "State";
   const [inputs, setInputs] = useState({});
   const [tableRefresh,setTableRefresh]=useState(0);//3
- 
+  //  const [load,setLoad]=useState(false);
   const[par, setPar] = useState()
   
   // This function is used to set Input fields
@@ -44,6 +46,10 @@ function Statemanage() {
       // console.log("🚀 ~ file: Statemanage.jsx:38 ~ handleSubmit ~ par", par)
       const response = await postReq(path, inputs);
       if (response.success) {
+        // setLoad(true)
+        // setTimeout(()=>{
+        //   setLoad(false)
+        // },2000)
         // console.log(response.data)
         setTableRefresh(tableRefresh+1);//4
         setInputs({});//5
@@ -68,6 +74,7 @@ function Statemanage() {
   return (
     <React.Fragment>
       <div className="add-user-container">
+        {/* {load ? (<Loading/>):''} */}
         <div className="headingdiv">
           <span className="componet-title">State Manage</span>
           <div>

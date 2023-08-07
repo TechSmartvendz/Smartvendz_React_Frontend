@@ -3,12 +3,14 @@ import { ErrorAlert, SuccessAlert } from "../middleware/AlertMsg";
 import { template } from "../Partials/FormFields";
 import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
 import { useParams, useNavigate } from "react-router";
+import Loading from "../Loading";
 import DataList from "../Partials/DataList";
 
 // To Add new User.
 function Addnewuser() {
   const { id } = useParams();
   const [itemid, setItemid] = useState(id);
+  const [load,setLoad]=useState(true);
   const path = "User";
 
   const [inputs, setInputs] = useState({});
@@ -65,8 +67,10 @@ function Addnewuser() {
       const response = await postReq(path, inputs);
 
       if (response.success) {
+        setLoad(false)
         setTableRefresh(tableRefresh + 1);
         setInputs({});
+       
         navigate('../listuser');
         SuccessAlert({ title: "Add User", message: "User Added successfully" });
       } else {
@@ -77,7 +81,8 @@ function Addnewuser() {
 
   return (
     <React.Fragment>
-      <div className="add-user-container">
+    { load ?
+      (<div className="add-user-container">
         <div className="headingdiv">
           <span className="componet-title">Add New User</span>
 
@@ -220,7 +225,7 @@ function Addnewuser() {
             </div>
           </div>
         </form>
-      </div>
+      </div>):(<Loading/>)   }
     </React.Fragment>
   );
 }

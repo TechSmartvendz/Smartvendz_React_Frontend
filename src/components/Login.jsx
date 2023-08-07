@@ -5,7 +5,7 @@ import { SuccessAlert } from "./middleware/AlertMsg";
 import { ErrorAlert } from "./middleware/AlertMsg";
 import { useCookies } from "react-cookie";
 
-import { FaEyeSlash, FaEye } from 'react-icons/all'
+import { FaEyeSlash, FaEye } from "react-icons/all";
 import Clogo from "../assets/snaxsmart.png";
 
 function Login() {
@@ -31,29 +31,28 @@ function Login() {
       // console.log('response', response.success)
       // console.log('Login Data:',response.data);
       if (response.success) {
-        localStorage.setItem('username', response.data.username);
+        localStorage.setItem("username", response.data.username);
         setCookie("JWTcookie", response.data.token, { path: "/" });
         setIsLoggedIn(true);
-        return SuccessAlert({
+        SuccessAlert({
           title: "Login",
           message: "Login successfully",
         });
+      } else {
+        setWrong(true);
+        ErrorAlert({
+          title: "Login",
+          message: response.msg,
+        });
       }
-      else {
-        setWrong(true)
+    } catch (error) {
+      console.log("error: ", error);
         return  ErrorAlert({
           title: 'Login',
           message: response.msg
         })
       }
-    } catch (error) {
-      console.log('error: ', error);
-    return  ErrorAlert({
-        title: 'Login',
-        message: error.status
-      })
     }
-    // console.log('Logged IN:',isLoggedIn)
   };
 
   return (
@@ -63,10 +62,8 @@ function Login() {
           <img src={Clogo} className="cicon" />
           <h3 className="signinhere">Sign In Here</h3>
           {wrong ? (<div style={{ color: 'white', padding: '3px', marginBottom: '13px', backgroundColor: 'red' }} >Wrong User-ID or Password </div>) : ''}
-
           <form onSubmit={handleSubmit}>
             <div className="inputdiv">
-
               <input
                 type="text"
                 name="user_id"
@@ -78,9 +75,8 @@ function Login() {
               />
             </div>
             <div className="inputdiv">
-
               <input
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={inputs.password || ""}
                 onChange={handleChange}
@@ -89,7 +85,11 @@ function Login() {
                 autoComplete="off"
               />
               <span className="showicon" onClick={handleTogglePassword}>
-                {showPassword ? <FaEyeSlash className="eyeicon" /> : <FaEye className="eyeicon" />}
+                {showPassword ? (
+                  <FaEyeSlash className="eyeicon" />
+                ) : (
+                  <FaEye className="eyeicon" />
+                )}
               </span>
             </div>
 
@@ -101,9 +101,7 @@ function Login() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-
 export default Login;
-
