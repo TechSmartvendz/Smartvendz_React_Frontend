@@ -22,6 +22,7 @@ function WarehouseStock() {
   useEffect(() => {
     loadWarehouseStock();
   }, []);
+  
   const columnHeadings = tableData?.length > 0 ? Object.keys(tableData[0]) : [];
   // console.log("tableDatassss:", tableData);
   return (

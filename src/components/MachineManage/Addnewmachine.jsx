@@ -96,6 +96,7 @@ function Addnewmachine() {
 
       // console.log(response.data);
       setInputs2(response.data[0]);
+
     } else {
       // console.log(response.data);
       setcompanyusertable(null);
@@ -157,6 +158,7 @@ function Addnewmachine() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (itemid) {
+      console.log('ItemID:',itemid)
       const response = await putReq(path, inputs, itemid);
       if (response.success) {
         SuccessAlert({
@@ -169,6 +171,7 @@ function Addnewmachine() {
           ...values,
           machineid: inputs.machineid,
         }));
+        console.log('inputs2:',inputs2)
         setaddproductformstate(false);
       } else {
         ErrorAlert({ title: "Update Machine", message: response.msg });
@@ -190,6 +193,7 @@ function Addnewmachine() {
           ...values,
           machineid: inputs.machineid,
         }));
+        console.log('inputs.machineID:',inputs.machineid)
         // setMachineid(inputs2.machineid)
       } else {
         ErrorAlert({ title: "Add Machine", message: response.msg });

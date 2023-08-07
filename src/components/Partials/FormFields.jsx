@@ -241,22 +241,22 @@ export const template = {
 
     //   sections: [
     //     {
-    //       title: "Manage DC",
+    //       title: "Manage Refill Request",
     //       type: "checkbox",
-    //       name: "managedc",
-    //       value: "managedc",
+    //       name: "managerefillrequest",
+    //       value: "managerefillrequest",
     //     },
     //     {
-    //       title: "Manage Accept DC",
+    //       title: "Refiller Refilling Request",
     //       type: "checkbox",
-    //       name: "managedcaccept",
-    //       value: "managedcaccept",
+    //       name: "refillerrefillingrequest",
+    //       value: "refillerrefillingrequest",
     //     },
     //     {
-    //       title: "Manage Completed Refill Request",
+    //       title: "Approve Refill Request",
     //       type: "checkbox",
-    //       name: "managecompletedrefillrequest",
-    //       value: "managecompletedrefillrequest",
+    //       name: "approverefillrequest",
+    //       value: "approverefillrequest",
     //     },
     //   ],
     // },
