@@ -36,7 +36,7 @@ export const ApproveRefillRequest = () => {
             const res = await axios.post(`http://localhost:3000/api/approverefillrequest/${requestNumber}`,
                 {}, { headers: { 'Authorization': `Bearer ${token}` } })
             const data = res.data
-            console.log('data: ', data);
+            // console.log('data: ', data);
             if (data.success) {
                 SuccessAlert({
                     title: "Success",
@@ -46,8 +46,9 @@ export const ApproveRefillRequest = () => {
             } else {
                 ErrorAlert({
                     title: "Fail",
-                    message: "Not Approved,Please try again",
+                    message: data.msg,
                 });
+                navigate("/managerefillrequest")
             }
         } catch (error) {
             ErrorAlert({

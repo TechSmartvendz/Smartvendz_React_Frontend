@@ -44,7 +44,7 @@ export const RejectedTransaction = () => {
             const response = await axios.get(`https://smartvendz.com/rejectedCards?startDate=${startDate}&endDate=${endDate}&machineId=${machineid}`, {
                 responseType: 'blob', // Set the response type to 'blob'
             })
-            console.log('response: ', response.data);
+            // console.log('response: ', response.data);
             // Create a temporary URL for the blob object
             const url = URL.createObjectURL(new Blob([response.data]));
             // Create a link element

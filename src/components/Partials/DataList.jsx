@@ -31,7 +31,7 @@ function DataList(props) {
         value={props.value}
         placeholder={"Select..."}
         autoComplete={"off"}
-        style={{textAlign:'left'}}
+        style={{textAlign:'left',width:"100%"}}
       />
 
       <datalist id={name}>
