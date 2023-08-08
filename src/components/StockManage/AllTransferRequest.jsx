@@ -6,7 +6,8 @@ import { ErrorAlert } from "../middleware/AlertMsg";
 function AlltransferRequest() {
   const [tableData, setTableData] = useState();
   const [tableRefresh, setTableRefresh] = useState(0);
-const [filterd,setFiltered]=useState();
+  // const [filterd, setFiltered] = useState();
+  const [status, setStatus] = useState(false);
   const path = "alltransferRequest/Datalist";
 
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const [filterd,setFiltered]=useState();
     if (response.data.length) {
       // console.log("TableData:", response.data);
       setTableData(response.data);
-     
+
       setTableRefresh(tableRefresh + 1);
     } else {
       // console.log(response.data);
@@ -31,25 +32,22 @@ const [filterd,setFiltered]=useState();
   const acceptProducts = async (id) => {
     const response = await postReq(`acceptStockTransferRequest/${id}`);
     if (response.success) {
+      SuccessAlert({
+        title: "Stock ",
+        message: "Stock Accepted successfully",
+      });
      
-        SuccessAlert({
-          title: 'Stock ',
-          message: 'Stock Accepted successfully'
-        });
-      
-      loadTableDate()
+      loadTableDate();
+      setStatus(id);
     } else {
       ErrorAlert({ title: "Stock Transfer", message: response.msg });
       // setStatus("pending");
     }
   };
-const handleSearchChange=(e)=>{
-
-  setFiltered(e.target.value);
-}
-console.log(filterd)
-
-
+  // const handleSearchChange = (e) => {
+  //   setFiltered(e.target.value);
+  // };
+  // console.log(filterd);
 
   return (
     <React.Fragment>
@@ -60,15 +58,15 @@ console.log(filterd)
         </div>
       </div>
       <div className="componet-sub2-title">
-      <div className="justi-spacebt">
-        <span>Total: {tableData != null ? tableData.length : 0}</span>
-        <div>
-          <label >Search :</label>
-            <input className="search-field" onChange={handleSearchChange}/>
-            </div>
+        <div className="justi-spacebt">
+          <span>Total: {tableData != null ? tableData.length : 0}</span>
+          <div>
+            <label>Search :</label>
+            <input className="search-field" />
+          </div>
         </div>
       </div>
-     
+
       <div className="table_container-div">
         <table>
           <tbody>
@@ -99,7 +97,7 @@ console.log(filterd)
 
                       .filter((i) => i !== "id")
                       .map((input, index) => {
-                        return <td key={index}>{item[input]}</td>;
+                        return <td key={index} className={status === item.id ? "statuscolor" : ""}>{item[input]}</td>;
                       })}
 
                     <td>

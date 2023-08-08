@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getReq } from "../middleware/AxiosApisCall";
 
 function DataList(props) {
-  const [dataList, setDataList] = useState(null);
+  const [dataList, setDataList] = useState([]);
   const [path, setPath] = useState(props.path);
 
   const [name, setName] = useState(props.name);
@@ -35,7 +35,7 @@ function DataList(props) {
       />
 
       <datalist id={name}>
-        {dataList != null ? (
+        {dataList.length>0 ? (
           dataList.map((e, i) => {
             return (
               <option  key={i} value={e.id}>

@@ -160,9 +160,10 @@ function GstMaster() {
             <input
               name="igst"
               type="number"
-              value={inputs.igst || ""}
+              value={(inputs.igst)=Number(inputs.cgst) + Number(inputs.sgst) || ''}
               onChange={handleChange}
               required
+            
             />
             </div>
 

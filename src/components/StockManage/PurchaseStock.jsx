@@ -19,20 +19,17 @@ function PurchaseStock() {
   const navigate = useNavigate();
   //   handleChange is used to set the field data
   function handleChange(event) {
-    const name = event.target.name;
-    const value = event.target.value;
+    // const name = event.target.name;
+    // const value = event.target.value;
+    const { name, value } = event.target;
     setInputs((values) => ({ ...values, [name]: value }));
+   
+  }console.log(inputs)
 
-    
-  }
-
- 
-
- 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await postReq(path, inputs);
-   
+
     if (response.success) {
       SuccessAlert({
         title: `Add ${ComponentName}`,
@@ -142,8 +139,11 @@ function PurchaseStock() {
                   type="number"
                   name="totalPrice"
                   // value={inputs.totalPrice || ""}
-                  value={(inputs.productQuantity * inputs.sellingPrice) ||''}
-                  onChange={handleChange}
+                  value=
+                    {(inputs.totalPrice) =
+                      (inputs.productQuantity) *
+                      (inputs.sellingPrice) || ''}
+                  
                   readOnly
                 />
               </div>

@@ -9,7 +9,7 @@ function PurchaseStockList() {
   const navigate = useNavigate();
 
   const editClick = async (item) => {
-    navigate(`../addsupplier/${item._id}`);
+    navigate(`../purchasestock/${item._id}`);
   };
 
 
