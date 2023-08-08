@@ -210,6 +210,11 @@ export const SidebarData = [
         path: "/refillerrefillingrequest",
         permission:"managedc" 
       },
+      {
+        title: "All Approved Request",
+        path: "/allapprovedrequest",
+        permission:"managedc" 
+      },
      
     ]
   },

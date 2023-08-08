@@ -69,6 +69,7 @@ import GstMaster from "./GeneralManage/GstMaster";
 
 import AlltransferRequest from "./StockManage/AllTransferRequest";
 import WarehouseStock from "./Warehouse/WarehouseStock";
+import { AllApprovedRequest } from "./RefillerManage/AllApprovedRequest";
 
 
 //TODO: GET info about this Usermanahe.css
@@ -84,12 +85,12 @@ function Dashboard() {
   return (
     <React.Fragment>
       <div className="root">
-        <Header/>
+        <Header />
         <div className="section" onClick={(e) => e.stopPropagation()}>
-         {
-          sidebar && <Navbar/>
-         }
-        
+          {
+            sidebar && <Navbar />
+          }
+
           <ReactNotifications />
           <div className="container" onClick={handleClick}>
             {/*FIXME: MAke this Routes a saprate components*/}
@@ -149,6 +150,7 @@ function Dashboard() {
                   element={<Refiller_Refilling_Request />}
                 />
                 <Route path="refillermanager/managerefillrequest/:id" element={<ApproveRefillRequest />} />
+                <Route path="allapprovedrequest" element={<AllApprovedRequest />} />
               </Route>
 
               <Route
@@ -184,12 +186,12 @@ function Dashboard() {
               </Route>
 
               <Route exact path="/" element={<ProductsManage />}>
-              <Route path="singleproductadd" element={<SingleProductAdd/>} />
+                <Route path="singleproductadd" element={<SingleProductAdd />} />
                 <Route
                   path="singleproductadd/:id"
                   element={<SingleProductAdd />}
                 />
-                
+
               </Route>
 
               <Route exact path="/" element={<Warehouse />}>
@@ -227,7 +229,7 @@ function Dashboard() {
                 {/* <Route path="addwarehouse/:_id" element={<AddWarehouse />} /> */}
               </Route>
 
-             
+
 
               <Route path="/*" element={<PageError />} />
             </Routes>

@@ -18,7 +18,52 @@ const Refiller_Refilling_Request = () => {
   const [updatedSlots, setUpdatedSlots] = useState([]);
   const [returnItems, setReturnItems] = useState([]);
   const [machineId, setMachineId] = useState();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  
+  const [productList, setProductList] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
+  const [isSearchVisible, setSearchVisible] = useState(false);
+
+  const fetchProductList = async () => {
+    try {
+      const res = await axios.get('http://localhost:3000/api/Product/Datalist', {
+        headers: { Authorization: "Bearer " + token },
+      });
+      setProductList(res.data.data); // Assuming the API response is an array of products
+      setFilteredProducts(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProductList();
+  }, []);
+
+  const handleSearch = (e,id) => {
+    const value=e.target.value;
+    console.log('value: ', value);
+    setSearchVisible(true)
+    const filtered = productList.filter(product =>
+      product.productname.toLowerCase().includes(value.toLowerCase())
+    );
+    const newupdatedSlots = updatedSlots.map((item, i) => {
+      if (id == item._id) {
+        return {
+          ...item,
+          productname: value,
+        }
+      }
+      else {
+        return item
+      }
+    })
+    // setUpdatedSlots((prevState) => ({ ...prevState, machineSlot: newupdatedSlots }));
+    setUpdatedSlots(newupdatedSlots);
+    setFilteredProducts(filtered);
+  };
+
 
   const getCompanies = async () => {
     try {
@@ -103,19 +148,18 @@ const Refiller_Refilling_Request = () => {
 
   const handleCurrentStock = (id, e) => {
     const value = e.target.value;
-    console.log('value: ', value);
     const newmachine = machine.machineSlot.map((item) => {
       if (item._id == id) {
-        const CurrentStockValue = value <= item.maxquantity ? value : 0;
-        if (value > item.maxquantity) {
-          alert("Current Stock is not greater than Slot Capacity");
+        const CurrentStockValue = (value <= (item.maxquantity && item.closingStock)) && value > 0 ? value : 0;
+        if (value > (item.maxquantity && item.closingStock) || value < 0) {
+          alert("Current Stock is not greater than Closing Stock");
           e.target.value = CurrentStockValue
         }
         return {
           ...item,
           currentStock: CurrentStockValue,
           // saleQuantity: value <= item.maxquantity && value !== "" && CurrentStockValue !== 0 ? item.closingStock - Number(value) : 0,
-          saleQuantity: Number(value) <= item.maxquantity && value !== ""? item.closingStock - Number(value) : 0,
+          saleQuantity: Number(value) <= (item.maxquantity && value !== "" && item.closingStock) && Number(value) > 0 ? item.closingStock - Number(value) : 0,
         };
       }
       return item;
@@ -130,10 +174,13 @@ const Refiller_Refilling_Request = () => {
       return;
     }
     const removedItem = machine?.machineSlot.find((item) => item._id == id);
+    // console.log('removedItem: ', removedItem);
 
     if (removedItem) {
-      if (removedItem.currentStock == 0) {
-        return alert("Please First fill current Stock Of Item")
+      if(removedItem.closingStock != 0){
+        if (removedItem.currentStock == 0) {
+          return alert("Please First fill current Stock Of Item")
+        }
       }
       // Update the returnItems state by adding the removed item
       const arr = [...returnItems, removedItem];
@@ -144,17 +191,20 @@ const Refiller_Refilling_Request = () => {
     const newData = machine.machineSlot.filter((item, i) => id !== item._id);
     setMachine({ ...machine, machineSlot: newData });
   };
-  // console.log('machine: ', machine);
-  // console.log("updatedSlots", updatedSlots)
-  // console.log('removedArray: ', removedArray);
 
-  const handleProductUpdateSlot = (event, id) => {
-    const value = event.target.value;
+
+  const handleProductUpdateSlot = (product,id) => {
+    console.log('id: ', id);
+    console.log('product: ', product);
+    setSearchInput(product.productname);
+    setSearchVisible(false);
+    // const value = event.target.value;
     const newupdatedSlots = updatedSlots.map((item, i) => {
       if (id == item._id) {
         return {
           ...item,
-          productname: value
+          productname: product.productname,
+          productid: product._id
         }
       }
       else {
@@ -217,6 +267,11 @@ const Refiller_Refilling_Request = () => {
     }
   };
 
+  console.log('machine: ', machine);
+  console.log("updatedSlots", updatedSlots)
+  console.log('returnItems: ', returnItems);
+  console.log('filteredProducts: ', filteredProducts);
+
 
   return (
     <div>
@@ -271,6 +326,7 @@ const Refiller_Refilling_Request = () => {
                           className="td_input"
                           type="number"
                           // value={item.currentStock}
+                          min="0"
                           placeholder={item.currentStock}
                           onChange={(e) => handleCurrentStock(item._id, e)}
                         />
@@ -281,6 +337,7 @@ const Refiller_Refilling_Request = () => {
                           className="td_input"
                           type="number"
                           // value={item.refillQuantity}
+                          min="0"
                           placeholder={item.refillQuantity}
                           onChange={(e) => handleRefillQty(item._id, e)}
                         />
@@ -304,29 +361,61 @@ const Refiller_Refilling_Request = () => {
                     <tr>
                       <th>Slot Name</th>
                       <th>Product</th>
-
                       <th>Refill Qty</th>
-
                     </tr>
                   </thead>
                   <tbody>
                     {updatedSlots?.map((item, index) => (
                       <tr key={item._id}>
                         <td>{item.slot}</td>
-                        <td>
-                          <DataList
+                        <td >
+                          {/* <DataList
                             value={item.productname || " "}
                             handleChange={(e) => handleProductUpdateSlot(e, item._id)}
                             name={"product"}
                             path={"Product"}
                             option={"productname"}
                             error={"Product Not Found"}
+                          /> */}
+                          {/* <input placeholder="Choose Item" onClick={() => setSearchVisible(!isSearchVisible)} /> */}
+                          <input
+                            type="text"
+                            placeholder="Search by name"
+                            value={item.productname}
+                            onChange={(e) => { handleSearch(e,item._id) }}
+                            style={{ position: "relative" }}
                           />
+                          {isSearchVisible && (
+                            <div style={{
+                              maxHeight: '800px',
+                              overflowY: 'scroll',
+                              border: "1px solid black",
+                              width: "max-content",
+                              backgroundColor: "rgba(0, 0, 0, 0.900)",
+                              color: "white",
+                              position: "absolute",
+                              top: "10%",
+                              right: "10%",
+
+                            }}>
+                              {filteredProducts.map(product => (
+                                <p
+                                  key={product._id}
+                                  style={{
+                                    border: "1px solid white",
+                                    color: "white"
+                                  }}
+                                  onClick={(e) => handleProductUpdateSlot(product,item._id)}
+                                >{product.productname}</p>
+                              ))}
+                            </div>
+                          )}
                         </td>
                         <td className="tbody_td">
                           <input
                             className="td_input"
                             type="number"
+                            min="0"
                             value={item.refillQuantity}
                             onChange={(e) => handleUpdatedProductRefillQty(item._id, e)}
                           />
