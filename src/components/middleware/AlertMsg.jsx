@@ -21,7 +21,7 @@ export const SuccessAlert = async (data) => {
     message:data.message,
     type: "success",
     insert: "top",
-    container: "top-right",
+    container: "top-center",
     dismiss: {
       duration: 1000,
     },

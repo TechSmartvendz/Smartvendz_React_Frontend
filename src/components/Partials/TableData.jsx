@@ -96,6 +96,7 @@ function TableData(props) {
   };
   
   }
+  
   return (
     <React.Fragment>
       <div className="componet-sub2-title">
@@ -115,6 +116,7 @@ function TableData(props) {
         <table>
           <tbody>
             <tr>
+           
               {tableData != null ? (
                 Object.keys(tableData[0]).map(
                   (key) =>
@@ -146,12 +148,13 @@ function TableData(props) {
 
                     {par != item._id ? (
                       <td>
+                      
                        <MdModeEditOutline className="Edit-icon"  onClick={() =>editClick(item)}/>
                        <AiFillDelete className="Delete-icon"  
                           value={item._id}
                           onClick={() => deleteState(item._id)}/>
                        
-                      </td>
+                         </td>
                     ) : (
                       <td></td>
                     )}
