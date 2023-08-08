@@ -22,8 +22,8 @@ table {
 
 table th {
     padding: 5px;
-    font-size:large;
-    
+    font-size: large;
+
     background-color: teal;
     border: 1px solid white;
 }
@@ -37,12 +37,13 @@ table td {
 .td_input {
     width: 100%;
     outline: none;
+    height: max-content;
     height: 31.5px;
     text-align: center;
     background-color: #5756566c;
     border: 1px solid black;
     border-radius: 3px;
-} 
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -78,8 +79,21 @@ table tr:nth-child(even) {
     border: 1px solid purple;
 }
 
-.actionsBtn{
+.actionsBtn {
     display: flex;
     justify-content: space-evenly;
     cursor: pointer;
+}
+
+.filter {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.filter>input {
+    height: 25px;
+    outline-color: blue;
+    text-align: center;
+    outline-width: 10px;
 }

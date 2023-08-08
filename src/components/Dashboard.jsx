@@ -69,6 +69,7 @@ import GstMaster from "./GeneralManage/GstMaster";
 
 import AlltransferRequest from "./StockManage/AllTransferRequest";
 import WarehouseStock from "./Warehouse/WarehouseStock";
+import { AllApprovedRequest } from "./RefillerManage/AllApprovedRequest";
 
 
 //TODO: GET info about this Usermanahe.css
@@ -77,22 +78,21 @@ import WarehouseStock from "./Warehouse/WarehouseStock";
 function Dashboard() {
   const { sidebar, setSidebar } = useContext(NavContext);
 
-  // function handleClick(e) {
-  //   e.stopPropagation();
-  //   setSidebar(false);
-  // }
+  function handleClick(e) {
+    e.stopPropagation();
+    setSidebar(false);
+  }
   return (
     <React.Fragment>
       <div className="root">
         <Header/>
-        <div className="section" >
+        <div className="section" onClick={(e) => e.stopPropagation()}>
          {
           sidebar && <Navbar/>
          }
         
           <ReactNotifications />
-          {/* onClick={handleClick} */}
-          <div className="container" >
+          <div className="container" onClick={handleClick}>
             {/*FIXME: MAke this Routes a saprate components*/}
 
             <Routes>
@@ -150,6 +150,7 @@ function Dashboard() {
                   element={<Refiller_Refilling_Request />}
                 />
                 <Route path="refillermanager/managerefillrequest/:id" element={<ApproveRefillRequest />} />
+                <Route path="allapprovedrequest" element={<AllApprovedRequest />} />
               </Route>
 
               <Route
@@ -185,12 +186,12 @@ function Dashboard() {
               </Route>
 
               <Route exact path="/" element={<ProductsManage />}>
-              <Route path="singleproductadd" element={<SingleProductAdd/>} />
+                <Route path="singleproductadd" element={<SingleProductAdd />} />
                 <Route
                   path="singleproductadd/:id"
                   element={<SingleProductAdd />}
                 />
-                
+
               </Route>
 
               <Route exact path="/" element={<Warehouse />}>
@@ -228,7 +229,7 @@ function Dashboard() {
                 {/* <Route path="addwarehouse/:_id" element={<AddWarehouse />} /> */}
               </Route>
 
-             
+
 
               <Route path="/*" element={<PageError />} />
             </Routes>
