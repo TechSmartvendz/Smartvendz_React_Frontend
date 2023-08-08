@@ -10,7 +10,7 @@ import TableDataWithPagination from "../Partials/TableDataWithPagination";
 
 function Addnewmachine() {
   const { sidebar, setSidebar } = useContext(NavContext);
-  const [machineID, setMachineID] = useState()
+  const [machineID, setMachineID] = useState();
   const [tableRefresh, setTableRefresh] = useState(0);
   const navigate = useNavigate();
   const path = "Machine";
@@ -18,17 +18,16 @@ function Addnewmachine() {
   // const machinepagination="MachineSlot"
   // const SampleCSVfile = "SampleCSVfile";
   const ComponentName = "Machine";
-  
-  const subPath = 'Machine/Slot';
-  
- 
+
+  const subPath = "Machine/Slot";
+
   const listPath = "/listmachine";
   const [inputs, setInputs] = useState({});
   const [inputs2, setInputs2] = useState({});
   // console.log('inputs2:',inputs2)
   const [par, setPar] = useState(); //var to show company user form state for edit or add new req
   const { id } = useParams();
-  
+
   const [itemid, setItemid] = useState(id); //var to show company  form state for edit or add new req
   const [companyusertable, setcompanyusertable] = useState();
   const [addproductformstate, setaddproductformstate] = useState(); //Add form state use to show or hide add product form
@@ -36,9 +35,7 @@ function Addnewmachine() {
   //TODO: Load Data on Render and on Stage changes
   const [reject, setReject] = useState(false);
   const [importsuccess, setImportSuccess] = useState(0);
- 
 
- 
   // console.log("inputs",inputs.machineid)
   const bulkupload = () => {
     //TODO:Handle Hide and Show of Add Product From
@@ -55,22 +52,24 @@ function Addnewmachine() {
     setReject(true);
   };
   const loadDate = async () => {
+    console.log("itemid:", itemid);
     const response = await getReq(`${path}/${itemid}`);
     if (response.data) {
+      console.log("response:", response.data);
       setInputs2((values) => ({
         ...values,
         machineid: response.data.machineid,
       }));
       setInputs(response.data);
       // console.log("inputs",response.data.machineid)
-      setMachineID(response.data.machineid)
+      setMachineID(response.data.machineid);
     } else {
       navigate(`../`);
       // console.log(response.data);
     }
   };
   // console.log('machineId:',machineid)
-  
+
   const loadDateUsertable = async () => {
     const response = await getReq(`${subPath}/${itemid}`);
     if (response.data.length) {
@@ -86,7 +85,6 @@ function Addnewmachine() {
     }
   };
   const loadSubFormData = async (assignid) => {
-
     const response = await getReq(`${subPath}/${itemid}/${assignid}`);
     if (response.data.length) {
       // console.log(
@@ -96,9 +94,9 @@ function Addnewmachine() {
 
       // console.log(response.data);
       setInputs2(response.data[0]);
-
     } else {
       // console.log(response.data);
+
       setcompanyusertable(null);
     }
   };
@@ -119,7 +117,7 @@ function Addnewmachine() {
       setInputs2((values) => ({ ...values, [name]: event.target.value }));
     }
   }
-  
+
   const handleSubmit2 = async (event) => {
     event.preventDefault();
     if (par) {
@@ -158,7 +156,7 @@ function Addnewmachine() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (itemid) {
-      console.log('ItemID:',itemid)
+      console.log("ItemID:", itemid);
       const response = await putReq(path, inputs, itemid);
       if (response.success) {
         SuccessAlert({
@@ -171,7 +169,7 @@ function Addnewmachine() {
           ...values,
           machineid: inputs.machineid,
         }));
-        console.log('inputs2:',inputs2)
+        console.log("inputs2:", inputs2);
         setaddproductformstate(false);
       } else {
         ErrorAlert({ title: "Update Machine", message: response.msg });
@@ -184,7 +182,7 @@ function Addnewmachine() {
           title: "Add Machine",
           message: "Machine Added successfully",
         });
-        console.log('Response:',response.data);
+        console.log("Response:", response.data);
         setPar(true);
         navigate(`${response.data._id}`);
         setItemid(response.data._id);
@@ -193,14 +191,14 @@ function Addnewmachine() {
           ...values,
           machineid: inputs.machineid,
         }));
-        console.log('inputs.machineID:',inputs.machineid)
+        console.log("inputs.machineID:", inputs.machineid);
         // setMachineid(inputs2.machineid)
       } else {
         ErrorAlert({ title: "Add Machine", message: response.msg });
       }
     }
   };
-// console.log(inputs)
+  // console.log(inputs)
   const editClick = (pid) => {
     loadSubFormData(pid._id);
     setPar(pid._id);
@@ -249,7 +247,9 @@ function Addnewmachine() {
           </button>
 
           {(par || itemid) && (
-            <button onClick={bulkupload}>{bulkformstate ? 'Single Slot Upload' :'Bulk Slot Upload'}</button>
+            <button onClick={bulkupload}>
+              {bulkformstate ? "Single Slot Upload" : "Bulk Slot Upload"}
+            </button>
           )}
         </div>
 
@@ -309,7 +309,7 @@ function Addnewmachine() {
               />
             </div>
             <div className="input-lable-h-div">
-            <DataList
+              <DataList
                 name={"warehouse"}
                 value={inputs.warehouse || " "}
                 path={"getAllWarehouses"}
@@ -356,7 +356,11 @@ function Addnewmachine() {
         <React.Fragment>
           <div className="add-user-container">
             {bulkformstate ? (
-              <BulkUpload path={"MachineSlot"} rejectdata={rejectdata} ComponentName={'Planogram'}/>
+              <BulkUpload
+                path={"MachineSlot"}
+                rejectdata={rejectdata}
+                ComponentName={"Planogram"}
+              />
             ) : (
               <>
                 <div className="componet-sub-title">
@@ -364,7 +368,6 @@ function Addnewmachine() {
                 </div>
 
                 <form className="flex-col" onSubmit={handleSubmit2}>
-                
                   <div className="input-lable-h-div">
                     <DataList
                       value={inputs2.machineid || ""}
@@ -407,7 +410,6 @@ function Addnewmachine() {
                       handleChange={handleChange2}
                       heading={"Product"}
                     />
-
                   </div>
 
                   <div className="input-lable-v-div">

@@ -124,7 +124,7 @@ const Refiller_Refilling_Request = () => {
   };
 
   const handleDelete = (id) => {
-    const shouldDelete = window.confirm("Are you sure you want to delete this item?");
+    const shouldDelete = window.confirm("Are you sure to delete this item ?");
     // console.log('shouldDelete: ', shouldDelete);
     if (!shouldDelete) {
       return;
@@ -222,7 +222,7 @@ const Refiller_Refilling_Request = () => {
     <div>
       <div className="selectMachine">
         <label> Machine ID & Company ID</label>
-        <select onChange={(e) => handleMachineId(e)}>
+        <select onChange={(e) => handleMachineId(e)} >
           <option value="">Select Machine</option>
           {companies &&
             companies.map((item, i) => (

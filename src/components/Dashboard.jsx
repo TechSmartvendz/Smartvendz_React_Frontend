@@ -77,21 +77,22 @@ import WarehouseStock from "./Warehouse/WarehouseStock";
 function Dashboard() {
   const { sidebar, setSidebar } = useContext(NavContext);
 
-  function handleClick(e) {
-    e.stopPropagation();
-    setSidebar(false);
-  }
+  // function handleClick(e) {
+  //   e.stopPropagation();
+  //   setSidebar(false);
+  // }
   return (
     <React.Fragment>
       <div className="root">
         <Header/>
-        <div className="section" onClick={(e) => e.stopPropagation()}>
+        <div className="section" >
          {
           sidebar && <Navbar/>
          }
         
           <ReactNotifications />
-          <div className="container" onClick={handleClick}>
+          {/* onClick={handleClick} */}
+          <div className="container" >
             {/*FIXME: MAke this Routes a saprate components*/}
 
             <Routes>
