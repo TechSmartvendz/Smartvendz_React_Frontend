@@ -30,15 +30,16 @@ function DataList(props) {
         onChange={props.handleChange}
         value={props.value}
         placeholder={"Select..."}
-        autoComplete={"off"}
-        style={{textAlign:'left',width:"100%"}}
+        autoComplete="off"
+        style={{ textAlign: "left" }}
+       
       />
 
       <datalist id={name}>
-        {dataList.length>0 ? (
+        {dataList.length > 0 ? (
           dataList.map((e, i) => {
             return (
-              <option  key={i} value={e.id}>
+              <option key={i} value={e.id} >
                 {e[option]}
               </option>
             );

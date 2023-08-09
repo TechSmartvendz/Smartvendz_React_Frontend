@@ -12,17 +12,22 @@ export const ApproveRefillRequest = () => {
     const cookies = new Cookies();
     const token = cookies.get('JWTcookie');
     const navigate = useNavigate();
+    const baseUrl='https://busy-erin-raven-vest.cyclic.app';
     // console.log('token: ', token);
     const getRequests = async (id) => {
         try {
             setLoading(true);
-            const res = await axios.get(`http://localhost:3000/api/refillRequest/${id}`, { headers: { 'Authorization': 'Bearer ' + token } })
+            const res = await axios.get(`${baseUrl}/api/refillRequest/${id}`, { headers: { 'Authorization': 'Bearer ' + token } })
             const data = res.data.data
             // console.log('data: ', data);
             setRequest(data);
             setLoading(false)
         } catch (error) {
-            console.log(error);
+            // console.log(error);
+            ErrorAlert({
+                title: "Fail",
+                message: error.message,
+            });
         }
     }
 
@@ -33,7 +38,7 @@ export const ApproveRefillRequest = () => {
     // to approve the refill request 
     const handleApprove = async (requestNumber) => {
         try {
-            const res = await axios.post(`http://localhost:3000/api/approverefillrequest/${requestNumber}`,
+            const res = await axios.post(`${baseUrl}/api/approverefillrequest/${requestNumber}`,
                 {}, { headers: { 'Authorization': `Bearer ${token}` } })
             const data = res.data
             // console.log('data: ', data);

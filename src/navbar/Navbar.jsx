@@ -29,7 +29,7 @@ function Navbar() {
   const loadDate = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/Permission/LoadMenu",
+        "https://busy-erin-raven-vest.cyclic.app/api/Permission/LoadMenu",
         { headers: { Authorization: "Bearer " + token } }
       );
       setUserRole(response.data.data.role);
