@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { postReq, putReq, getReq } from "../middleware/AxiosApisCall";
 import DataList from "../Partials/DataList";
 import { SuccessAlert, ErrorAlert } from "../middleware/AlertMsg"; //1
@@ -12,6 +12,7 @@ function Addnewmachine() {
   const { sidebar, setSidebar } = useContext(NavContext);
   const [machineID, setMachineID] = useState();
   const [tableRefresh, setTableRefresh] = useState(0);
+
   const navigate = useNavigate();
   const path = "Machine";
   // const newpath = "MachineSlot";
@@ -36,7 +37,14 @@ function Addnewmachine() {
   const [reject, setReject] = useState(false);
   const [importsuccess, setImportSuccess] = useState(0);
 
-  // console.log("inputs",inputs.machineid)
+  // This variable and  Function is for Focus next input field after Clicking on Enter button
+  //  const inputRefs=[useRef(null),useRef(null),useRef(null),useRef(null),useRef(null),useRef(null),useRef(null)]
+  // const handleKeyPress=(event,currentIndex)=>{
+  //  if(event.key==='Enter' && currentIndex < inputRefs.length-1){
+  //   event.preventDefault()
+  //   inputRefs[currentIndex+1].current.focus();
+  //  }
+  // }
   const bulkupload = () => {
     //TODO:Handle Hide and Show of Add Product From
     if (reject) {
@@ -258,6 +266,9 @@ function Addnewmachine() {
             <div className="input-lable-h-div">
               <label htmlFor="machineid"> Machine ID</label>
               <input
+                // This ref and onKeypress for Focus next input field after Clicking on Enter button
+                // ref={inputRefs[0]}
+                // onKeyPress={(e) => handleKeyPress(e, 0)}
                 type="text"
                 name="machineid"
                 value={inputs.machineid || ""}
@@ -269,6 +280,9 @@ function Addnewmachine() {
             <div className="input-lable-h-div">
               <label htmlFor="machinename">Machine Name</label>
               <input
+                // This ref and onKeypress for Focus next input field after Clicking on Enter button
+                //  ref={inputRefs[1]}
+                //  onKeyPress={(e) => handleKeyPress(e, 1)}
                 type="text"
                 name="machinename"
                 value={inputs.machinename || ""}
