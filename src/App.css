@@ -398,6 +398,9 @@ justify-content: flex-start;
   border-radius: 50px;
   cursor: pointer;
 }
+.table-page-nav-btn>button:hover{
+background-color: #287e2e;
+}
 .table-page-nav-btn>span
 {
   
@@ -440,7 +443,7 @@ overflow-x: scroll;
 .table_container-div>table{
   border: 1px solid black;
   width: 100%;
- 
+ overflow-x: scroll;
   
 }
 .table_container-div>table>tbody>tr:nth-child(even){
@@ -660,19 +663,28 @@ overflow: hidden;
  background-color: white;
  border:green;
  }
- 
+ .datalist-items,option{
+  background-color: #a371ee;
+ }
  @media only screen and (max-width:600px){
  
-  .add-user-container{
+  /* .add-user-container{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-  }
+  } */
   .flex-row{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+   align-items: center;
+   justify-content: center;
+  }
+  .form-2col-ver{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .flex-col{
     display: flex;
@@ -680,12 +692,33 @@ overflow: hidden;
     align-items: center;
     justify-content: center;
   }
+  .componet-sub2-title {
+    overflow-x: scroll;
+  }
   .input-lable-h-div{
     display: flex;
-    flex-direction:column;
-   flex-wrap: wrap;
+  
+    justify-content: center;
+    flex-flow: column !important;
+  }
+  .search-field{
+    width:200px;
+  }
+  .search-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+  }
+  .general-manage-div{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
   }
  }
+
 
  .headercontent {
   /* background-color: rgb(250, 247, 247); */
