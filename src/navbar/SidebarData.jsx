@@ -229,7 +229,7 @@ export const SidebarData = [
     submenu:[
      
       {
-        title:"Single Product Add",
+        title:"Products Manage",
         path:"/singleproductadd",
         permission:"singleproductadd" 
       },
