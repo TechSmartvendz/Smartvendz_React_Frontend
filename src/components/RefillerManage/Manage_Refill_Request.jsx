@@ -9,7 +9,7 @@ import Loading from "../Loading";
 const Manage_Refill_Request = () => {
   const cookies = new Cookies();
   const token = cookies.get('JWTcookie');
-  const [request, setRequest] = useState()
+  const [request, setRequest] = useState([])
   const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();
   const getRequests = async () => {
@@ -42,7 +42,15 @@ const Manage_Refill_Request = () => {
   return (
     <div style={{ width: "100%", height: "100vh" }}>
       {isLoading ? <Loading /> :
-        <div>
+       request.length == 0 ?
+       <div style={{
+           width: "90%", display: 'flex', margin: "auto", justifyContent: 'Center', marginTop: "40px",
+           backgroundColor: "black", color: "white", padding: "7px"
+       }}>
+           <p>No Data Found</p>
+       </div>
+       :
+        <div> 
           <div >
             <h3>Manage Re-fill Request Lists</h3>
             <button onClick={() => navigate(-1)}>Back</button>
