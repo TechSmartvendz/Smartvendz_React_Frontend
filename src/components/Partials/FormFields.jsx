@@ -202,6 +202,12 @@ export const template = {
           name: "machineconfiguration",
           value: "machineconfiguration",
         },
+        {
+          title: "List Machine Slots",
+          type: "checkbox",
+          name: "listMachineSlot",
+          value: "listMachineSlot",
+        },
       ],
     },
 
@@ -233,33 +239,39 @@ export const template = {
       ],
     },
 
-    // {
-    //   title: "Refiller Manage",
-    //   type: "checkbox",
-    //   name: "refillermanager",
-    //   value: "refillermanager",
+    {
+      title: "Refiller Manage",
+      type: "checkbox",
+      name: "refillermanager",
+      value: "refillermanager",
 
-    //   sections: [
-    //     {
-    //       title: "Manage Refill Request",
-    //       type: "checkbox",
-    //       name: "managerefillrequest",
-    //       value: "managerefillrequest",
-    //     },
-    //     {
-    //       title: "Refiller Refilling Request",
-    //       type: "checkbox",
-    //       name: "refillerrefillingrequest",
-    //       value: "refillerrefillingrequest",
-    //     },
-    //     {
-    //       title: "Approve Refill Request",
-    //       type: "checkbox",
-    //       name: "approverefillrequest",
-    //       value: "approverefillrequest",
-    //     },
-    //   ],
-    // },
+      sections: [
+        {
+          title: "Manage Refill Request",
+          type: "checkbox",
+          name: "managerefillrequest",
+          value: "managerefillrequest",
+        },
+        {
+          title: "Refiller Refilling Request",
+          type: "checkbox",
+          name: "refillerrefillingrequest",
+          value: "refillerrefillingrequest",
+        },
+        {
+          title: "Approve Refill Request",
+          type: "checkbox",
+          name: "approverefillrequest",
+          value: "approverefillrequest",
+        },
+        {
+          title: "Listing Refill Request",
+          type: "checkbox",
+          name: "listRefillingRequest",
+          value: "listRefillingRequest",
+        },
+      ],
+    },
     {
       title: "Product Manage",
       type: "checkbox",
@@ -343,10 +355,28 @@ export const template = {
           value: "purchaseStockList",
         },
         {
+          title: "Add Warehouse Stock",
+          type: "checkbox",
+          name: "addStock",
+          value: "addStock",
+        },
+        {
+          title: "Warehouse Stock List",
+          type: "checkbox",
+          name: "listStock",
+          value: "listStock",
+        },
+        {
           title: "Transfer Stock",
           type: "checkbox",
           name: "transferStock",
           value: "transferStock",
+        },
+        {
+          title: "List transfer Stock",
+          type: "checkbox",
+          name: "listTransferStock",
+          value: "listTransferStock",
         },
         {
           title: "Accept Stock Request",

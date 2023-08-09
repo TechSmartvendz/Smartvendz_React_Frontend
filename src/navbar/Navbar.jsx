@@ -32,7 +32,6 @@ function Navbar() {
         "http://localhost:3000/api/Permission/LoadMenu",
         { headers: { Authorization: "Bearer " + token } }
       );
-
       setUserRole(response.data.data.role);
       setNavData(response.data);
     } catch (error) {
@@ -43,27 +42,26 @@ function Navbar() {
   useEffect(() => {
     loadDate();
   }, []);
+
   const userName = localStorage.getItem("username");
   // console.log(':navData',navData);
+
   return (
     <React.Fragment>
       <nav className={sidebar && "nav-menu active"}>
-
         <ul className="nav-menu-items">
           <li>
             {/* <li className="nav-li"></li> */}
             {/* <div className="line-div"></div> */}
-         
-            <div className="userinfo-container" >
-              <h4>Welcome</h4>
 
+            <div className="userinfo-container">
+              <h4>Welcome</h4>
               <h3>
                 {userRole?.toUpperCase()}
-
                 <p style={{ color: "grey" }}>{`(${userName})`}</p>
               </h3>
             </div>
-        
+
             <hr style={{ borderColor: "grey" }}></hr>
             {/* <input type="text" id="mySearch" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} placeholder="Search..."  /> */}
 
@@ -77,18 +75,32 @@ function Navbar() {
               <FaIcons.FaBars onClick={showSidebar} />
             </Link>
           </div> */}
-            {navData.data
-              ? sideBarData?.map((item, index) => (
-                navData.data[item.permission] ?
+            {navData.data ? (
+              sideBarData?.map((item, index) =>
+                navData.data[item.permission] ? (
                   <SubMenu
                     item={item}
                     key={index}
                     indexValue={index}
                     navData={navData.data}
-                  /> : ""
-              ))
-              : <div style={{ top:"70px", margin:"auto",display: "flex", position: "relative" }}> <Loading /> </div>
-            }
+                  />
+                ) : (
+                  ""
+                )
+              )
+            ) : (
+              <div
+                style={{
+                  top: "70px",
+                  margin: "auto",
+                  display: "flex",
+                  position: "relative",
+                }}
+              >
+                {" "}
+                <Loading />{" "}
+              </div>
+            )}
           </li>
         </ul>
       </nav>
