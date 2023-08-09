@@ -19,30 +19,31 @@ const Refiller_Refilling_Request = () => {
   const [returnItems, setReturnItems] = useState([]);
   const [machineId, setMachineId] = useState();
   const navigate = useNavigate();
-
   const [productList, setProductList] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [isSearchVisible, setSearchVisible] = useState(false);
+  const [ID, setID] = useState();
+  const baseUrl = 'https://busy-erin-raven-vest.cyclic.app';
 
   const fetchProductList = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/Product/Datalist', {
+      const res = await axios.get(`${baseUrl}/api/Product/Datalist`, {
         headers: { Authorization: "Bearer " + token },
       });
       setProductList(res.data.data); // Assuming the API response is an array of products
       setFilteredProducts(res.data.data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      ErrorAlert({
+        title: "Fail",
+        message: error.message,
+      });
     }
   };
 
-  useEffect(() => {
-    fetchProductList();
-  }, []);
-
   const handleSearch = (e, id) => {
     const value = e.target.value;
-    // console.log('value: ', value);
+    setID(id);
     setSearchVisible(true)
     const filtered = productList.filter(product =>
       product.productname.toLowerCase().includes(value.toLowerCase())
@@ -66,7 +67,7 @@ const Refiller_Refilling_Request = () => {
 
   const getCompanies = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/getallmachines", {
+      const res = await axios.get(`${baseUrl}/api/getallmachines`, {
         headers: { Authorization: "Bearer " + token },
       });
       const data = res.data.data;
@@ -86,13 +87,14 @@ const Refiller_Refilling_Request = () => {
     setshowTable(true);
     try {
       const res = await axios.get(
-        `http://localhost:3000/api/getallmachineslots?machineid=${id}`,
+        `${baseUrl}/api/getallmachineslots?machineid=${id}`,
         { headers: { Authorization: "Bearer " + token } }
       );
       const data = res.data.data;
       // console.log('data: ', data);
       return data;
-    } catch (error) {
+    }
+    catch (error) {
       console.log(error);
       setLoading(false);
       ErrorAlert({
@@ -106,7 +108,6 @@ const Refiller_Refilling_Request = () => {
     const newMachineId = e.target.value;
     setMachineId(newMachineId);
     setReturnItems([]);
-
     getMachineDetails(newMachineId).then((res) => {
       if (res !== "") {
         setMachine(res);
@@ -122,7 +123,7 @@ const Refiller_Refilling_Request = () => {
 
   useEffect(() => {
     getCompanies();
-  }, [machineId, returnItems]);
+  }, [machineId]);
 
   const handleRefillQty = (id, e) => {
     const newmachine = machine.machineSlot.map((input) => {
@@ -172,6 +173,7 @@ const Refiller_Refilling_Request = () => {
     if (!shouldDelete) {
       return;
     }
+    fetchProductList(); // call this function when refiller click to delete Item
     const removedItem = machine?.machineSlot.find((item) => item._id == id);
     // console.log('removedItem: ', removedItem);
 
@@ -192,11 +194,12 @@ const Refiller_Refilling_Request = () => {
   };
 
 
-  const handleProductUpdateSlot = (product, id) => {
+  const handleProductUpdateSlot = (product) => {
+    // console.log('product: ', product); // new product which we want to update
+    // console.log('ID: ', ID); // new product which we want to update
     setSearchVisible(false);
-    // const value = event.target.value;
     const newupdatedSlots = updatedSlots.map((item, i) => {
-      if (id == item._id) {
+      if (ID == item._id) {
         return {
           ...item,
           productname: product.productname,
@@ -234,7 +237,7 @@ const Refiller_Refilling_Request = () => {
     // console.log('payload: ', payload);
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/refill/request",
+        `${baseUrl}/api/refill/request`,
         payload,
         { headers: { Authorization: "Bearer " + token } }
       );
@@ -265,7 +268,6 @@ const Refiller_Refilling_Request = () => {
   // console.log("updatedSlots", updatedSlots)
   // console.log('returnItems: ', returnItems);
   // console.log('filteredProducts: ', filteredProducts);
-
 
   return (
     <div>
@@ -359,48 +361,45 @@ const Refiller_Refilling_Request = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {updatedSlots?.map((item, index) => (
+                    {updatedSlots?.map((item, index) =>
                       <tr key={item._id}>
                         <td>{item.slot}</td>
                         <td >
-                          {/* <DataList
-                            value={item.productname || " "}
-                            handleChange={(e) => handleProductUpdateSlot(e, item._id)}
-                            name={"product"}
-                            path={"Product"}
-                            option={"productname"}
-                            error={"Product Not Found"}
-                          /> */}
-                          {/* <input placeholder="Choose Item" onClick={() => setSearchVisible(!isSearchVisible)} /> */}
                           <input
                             type="text"
                             placeholder="Search by name"
                             value={item.productname}
                             onChange={(e) => { handleSearch(e, item._id) }}
-                            style={{ position: "relative" }}
+                            style={{ position: "relative", width: "80%" }}
                           />
                           {isSearchVisible && (
                             <div style={{
-                              maxHeight: '800px',
+                              maxHeight: '300px',
                               overflowY: 'scroll',
                               border: "1px solid black",
                               width: "max-content",
                               backgroundColor: "rgba(0, 0, 0, 0.900)",
                               color: "white",
                               position: "absolute",
-                              top: "10%",
-                              right: "10%",
+                              top: "-115%",
+                              right: "20%",
+                              scrollbarWidth: '50px',
+                              scrollbarColor: 'gray'
 
                             }}>
                               {filteredProducts.map(product => (
                                 <p
                                   key={product._id}
+                                  value={product._id}
                                   style={{
-                                    border: "1px solid white",
-                                    color: "white"
+                                    border: "0.1px solid gray",
+                                    color: "white",
+                                    padding: "7px 0px"
                                   }}
-                                  onClick={(e) => handleProductUpdateSlot(product, item._id)}
-                                >{product.productname}</p>
+                                  onClick={() => handleProductUpdateSlot(product)}
+                                >
+                                  {product.productname}
+                                </p>
                               ))}
                             </div>
                           )}
@@ -410,13 +409,14 @@ const Refiller_Refilling_Request = () => {
                             className="td_input"
                             type="number"
                             min="0"
-                            value={item.refillQuantity}
+                            // value={item.refillQuantity}
+                            placeholder={item.refillQuantity}
                             onChange={(e) => handleUpdatedProductRefillQty(item._id, e)}
                           />
                         </td>
 
                       </tr>
-                    ))}
+                    )}
                   </tbody>
                 </table>
               </div>
