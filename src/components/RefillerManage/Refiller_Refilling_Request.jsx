@@ -19,27 +19,27 @@ const Refiller_Refilling_Request = () => {
   const [returnItems, setReturnItems] = useState([]);
   const [machineId, setMachineId] = useState();
   const navigate = useNavigate();
-
   const [productList, setProductList] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [isSearchVisible, setSearchVisible] = useState(false);
-  const [ID,setID]=useState();
+  const [ID, setID] = useState();
+  const baseUrl = 'https://busy-erin-raven-vest.cyclic.app';
 
   const fetchProductList = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/Product/Datalist', {
+      const res = await axios.get(`${baseUrl}/api/Product/Datalist`, {
         headers: { Authorization: "Bearer " + token },
       });
       setProductList(res.data.data); // Assuming the API response is an array of products
       setFilteredProducts(res.data.data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      ErrorAlert({
+        title: "Fail",
+        message: error.message,
+      });
     }
   };
-
-  // useEffect(() => {
-  //   fetchProductList();
-  // }, []);
 
   const handleSearch = (e, id) => {
     const value = e.target.value;
@@ -67,7 +67,7 @@ const Refiller_Refilling_Request = () => {
 
   const getCompanies = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/getallmachines", {
+      const res = await axios.get(`${baseUrl}/api/getallmachines`, {
         headers: { Authorization: "Bearer " + token },
       });
       const data = res.data.data;
@@ -87,13 +87,14 @@ const Refiller_Refilling_Request = () => {
     setshowTable(true);
     try {
       const res = await axios.get(
-        `http://localhost:3000/api/getallmachineslots?machineid=${id}`,
+        `${baseUrl}/api/getallmachineslots?machineid=${id}`,
         { headers: { Authorization: "Bearer " + token } }
       );
       const data = res.data.data;
       // console.log('data: ', data);
       return data;
-    } catch (error) {
+    }
+    catch (error) {
       console.log(error);
       setLoading(false);
       ErrorAlert({
@@ -107,7 +108,6 @@ const Refiller_Refilling_Request = () => {
     const newMachineId = e.target.value;
     setMachineId(newMachineId);
     setReturnItems([]);
-
     getMachineDetails(newMachineId).then((res) => {
       if (res !== "") {
         setMachine(res);
@@ -237,7 +237,7 @@ const Refiller_Refilling_Request = () => {
     // console.log('payload: ', payload);
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/refill/request",
+        `${baseUrl}/api/refill/request`,
         payload,
         { headers: { Authorization: "Bearer " + token } }
       );
@@ -370,7 +370,7 @@ const Refiller_Refilling_Request = () => {
                             placeholder="Search by name"
                             value={item.productname}
                             onChange={(e) => { handleSearch(e, item._id) }}
-                            style={{ position: "relative",width:"80%" }}
+                            style={{ position: "relative", width: "80%" }}
                           />
                           {isSearchVisible && (
                             <div style={{

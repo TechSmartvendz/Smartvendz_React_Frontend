@@ -12,15 +12,21 @@ const Manage_Refill_Request = () => {
   const [request, setRequest] = useState([])
   const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const baseUrl='https://busy-erin-raven-vest.cyclic.app';
+
   const getRequests = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:3000/api/allrefillingrequest?status=Pending', { headers: { 'Authorization': 'Bearer ' + token } })
+      const res = await axios.get(`${baseUrl}/api/allrefillingrequest?status=Pending`, { headers: { 'Authorization': 'Bearer ' + token } })
       const data = res.data.data;
       setRequest(data);
       setLoading(false)
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      ErrorAlert({
+        title: "Fail",
+        message: error.message,
+    });
     }
   }
 
