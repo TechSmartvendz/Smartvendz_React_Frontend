@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../Loading';
 import axios from 'axios';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { ErrorAlert } from '../middleware/AlertMsg';
+
 
 export const AllApprovedRequest = () => {
     const cookies = new Cookies();
@@ -12,24 +14,30 @@ export const AllApprovedRequest = () => {
     const [requests, setRequest] = useState([])
     const [isLoading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const baseUrl='https://busy-erin-raven-vest.cyclic.app';
     let id;
     const [query, setQuery] = useState({
         refillerName: "",
         date: "",
         wareHouseName: "",
         machineName: ""
-    })
+    });
+
     const { refillerName, date, wareHouseName, refillRequestNumber, machineName } = query;
     const getRequests = async () => {
         try {
             setLoading(true);
-            const res = await axios.get(`http://localhost:3000/api/allrefillingrequest/?status=Approved&refillerName=${refillerName}&date=${date}&wareHouseName=${wareHouseName}&machineName=${machineName}`,
+            const res = await axios.get(`${baseUrl}/api/allrefillingrequest/?status=Approved&refillerName=${refillerName}&date=${date}&wareHouseName=${wareHouseName}&machineName=${machineName}`,
                 { headers: { 'Authorization': 'Bearer ' + token } })
             const data = res.data.data;
             setRequest(data);
             setLoading(false)
         } catch (error) {
-            console.log(error);
+            // console.log(error);
+            ErrorAlert({
+                title: "Fail",
+                message: error.message,
+            });
         }
     }
 
@@ -40,7 +48,7 @@ export const AllApprovedRequest = () => {
         }, 1000);
 
         return () => {
-            console.log('id: ', id);
+            // console.log('id: ', id);
             clearTimeout(id);
         };
     }, [query]);
@@ -64,7 +72,7 @@ export const AllApprovedRequest = () => {
     };
 
     // console.log("requests", requests)
-    console.log("query", query)
+    // console.log("query", query)
 
     return (
         <div style={{ width: "100%", height: "100vh" }}>
