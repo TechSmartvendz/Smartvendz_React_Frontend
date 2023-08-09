@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
-// import { useForm } from "react-hook-form";
-
-import { template } from "../Partials/FormFields"; 
 import { Cookies } from "react-cookie";
 import axios from "axios";
-
-
 
 const TransactionReport = () => {
   const cookies = new Cookies();
@@ -17,12 +12,11 @@ const TransactionReport = () => {
     endDate: undefined,
   });
 
-
   const getCompanies = async () => {
     try {
       const res = await axios.get('http://localhost:3000/api/getallmachines', { headers: { 'Authorization': 'Bearer ' + token } })
       // console.log('res: ', res);
-      const data = res.data
+      const data = res.data.data
       setCompanies(data);
     } catch (error) {
       console.log(error);
@@ -31,8 +25,10 @@ const TransactionReport = () => {
 
   useEffect(() => {
     getCompanies()
-  }, [])
-  const { machineid, startDate, endDate, } = payload
+  }, []);
+
+  const { machineid, startDate, endDate, } = payload;
+
   const downloadReport = async (e) => {
     e.preventDefault()
     if(!machineid ||!startDate || !endDate ){
@@ -50,7 +46,7 @@ const TransactionReport = () => {
       headers: { 'Authorization': `Bearer ${token}` }
     }
     let response = await axios.post("https://smartvendz.com/csvreport", data, config);
-    console.log('response: ', response);
+    // console.log('response: ', response);
     if(response.data.error){
     return alert("Transaction Not Found");
     }
@@ -59,26 +55,19 @@ const TransactionReport = () => {
     const link = document.createElement('a');
     link.href = url;
     link.setAttribute('download', 'file.csv'); // Set the desired file name
-  
     // Append the link to the document body and trigger the download
     document.body.appendChild(link);
     link.click();
-  
     // Clean up the temporary URL and link
     URL.revokeObjectURL(url);
     link.remove();
-    // body: JSON.stringify(himanshu),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     'Authorization': `Bearer ${token}`
-    //   },
 
   }
 
-  const viewReport = (e) => {
-    e.preventDefault()
-    console.log(payload)
-  }
+  // const viewReport = (e) => {
+  //   e.preventDefault()
+  //   console.log(payload)
+  // }
  
   return (
     <div>
@@ -105,7 +94,7 @@ const TransactionReport = () => {
               <input type="date" value={endDate} onChange={(e) => setPayload({ ...payload, endDate: e.target.value })} />
             </div>
             <div className="input-lable-v-div">
-              <button onClick={viewReport} className="submit-btn">View Transaction</button>
+              {/* <button onClick={viewReport} className="submit-btn">View Transaction</button> */}
             </div>
             <div className="input-lable-v-div">
               <button onClick={downloadReport} className="submit-btn">Download CSV Report</button>
