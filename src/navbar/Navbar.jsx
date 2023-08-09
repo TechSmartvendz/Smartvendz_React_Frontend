@@ -58,7 +58,7 @@ function Navbar() {
               <h4>Welcome</h4>
 
               <h3>
-                {userRole.toUpperCase()}
+                {userRole?.toUpperCase()}
 
                 <p style={{ color: "grey" }}>{`(${userName})`}</p>
               </h3>

@@ -19,10 +19,9 @@ const Refiller_Refilling_Request = () => {
   const [returnItems, setReturnItems] = useState([]);
   const [machineId, setMachineId] = useState();
   const navigate = useNavigate();
-  
+
   const [productList, setProductList] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
   const [isSearchVisible, setSearchVisible] = useState(false);
 
   const fetchProductList = async () => {
@@ -41,9 +40,9 @@ const Refiller_Refilling_Request = () => {
     fetchProductList();
   }, []);
 
-  const handleSearch = (e,id) => {
-    const value=e.target.value;
-    console.log('value: ', value);
+  const handleSearch = (e, id) => {
+    const value = e.target.value;
+    // console.log('value: ', value);
     setSearchVisible(true)
     const filtered = productList.filter(product =>
       product.productname.toLowerCase().includes(value.toLowerCase())
@@ -177,7 +176,7 @@ const Refiller_Refilling_Request = () => {
     // console.log('removedItem: ', removedItem);
 
     if (removedItem) {
-      if(removedItem.closingStock != 0){
+      if (removedItem.closingStock != 0) {
         if (removedItem.currentStock == 0) {
           return alert("Please First fill current Stock Of Item")
         }
@@ -193,10 +192,7 @@ const Refiller_Refilling_Request = () => {
   };
 
 
-  const handleProductUpdateSlot = (product,id) => {
-    console.log('id: ', id);
-    console.log('product: ', product);
-    setSearchInput(product.productname);
+  const handleProductUpdateSlot = (product, id) => {
     setSearchVisible(false);
     // const value = event.target.value;
     const newupdatedSlots = updatedSlots.map((item, i) => {
@@ -235,14 +231,12 @@ const Refiller_Refilling_Request = () => {
   const handleSubmit = async () => {
     // need a Refiller token to refill request
     const payload = { ...machine, machineSlot: [...machine.machineSlot, ...updatedSlots], returnItems }
-    // console.log('data: ', data);
-    const newToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyMjI4YTNiMmRmM2Y5ZmNjODRjYjUiLCJpYXQiOjE2OTA0NDQ0MjZ9.j9xy7VTfj74LDo7yyg0DOyG4YSVNIRMK9CEMXiKqXVE";
+    // console.log('payload: ', payload);
     try {
       const res = await axios.post(
         "http://localhost:3000/api/refill/request",
         payload,
-        { headers: { Authorization: "Bearer " + newToken } }
+        { headers: { Authorization: "Bearer " + token } }
       );
       const data = res.data;
       // console.log('data: ', data);
@@ -267,10 +261,10 @@ const Refiller_Refilling_Request = () => {
     }
   };
 
-  console.log('machine: ', machine);
-  console.log("updatedSlots", updatedSlots)
-  console.log('returnItems: ', returnItems);
-  console.log('filteredProducts: ', filteredProducts);
+  // console.log('machine: ', machine);
+  // console.log("updatedSlots", updatedSlots)
+  // console.log('returnItems: ', returnItems);
+  // console.log('filteredProducts: ', filteredProducts);
 
 
   return (
@@ -382,7 +376,7 @@ const Refiller_Refilling_Request = () => {
                             type="text"
                             placeholder="Search by name"
                             value={item.productname}
-                            onChange={(e) => { handleSearch(e,item._id) }}
+                            onChange={(e) => { handleSearch(e, item._id) }}
                             style={{ position: "relative" }}
                           />
                           {isSearchVisible && (
@@ -405,7 +399,7 @@ const Refiller_Refilling_Request = () => {
                                     border: "1px solid white",
                                     color: "white"
                                   }}
-                                  onClick={(e) => handleProductUpdateSlot(product,item._id)}
+                                  onClick={(e) => handleProductUpdateSlot(product, item._id)}
                                 >{product.productname}</p>
                               ))}
                             </div>
