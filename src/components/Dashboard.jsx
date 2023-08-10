@@ -8,11 +8,11 @@ import NavContext from "../Context/NavContext";
 
 import SingleProductAdd from "./Products/SingleProductAdd";
 import ProductsManage from "./Products/ProductsManage";
-import UserManage from "./UserManage/Usermanage";
-import Addnewuser from "./UserManage/Addnewuser";
-import Listuser from "./UserManage/Listuser";
-import Userpermission from "./UserManage/Userpermission";
-import AddNewRole from "./UserManage/AddNewRole";
+import UserManage from "./Usermanage/UserManage";
+import Addnewuser from "./Usermanage/Addnewuser";
+import Listuser from "./Usermanage/Listuser";
+import Userpermission from "./Usermanage/Userpermission";
+import AddNewRole from "./Usermanage/AddNewRole";
 
 import Companymanage from "./Company_Manage/Companymanage";
 import Addnewcompany from "./Company_Manage/Addnewcompany";
