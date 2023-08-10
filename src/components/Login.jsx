@@ -5,7 +5,7 @@ import { SuccessAlert } from "./middleware/AlertMsg";
 import { ErrorAlert } from "./middleware/AlertMsg";
 import { useCookies } from "react-cookie";
 
-import { FaEyeSlash, FaEye } from "react-icons/all";
+// import { FaEyeSlash, FaEye } from "react-icons/all";
 import Clogo from "../assets/snaxsmart.png";
 
 function Login() {
@@ -85,11 +85,11 @@ function Login() {
                 autoComplete="off"
               />
               <span className="showicon" onClick={handleTogglePassword}>
-                {showPassword ? (
+{/*                 {showPassword ? (
                   <FaEyeSlash className="eyeicon" />
                 ) : (
                   <FaEye className="eyeicon" />
-                )}
+                )} */}
               </span>
             </div>
 
