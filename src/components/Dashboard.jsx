@@ -8,7 +8,7 @@ import NavContext from "../Context/NavContext";
 
 import SingleProductAdd from "./Products/SingleProductAdd";
 import ProductsManage from "./Products/ProductsManage";
-import UserManage from "./UserManage/UserManage";
+import UserManage from "./Usermanage/Usermanage";
 import Addnewuser from "./Usermanage/Addnewuser";
 import Listuser from "./Usermanage/Listuser";
 import Userpermission from "./Usermanage/Userpermission";
@@ -55,7 +55,6 @@ import Home from "./Home";
 
 import Navbar from "../navbar/Navbar";
 
-
 import { ReactNotifications } from "react-notifications-component";
 import { RejectedTransaction } from "./Transactions/RejectedTransaction";
 import { ApproveRefillRequest } from "./RefillerManage/ApproveRefillRequest";
@@ -71,7 +70,6 @@ import AlltransferRequest from "./StockManage/AllTransferRequest";
 import WarehouseStock from "./Warehouse/WarehouseStock";
 import { AllApprovedRequest } from "./RefillerManage/AllApprovedRequest";
 
-
 //TODO: GET info about this Usermanahe.css
 // import 'Usermanage.css'
 
@@ -85,16 +83,14 @@ function Dashboard() {
   return (
     <React.Fragment>
       <div className="root">
-        <Header/>
+        <Header />
         {/* onClick={(e) =>e.stopPropagation()} */}
-        <div className="section" >
-         {
-          sidebar && <Navbar/>
-         }
-        
+        <div className="section">
+          {sidebar && <Navbar />}
+
           <ReactNotifications />
           {/* onClick={handleClick} */}
-          <div className="container" >
+          <div className="container">
             {/*FIXME: MAke this Routes a saprate components*/}
 
             <Routes>
@@ -137,11 +133,7 @@ function Dashboard() {
                 <Route path="userrole/:id" element={<AddNewRole />} />
               </Route>
 
-              <Route
-                exact
-                path="/"
-                element={<RefillerManager />}
-              >
+              <Route exact path="/" element={<RefillerManager />}>
                 <Route
                   index
                   path="managerefillrequest"
@@ -151,15 +143,17 @@ function Dashboard() {
                   path="refillerrefillingrequest"
                   element={<Refiller_Refilling_Request />}
                 />
-                <Route path="refillermanager/managerefillrequest/:id" element={<ApproveRefillRequest />} />
-                <Route path="allapprovedrequest" element={<AllApprovedRequest />} />
+                <Route
+                  path="refillermanager/managerefillrequest/:id"
+                  element={<ApproveRefillRequest />}
+                />
+                <Route
+                  path="allapprovedrequest"
+                  element={<AllApprovedRequest />}
+                />
               </Route>
 
-              <Route
-                exact
-                path="/"
-                element={<Transactions />}
-              >
+              <Route exact path="/" element={<Transactions />}>
                 <Route
                   index
                   path="transactionreport"
@@ -193,7 +187,6 @@ function Dashboard() {
                   path="singleproductadd/:id"
                   element={<SingleProductAdd />}
                 />
-
               </Route>
 
               <Route exact path="/" element={<Warehouse />}>
@@ -230,8 +223,6 @@ function Dashboard() {
                 {/* <Route index path="addsupplier/:_id" element={<AddSupplier/>}/> */}
                 {/* <Route path="addwarehouse/:_id" element={<AddWarehouse />} /> */}
               </Route>
-
-
 
               <Route path="/*" element={<PageError />} />
             </Routes>
